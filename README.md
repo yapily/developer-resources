@@ -20,3 +20,4 @@ You can also email developers@yapily.com to create a support ticket.
 - [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open source code that can be used as Maven dependecy
 - [Online DEMO](https://demo.yapily.com/) - A live demo application that uses Yapily
 - [Get Started](https://github.com/yapily/developer-resources/wiki/Get-Started) - Step-by-step guide on how to use Yapily to integrate with Banks APIs
+- [Yapily Slack](https://join.slack.com/t/yapily/shared_invite/enQtMzI5MTM0MTIwMzU1LTQ1MzQzNzVhYjI0NDM5NzUyNmEwM2I1MTNkMDM4MzkyMzM1NmMxY2YyYzg5NzhiNWVjNDAzMTc1OTI2NzNiNWY) - Join our growing community of developers on Slack
