@@ -15,7 +15,7 @@ You can also email developers@yapily.com to create a support ticket.
 ### Helpful resources and links
 - [Yapily Site](https://www.yapily.com/) - The official website of Yapily
 - [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with Yapily API and Banks here
-- [API Explorer](https://api.yapily.com/doc/) - View the API specification and test it
+- [API Explorer](https://api.yapily.com/explorer/) - View the API specification and test it
 - [API Swagger JSON](https://api.yapily.com/swagger.json) - Download the Swagger JSON specification of Yapily API
 - [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test Yapily API using Postman
 - [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open source code that can be used as Maven dependecy
