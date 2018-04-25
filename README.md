@@ -8,7 +8,7 @@ Welcome to the **Yapily Developer Resources** wiki!
 
 ## Getting help
 
-If you have questions or need help with Yapily's APIs or SDKs, join our space on [Slack](https://yapily.slack.com/).
+If you have questions or need help with Yapily's APIs or SDKs, join our space on [Slack](https://docs.google.com/forms/d/10CKrE6RDmEkbGFSOIYFxJ7TB-m3dPeYZhdLJG7IzMQI/viewform).
 
 You can also email developers@yapily.com to create a support ticket.
 
