@@ -8,7 +8,7 @@ Welcome to the **Yapily Developer Resources** wiki!
 
 ## Getting help
 
-Yapily developers’ community on Slack is the place to get help with API, discuss ideas, and show off what you build. Enter your email address in the [google form invite](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform) to join our space on [Slack](https://yapily.slack.com).
+Yapily developers’ community on Slack is the place to get help with API, discuss ideas, and show off what you build. Enter your email address in the [Google form invite](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform) to join our space on [Slack](https://yapily.slack.com).
 
 You can also email developers@yapily.com to create a support ticket.
 
