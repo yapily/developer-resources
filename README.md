@@ -8,9 +8,10 @@ Welcome to the **Yapily Developer Resources** wiki!
 
 ## Getting help
 
-Yapily developers’ community on [Slack](https://join.slack.com/t/yapily/shared_invite/enQtMzI5MTM0MTIwMzU1LTQ1MzQzNzVhYjI0NDM5NzUyNmEwM2I1MTNkMDM4MzkyMzM1NmMxY2YyYzg5NzhiNWVjNDAzMTc1OTI2NzNiNWY) is the place to get help with API, discuss ideas, and show off what you build. 
+Yapily developers’ community on [Slack](https://yapily.slack.com) is the place to get help with API, discuss ideas, and show off what you build. 
 
-Enter your email address in the [google form invite](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform) to join our space on [Slack](https://join.slack.com/t/yapily/shared_invite/enQtMzI5MTM0MTIwMzU1LTQ1MzQzNzVhYjI0NDM5NzUyNmEwM2I1MTNkMDM4MzkyMzM1NmMxY2YyYzg5NzhiNWVjNDAzMTc1OTI2NzNiNWY).
+Enter your email address in the [google form invite](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform) to join our space on [Slack](https://yapily.slack.com).
+
 You can also email developers@yapily.com to create a support ticket.
 
 
@@ -21,4 +22,4 @@ You can also email developers@yapily.com to create a support ticket.
 - [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
 - [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test Yapily API using Postman
 - [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open source code that can be used as Maven dependecy
-- [Yapily Slack](https://join.slack.com/t/yapily/shared_invite/enQtMzI5MTM0MTIwMzU1LTQ1MzQzNzVhYjI0NDM5NzUyNmEwM2I1MTNkMDM4MzkyMzM1NmMxY2YyYzg5NzhiNWVjNDAzMTc1OTI2NzNiNWY) - Join our growing community of developers on Slack
+
