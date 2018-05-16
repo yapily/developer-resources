@@ -20,5 +20,5 @@ You can also email developers@yapily.com to create a support ticket.
 - [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
 - [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test Yapily API using Postman
 - [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open source code that can be used as Maven dependecy
-- [SDK and Example code - NodeJs](https://github.com/yapily/yapily-sdk-nodejs) - Open source code that is compatible with Node JS generated against the Yapily API
+- [SDK and Example code - NodeJs](https://github.com/yapily/yapily-sdk-nodejs) - Open source Node JS code that can be used to build on top of Yapily API
 
