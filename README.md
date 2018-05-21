@@ -4,7 +4,11 @@
 
 # Yapily developer resources
 
-Welcome to the **Yapily Developer Resources** wiki!
+Welcome to the **Yapily Developer Resources** wiki! 
+
+The Yapily API enables connections between your application and users' banks.
+
+
 
 ## Getting help
 
@@ -14,12 +18,17 @@ You can also email developers@yapily.com to create a support ticket.
 
 
 ### Helpful resources and links
-- [Get Started](https://github.com/yapily/developer-resources/wiki/Get-Started) - Step-by-step guide on how to use Yapily to integrate with Banks APIs
-- [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with Yapily API and Banks here
-- [API Swagger JSON](https://api.yapily.com/docs/swagger.json) - Download the Swagger JSON specification of Yapily API
-- [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
-- [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test Yapily API using Postman
-- [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open source code that can be used as Maven dependecy
-- [SDK and Example code - Node.js](https://github.com/yapily/yapily-sdk-nodejs) - Open source Node JS code that can be used to build on top of Yapily API
-- [SDK and Example code - Python](https://github.com/yapily/yapily-sdk-python) - Open source Python code that can be used to build on top of Yapily API
+1. [API Documentation](https://docs.yapily.com/) - Discover Yapily API endpoints here
 
+2. [Developer Dashboard](https://dashboard.yapily.com/)  - Manage your integration with Yapily API and Banks here
+
+3. [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
+
+4.  [API Swagger JSON](https://api.yapily.com/docs/swagger.json)  - Download the Swagger JSON specification of Yapily API
+
+5. [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test Yapily API using Postman
+
+6. Use the following Software Development Kits(SDKs) and sample code to configure your app quickly 
+   * [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/)  - Open-source Java code that can be used as Maven dependecy
+   * [SDK and Example code - Node.js](https://github.com/yapily/yapily-sdk-nodejs)  - Open-source Node JS code that can be used to build on top of Yapily API
+   * [SDK and Example code - Python](https://github.com/yapily/yapily-sdk-python)  - Open source Python code that can be used to build on top of Yapily API
