@@ -15,7 +15,7 @@ Yapily developers’ community on Slack is the place to get help with API, discu
 You can also email developers@yapily.com to create a support ticket.
 
 ## Helpful resources and links
-1. [API Documentation](https://docs.yapily.com/) - Discover Yapily API endpoints here
+1. [API docs](https://doc.yapily.com/) - Discover Yapily API description and endpoints to get started
 2. [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with Yapily API and Banks here
 3. [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
 4. [API Swagger JSON](https://api.yapily.com/docs/swagger.json) - Download the Swagger JSON specification of Yapily API
