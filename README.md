@@ -15,12 +15,12 @@ Yapily developers’ community on Slack is the place to get help with API, discu
 You can also email developers@yapily.com to create a support ticket.
 
 ## Helpful resources and links
-1. [API docs](https://doc.yapily.com/) - Discover Yapily API description and endpoints to get started
-2. [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with Yapily API and Banks here
+1. [API docs](https://doc.yapily.com/) - Discover Yapily API endpoints to get started
+2. [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with the Yapily API and Banks here
 3. [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
-4. [API Swagger JSON](https://api.yapily.com/docs/swagger.json) - Download the Swagger JSON specification of Yapily API
-5. [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test Yapily API using Postman
+4. [API Swagger JSON](https://api.yapily.com/docs/swagger.json) - Download the Swagger JSON specification of the Yapily API
+5. [Postman Integration](https://github.com/yapily/developer-resources/wiki/Postman-Integration) - Test the Yapily API using Postman
 6. Use the following Software Development Kits(SDKs) and sample code to configure your app quickly 
    * [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open-source Java code that can be used as Maven dependency
-   * [SDK and Example code - Node.js](https://github.com/yapily/yapily-sdk-nodejs) - Open-source Node JS code that can be used to build on top of Yapily API
-   * [SDK and Example code - Python](https://github.com/yapily/yapily-sdk-python) - Open source Python code that can be used to build on top of Yapily API
+   * [SDK and Example code - Node.js](https://github.com/yapily/yapily-sdk-nodejs) - Open-source Node JS code that can be used to build on top of the Yapily API
+   * [SDK and Example code - Python](https://github.com/yapily/yapily-sdk-python) - Open source Python code that can be used to build on top of the Yapily API
