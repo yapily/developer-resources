@@ -15,7 +15,7 @@ Yapily developers’ community on Slack is the place to get help with API, discu
 You can also email developers@yapily.com to create a support ticket.
 
 ## Helpful resources and links
-1. [API docs](https://doc.yapily.com/) - Discover Yapily API description and endpoints to get started
+1. [API docs](https://docs.yapily.com/) - Discover Yapily API description and endpoints to get started
 2. [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with Yapily API and Banks here
 3. [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
 4. [Open Banking Guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-UK) - To access the 9 [CMA](https://www.gov.uk/cma) mandated Open Banking institutions from the Yapily API there are some requirements
