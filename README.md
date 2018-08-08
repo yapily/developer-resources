@@ -27,4 +27,4 @@ You can also email developers@yapily.com to create a support ticket.
    * [SDK and Example code - Java](https://github.com/yapily/yapily-sdk-java/) - Open-source Java code that can be used as Maven dependency
    * [SDK and Example code - Node.js](https://github.com/yapily/yapily-sdk-nodejs) - Open-source Node JS code that can be used to build on top of Yapily API
    * [SDK and Example code - Python](https://github.com/yapily/yapily-sdk-python) - Open source Python code that can be used to build on top of Yapily API
-7. [View test user credentials](https://github.com/yapily/developer-resources/wiki/Sandbox-Test-Users) to simulate authentication for sandbox institutions. For use in the Demo and obtaining consent tokens for sandbox institutions  in order to make authorised requests for financial data
+7. [View test user credentials](https://github.com/yapily/developer-resources/wiki/Demo-Test-Users) to simulate authentication for sandbox institutions. For use in the Demo and obtaining consent tokens for sandbox institutions  in order to make authorised requests for financial data
