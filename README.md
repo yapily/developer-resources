@@ -18,7 +18,7 @@ You can also email developers@yapily.com to create a support ticket.
 1. [API docs](https://docs.yapily.com/) - Discover Yapily API description and endpoints to get started
 2. [Developer Dashboard](https://dashboard.yapily.com/) - Manage your integration with Yapily API and Banks here
 3. [Institution Configurations](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) - Obtain credentials from financial institutions for your registered applications
-4. [Open Banking Guide](hhttps://github.com/yapily/developer-resources/wiki/Open-Banking-Guide) - To access the 9 [CMA](https://www.gov.uk/cma) mandated Open Banking institutions from the Yapily API there are some requirements
+4. [Open Banking Guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-Guide) - To access the 9 [CMA](https://www.gov.uk/cma) mandated Open Banking institutions from the Yapily API there are some requirements
 5. [Configure Sandboxes](https://github.com/yapily/developer-resources/wiki/Configuring-Sandboxes-for-Yapily-API) - to configure bank sandboxes in Yapily dashboard
 6. [Open Data Guide](https://github.com/yapily/developer-resources/wiki/Open-Data) - to access product data of banks via Yapily API
 4. [API Swagger JSON](https://api.yapily.com/docs/swagger.json) - Download the Swagger JSON specification of Yapily API
