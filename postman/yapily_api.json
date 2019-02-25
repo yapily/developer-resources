@@ -4290,7 +4290,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"senderAccountId\":\"{{senderAccountId}}\",\n\t\"amount\":{{amount}},\n\t\"currency\":\"{{currency}}\",\n\t\"name\":\"{{name}}\",\n\t\"country\":\"{{country}}\",\n\t\"reference\":\"{{reference}}\",\n\t\"accountNumber\":\"{{accountNumber}}\",\n\t\"sortCode\":\"{{sortCode}}\"\n}"
+              "raw": "{\n\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\"amount\":0.00,\n\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\"name\":\"RECIPIENT_NAME\",\n\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\"reference\":\"REFERENCE\",\n\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\"sortCode\":\"SORT_CODE\"\n}"
             },
             "url": "https://api.yapily.com/payment-sortcode",
             "description": "Feature: `CREATE_SINGLE_PAYMENT_SORTCODE`\n\nFollow the [user authorisation flow](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) to create a single payment, unless creating a payment for an institution with **credentialsType** `API_KEY`.\n\nNote: the payload of this request must exactly match the payment authorisation request in the [payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98).\n\n| Field | Description | Type |\n| - | - | - |\n| senderAccountId | _Optional._ The institution account id of the sender. Currently only required by institutions with the **credentialsType** `API_KEY` | String |\n| amount | The decimal representation of the amount | Number |\n| currency | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP) | String |\n| name | The recipient [person or business] name | String |\n| country | The [2-letter country code](https://www.gov.uk/government/publications/iso-country-codes--2) of the payment destination. Always \"GB\" for UK domestic payments | String |\n| reference | _Optional._ Payment reference/description | String |\n| accountNumber | Recipient account number | String |\n| sortCode | Recipient sort code | String |"
@@ -4831,83 +4831,83 @@
   ],
   "variable": [
     {
-      "id": "cce2f8cf-7a7a-44e5-8ea5-cabfb3c76ebe",
+      "id": "89a395a6-0b9d-4cb0-b224-59adc964e67b",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "6888f4ec-8abc-4f4d-8b63-a8fab282cf66",
+      "id": "65a9797b-34e3-4c20-bce2-7aa05580bc6c",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "478b8a3e-e583-45d6-886a-d921feae16ed",
+      "id": "f0335265-3159-4891-898f-dbb6a30f0d78",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "c97d05f7-19e6-4e79-84f6-b648675dbd02",
+      "id": "9c2c7f13-d866-41aa-8b34-9c8db407a606",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "3b37d14f-4143-4e90-a12f-3d701cf61f23",
+      "id": "86c1c3ef-5d8e-4662-a2b5-71b1d99c6d93",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "ab1e8813-7fb6-4cca-ba0b-9d0e55e45556",
+      "id": "319c7bca-ca57-48f0-8cb4-1f8d6f4983e2",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "66b9ecf9-262f-40eb-aebc-22d195d91822",
+      "id": "2976a5a3-1982-4f95-affe-2139cab0591f",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "cbc840bd-2329-47c7-93d5-f27405716393",
+      "id": "8c853473-2731-490b-a591-8282466f4fef",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "0db7da60-5af0-45fa-a805-09ecdcd5caa9",
+      "id": "aa565bd9-7359-42e5-86cc-99caa1f242f9",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "19082799-8065-4857-b454-a2b73ff64faf",
+      "id": "249bdb5b-4efe-48b2-8039-7b149102f708",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1e94e94c-e188-47b5-8263-85176b00b5c8",
+      "id": "0996d433-36de-4a79-8a22-f334f17af6fd",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f39648a0-36bf-4e5a-ab41-d52e79651cba",
+      "id": "6a434831-b289-4dc9-8ae6-a25362526208",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "899e5e0c-538a-4db2-b55e-d7610fe2d58a",
+      "id": "e910153e-1cfd-4b79-9204-f411aad3eb7f",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string",
