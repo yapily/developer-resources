@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "f3a9e404-3759-7f64-ba7d-146278477f0a",
     "name": "Yapily API",
-    "description": "The Yapily API enables connections between your application and users' banks. For more information visit [https://www.yapily.com](https://www.yapily.com).\n\n**Visit the [Slack](https://yapily.slack.com/)** ([request to join](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform)) **to find out the latest status of the API.**\n\n# Get Started\n1. Register a developer account on [dashboard.yapily.com](https://dashboard.yapily.com/register)\n2. Create an application:\n  * Configure a **`Callback URL`** if it suits your application. [More details below](/#user-authentication).\n  * Select the financial institutions you would like your application to connect to.\n  * See [this wiki guide](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) for details on obtaining credentials for each of the financial institutions. Alternatively, if you are connecting to a sandbox institution, you can use the preconfigured _sandbox credentials_.\n3. Your application will be issued with a unique **application key** and **application secret** to use when connecting to the Yapily API\n\n**You are now ready to connect to the Yapily API**\n\n### Alternatively...\n[Follow this tutorial](https://github.com/yapily/developer-resources/wiki/Tutorial:-Get-account-balance-and-transactions) to learn how to obtain account information using Postman or one of the Swagger-generated SDKs.\n\n# API Authentication\n\nThe Yapily API supports secure connection via either [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) or [Token Authentication](https://auth0.com/learn/token-based-authentication-made-easy/) used to secure all API endpoints. The credentials can be found as the **application key** and **secret** created in the Dashboard following the steps above.\n\nFor example, to connect using basic authentication, each request must be signed with the correct header `Authorization: Basic APP_CREDENTIALS` where *APP_CREDENTIALS = Base64 encoded(key + \":\" + secret)*.\n\nAll requests are required to access the API via [HTTPS](https://en.wikipedia.org/wiki/HTTPS).\n\n# User Authorisation\nUsers of your application will need to log in with their financial institutions to give explicit consent for your application to access their banking data. In most cases, this will involve redirecting users to their institution's authorisation screen.\n\nSee the relevant authorisation flows for [Financial Data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](/#c8da0a20-6cb9-4282-aba5-4c66113eb70b).\n\nOnce authorised, your application can acquire the **`consent`**. You have 2 options:\n- The user is redirected to the **`callback-url`** that you have configured for your application with a **`consent`** query parameter\n\nOR\n- Your application can retrieve [all consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) or [consent for a given institution](/#ea34a629-03d0-2823-78da-0652b8a4107c) for a specific user via the [user consent endpoints](/#e51b648f-693a-9477-f565-b939754b5166)\n\nUse this **`consent`** token as the **CONSENT** header to sign calls to [financial data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) endpoints.\n\nIf an institution supports long-lived consent, for example using the OAuth2 `refresh_token` grant, an attempt will be made to refresh the associated access token when requesting financial data with an expired token.\n\n# Open Banking UK\n\nThe 9 largest banks and building societies in the UK follow the Open Banking standard. For more information and to enable connectivity to these institutions, see the [Open Banking Guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-Guide). \n\n# HTTP Response Codes\n| Http code | Description |\n| - | - |\n| 200 | Successful request. |\n| 201 | Successful request + Resource created. |\n| 400 | Bad request. Where possible Yapily will return details of why the request failed. |\n| 401 | Unauthorised request to the Yapily API. |\n| 403 | Forbidden request where a valid consent token is required. |\n| 404 | Resource not found. |\n| 405 | HTTP method not allowed. |\n| 406 | Your application did not accept JSON. |\n| 409 | Attempted action conflicts with current application state. Actions to resolve will be returned in the body of the response where possible. |\n| 424 | Failed Dependency. Unable to complete request to the institution. |\n| 500 | Internal server error, due to an undetermined issue. |\n| 501 | Not Implemented. The requested feature is unavailable for the specified institution. |\n\n# Features\n\nEach of the Yapily API [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) corresponds to a [financial data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) or [payment](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoint and each feature name can be seen on this page under its respective endpoint. Each [consent token](https://docs.yapily.com/#e51b648f-693a-9477-f565-b939754b5166) represents user permission to access a set of features, represented in the body of the consent token object as a `featureScope` array.\n\n# Further Information\n\n## Date time format\nDate time values follow the [ISO 8601 Format](https://en.wikipedia.org/wiki/ISO_8601) with timezone `yyyy-MM-dd'T'HH:mm:ss.SSSZ` e.g. \"2019-12-25T01:30:00.000+00:00\" or \"2019-12-25T00:00:00Z\"\n\n[Visit the wiki](https://github.com/yapily/developer-resources/wiki) for more information.\n\n## Getting Support\nYou can get in touch via [Slack](https://yapily.slack.com/) ([request to join](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform)) or by sending an email to developers@yapily.com. Each request made to the Yapily API will return a unique `tracing-id`. Including the `tracing-id` in your message will help the support team to investigate issues quicker.\n\n# Endpoints\n\nSee below for details on all API endpoints.",
+    "description": "The Yapily API enables connections between your application and users' banks. For more information visit [https://www.yapily.com](https://www.yapily.com).\n\n**Visit the [Slack](https://yapily.slack.com/)** ([request to join](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform)) **to find out the latest status of the API.**\n\n# Get Started\n1. Register a developer account on [dashboard.yapily.com](https://dashboard.yapily.com/register)\n2. Create an application:\n  * Configure a **`Callback URL`** if it suits your application. [More details below](/#user-authentication).\n  * Select the financial institutions you would like your application to connect to.\n  * See [this wiki guide](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) for details on obtaining credentials for each of the financial institutions. Alternatively, if you are connecting to a sandbox institution, you can use the preconfigured _sandbox credentials_.\n3. Your application will be issued with a unique **application key** and **application secret** to use when connecting to the Yapily API\n\n**You are now ready to connect to the Yapily API**\n\n### Alternatively...\n[Follow this tutorial](https://github.com/yapily/developer-resources/wiki/Tutorial:-Get-account-balance-and-transactions) to learn how to obtain account information using Postman or one of the Swagger-generated SDKs.\n\n# API Authentication\n\nThe Yapily API supports secure connection via either [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) or [Token Authentication](https://auth0.com/learn/token-based-authentication-made-easy/) used to secure all API endpoints. The credentials can be found as the **application key** and **secret** created in the Dashboard following the steps above.\n\nFor example, to connect using basic authentication, each request must be signed with the correct header `Authorization: Basic APP_CREDENTIALS` where *APP_CREDENTIALS = Base64 encoded(key + \":\" + secret)*.\n\nAll requests are required to access the API via [HTTPS](https://en.wikipedia.org/wiki/HTTPS).\n\n# User Authorisation\nUsers of your application will need to log in with their financial institutions to give explicit consent for your application to access their banking data. In most cases, this will involve redirecting users to their institution's authorisation screen.\n\nSee the relevant authorisation flows for [Financial Data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](/#c8da0a20-6cb9-4282-aba5-4c66113eb70b).\n\nOnce authorised, your application can acquire the **`consent`**. You have 3 options:\n- The user is redirected to the **`callback-url`** that you have configured for your application with a **`consent`** query parameter\n\nOR\n- If `oneTimeToken` field is configured in authorisation request then user is redirected to the **`callback-url`** with a **`one-time-token`** query parameter instead of **`consent`**.\n- Your application can retrieve consent via the [retrieve consent endpoint](/#e51b648f-693a-9477-f565-b939754b5166) using **`one-time-token`**.\n\nOR\n- Your application can retrieve [all consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) or [consent for a given institution](/#ea34a629-03d0-2823-78da-0652b8a4107c) for a specific user via the [user consent endpoints](/#e51b648f-693a-9477-f565-b939754b5166)\n\n\nUse this **`consent`** token as the **CONSENT** header to sign calls to [financial data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) endpoints.\n\nIf an institution supports long-lived consent, for example using the OAuth2 `refresh_token` grant, an attempt will be made to refresh the associated access token when requesting financial data with an expired token.\n\n# Open Banking UK\n\nThe 9 largest banks and building societies in the UK follow the Open Banking standard. For more information and to enable connectivity to these institutions, see the [Open Banking Guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-Guide). \n\n# HTTP Response Codes\n| Http code | Description |\n| - | - |\n| 200 | Successful request. |\n| 201 | Successful request + Resource created. |\n| 400 | Bad request. Where possible Yapily will return details of why the request failed. |\n| 401 | Unauthorised request to the Yapily API. |\n| 403 | Forbidden request where a valid consent token is required. |\n| 404 | Resource not found. |\n| 405 | HTTP method not allowed. |\n| 406 | Your application did not accept JSON. |\n| 409 | Attempted action conflicts with current application state. Actions to resolve will be returned in the body of the response where possible. |\n| 424 | Failed Dependency. Unable to complete request to the institution. |\n| 500 | Internal server error, due to an undetermined issue. |\n| 501 | Not Implemented. The requested feature is unavailable for the specified institution. |\n\n# Features\n\nEach of the Yapily API [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) corresponds to a [financial data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) or [payment](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoint and each feature name can be seen on this page under its respective endpoint. Each [consent token](https://docs.yapily.com/#e51b648f-693a-9477-f565-b939754b5166) represents user permission to access a set of features, represented in the body of the consent token object as a `featureScope` array.\n\n# Further Information\n\n## Date time format\nDate time values follow the [ISO 8601 Format](https://en.wikipedia.org/wiki/ISO_8601) with timezone `yyyy-MM-dd'T'HH:mm:ss.SSSZ` e.g. \"2019-12-25T01:30:00.000+00:00\" or \"2019-12-25T00:00:00Z\"\n\n[Visit the wiki](https://github.com/yapily/developer-resources/wiki) for more information.\n\n## Getting Support\nYou can get in touch via [Slack](https://yapily.slack.com/) ([request to join](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform)) or by sending an email to developers@yapily.com. Each request made to the Yapily API will return a unique `tracing-id`. Including the `tracing-id` in your message will help the support team to investigate issues quicker.\n\n# Endpoints\n\nSee below for details on all API endpoints.",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -4786,104 +4786,104 @@
   ],
   "variable": [
     {
-      "id": "8cfab8af-2c62-4572-8e94-eed83e6f8d48",
+      "id": "c77d5ac1-7609-4b30-b478-4effa40f4e60",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "0f6b7855-59e6-4fc5-8df9-3c41082a068c",
+      "id": "608e932d-2dad-42aa-a4d9-9f901252d4a1",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "a4ccb285-aa21-447c-97d1-614e05b986f5",
+      "id": "64dff971-748a-47e3-a8b4-138f664cdb67",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "16f388a2-3694-4297-86cd-dbfb54309540",
+      "id": "609bf01c-30e2-4522-ad86-d33c20b96337",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "03502bb0-dffb-4d37-865b-47b2c129c15c",
+      "id": "a7d593d8-c200-4d85-ab8c-81e21c08933f",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "7187ab53-9c46-46fd-9c1d-ee3aa2c48225",
+      "id": "20995081-87bf-47e9-9d09-924750019ba4",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "389df636-35a2-4dec-80ad-d6ad655a5e4e",
+      "id": "96de1c6f-d31c-4027-8fc6-c8683efa5784",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "f9fde39a-f92b-4919-80db-31dfac880d8b",
+      "id": "3dbfd701-92cb-441f-93a5-7da6c40aed6c",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "5f0363d6-4bcb-47d3-aba1-a3b2a56cd079",
+      "id": "dc79e305-6379-4a7e-8dab-8f9dc5dfdb02",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0b71c05a-51a4-473b-9668-29f6196fb461",
+      "id": "be58f06d-934d-43e6-8268-a7718dfef293",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3870060a-3b30-4b59-9853-ea0f5239e7a7",
+      "id": "8d08d3ff-356f-4d6c-8e87-fa8d539ca4ea",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6e74930b-f21d-4100-820e-cc0a7c8a47fd",
+      "id": "41c6e4a9-a7fd-4621-8640-7644bd85d8ad",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d3b3c6a6-6069-48a1-9b19-85dacc4e03ed",
+      "id": "fbfddcb2-2745-4554-b675-f3953648be2e",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d907b4d6-720b-4b47-bff4-106a478d2cd0",
+      "id": "7d205fd8-e875-4cbc-92b8-92aaef0af932",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "03ed033f-0ca2-4e15-9fcd-fb9083a47e13",
+      "id": "1df68704-f03e-4d92-b0a1-2bca23412e26",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f74fbb63-4adc-426b-a77a-2c06702517c8",
+      "id": "011fd706-6501-4412-8d19-4fbdd27b5660",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string",
