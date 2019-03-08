@@ -4179,7 +4179,7 @@
     {
       "_postman_id": "c8da0a20-6cb9-4282-aba5-4c66113eb70b",
       "name": "Payments",
-      "description": "**Note: UK domestic (sort code) payments are currently available for some institution sandboxes. Single immediate payments are available for every institution with the features `CREATE_SINGLE_PAYMENT_SORTCODE` and `EXISTING_PAYMENTS_DETAILS`.**\n\nAll payment endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Payment request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/paymentAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create payment authorisation request** - Your application will need to execute a HTTP POST request to [create a payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) containing details of which data your application will have access to.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to submit a payment request.\n\n**3. Create payment** - Once a user has given consent, you will have access to the consent token either received as the `consent` query parameter on your callback URL or as the `consentToken` field in the body of response of requests that poll the API using the [user consent endpoints](https://docs.yapily.com/#ea34a629-03d0-2823-78da-0652b8a4107c). This **consent token** can subsequently be used to sign all requests to create the payment and retrieve its status.\n\n**4. Get payment status** - It is possible to retrieve the status of a submitted payment using the `payment-id` returned when the payment is submitted.\n\nNote: if the application does not have the `INITIATE_SINGLE_PAYMENT_SORTCODE` feature, the first 2 steps are not required. Any call to the [payment authorisation request endpoint](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) will return a _HTTP 501 Not Implemented_ response.",
+      "description": "**Note: Single immediate domestic payments are available for every institution with the features `CREATE_SINGLE_PAYMENT_SORTCODE` and `EXISTING_PAYMENTS_DETAILS`.**\n\nAll payment endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Payment request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/paymentAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create payment authorisation request** - Your application will need to execute a HTTP POST request to [create a payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) containing details of which data your application will have access to.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to submit a payment request.\n\n**3. Create payment** - Once a user has given consent, you will have access to the consent token either received as the `consent` query parameter on your callback URL or as the `consentToken` field in the body of response of requests that poll the API using the [user consent endpoints](https://docs.yapily.com/#ea34a629-03d0-2823-78da-0652b8a4107c). This **consent token** can subsequently be used to sign all requests to create the payment and retrieve its status.\n\n**4. Get payment status** - It is possible to retrieve the status of a submitted payment using the `payment-id` returned when the payment is submitted.\n\nNote: if the application does not have the `INITIATE_SINGLE_PAYMENT_SORTCODE` feature, the first 2 steps are not required. Any call to the [payment authorisation request endpoint](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) will return a _HTTP 501 Not Implemented_ response.",
       "item": [
         {
           "_postman_id": "2451562f-0e4d-4c23-9fd1-9c48bde72e98",
@@ -4863,104 +4863,104 @@
   ],
   "variable": [
     {
-      "id": "8f291bab-ed52-46ca-a304-f177850d9943",
+      "id": "8a92642c-1de1-48fd-8e97-e247dc225c86",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "4c4c10ef-2ed7-49c0-91df-66ecd0c0d44b",
+      "id": "a0e3fd00-405b-4274-82b7-1284d8a738ae",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "56c33619-c447-45cb-adb4-01eee90ce46c",
+      "id": "e07f671a-51df-4dd6-9b38-0b7f521facf3",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "ceb70b05-ee2c-49a8-a441-33e7d8c5dec8",
+      "id": "f7e64860-ff16-468a-b754-d8a69d3b2346",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "53f70af9-1c5d-43e3-8066-233322118477",
+      "id": "5318c0ee-c4c1-4f44-92ea-7146799bd5d9",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "2f925998-96db-4da1-83d7-7c9c1aef0643",
+      "id": "e77f53c2-a126-42bb-8d04-e8ac0c3fc1e7",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "112738e1-d67f-4179-a4bb-5691854a11ab",
+      "id": "3080d42c-f757-4fa9-a7f4-c0e4dfc40b64",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "97feb09f-5df4-4021-ab15-ccc67c8d8dac",
+      "id": "b9492606-fd62-4284-b397-d964ddbbd4b9",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "a71b83b6-0080-47e0-aace-5247f47784c4",
+      "id": "005ad959-b8a6-478f-9178-b13c5a0cafc7",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "74d71c7e-18d6-4184-8e8d-60ad90091804",
+      "id": "ded7b393-70ec-45bf-a07a-0dfc78fd4eff",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "30833b44-95ae-49f3-9ef6-1bde11b0c2e4",
+      "id": "1e0e7e9a-1383-4e5a-b792-e0f5b0e28c3a",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bcdf4514-eb61-4f73-8552-e9e33e01d686",
+      "id": "65a3f98d-20aa-41c2-b643-4ec1902cd377",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bcb3e7a1-d004-4e60-8968-b1a9b8743cca",
+      "id": "29ca9caf-6a50-4363-912b-f005ce1d01ff",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a3e85a6d-b9fe-4df1-8c78-e31e06a9276f",
+      "id": "aa1cbf56-588e-4202-9610-4d86d62976fc",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a68c910b-e3ce-4eb0-8401-959ec9aca0dc",
+      "id": "f5a9b136-c21f-4cde-8f97-8b4a82fcbb59",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4224286c-412c-4c2e-8afd-b9055a7499cb",
+      "id": "51ab34f9-5a12-497e-9712-c672f679f97a",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string",
