@@ -1646,7 +1646,62 @@
             "url": "https://api.yapily.com/consents/one-time-token",
             "description": "Retrieve a consent by supplying a `oneTimeToken`. One time token cannot be used again after successful retrival of consent.\n\nNote: One time token is received as part of the authorisation flow upon user request."
           },
-          "response": []
+          "response": [
+            {
+              "id": "ec3feb5c-d19c-4bd8-afe5-8f1b73b69020",
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"oneTimeToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIlVVSUQiOiJmMzNmNGU4ZC1jMDQ0LTQ2YTktOTlkMC0wYmRlMzIyYTJjOTIifQ.4Qv3NJI6av2nKi1U3aNmm71cIwJ3TvRsIlYDafQUVv_Khy_e-8oEpV_BoP4V1CII12oT-Yq4cPveHILz8BOwjg\"\n}"
+                },
+                "url": "https://api.yapily.com/consents/one-time-token"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"id\": \"d75fd6fd-f525-4c54-8f12-6af11cc73cb7\",\n    \"userUuid\": \"fff9504b-a481-4617-abe3-ba274eed29ec\",\n    \"institutionId\": \"bbva-sandbox\",\n    \"status\": \"AUTHORIZED\",\n    \"createdAt\": \"2019-03-08T12:11:05.255Z\",\n    \"expiresAt\": \"2024-03-06T12:11:05.255Z\",\n    \"timeToExpire\": \"P1824DT23H58M14.473S\",\n    \"featureScope\": [\n        \"ACCOUNT_TRANSACTIONS\",\n        \"INITIATE_ACCOUNT_REQUEST\",\n        \"IDENTITY\"\n    ],\n    \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIkNPTlNFTlQiOiJkNzVmZDZmZC1mNTI1LTRjNTQtOGYxMi02YWYxMWNjNzNjYjciLCJVU0VSIjoiZmZmOTUwNGItYTQ4MS00NjE3LWFiZTMtYmEyNzRlZWQyOWVjIn0.Ov8qUhrMmuRrci2NFcm5ZX9q9Sv6cgDVMQlIOfzJikUBTTA_nwm4isAOpqyeqQc29916tKTUvoBSpE3AUe-UEg\"\n}"
+            },
+            {
+              "id": "e485b053-a0d3-4ecc-b825-210bdc6faeab",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"oneTimeToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIlVVSUQiOiJlMTdlODM1Ni02YWNiLTQ3MTUtOWYzNi1hZTkwMmQzNzQzYjAifQ.OfMm7VFCLibXey3xeJ_-M4wLwRxOgzazqw5YdcZs-3Efsv6l7HRzu5ZIVZcVV6aYvKoSx9Xy3Wz6FKrukEtvrw\"\n}"
+                },
+                "url": "https://api.yapily.com/consents/one-time-token"
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"tracingId\": \"73024ffa-4814-4e54-9158-11c006f6e810\",\n        \"status\": \"FORBIDDEN\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n    }\n}"
+            }
+          ]
         }
       ],
       "event": [
@@ -4139,7 +4194,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\t\"amount\":0.00,\n\t\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\t\"name\":\"RECIPIENT_NAME\",\n\t\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\t\"reference\":\"REFERENCE\",\n\t\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\t\"sortCode\":\"SORT_CODE\"\n\t}\n}"
+              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\t\"amount\":0.00,\n\t\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\t\"name\":\"RECIPIENT_NAME\",\n\t\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\t\"reference\":\"REFERENCE\",\n\t\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\t\"sortCode\":\"SORT_CODE\"\n\t}\n}"
             },
             "url": "https://api.yapily.com/payment-sortcode-auth-requests",
             "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a single payment.\n\nFeature: `INITIATE_SINGLE_PAYMENT_SORTCODE`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | The uuid for your application user | String |\n| institutionId | The institution-id for the bank that the user will use to pay | String |\n| callback | _Optional._ The callback url to receive the consent token | String |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create a single payment](https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6) | Object |"
@@ -4808,104 +4863,104 @@
   ],
   "variable": [
     {
-      "id": "e24576d6-0d4d-4af0-8775-6c225b141ab3",
+      "id": "b37c7b47-c332-4dcd-9bc8-ffe40903ab35",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "f6f66c37-0fe5-4c4b-af80-e2647c311d86",
+      "id": "ce02eb58-d3fa-4069-a190-94253be0eaaa",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "74d2f00b-3493-462d-a517-de0cac0b50f6",
+      "id": "4be9c2c9-49f8-4e15-9843-4fbc16ab84d1",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "cabc0354-2a94-4e5e-bb43-e0f4bda9b6d8",
+      "id": "34b9bc80-8ff8-481f-bf52-db839b99125b",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "0a8c3105-b863-48bd-94e6-e9afd73e613a",
+      "id": "84802cea-a7c4-42c5-9d76-d3abfb220ba5",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "d72087a8-4168-46ee-ab83-f10cd686743f",
+      "id": "5cef2e93-5c1c-4469-923c-13aff83ee516",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "365df5da-e406-4c09-990f-2798b519ab53",
+      "id": "9ba658e6-2a73-474d-a56c-79225de44e82",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "aed7327a-6045-44d3-bcf1-6dab84dedbf7",
+      "id": "bc129385-57ea-42bc-9b4a-3164ce5d4168",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "7b09db03-333a-47f3-81a6-cab8b23d1b76",
+      "id": "210967d9-736c-400f-a37d-dce6abccdf99",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c48e6699-039b-4779-a864-1c4b2d69b6de",
+      "id": "3238d4cf-eac7-4eb6-b847-ce7ddffe8116",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "378a4340-5a57-4260-93ae-7dc5df520374",
+      "id": "5f965ed9-7896-42df-a6a0-b9ecb365c19f",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2c5f0b7d-5449-4c52-bc2c-6d7264ace368",
+      "id": "4ab76eeb-bf25-47e6-8a01-12fa815416cb",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "07fac1f4-9151-43d9-869a-8e85bacc2683",
+      "id": "8e764d2f-6273-4f92-96e8-161ad1f32b35",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "54b624d0-03b7-4ba8-b2da-acbd6733130c",
+      "id": "43ff68ca-5ce5-47d0-a996-6b8c5a53bef1",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "77e61d95-1a2f-4012-8511-e7fcf749b247",
+      "id": "bcefb0d4-0418-4637-b5bd-1cca0bfca19f",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2168e98f-387d-43d3-90ae-f485bb39aa16",
+      "id": "d4932214-6b49-444f-b9db-cdd8eaab3302",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string",
