@@ -2803,7 +2803,7 @@
     {
       "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
       "name": "Financial Data",
-      "description": "All financial data endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Account request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/accountAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create account authorisation request** - Your application will need to execute a HTTP POST request to [create an account authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) containing details of which data your application will have access to.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to access the data requested.\n\n**3. Get accounts** - Once a user has given consent, you will have access to the consent token either received as the `consent` query parameter on your callback URL or as the `consentToken` field in the body of response of requests that poll the API using the [user consent endpoints](https://docs.yapily.com/#ea34a629-03d0-2823-78da-0652b8a4107c). This **consent token** can subsequently be used to sign all requests to obtain financial data.\n\nNote: if the application does not have the `INITIATE_ACCOUNT_REQUEST` feature, only the 3rd step is required. Any call to the [account authorisation request endpoint](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) will return a _HTTP 501 Not Implemented_ response.",
+      "description": "All financial data endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Account request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/accountAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create account authorisation request** - Your application will need to execute a HTTP POST request to [create an account authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) containing details of which data your application will have access to.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to access the data requested.\n\n**3. Get accounts** - Once a user has given consent, you will have access to the consent token received as the `consent` query parameter on your callback URL. Alternatively, you can poll the [consent endpoint](https://docs.yapily.com/#9307df42-da49-4cc0-8b73-dc82989620a4) using the `consentId` returned in the authorisation response. This **consent token** can subsequently be used to sign all requests to obtain financial data.\n\nNote: if the application does not have the `INITIATE_ACCOUNT_REQUEST` feature, only the 3rd step is required. Any call to the [account authorisation request endpoint](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) will return a _HTTP 501 Not Implemented_ response.",
       "item": [
         {
           "_postman_id": "2d2c9547-47b2-4e0e-a6e0-73451bc4a287",
@@ -4863,104 +4863,104 @@
   ],
   "variable": [
     {
-      "id": "8a92642c-1de1-48fd-8e97-e247dc225c86",
+      "id": "9f452a0f-d449-42ce-a11c-7837744e1b88",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "a0e3fd00-405b-4274-82b7-1284d8a738ae",
+      "id": "85d10c1b-34b8-4734-8e31-e72a6c54577f",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "e07f671a-51df-4dd6-9b38-0b7f521facf3",
+      "id": "a9b461c2-f18c-4c9c-ba74-30886de74c1a",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "f7e64860-ff16-468a-b754-d8a69d3b2346",
+      "id": "9c6e4bf5-384a-4c21-b4c4-c7b1c731259a",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "5318c0ee-c4c1-4f44-92ea-7146799bd5d9",
+      "id": "d22a8cf1-57b3-4907-9fd8-5c03a9d72e6d",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "e77f53c2-a126-42bb-8d04-e8ac0c3fc1e7",
+      "id": "537cc65b-78f0-4c0f-a102-8e86569c0885",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "3080d42c-f757-4fa9-a7f4-c0e4dfc40b64",
+      "id": "f11c2381-20c6-4788-a578-750a03745b5e",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "b9492606-fd62-4284-b397-d964ddbbd4b9",
+      "id": "c324a7f4-285e-4ea8-a04b-5a9a69e8157b",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "005ad959-b8a6-478f-9178-b13c5a0cafc7",
+      "id": "4baefd80-2c0d-468a-90cf-eb7b5e02520e",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ded7b393-70ec-45bf-a07a-0dfc78fd4eff",
+      "id": "2243adae-d594-4277-8d0b-9750a93eb1e2",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1e0e7e9a-1383-4e5a-b792-e0f5b0e28c3a",
+      "id": "e99bce8d-9553-4bef-a126-83bd065eae56",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "65a3f98d-20aa-41c2-b643-4ec1902cd377",
+      "id": "be4c3c8e-532f-40ce-817d-8251a1f105ab",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "29ca9caf-6a50-4363-912b-f005ce1d01ff",
+      "id": "db4357ae-9e17-4d36-b52c-ad610bead6ae",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "aa1cbf56-588e-4202-9610-4d86d62976fc",
+      "id": "8e5712b1-2688-4249-a28f-5e7595974121",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f5a9b136-c21f-4cde-8f97-8b4a82fcbb59",
+      "id": "8a7fffc4-ad57-42d3-85f7-d16aefbc881b",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string",
       "description": ""
     },
     {
-      "id": "51ab34f9-5a12-497e-9712-c672f679f97a",
+      "id": "446109d6-73b8-4e2f-b6ab-6eb704757285",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string",
