@@ -7,13 +7,11 @@
   },
   "item": [
     {
-      "_postman_id": "a3da6f77-61f4-9462-16af-67f509e02717",
       "name": "Application",
-      "description": "",
       "item": [
         {
-          "_postman_id": "874b0400-4801-4fe3-a921-8665696df517",
           "name": "Get Application Self",
+          "_postman_id": "874b0400-4801-4fe3-a921-8665696df517",
           "request": {
             "method": "GET",
             "header": [
@@ -22,7 +20,10 @@
                 "value": "application/json"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": "https://api.yapily.com/me"
           },
           "response": [
@@ -41,10 +42,6 @@
                     "value": "Basic APP_CREDENTIALS"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/me"
               },
               "status": "OK",
@@ -58,8 +55,8 @@
           ]
         },
         {
-          "_postman_id": "e6bc12bf-0074-61e3-c258-83d63c749f04",
           "name": "Create User",
+          "_postman_id": "e6bc12bf-0074-61e3-c258-83d63c749f04",
           "request": {
             "method": "POST",
             "header": [
@@ -212,15 +209,11 @@
           ]
         },
         {
-          "_postman_id": "d98a8253-9252-c129-9b4f-6073dc1ae01e",
           "name": "Get Users",
+          "_postman_id": "d98a8253-9252-c129-9b4f-6073dc1ae01e",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/users"
           },
           "response": [
@@ -436,7 +429,6 @@
           ]
         },
         {
-          "_postman_id": "90c10ec1-78f8-7c4a-4b52-bd55c070ade2",
           "name": "Get User",
           "event": [
             {
@@ -451,13 +443,10 @@
               }
             }
           ],
+          "_postman_id": "90c10ec1-78f8-7c4a-4b52-bd55c070ade2",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/users/{{user-uuid}}"
           },
           "response": [
@@ -582,8 +571,8 @@
           ]
         },
         {
-          "_postman_id": "4dae6886-fe40-44b5-8beb-6643165ee3df",
           "name": "Delete User",
+          "_postman_id": "4dae6886-fe40-44b5-8beb-6643165ee3df",
           "request": {
             "method": "DELETE",
             "header": [
@@ -592,16 +581,13 @@
                 "key": "Content-Type"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/users/{{user-uuid}}",
             "description": "Note: in order to delete an application user, you must first [delete all consent tokens for the user](https://docs.yapily.com/#81e525f5-485c-804d-ffef-32afbfea6e65)."
           },
           "response": []
         }
       ],
+      "_postman_id": "a3da6f77-61f4-9462-16af-67f509e02717",
       "event": [
         {
           "listen": "prerequest",
@@ -626,12 +612,9 @@
       ]
     },
     {
-      "_postman_id": "e51b648f-693a-9477-f565-b939754b5166",
       "name": "Consents",
-      "description": "A **consent token** contains data that identifies an instance of your application user's consent for a specific financial institution. All [financial data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) endpoints require a **consent** token in the request header to identify the user and institution.\n\nThe token object contains various details about the consent itself. The `featureScope` field is an array of the [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) that this consent token provides authorisation for.\n\nThe status of the consent token reflects the status of users' authorisation with institutions and can be one of the following:\n- AWAITING_AUTHORIZATION\n- AUTHORIZED\n- REJECTED\n- REVOKED\n- FAILED\n- EXPIRED\n- UNKNOWN\n\nYapily encodes the necessary identifiers in the **`consent`** token as a JWT. This token contains a set of identifiers for the user's consent in requests requiring [authorisation](/#fc48ccf0-6249-46f2-6e84-353fd27cbf00).",
       "item": [
         {
-          "_postman_id": "d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7",
           "name": "Get User Consents",
           "event": [
             {
@@ -646,6 +629,7 @@
               }
             }
           ],
+          "_postman_id": "d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7",
           "request": {
             "method": "GET",
             "header": [],
@@ -669,8 +653,7 @@
               "query": [
                 {
                   "key": "institutionId",
-                  "value": "{{institution-id}}",
-                  "equals": true
+                  "value": "{{institution-id}}"
                 }
               ]
             },
@@ -889,7 +872,6 @@
           ]
         },
         {
-          "_postman_id": "9d5b5aac-dd06-6c13-6a87-6fb529829bfa",
           "name": "Add User Consent",
           "event": [
             {
@@ -906,6 +888,7 @@
               }
             }
           ],
+          "_postman_id": "9d5b5aac-dd06-6c13-6a87-6fb529829bfa",
           "request": {
             "method": "POST",
             "header": [
@@ -1157,7 +1140,6 @@
           ]
         },
         {
-          "_postman_id": "81e525f5-485c-804d-ffef-32afbfea6e65",
           "name": "Delete User Consent",
           "event": [
             {
@@ -1172,6 +1154,7 @@
               }
             }
           ],
+          "_postman_id": "81e525f5-485c-804d-ffef-32afbfea6e65",
           "request": {
             "method": "DELETE",
             "header": [
@@ -1387,7 +1370,6 @@
           ]
         },
         {
-          "_postman_id": "9307df42-da49-4cc0-8b73-dc82989620a4",
           "name": "Get Consent",
           "event": [
             {
@@ -1402,13 +1384,10 @@
               }
             }
           ],
+          "_postman_id": "9307df42-da49-4cc0-8b73-dc82989620a4",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/consents/{{consent-id}}",
             "description": "You can retrieve a specific consent using the **id** of the desired consent object."
           },
@@ -1630,8 +1609,11 @@
           ]
         },
         {
-          "_postman_id": "82712468-cd42-48aa-84e6-fbe1ee770c77",
           "name": "Retrieve Consent with OTT",
+          "_postman_id": "82712468-cd42-48aa-84e6-fbe1ee770c77",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "POST",
             "header": [
@@ -1707,6 +1689,8 @@
           ]
         }
       ],
+      "_postman_id": "e51b648f-693a-9477-f565-b939754b5166",
+      "description": "A **consent token** contains data that identifies an instance of your application user's consent for a specific financial institution. All [financial data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) endpoints require a **consent** token in the request header to identify the user and institution.\n\nThe token object contains various details about the consent itself. The `featureScope` field is an array of the [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) that this consent token provides authorisation for.\n\nThe status of the consent token reflects the status of users' authorisation with institutions and can be one of the following:\n- AWAITING_AUTHORIZATION\n- AUTHORIZED\n- REJECTED\n- REVOKED\n- FAILED\n- EXPIRED\n- UNKNOWN\n\nYapily encodes the necessary identifiers in the **`consent`** token as a JWT. This token contains a set of identifiers for the user's consent in requests requiring [authorisation](/#fc48ccf0-6249-46f2-6e84-353fd27cbf00).",
       "event": [
         {
           "listen": "prerequest",
@@ -1731,25 +1715,17 @@
       ]
     },
     {
-      "_postman_id": "3958d848-2acd-10c4-dfff-b1ea5b63d84d",
       "name": "Institutions",
-      "description": null,
       "item": [
         {
-          "_postman_id": "d47710c8-8334-4467-9590-3022bb682231",
           "name": "Product Data",
-          "description": "These endpoints return data for non-user data pertaining to the products offered by financial institutions. For the [CMA 9 banks](https://www.openbanking.org.uk/about-us/glossary/), this is known as ([Open Data](https://www.openbanking.org.uk/providers/standards/)).",
           "item": [
             {
-              "_postman_id": "6af35149-9db9-4eb4-862f-93187c64cbcd",
               "name": "Get Personal Current Accounts",
+              "_postman_id": "6af35149-9db9-4eb4-862f-93187c64cbcd",
               "request": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/institutions/{{institution-id}}/personal-current-accounts",
                 "description": "Feature: `OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS`"
               },
@@ -1765,7 +1741,10 @@
                         "value": "Basic APP_CREDENTIALS"
                       }
                     ],
-                    "body": {},
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
                     "url": "https://api.yapily.com/institutions/{{institution-id}}/personal-current-accounts"
                   },
                   "status": "OK",
@@ -1836,7 +1815,10 @@
                         "value": "Basic APP_CREDENTIALS"
                       }
                     ],
-                    "body": {},
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
                     "url": "https://api.yapily.com/institutions/{{institution-id}}/personal-current-accounts"
                   },
                   "status": "Not Implemented",
@@ -1923,15 +1905,11 @@
               ]
             },
             {
-              "_postman_id": "f5d271e1-8375-4a4a-a446-6ab9fd823f79",
               "name": "Get ATM info",
+              "_postman_id": "f5d271e1-8375-4a4a-a446-6ab9fd823f79",
               "request": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/institutions/{{institution-id}}/atms",
                 "description": "Feature: `OPEN_DATA_ATMS`"
               },
@@ -1947,7 +1925,10 @@
                         "value": "Basic APP_CREDENTIALS"
                       }
                     ],
-                    "body": {},
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
                     "url": "https://api.yapily.com/institutions/{{institution-id}}/atms"
                   },
                   "status": "OK",
@@ -2018,7 +1999,10 @@
                         "value": "Basic APP_CREDENTIALS"
                       }
                     ],
-                    "body": {},
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
                     "url": "https://api.yapily.com/institutions/{{institution-id}}/atms"
                   },
                   "status": "Not Implemented",
@@ -2105,6 +2089,8 @@
               ]
             }
           ],
+          "_postman_id": "d47710c8-8334-4467-9590-3022bb682231",
+          "description": "These endpoints return data for non-user data pertaining to the products offered by financial institutions. For the [CMA 9 banks](https://www.openbanking.org.uk/about-us/glossary/), this is known as ([Open Data](https://www.openbanking.org.uk/providers/standards/)).",
           "event": [
             {
               "listen": "prerequest",
@@ -2130,15 +2116,11 @@
           "_postman_isSubFolder": true
         },
         {
-          "_postman_id": "ae9baa6b-6a74-aa96-6f6e-a15ce8c86af8",
           "name": "Get All Institutions",
+          "_postman_id": "ae9baa6b-6a74-aa96-6f6e-a15ce8c86af8",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/institutions"
           },
           "response": [
@@ -2153,10 +2135,6 @@
                     "value": "Basic APP_CREDENTIALS"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/institutions"
               },
               "status": "OK",
@@ -2258,10 +2236,6 @@
               "originalRequest": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/institutions"
               },
               "status": "Unauthorized",
@@ -2354,15 +2328,11 @@
           ]
         },
         {
-          "_postman_id": "47be2dac-6881-a840-441c-b1f4ba89e010",
           "name": "Get Institution",
+          "_postman_id": "47be2dac-6881-a840-441c-b1f4ba89e010",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/institutions/{{institution-id}}"
           },
           "response": [
@@ -2377,7 +2347,10 @@
                     "value": "Basic APP_CREDENTIALS"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
                 "url": "https://api.yapily.com/institutions/{{institution-id}}"
               },
               "status": "OK",
@@ -2484,10 +2457,6 @@
                     "value": "Basic APP_CREDENTIALS"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/institutions/{{institution-id}}"
               },
               "status": "OK",
@@ -2589,10 +2558,6 @@
               "originalRequest": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/institutions/{{institution-id}}"
               },
               "status": "Unauthorized",
@@ -2685,12 +2650,15 @@
           ]
         },
         {
-          "_postman_id": "ab9d0ee9-0777-48e8-8d58-75e31bf8805e",
           "name": "Get Available Features",
+          "_postman_id": "ab9d0ee9-0777-48e8-8d58-75e31bf8805e",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": "https://api.yapily.com/features",
             "description": "This endpoint provides descriptions for each of the institutions' features made available by Yapily. Those available for each institution can be seen in the `features` field of the [institution payload](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010)."
           },
@@ -2706,10 +2674,6 @@
                     "value": "Basic APP_CREDENTIALS"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/features"
               },
               "status": "OK",
@@ -2807,16 +2771,15 @@
             }
           ]
         }
-      ]
+      ],
+      "_postman_id": "3958d848-2acd-10c4-dfff-b1ea5b63d84d"
     },
     {
-      "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
       "name": "Financial Data",
-      "description": "All financial data endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Account request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/accountAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create account authorisation request** - Your application will need to execute a HTTP POST request to [create an account authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) containing details of the data your application requires.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to access the data requested.\n\n**3. Get accounts** - Once a user has authorised your application, you will have access to the **consent token** [through your callback, one time token or polling](/#user-authorisation). This consent token can subsequently be used to sign all requests to obtain financial data.\n\nNote: if the application does not have the `INITIATE_ACCOUNT_REQUEST` feature, only the 3rd step is required. Any call to the [account authorisation request endpoint](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) will return a _HTTP 501 Not Implemented_ response.",
       "item": [
         {
-          "_postman_id": "2d2c9547-47b2-4e0e-a6e0-73451bc4a287",
           "name": "Create Account Authorisation Request",
+          "_postman_id": "2d2c9547-47b2-4e0e-a6e0-73451bc4a287",
           "request": {
             "method": "POST",
             "header": [
@@ -3200,8 +3163,8 @@
           ]
         },
         {
-          "_postman_id": "23faf44e-1093-c676-63ea-369e41ea902d",
           "name": "Get Accounts",
+          "_postman_id": "23faf44e-1093-c676-63ea-369e41ea902d",
           "request": {
             "method": "GET",
             "header": [
@@ -3210,10 +3173,6 @@
                 "value": "{{consent-token}}"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/accounts",
             "description": "Feature: `ACCOUNTS`"
           },
@@ -3233,10 +3192,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts"
               },
               "status": "OK",
@@ -3331,10 +3286,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts"
               },
               "status": "Unauthorized",
@@ -3397,8 +3348,8 @@
           ]
         },
         {
-          "_postman_id": "757fde49-a294-bbff-d5f9-2c21c5f57be0",
           "name": "Get Account",
+          "_postman_id": "757fde49-a294-bbff-d5f9-2c21c5f57be0",
           "request": {
             "method": "GET",
             "header": [
@@ -3407,10 +3358,6 @@
                 "value": "{{consent-token}}"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/accounts/{{account-id}}",
             "description": "Feature: `ACCOUNT`"
           },
@@ -3430,10 +3377,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts/{{account-id}}"
               },
               "status": "OK",
@@ -3528,10 +3471,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts/{{account-id}}"
               },
               "status": "Unauthorized",
@@ -3557,10 +3496,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts/{{account-id}}"
               },
               "status": "Not Found",
@@ -3665,7 +3600,6 @@
           ]
         },
         {
-          "_postman_id": "7358d865-3cf3-17da-cf0f-84a1af3b545f",
           "name": "Get Transactions",
           "event": [
             {
@@ -3681,6 +3615,7 @@
               }
             }
           ],
+          "_postman_id": "7358d865-3cf3-17da-cf0f-84a1af3b545f",
           "request": {
             "method": "GET",
             "header": [
@@ -3689,10 +3624,6 @@
                 "value": "{{consent-token}}"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/accounts/{{account-id}}/transactions",
             "description": "Get the account's transactions.\n\nFeature: `ACCOUNT_TRANSACTIONS`\n\nQuery string parameters (_all parameters are optional_)\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| with | merchant | Include the merchant information in the transaction details. Requires institution with feature: `ACCOUNT_TRANSACTIONS_WITH_MERCHANT`. | String |\n| from | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. |  [Date](https://docs.yapily.com/#date-time-format) |\n| before | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | (Any valid number) | Maximum number of transaction records to be returned. | Number |\n| sort | date, -date | [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with **date** or descending with **-date**. | String |"
           },
@@ -3712,10 +3643,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts/{{account-id}}/transactions"
               },
               "status": "OK",
@@ -3814,10 +3741,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/accounts/{{account-id}}/transactions"
               },
               "status": "OK",
@@ -3839,10 +3762,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": {
                   "raw": "https://api.yapily.com/accounts/{{account-id}}/transactions?with=merchant&from=2017-01-01T00:00:00.000Z&before=2019-01-01T00:00:00.000Z&limit=30&sort=date",
                   "protocol": "https",
@@ -3860,31 +3779,26 @@
                     {
                       "key": "with",
                       "value": "merchant",
-                      "equals": true,
                       "description": "*Optional*. Include the merchant information in the transaction details.\n\nRequires institution with feature: `ACCOUNT_TRANSACTIONS_WITH_MERCHANT`"
                     },
                     {
                       "key": "from",
                       "value": "2017-01-01T00:00:00.000Z",
-                      "equals": true,
                       "description": "*Optional*. Date time [ISO8601 format](/#date-time-format)\n\nNote: For some institutions the **from** and **before** dates need to be within the range of the consent. "
                     },
                     {
                       "key": "before",
                       "value": "2019-01-01T00:00:00.000Z",
-                      "equals": true,
                       "description": "*Optional*. Date time [ISO8601 format](/#date-time-format)\n\nNote: For some institutions the **from** and **before** dates need to be within the range of the consent. "
                     },
                     {
                       "key": "limit",
                       "value": "30",
-                      "equals": true,
                       "description": "*Optional*. Maximum number of transaction records per request."
                     },
                     {
                       "key": "sort",
                       "value": "date",
-                      "equals": true,
                       "description": "*Optional*. \nSorting by date ASCENDING: **date**\n\nSorting by date DESCENDING value: **-date**"
                     }
                   ]
@@ -3950,7 +3864,6 @@
           ]
         },
         {
-          "_postman_id": "8c62ef0f-0cfa-98e6-6b0b-cb2441eb2d51",
           "name": "Get Identity",
           "event": [
             {
@@ -3965,6 +3878,7 @@
               }
             }
           ],
+          "_postman_id": "8c62ef0f-0cfa-98e6-6b0b-cb2441eb2d51",
           "request": {
             "method": "GET",
             "header": [
@@ -3973,10 +3887,6 @@
                 "value": "{{consent-token}}"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/identity",
             "description": "Feature: `IDENTITY`"
           },
@@ -3996,10 +3906,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/identity"
               },
               "status": "OK",
@@ -4094,10 +4000,6 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/identity"
               },
               "status": "Unauthorized",
@@ -4190,6 +4092,8 @@
           ]
         }
       ],
+      "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
+      "description": "All financial data endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Account request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/accountAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create account authorisation request** - Your application will need to execute a HTTP POST request to [create an account authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) containing details of the data your application requires.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to access the data requested.\n\n**3. Get accounts** - Once a user has authorised your application, you will have access to the **consent token** [through your callback, one time token or polling](/#user-authorisation). This consent token can subsequently be used to sign all requests to obtain financial data.\n\nNote: if the application does not have the `INITIATE_ACCOUNT_REQUEST` feature, only the 3rd step is required. Any call to the [account authorisation request endpoint](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) will return a _HTTP 501 Not Implemented_ response.",
       "event": [
         {
           "listen": "prerequest",
@@ -4214,13 +4118,11 @@
       ]
     },
     {
-      "_postman_id": "c8da0a20-6cb9-4282-aba5-4c66113eb70b",
       "name": "Payments",
-      "description": "**Note: Single immediate domestic payments are available for every institution with the features `CREATE_SINGLE_PAYMENT_SORTCODE` and `EXISTING_PAYMENTS_DETAILS`.**\n\nAll payment endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Payment request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/paymentAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create payment authorisation request** - Your application will need to execute a HTTP POST request to [create a payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) containing details of which data your application will have access to.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to submit a payment request.\n\n**3. Create payment** - Once a user has authorised your application, you will have access to the **consent token** [through your callback, one time token or polling](/#user-authorisation). This consent token can subsequently be used to sign all requests to create the payment and retrieve its status.\n\n**4. Get payment status** - It is possible to retrieve the status of a submitted payment using the `payment-id` returned when the payment is submitted.\n\nNote: if the application does not have the `INITIATE_SINGLE_PAYMENT_SORTCODE` feature, the first 2 steps are not required. Any call to the [payment authorisation request endpoint](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) will return a _HTTP 501 Not Implemented_ response.",
       "item": [
         {
-          "_postman_id": "2451562f-0e4d-4c23-9fd1-9c48bde72e98",
           "name": "Create Authorisation Request for a Single Payment",
+          "_postman_id": "2451562f-0e4d-4c23-9fd1-9c48bde72e98",
           "request": {
             "method": "POST",
             "header": [
@@ -4371,8 +4273,8 @@
           ]
         },
         {
-          "_postman_id": "4521aa4d-75c2-4c22-9629-acb96c14e4e6",
           "name": "Create Single Payment",
+          "_postman_id": "4521aa4d-75c2-4c22-9629-acb96c14e4e6",
           "request": {
             "method": "POST",
             "header": [
@@ -4605,8 +4507,8 @@
           ]
         },
         {
-          "_postman_id": "d0de129d-63c4-42e5-9769-a03069fa08ce",
           "name": "Get Single Payment Status",
+          "_postman_id": "d0de129d-63c4-42e5-9769-a03069fa08ce",
           "request": {
             "method": "GET",
             "header": [
@@ -4619,10 +4521,6 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "https://api.yapily.com/payments/{{payment-id}}",
             "description": "Feature: `EXISTING_PAYMENTS_DETAILS`"
           },
@@ -4642,10 +4540,6 @@
                     "value": "{{institution-id}}"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/payment-initiations/{{payment-id}}"
               },
               "status": "OK",
@@ -4671,10 +4565,6 @@
                     "value": "application/json"
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": "https://api.yapily.com/payments/{{payment-id}}"
               },
               "status": "Unauthorized",
@@ -4737,8 +4627,8 @@
           ]
         },
         {
-          "_postman_id": "19909d3a-0d5c-4e06-b97e-0d779df3b49d",
           "name": "Transfer",
+          "_postman_id": "19909d3a-0d5c-4e06-b97e-0d779df3b49d",
           "request": {
             "method": "PUT",
             "header": [
@@ -4873,6 +4763,8 @@
           ]
         }
       ],
+      "_postman_id": "c8da0a20-6cb9-4282-aba5-4c66113eb70b",
+      "description": "**Note: Single immediate domestic payments are available for every institution with the features `CREATE_SINGLE_PAYMENT_SORTCODE` and `EXISTING_PAYMENTS_DETAILS`.**\n\nAll payment endpoints require a [consent token](/#e51b648f-693a-9477-f565-b939754b5166) obtained via [user authorisation](https://docs.yapily.com/#eb96ae19-6c9f-ee67-4eb5-2a3f80f87558) in the request header to identify the user and institution.\n\n**Consent** represents a user's authorisation for your application to access his/her financial data from an institution. This flow is shown below.\n\n![Payment request authorisation](https://storage.googleapis.com/static.yapily.com/images/documentation/paymentAuthorisationFlow.png)\n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n**TPP** - Third Party Provider. Your application.\n\n**ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nYour application's actions:\n\n**1. Create payment authorisation request** - Your application will need to execute a HTTP POST request to [create a payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) containing details of which data your application will have access to.\n\n**2. Direct the user to the authorisation url** - Your application should direct the user to this URL where they will typically authenticate with their institution and be presented with an authorisation screen for them to provide consent for your application to submit a payment request.\n\n**3. Create payment** - Once a user has authorised your application, you will have access to the **consent token** [through your callback, one time token or polling](/#user-authorisation). This consent token can subsequently be used to sign all requests to create the payment and retrieve its status.\n\n**4. Get payment status** - It is possible to retrieve the status of a submitted payment using the `payment-id` returned when the payment is submitted.\n\nNote: if the application does not have the `INITIATE_SINGLE_PAYMENT_SORTCODE` feature, the first 2 steps are not required. Any call to the [payment authorisation request endpoint](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98) will return a _HTTP 501 Not Implemented_ response.",
       "event": [
         {
           "listen": "prerequest",
@@ -4928,108 +4820,100 @@
   ],
   "variable": [
     {
-      "id": "9f5aa2d9-6d0d-4ae6-810c-d37fc1092e51",
+      "id": "86fc3ec7-65c2-4918-a847-c341aaf97751",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "dce23054-35c3-498e-a0cb-0e42745e7fc7",
+      "id": "4740e060-bcec-43ae-8dfa-25059b49c32f",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "a6faf4f0-8cb3-4e0d-873a-dde3fc20be71",
+      "id": "31fc0af3-5314-4c40-b70c-c11cdfb0f217",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "eee05af3-72b9-4e04-b26a-a98847263688",
+      "id": "13e78203-db54-4e02-90c1-54e2275b1c48",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "0929371d-0ff8-47d2-bf09-2137a5e860b0",
+      "id": "67ca7ca6-3a4f-45aa-a0bd-5f3728466f7f",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "1d55a1a8-00d2-4a7a-9383-ab53a4c71f15",
+      "id": "03852d91-6df4-4d79-9586-e0da3b3f9d14",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "b8b93ce0-5314-4b79-88ec-64543c4bb37e",
+      "id": "64f69496-8ea5-4c7c-b499-ba627d15558e",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "bed7567e-d9f5-44dc-b10c-6aa49c4f6341",
+      "id": "5cf9ba8e-b6e2-411c-9abc-e7fea7e363ea",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "f4e85a90-a9db-4731-b562-cff23b0680f8",
+      "id": "7a42b559-3b3e-4473-ac71-ac2322b4b68a",
       "key": "callback-url",
       "value": "{{callback-url}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "ecee2a13-5434-43cc-b720-2b94cead4896",
+      "id": "0f10fa4f-5f18-4f17-91af-8cd9681acfa0",
       "key": "payment-id",
       "value": "{{payment-id}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "7acc7220-8212-4992-89d7-4bda3c3c4f77",
+      "id": "a21bc7e3-9fd6-468c-b20a-db1eefa2c88e",
       "key": "consent-id",
       "value": "{{consent-id}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "8991ed89-cc1e-48be-af58-489557b8df40",
+      "id": "9601a76e-1a5f-4d27-981b-973214a0c288",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "36ad29d4-5cb1-448b-b1ca-ba647f3c754d",
+      "id": "fb480dc8-02ff-45bb-9621-49ae6e3f935d",
       "key": "currency",
       "value": "{{currency}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "73b89db5-2d0f-4480-b984-b77a8cc3da1f",
+      "id": "dcf39ae2-ef76-497a-968b-b900c848d634",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "496ea92a-b651-42a8-9219-33c2ed77676c",
+      "id": "e8011cf2-eed1-443f-90f8-3791b9938897",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "2a5bf84a-7584-4e35-b3bc-bc845c8fe087",
+      "id": "63f79cd3-5d01-4c8e-9d87-93d13895d725",
       "key": "expires-at",
       "value": "{{expires-at}}",
-      "type": "string",
-      "description": ""
+      "type": "string"
     }
   ]
 }
