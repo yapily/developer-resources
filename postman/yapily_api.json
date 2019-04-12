@@ -1689,114 +1689,7 @@
           ]
         },
         {
-          "name": "[Forwarding] Send OAuth2 Code",
-          "_postman_id": "3ae89c8c-d48e-4635-b4f2-eb697bbed5cc",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "name": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
-            },
-            "url": "https://api.yapily.com/consent-auth-code",
-            "description": "Submit the OAuth2 authorisation code [authCode] and state [authState] received from the institution after the user has authenticated to receive a consent object."
-          },
-          "response": [
-            {
-              "id": "852320c3-0e3e-4608-adda-ee88a83b9a27",
-              "name": "200 OK",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"authCode\": \"fg67Hj\",\n\t\"authState\": \"f3daec98152e420297cebdd301db6dde\"\n}"
-                },
-                "url": "https://api.yapily.com/consent-auth-code"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n  \"id\": \"f5a045bc-27ec-4d5f-9d3e-49dcd71b71e8\",\n  \"userUuid\": \"fff9504b-a481-4617-abe3-ba274eed29ec\",\n  \"institutionId\": \"bbva-sandbox\",\n  \"status\": \"AUTHORIZED\",\n  \"createdAt\": \"2019-03-19T22:10:03.674Z\",\n  \"expiresAt\": \"2024-03-17T22:10:03.674Z\",\n  \"timeToExpire\": \"P1824DT23H57M41.691S\",\n  \"featureScope\": [\n    \"IDENTITY\",\n    \"ACCOUNT_TRANSACTIONS\",\n    \"INITIATE_ACCOUNT_REQUEST\"\n  ],\n  \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIkNPTlNFTlQiOiJmNWEwNDViYy0yN2VjLTRkNWYtOWQzZS00OWRjZDcxYjcxZTgiLCJVU0VSIjoiZmZmOTUwNGItYTQ4MS00NjE3LWFiZTMtYmEyNzRlZWQyOWVjIn0.3JM1axJEALBcUMO71Fx1uBBRy6jcxXqurNkSrEBNKdoq4l7TFzOK0ds_Hf46ym3cOckvFNt5Lm8GGpuqZiNhKA\"\n}"
-            },
-            {
-              "id": "8641922d-f184-4c8d-a2bd-bcb49f645df7",
-              "name": "403 Forbidden",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
-                },
-                "url": "https://api.yapily.com/consent-auth-code"
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n        \"status\": \"FORBIDDEN\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n    }\n}"
-            },
-            {
-              "id": "c17666f5-5b43-4272-811a-ecb649aca1c2",
-              "name": "424 Failed Dependency",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
-                },
-                "url": "https://api.yapily.com/consent-auth-code"
-              },
-              "status": "Failed Dependency (WebDAV) (RFC 4918)",
-              "code": 424,
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n  \"error\": {\n    \"code\": 424,\n    \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n    \"status\": \"FAILED DEPENDENCY\",\n    \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n  }\n}"
-            }
-          ]
-        },
-        {
-          "name": "[Forwarding] Send Access Token Copy",
+          "name": "[Forwarding] Send API KEY",
           "event": [
             {
               "listen": "prerequest",
@@ -1829,7 +1722,7 @@
               "raw": "{\n\t\"accessToken\": \"ACCESS_TOKEN\",\n\t\"refreshToken\": \"REFRESH_TOKEN\",\n\t\"scope\": \"SCOPE\",\n\t\"institutionId\": \"{{institution-id}}\"\n}"
             },
             "url": "https://api.yapily.com/users/{{user-uuid}}/consents",
-            "description": "For standard user authorised requests, ignore this endpoint and make an authorisation request instead to obtain a Yapily *consent token*, following the authorisation flow for either [financial data](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [payments](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98).\n\nThis endpoint is particularly for creating a Yapily **consent token** by sending **OAuth2 access token** or **API key** data.\n\nThe most common use cases for creating consent tokens with this data:\n- The financial institution provides API keys to access user data. This applies to any institution with the _credentialsType_ of `API_KEY`\n- You already have the access token for a user and want to allow Yapily to manage your integration and [token refreshing](https://tools.ietf.org/html/rfc6749#section-1.5)\n\nNote the distinction between access tokens, API keys and the Yapily consent token. An [OAuth2 access token](https://tools.ietf.org/html/rfc6749) is a short-lived, refreshable object created by a third party to authorise access to the end user's resources. Similarly, an API key is created by a third party and is valid until either the institution or end user revokes access. The consent token returned by Yapily is a generic, longer-lived token specifically for use with this API that abstracts multiple methods of representing consent and handles the mechanisms for using and refreshing tokens.\n\n| Field | Description | Type |\n| - | - | - |\n| institutionId | The [`institution-id`](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010) for the institution that provided the token | String |\n| accessToken | Either the OAuth2 access token _or_ the API key string, depending on the institution's authorisation flow. Note: this field also has the alias **apiKey** for this reason. | String |\n| refreshToken | _Optional._ The OAuth2 refresh token string. Note: If provided, Yapily will immediately attempt a token refresh, invalidating the existing access token. | String |\n| scope | _Optional._ The OAuth2 scope | String |"
+            "description": "This endpoint is particularly for creating a Yapily **consent token** by sending an **API key**. This applies to any institution with the _credentialsType_ of `API_KEY`.\n\n| Field | Description | Type |\n| - | - | - |\n| apiKey | The API key string | String |"
           },
           "response": [
             {
@@ -2063,6 +1956,113 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"id\": \"f1df19b1-0da1-4db0-b03a-dcb6953e338f\",\n    \"userUuid\": \"628e1f22-5c98-40c2-8eda-c1b4f016309a\",\n    \"institutionId\": \"starling-sandbox\",\n    \"status\": \"AUTHORIZED\",\n    \"createdAt\": \"2019-01-09T11:32:30.571Z\",\n    \"expiresAt\": \"2019-01-10T11:28:30.571Z\",\n    \"timeToExpireInMillis\": 239969,\n    \"featureScope\": [\n        \"ACCOUNT_TRANSACTIONS_WITH_MERCHANT\",\n        \"IDENTITY\",\n        \"ACCOUNT\",\n        \"ACCOUNT_TRANSACTIONS\",\n        \"ACCOUNTS\"\n    ],\n    \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6InN0YXJsaW5nLXNhbmRib3giLCJDT05TRU5UIjoiZjFkZjE5YjEtMGRhMS00ZGIwLWIwM2EtZGNiNjk1M2UzMzhmIiwiVVNFUiI6IjYyOGUxZjIyLTVjOTgtNDBjMi04ZWRhLWMxYjRmMDE2MzA5YSJ9.Sp-VBqHs0wQosVyg74Nc7LETegiBtpMs7qP9M2ZuVvY3wEszNvn8NQI2iAvFvhGkxASRLcWWovPNl4-joGDFeQ\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "[Forwarding] Send OAuth2 Code",
+          "_postman_id": "3ae89c8c-d48e-4635-b4f2-eb697bbed5cc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
+            },
+            "url": "https://api.yapily.com/consent-auth-code",
+            "description": "Submit the OAuth2 authorisation code [authCode] and state [authState] received from the institution after the user has authenticated to receive a consent object."
+          },
+          "response": [
+            {
+              "id": "852320c3-0e3e-4608-adda-ee88a83b9a27",
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"authCode\": \"fg67Hj\",\n\t\"authState\": \"f3daec98152e420297cebdd301db6dde\"\n}"
+                },
+                "url": "https://api.yapily.com/consent-auth-code"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"f5a045bc-27ec-4d5f-9d3e-49dcd71b71e8\",\n  \"userUuid\": \"fff9504b-a481-4617-abe3-ba274eed29ec\",\n  \"institutionId\": \"bbva-sandbox\",\n  \"status\": \"AUTHORIZED\",\n  \"createdAt\": \"2019-03-19T22:10:03.674Z\",\n  \"expiresAt\": \"2024-03-17T22:10:03.674Z\",\n  \"timeToExpire\": \"P1824DT23H57M41.691S\",\n  \"featureScope\": [\n    \"IDENTITY\",\n    \"ACCOUNT_TRANSACTIONS\",\n    \"INITIATE_ACCOUNT_REQUEST\"\n  ],\n  \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIkNPTlNFTlQiOiJmNWEwNDViYy0yN2VjLTRkNWYtOWQzZS00OWRjZDcxYjcxZTgiLCJVU0VSIjoiZmZmOTUwNGItYTQ4MS00NjE3LWFiZTMtYmEyNzRlZWQyOWVjIn0.3JM1axJEALBcUMO71Fx1uBBRy6jcxXqurNkSrEBNKdoq4l7TFzOK0ds_Hf46ym3cOckvFNt5Lm8GGpuqZiNhKA\"\n}"
+            },
+            {
+              "id": "8641922d-f184-4c8d-a2bd-bcb49f645df7",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
+                },
+                "url": "https://api.yapily.com/consent-auth-code"
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n        \"status\": \"FORBIDDEN\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n    }\n}"
+            },
+            {
+              "id": "c17666f5-5b43-4272-811a-ecb649aca1c2",
+              "name": "424 Failed Dependency",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
+                },
+                "url": "https://api.yapily.com/consent-auth-code"
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": 424,\n    \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n    \"status\": \"FAILED DEPENDENCY\",\n    \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n  }\n}"
             }
           ]
         }
@@ -5194,103 +5194,103 @@
   ],
   "variable": [
     {
-      "id": "f0a7489d-a316-4436-9738-3c5e347f32f5",
+      "id": "c717458f-35a1-4718-ac1a-c6d0c16e7e93",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "2a28e6ed-e05a-42e9-9200-780a5e2ac332",
+      "id": "c6c628d7-9485-4d4c-a946-18691ca61dac",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "4066a6b4-52c2-4fff-8ab2-11247ce2bddf",
+      "id": "20a7b71c-abe0-4680-8df2-114203eeae26",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "03b85c3c-33c0-426e-9229-bfaa7893f319",
+      "id": "608de633-102c-4123-9543-cd7b0438b8e3",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "ea4dd9db-ba21-4cf3-ad0e-090f94ba8543",
+      "id": "765c9488-6ab6-43f5-a330-b59812be75da",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "04e483a2-1bc9-43f5-b8a0-a819bd15b7fa",
+      "id": "7361d04e-0171-47c5-9356-98d55904c73e",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "588ee495-263e-4cb4-b403-e51120272a07",
+      "id": "80d643d3-55d8-41de-8bde-c74057ae6435",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "793e0019-2908-4656-9ea5-4753dbd780cf",
+      "id": "92c0da60-e3ca-4d2e-b250-6000f42c5427",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "4691b95e-ef1a-4613-aef6-84f01101424f",
+      "id": "3db3476d-fe05-451f-8873-780d30ed7ead",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "0c1c24b3-6858-40d1-a73c-3c1a0fb97356",
+      "id": "0fe6923d-78d7-42e0-9ffd-476a751cc843",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "9d9d6ebc-8a4b-4e71-9e9d-b4bf74df2c27",
+      "id": "66aac921-46b8-466b-b985-d3c685141182",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "5610ca8e-8825-4083-9003-b68552a12f8e",
+      "id": "3d7be6ee-a950-4dad-8fd6-3f5c1d6d75e4",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "544f1d41-f8ef-4149-b4b5-1bf7e9b72ef5",
+      "id": "4caf4b33-8a7c-4492-a466-6d1fea6cac10",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "19958235-d005-4de5-a1c8-364bce4a1527",
+      "id": "f34082c5-0e9f-4bfd-906c-4d900975f3fd",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "4a35eae5-2909-448e-b2d2-9998145a0b0a",
+      "id": "59ef1579-3015-4b14-b4f7-68a9b084b3d9",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "87cb203c-c934-4824-a1b9-da22bd1377ee",
+      "id": "c9912118-03dc-47f5-99a8-7f77a495e805",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "74bb67a8-ba82-4d35-80f0-af8abb930021",
+      "id": "e9bfec7e-168c-42b3-9876-f5c2a22a9c2c",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
