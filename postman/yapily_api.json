@@ -1696,11 +1696,104 @@
           },
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
+            },
             "url": "https://api.yapily.com/consent-auth-code",
             "description": "Submit the authorisation code (authCode) and state (authState) received from the institution after user has completed the authentication to create a consent object."
           },
-          "response": []
+          "response": [
+            {
+              "id": "852320c3-0e3e-4608-adda-ee88a83b9a27",
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"authCode\": \"fg67Hj\",\n\t\"authState\": \"f3daec98152e420297cebdd301db6dde\"\n}"
+                },
+                "url": "https://api.yapily.com/consent-auth-code"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"f5a045bc-27ec-4d5f-9d3e-49dcd71b71e8\",\n  \"userUuid\": \"fff9504b-a481-4617-abe3-ba274eed29ec\",\n  \"institutionId\": \"bbva-sandbox\",\n  \"status\": \"AUTHORIZED\",\n  \"createdAt\": \"2019-03-19T22:10:03.674Z\",\n  \"expiresAt\": \"2024-03-17T22:10:03.674Z\",\n  \"timeToExpire\": \"P1824DT23H57M41.691S\",\n  \"featureScope\": [\n    \"IDENTITY\",\n    \"ACCOUNT_TRANSACTIONS\",\n    \"INITIATE_ACCOUNT_REQUEST\"\n  ],\n  \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImJidmEtc2FuZGJveCIsIkNPTlNFTlQiOiJmNWEwNDViYy0yN2VjLTRkNWYtOWQzZS00OWRjZDcxYjcxZTgiLCJVU0VSIjoiZmZmOTUwNGItYTQ4MS00NjE3LWFiZTMtYmEyNzRlZWQyOWVjIn0.3JM1axJEALBcUMO71Fx1uBBRy6jcxXqurNkSrEBNKdoq4l7TFzOK0ds_Hf46ym3cOckvFNt5Lm8GGpuqZiNhKA\"\n}"
+            },
+            {
+              "id": "8641922d-f184-4c8d-a2bd-bcb49f645df7",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
+                },
+                "url": "https://api.yapily.com/consent-auth-code"
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n        \"status\": \"FORBIDDEN\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n    }\n}"
+            },
+            {
+              "id": "c17666f5-5b43-4272-811a-ecb649aca1c2",
+              "name": "424 Failed Dependency",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"authCode\": \"{{authCode}}\",\n\t\"authState\": \"{{authState}}\"\n}"
+                },
+                "url": "https://api.yapily.com/consent-auth-code"
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": 424,\n    \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n    \"status\": \"FAILED DEPENDENCY\",\n    \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n  }\n}"
+            }
+          ]
         }
       ],
       "_postman_id": "e51b648f-693a-9477-f565-b939754b5166",
@@ -2803,7 +2896,7 @@
               "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"{{transactions-from}}\",\n\t\t\"transactionTo\": \"{{transactions-to}}\",\n\t\t\"expiresAt\": \"{{expires-at}}\"\n\t}\n}"
             },
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent to access their account's data.\n\nFeature: `INITIATE_ACCOUNT_REQUEST`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | The uuid for your application user | String |\n| referenceId | _Optional._ The referenceId for your application user. You can use this instead of the userUuid. If a user with the referenceId specified does not exist, it shall be created. | String |\n| institutionId | The institution-id for the bank that the user will use to pay | String |\n| callback | _Optional._ The callback url to receive the consent token | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. | Object |\n| accountRequest.transactionFrom | _Optional._ Timestamp of earliest transaction to be requested | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ Timestamp of last transaction to be requested | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that this consent will expire. Note: not supported by all institutions. | [Date](https://docs.yapily.com/#date-time-format) |\n\nNote: if the `accountRequest` is not set, Yapily will request a default set of data, usually 2 years previous and 1 years into the future with the maximum consent duration for that specific institution.\nIf you choose to use the referenceId instead of the userUuid then the redirect to your callback url will contain the referenceId."
+            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data.\n\nFeature: `INITIATE_ACCOUNT_REQUEST`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | The uuid for your application user | String |\n| referenceId | _Optional._ The referenceId for your application user. You can use this instead of the userUuid. If a user with the referenceId specified does not exist, it shall be created. | String |\n| institutionId | The institution-id for the bank that the user will use to pay | String |\n| callback | _Optional._ The callback url to receive the consent token | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. | Object |\n| accountRequest.transactionFrom | _Optional._ Timestamp of earliest transaction to be requested | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ Timestamp of last transaction to be requested | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that this consent will expire. Note: not supported by all institutions. | [Date](https://docs.yapily.com/#date-time-format) |\n\nNote: if the `accountRequest` is not set, Yapily will request a default set of data, usually 2 years previous and 1 years into the future with the maximum consent duration for that specific institution.\nIf you choose to use the referenceId instead of the userUuid then the redirect to your callback url will contain the referenceId."
           },
           "response": [
             {
@@ -4830,103 +4923,103 @@
   ],
   "variable": [
     {
-      "id": "8d970dad-1516-47f8-8d2d-efd8726b5e9f",
+      "id": "83e4c116-eefe-434a-a58f-0b9e41e7eb45",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "9780303c-3b46-441c-a773-ea079a334bba",
+      "id": "e80af1ca-f4e5-41db-b401-af2993193df5",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "bab6308c-6df5-48ce-a83f-b72113b2e249",
+      "id": "866817b5-02b9-4da6-8814-b618533ac8fb",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "305752ac-419c-499f-a5a5-009bed3549c4",
+      "id": "b0039fa6-7bad-4009-b49a-9d70d3f04ec5",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "eba4dafb-69e0-4e0f-ba79-e9d07e511ae8",
+      "id": "487fe496-effe-4065-9f3b-1861e3d239f6",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "f70141b8-34f7-4e05-8725-0272e4902087",
+      "id": "78ac1324-ad50-4067-9251-d85a8b24ca45",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "e1c784b1-5882-46bf-b193-1b114be629e3",
+      "id": "0b9d8de1-a9c3-4cc0-a03d-a884fce5d0e4",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "0cf7aa3c-95f5-46b0-9b72-69fa5d603084",
+      "id": "ec2d9a95-2936-4bb6-b967-0aed4ac1fa37",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "4ed37b82-df72-4026-92d1-bc0e5f713f5b",
+      "id": "416ff5c4-3383-45b4-8b34-ec18466c268c",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "fefb62b3-745e-478f-8cc3-7a4bd8edb04d",
+      "id": "6195846e-603e-49f0-9c6a-0bc5ba21b90e",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "f9f3df2c-eaa1-456f-a32b-4cae1cf68b87",
+      "id": "b5dc261e-f111-405e-b2b5-05fbe47b3043",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "709f7b87-5fea-4728-a95c-0dcd8672255f",
+      "id": "0f5fc54a-589d-4769-bf1d-def68f830a01",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "1753a0d9-930e-406f-b369-1d44f80e2277",
+      "id": "571a02b1-7147-443f-a7de-564f720a8b1c",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "52c437e2-1626-4b0d-ac3c-f5863f2b29d7",
+      "id": "e584ff4b-7acf-4c85-855c-88640cc1c32a",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "ce26fa63-810b-4306-a0a8-b861366a3030",
+      "id": "92f7945b-946b-48a0-a803-21519d4f4de1",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "6aa0134d-ccbf-4dcf-b194-ad768e33db22",
+      "id": "10c4e2c3-695e-4616-941f-cdded88d64c2",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "87eeff74-c0f9-4358-8acd-96ebb8fa78a7",
+      "id": "ad56cb2f-9cf7-4aaf-a9c9-09df09f2ef6e",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
