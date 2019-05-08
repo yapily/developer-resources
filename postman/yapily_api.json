@@ -3165,15 +3165,15 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"{{transactions-from}}\",\n\t\t\"transactionTo\": \"{{transactions-to}}\",\n\t\t\"expiresAt\": \"{{expires-at}}\",\n\t\t\"featureScope\": \"{{feature-scope}}\"\n\t}\n}"
+              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}"
             },
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data. You will\n\nFeature: `INITIATE_ACCOUNT_REQUEST`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Optional. Use either userUuid or applicationUserId._ The uuid for your application user. | String |\n| applicationUserId | _Optional. Use either userUuid or applicationUserId._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. | Object |\n| accountRequest.transactionFrom | _Optional._ Timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ Timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that this consent will expire. Note: not supported by all institutions. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | _Optional._ Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: INTIATE_ACCOUNT_REQUEST, ACCOUNT, ACCOUNTS, ACCOUNT_TRANSACTIONS, ACCOUNT_TRANSACTIONS_WITH_MERCHANT | Array |\n\nIf the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution.\n\nNote: As `userUuid` is the primary identifier, `userUuid` takes precedence. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId`."
+            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data. You will\n\nFeature: `INITIATE_ACCOUNT_REQUEST`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Optional. Use either userUuid or applicationUserId._ The uuid for your application user. | String |\n| applicationUserId | _Optional. Use either userUuid or applicationUserId._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. | Object |\n| accountRequest.transactionFrom | _Optional._ Timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ Timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that this consent will expire. Note: not supported by all institutions. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | _Optional._ Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: INTIATE_ACCOUNT_REQUEST, ACCOUNT, ACCOUNTS, ACCOUNT_TRANSACTIONS, ACCOUNT_TRANSACTIONS_WITH_MERCHANT | Array |\n\nIf the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution.\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
           },
           "response": [
             {
               "id": "8467cc49-76cc-4f96-8eab-085cfbc768c6",
-              "name": "201 Created",
+              "name": "201 Created (without accountRequest)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -3188,7 +3188,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\",\n\t\"oneTimeToken\": \"true\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\"\n\t}\n}"
+                  "raw": "{\n\t\"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\"\n}"
                 },
                 "url": "https://api.yapily.com/account-auth-requests"
               },
@@ -3509,7 +3509,7 @@
             },
             {
               "id": "1b65b064-ed4f-48ca-ae1c-caa55bcfadc5",
-              "name": "201 Created referenceId",
+              "name": "201 Created (with applicationUserId)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -3525,7 +3525,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\"referenceId\": \"referenceId\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\",\n\t\"oneTimeToken\": \"true\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\"\n\t}\n}"
+                  "raw": "{\n\t\"applicationUserId\": \"bojack@9.tees\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\",\n\t\"oneTimeToken\": \"true\"\n}"
                 },
                 "url": "https://api.yapily.com/account-auth-requests"
               },
@@ -3533,11 +3533,11 @@
               "header": null,
               "cookie": [],
               "responseTime": null,
-              "body": "{\"meta\":{\"tracingId\":\"e570f627-ee15-4d89-a8db-0988da876329\"},\"data\":{\"id\":\"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\"referenceId\":\"referenceId\",\"userUuid\":\"37138ee8-ab9a-496c-be98-07ae353fb876\",\"institutionId\":\"forgerock-sandbox\",\"status\":\"AWAITING_AUTHORIZATION\",\"createdAt\":\"2018-10-17T14:42:53Z\",\"expiresAt\":\"2018-10-17T14:46:53Z\",\"timeToExpireInMillis\":239164,\"featureScope\":[\"ACCOUNT\",\"ACCOUNT_TRANSACTIONS\",\"ACCOUNTS\"],\"authorisationUrl\":\"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"}}"
+              "body": "{\"meta\":{\"tracingId\":\"e570f627-ee15-4d89-a8db-0988da876329\"},\"data\":{\"id\":\"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\"applicationUserId\":\"bojack@9.tees\",\"userUuid\":\"37138ee8-ab9a-496c-be98-07ae353fb876\",\"institutionId\":\"forgerock-sandbox\",\"status\":\"AWAITING_AUTHORIZATION\",\"createdAt\":\"2018-10-17T14:42:53Z\",\"expiresAt\":\"2018-10-17T14:46:53Z\",\"timeToExpireInMillis\":239164,\"featureScope\":[\"ACCOUNT\",\"ACCOUNT_TRANSACTIONS\",\"ACCOUNTS\"],\"authorisationUrl\":\"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"}}"
             },
             {
               "id": "7977cf4e-c154-43dc-86a6-a010add5c361",
-              "name": "201 Created with Feature Scope",
+              "name": "201 Created (with accountRequest)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -4536,7 +4536,7 @@
               "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\t\"amount\":0.00,\n\t\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\t\"name\":\"RECIPIENT_NAME\",\n\t\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\t\"reference\":\"REFERENCE\",\n\t\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\t\"sortCode\":\"SORT_CODE\"\n\t}\n}"
             },
             "url": "https://api.yapily.com/payment-sortcode-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a single payment.\n\nFeature: `INITIATE_SINGLE_PAYMENT_SORTCODE`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Optional. Use either userUuid or applicationUserId._ The uuid for your application user. | String |\n| applicationUserId | _Optional. Use either userUuid or applicationUserId._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create a single payment](https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6). | Object |\n\nNote: As `userUuid` is the primary identifier, `userUuid` takes precedence. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId`."
+            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a single payment.\n\nFeature: `INITIATE_SINGLE_PAYMENT_SORTCODE`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Optional. Use either userUuid or applicationUserId._ The uuid for your application user. | String |\n| applicationUserId | _Optional. Use either userUuid or applicationUserId._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create a single payment](https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6). | Object |\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
           },
           "response": [
             {
@@ -5220,103 +5220,103 @@
   ],
   "variable": [
     {
-      "id": "f9fb321a-5463-477c-95ba-c2678ad2e5a3",
+      "id": "a343dc4b-2525-4ba3-8105-3972c7a5341d",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "f6faa04e-533b-4a3b-b790-7a872493626b",
+      "id": "95ffb6c8-f3ca-46d7-aee4-7fb67e2b2995",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "e4a8eea6-4f90-44a1-bd94-2777da489a0b",
+      "id": "b3e6590c-0c19-4282-8cc4-791e6f9cf09c",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "1d2345ff-664a-485d-9181-ab34dc69f50c",
+      "id": "1660bf5e-385e-4bf1-abb1-a1b1d947b070",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "35e5a4e8-7a4b-4817-9e01-8cd21178188b",
+      "id": "7b55bf8e-9318-467e-8d45-9f5bfd5d2b16",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "f690e6be-a03c-4858-8afe-89452e51b0e1",
+      "id": "e9b7df01-1b9c-40b0-8c33-bca65e9f3017",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "fbf61b24-5dc3-41a5-9d95-6eaab06ab15d",
+      "id": "0ffc86de-0fc5-428f-ac90-8b1cbc765b5b",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "dbe4af7c-b3cd-44c7-a9ce-4695558ab0b1",
+      "id": "95b7f72c-2ac7-4e7d-8564-b4910e13176b",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "179e100d-14e2-4e42-bead-fcc97813f8ea",
+      "id": "ffbb3861-4471-4d52-9abb-a61a1a0f299b",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "8723da5e-c954-49c9-82e8-05639b31bb12",
+      "id": "2ab17b70-c93b-4bd1-96f4-056e73439b29",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "6e850158-4657-4a15-b547-286f5c302c86",
+      "id": "b30d1f20-7c5a-40e4-a5ad-e66974ab41e0",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "cdaad5d4-7733-4818-8acc-30aa93c50dd9",
+      "id": "5d12b12a-e187-4431-9394-9b13811b1671",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "1c4856e5-2713-4c41-9e24-1e5e8e5474b8",
+      "id": "0cbfc010-8a96-4407-a9bc-7f44d4f056cc",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "fe985b53-52a1-4ba5-87e8-701c6e57d11b",
+      "id": "cf0aacd7-3639-487d-8e7b-e273d743a217",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "d7180d05-245d-4710-9732-75e60d7b2834",
+      "id": "cfe0757e-a564-4945-a5c3-778bd1519fdd",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "99548789-b54d-42b3-88fb-a2596e6180f5",
+      "id": "a977d296-d6ed-415b-b64a-af855916656f",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "ca3f34ac-10dd-487b-97b8-6f57ab47b793",
+      "id": "25a151b6-2238-452c-a6ac-754b7eafcf34",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
