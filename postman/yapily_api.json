@@ -4536,7 +4536,7 @@
               "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\t\"amount\":0.00,\n\t\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\t\"name\":\"RECIPIENT_NAME\",\n\t\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\t\"reference\":\"REFERENCE\",\n\t\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\t\"sortCode\":\"SORT_CODE\"\n\t}\n}"
             },
             "url": "https://api.yapily.com/payment-sortcode-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a single payment.\n\nFeature: `INITIATE_SINGLE_PAYMENT_SORTCODE`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | The uuid for your application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create a single payment](https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6). | Object |"
+            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a single payment.\n\nFeature: `INITIATE_SINGLE_PAYMENT_SORTCODE`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Optional. Use either userUuid or applicationUserId._ The uuid for your application user. | String |\n| applicationUserId | _Optional. Use either userUuid or applicationUserId._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create a single payment](https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6). | Object |"
           },
           "response": [
             {
@@ -5220,103 +5220,103 @@
   ],
   "variable": [
     {
-      "id": "bd81428d-95cf-4651-a870-65ed602b2428",
+      "id": "278cf5a6-058a-4556-a77f-819b0efe9169",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "7edea6c2-9eaf-407b-be35-8cb467a394bf",
+      "id": "144e5e6f-cf62-4292-95ef-6164df967bec",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "c214a4e4-3209-4e6a-a42e-6cfed08eed0c",
+      "id": "bac053fe-49cf-4f4c-9d5c-66727f2b116b",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "9a1ad2ac-2053-47ec-b486-ce52d834587d",
+      "id": "924b92a7-ed9c-45c3-ae5d-d3bdfb432c42",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "2730a43f-76fe-46a0-b397-3b41b1d761d2",
+      "id": "03c4c1be-1c8d-432c-bf36-4ef77f8c6da1",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "beed176f-e0e9-4511-afbe-ab8a1a6e5343",
+      "id": "116cb881-122c-485f-8f80-035e98b74933",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "7967749d-b2b3-42b3-b3bc-2e9055cb7221",
+      "id": "6453dfe4-0aa2-4549-b08b-6a748f636e71",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "7a339d8f-b7ed-4d8a-a356-e53cd6948612",
+      "id": "40045ce6-3dcf-48cd-8791-64ff896f5067",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "56cc0a01-a1f3-41bc-a383-521260a0b815",
+      "id": "bbc14c0f-6b41-46f2-bc8f-d885b32e2e10",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "ad6d352b-f5b3-49c1-9558-7bdc85316775",
+      "id": "186ce140-f4e0-4eeb-b045-82cc25576eb4",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "59a25d89-33d8-48c0-9eb6-4416a15b94c2",
+      "id": "e1c0334e-4ef3-4a20-9382-9ec0dbeb7a62",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "bf51400d-5e4f-447f-bc07-7d3fbb733c0e",
+      "id": "4e914b93-c073-4651-b69e-487a963bc7d6",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "3c19f63c-aa0b-40c2-b825-140de3baffb0",
+      "id": "fe5e21d7-75fd-4b2b-86d4-1e40562527de",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "c0188759-afec-4cf5-af53-7f3a780eaafc",
+      "id": "7b24cfa8-2908-4a83-8b0e-c1e54710db4f",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "9c8b5b7c-1bf3-41a0-adcf-475ee173e997",
+      "id": "ff8fc02c-5ae7-4e2b-b328-051c40c9db4e",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "07bc37fa-f347-471b-b2a3-83a8282ea064",
+      "id": "e709e267-2d88-462f-adb1-2f66a85f3e10",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "46177052-423e-4617-9ee9-4e4109e2e128",
+      "id": "2e57610b-9648-487f-87aa-b96171dbc37f",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
