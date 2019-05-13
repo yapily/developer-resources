@@ -623,9 +623,70 @@
               }
             ],
             "url": "https://api.yapily.com/users/{{user-uuid}}",
-            "description": "Note: in order to delete an application user, you must first [delete all consent tokens for the user](https://docs.yapily.com/#81e525f5-485c-804d-ffef-32afbfea6e65)."
+            "description": "The api will delete the application user along with all its consent tokens.\n"
           },
-          "response": []
+          "response": [
+            {
+              "id": "a7345038-5779-4ebf-93cd-9f11041dc0d7",
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "value": "application/json",
+                    "key": "Content-Type"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api.yapily.com/users/a3bf6801-fd7e-4f13-8daf-34ec4be07ec8?raw=true",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "yapily",
+                    "com"
+                  ],
+                  "path": [
+                    "users",
+                    "a3bf6801-fd7e-4f13-8daf-34ec4be07ec8"
+                  ],
+                  "query": [
+                    {
+                      "key": "raw",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"cfeba8da-d9a8-46c3-b9f6-80a52149a775\"\n    },\n    \"data\": {\n        \"id\": \"a3bf6801-fd7e-4f13-8daf-34ec4be07ec8\",\n        \"deleteStatus\": \"SUCCESS\",\n        \"creationDate\": \"2019-05-10T14:47:16.309Z\",\n        \"userConsents\": [\n            {\n                \"id\": \"c50844cb-1498-44aa-90d1-62eae8cdb3f6\",\n                \"deleteStatus\": \"SUCCESS\",\n                \"institutionId\": \"xxxx-sandbox\",\n                \"institutionConsentId\": \"aac-d0de4bb3-4e6d-468e-ba9a-dbc757c8c0bb\",\n                \"creationDate\": \"2019-05-10T17:36:49.269+0000\"\n            }\n        ]\n    },\n    \"raw\": [\n        {\n            \"request\": {\n                \"action\": \"DELETE\",\n                \"url\": \"https://XXXX.bank.co.uk:4501/open-banking/v3.1/aisp/account-access-consents/aac-d0de4bb3-4e6d-468e-ba9a-dbc757c8c0bb\",\n                \"requestInstant\": \"2019-05-13T11:38:07.546Z\"\n            },\n            \"duration\": \"PT0.337S\",\n            \"headers\": {\n                \"x-fapi-interaction-id\": \"01af56b4-e913-4aa1-9454-9a9b7730264b\",\n                \"Server\": \"nginx/1.14.1\",\n                \"ETag\": \"W/\\\"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk\\\"\",\n                \"Connection\": \"keep-alive\",\n                \"HTTP/1.1 204 No Content\": \"HTTP/1.1 204 No Content\",\n                \"Date\": \"Mon, 13 May 2019 11:38:07 GMT\",\n                \"X-Powered-By\": \"Express\"\n            },\n            \"resultCode\": 204,\n            \"result\": null\n        }\n    ]\n}"
+            },
+            {
+              "id": "662c4a37-32e3-493c-88f4-5d6036c6ccb9",
+              "name": "404 Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "value": "application/json",
+                    "key": "Content-Type"
+                  }
+                ],
+                "url": "https://api.yapily.com/users/{{user-uuid}}"
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 404,\n        \"tracingId\": \"1d46e7bf-e16a-46dd-94bb-f18be384be5f\",\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
+            }
+          ]
         }
       ],
       "_postman_id": "a3da6f77-61f4-9462-16af-67f509e02717",
@@ -957,7 +1018,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": "plain",
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Cache-Control",
@@ -1028,7 +1089,7 @@
               ],
               "cookie": [],
               "responseTime": "42",
-              "body": ""
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"58e1c78c-271e-48b7-8b69-73496487b1d3\"\n    },\n    \"data\": {\n        \"id\": \"a71fd46f-4144-478e-9a72-dd0d7a1158ab\",\n        \"deleteStatus\": \"SUCCESS\",\n        \"institutionId\": \"xxxxx-sandbox\",\n        \"institutionConsentId\": \"aac-1cce1cfc-1ab2-4ed6-8062-a0fd6c5c2122\",\n        \"creationDate\": \"2019-05-10T16:45:43.566+0000\"\n    }\n}"
             },
             {
               "id": "ecf6e596-1caa-4f68-7a98-c5d2aacdf09f",
@@ -5244,103 +5305,103 @@
   ],
   "variable": [
     {
-      "id": "37f1baeb-e642-4c38-99f6-c066584e7bfd",
+      "id": "2c27a093-6968-4b95-8d43-4cd076d6fd3b",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "9080c52e-2713-48f8-a588-7114dc9ffc3d",
+      "id": "1f1f4d1c-e057-42cf-a9ca-ee87753cebe9",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "c7554f57-38c9-44a5-a560-4383a829904d",
+      "id": "5eac5651-587a-42e1-a461-369f9376b500",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "4b7ef370-1678-4ea2-871b-2dce0cd99e14",
+      "id": "5ed9e89b-6c0c-42f8-868e-c00a99395844",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "231dd457-28bf-4825-828a-8122334e29c3",
+      "id": "a3a606d1-063b-4e70-b51f-1dc5ab5e82c9",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "0c242d24-de62-43ff-b33d-9320b2ed6612",
+      "id": "2dc0e369-c9aa-446e-a85f-b4a776c20c8c",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "e3aa699e-4471-44f8-9f97-00b84d8fa2a9",
+      "id": "fd7b5787-237a-4b09-b3f3-ab1d3a17a579",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "11f2863f-71aa-4e1b-9ab0-78490d47c646",
+      "id": "f2df89ed-67ad-454e-9794-349f1e0b058c",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "703960cd-261f-4c15-9318-b178c172cbed",
+      "id": "d63346b4-ca33-44ad-b373-b538c906af81",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "cc112e71-b66d-46b2-b839-c2b5f3bcd22f",
+      "id": "bb10fb4f-44b7-4e39-a49c-39ae431fd16f",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "a9091909-178d-49b8-83f2-cb96f5852b52",
+      "id": "a54e4b73-1f76-42c0-bb54-3cf5b3f5dc8e",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "0801491f-d73a-4321-b8e1-f00efd8202bc",
+      "id": "25e9acf0-457e-42c4-9ad2-6636e6ae5382",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "b3c87226-05eb-45e3-88ed-ee4d95d0689d",
+      "id": "9c356214-2486-4b90-801a-4522f44fb79e",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "1267660a-4e40-43a5-b79c-8377d6711755",
+      "id": "6c47346b-4a78-4666-b8e2-adfde37ec3bf",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "b9267c92-3fdd-4e85-bf5f-ef366463ba38",
+      "id": "5d16a752-99d4-4f9f-a7cd-1ba90b08de3d",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "94d8c7c7-864b-4acc-96dc-dc007728fa97",
+      "id": "b9b7cbf8-33c9-40e2-ba9d-17c7c54c8ebf",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "7321c8ce-077b-474a-9a5c-b5f143db88c6",
+      "id": "fabc37d2-f55f-4377-8e72-bdc2173fa71a",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
