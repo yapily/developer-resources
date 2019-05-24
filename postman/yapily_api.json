@@ -1456,7 +1456,7 @@
               "raw": "{\n\t\"oneTimeToken\":\"ONE_TIME_TOKEN\"\n}"
             },
             "url": "https://api.yapily.com/consent-one-time-token",
-            "description": "Retrieve a consent by supplying a `oneTimeToken`. One time tokens cannot be used again after successfully being exchanged for a consent token.\n\nNote: to receive a one time token, set `oneTimeToken` to `true` in your [financial data authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98)."
+            "description": "Retrieve a consent by supplying a `oneTimeToken`. One time tokens cannot be used again after successfully being exchanged for a consent token.One time token is only valid for 3 minutes and in unlikely case of it being expired, \"Get User Consent\" endpoint should be used to fetch the consent token.\n\nNote: to receive a one time token, set `oneTimeToken` to `true` in your [financial data authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98)."
           },
           "response": [
             {
@@ -5439,103 +5439,103 @@
   ],
   "variable": [
     {
-      "id": "4a33c013-cca0-405f-b10f-1c359d0a0e7d",
+      "id": "1394acef-8af4-4c52-8396-3ea48805f08f",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "ecb3976f-89b1-4e4e-8e93-30d710b3e881",
+      "id": "fecce80e-db9a-4d3b-96c1-042409974e53",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "cc98c479-fce2-4f83-84da-b473c1310d9c",
+      "id": "d130a5b5-c635-4212-8b1f-f49bfdf78b8e",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "181a7212-6045-4a64-96bb-f305bcd55a6f",
+      "id": "192633a1-bae5-4948-873f-0fe3dd262100",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "2106fea3-e063-4840-a3f8-b0649b6ad8cb",
+      "id": "d56afb22-68cf-4aca-bc0c-ef103f3ef53c",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "08cf3533-8fe7-4aba-8114-5e292c500161",
+      "id": "d7c9d2b6-206c-4749-90f7-d0749b4a34c9",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "a2357e3c-7ef4-4445-ab1b-5a83f6a924e8",
+      "id": "bebffc62-947a-4fa4-abff-d20f7cba93fe",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "fed637cd-1c18-4974-b270-7240f1cbc5b9",
+      "id": "f353549c-985e-46b1-9db0-9df24f22f9a0",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "83db26e2-7f77-4565-9a1d-7cfa0d993065",
+      "id": "fef479d6-fcff-47ab-ae5f-464f4ef0af1b",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "f68071b4-2a30-4d7c-a70b-4c3df4554ecb",
+      "id": "ea7546a4-0d35-45e9-b0c8-e9fe1ae810c0",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "3e50b04e-bcb7-484e-a42d-6cbace463a6b",
+      "id": "445a2894-6fbe-482b-b9c5-3d5e33a98b2b",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "a06de1d1-ece2-4733-8147-eb148649967d",
+      "id": "678caf67-745c-4ea6-8414-46b3b76cc8d7",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "2497c06d-3ce3-4ddb-8d75-b7cec86ab571",
+      "id": "dd206ac8-25d1-4cc6-aedb-feac4c27715a",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "e525455a-fee6-4f48-8f4f-f130d63a801e",
+      "id": "ac918c80-99d7-4df7-ac75-6b8f7c4f60ec",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "a9c3baca-4334-444f-b218-9757028cd952",
+      "id": "84e7c375-19e3-4f09-a378-2edb7606c171",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "a5fbfc02-312d-4f6d-90b8-e591a07e08aa",
+      "id": "5bd71d29-2a33-4f3a-aa42-823751c9585a",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "3acaf6f6-3cd6-4a3a-9d67-94ce2ad60746",
+      "id": "bd523b4a-8fa4-444f-9c8c-e0d6debed5b4",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
