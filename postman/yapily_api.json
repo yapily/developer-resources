@@ -4264,7 +4264,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/transactions",
-            "description": "Get the account's transactions. A negative `amount` indicates an account **debit** (money moving out of the account) and a positive `amount` indicates an account **credit** (money moving into the account).\n\nFeature: `ACCOUNT_TRANSACTIONS`\n\nQuery string parameters (_all parameters are optional_)\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| with | merchant | Include the merchant information in the transaction details. Requires institution with feature: `ACCOUNT_TRANSACTIONS_WITH_MERCHANT`. | String |\n| from | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. |  [Date](https://docs.yapily.com/#date-time-format) |\n| before | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | (Any valid number between 0 and 1000) | Number of transaction records to be returned.| Number |\n| sort | date, -date | [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with **date** or descending with **-date**. Default is descending. | String |\n| offset | (Any valid number greater than 0.) | Number of transaction records to be skipped.  | Number |"
+            "description": "Get the transactions for a specific account. A negative `amount` indicates an account **debit** (money moving out of the account) and a positive `amount` indicates an account **credit** (money moving into the account).\n\nFeature: `ACCOUNT_TRANSACTIONS`\n\nQuery string parameters (_all parameters are optional_)\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| with | merchant | Include the merchant information in the transaction details. Requires institution with feature: `ACCOUNT_TRANSACTIONS_WITH_MERCHANT`. | String |\n| from | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. |  [Date](https://docs.yapily.com/#date-time-format) |\n| before | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | (Any valid number between 0 and 1000) | Number of transaction records to be returned.| Number |\n| sort | date, -date | [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with **date** or descending with **-date**. Default is descending. | String |\n| offset | (Any valid number greater than 0.) | Number of transaction records to be skipped.  | Number |"
           },
           "response": [
             {
@@ -5458,103 +5458,103 @@
   ],
   "variable": [
     {
-      "id": "b26ce4fe-e1aa-4aa8-a08e-3a21d0eb9085",
+      "id": "1c9458f9-a0c2-49e4-b7c3-923167ee898c",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "0dfd0b0c-794c-4483-bdf6-bcc1ec7d5b59",
+      "id": "96ff801f-62ae-4d91-bf3e-c018b2a80a19",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "b72ddb68-8d2a-4b9a-959a-6f31da4b7469",
+      "id": "bc666ed6-e651-446e-95b3-13d5e995dbbd",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "a750087a-c0a2-47ba-814d-1c065d8e32f8",
+      "id": "aa1e1161-e0f6-490d-9a92-932f53f3ae63",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "5c248032-c4ab-482d-8910-a8e08cf6d1e0",
+      "id": "89971099-25f8-4a0d-a75d-5a10ca6158cb",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "9386d25b-853e-4cf8-baf9-376cf264119d",
+      "id": "1d4adb89-b12a-4769-a384-3a072e92a7ea",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "4ffad2af-ce9b-46e3-a919-b4f3701448a7",
+      "id": "03cf884b-bde6-45c6-8e66-efded99ef106",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "4513d8af-c6e0-402b-b7ad-7717302a049f",
+      "id": "5441df21-d2be-46cf-9a07-445937d5aa2c",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "8a8b5594-2594-449d-ae00-ec5edde64a36",
+      "id": "5c8513fc-6233-49dc-b287-9a11847691f9",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "edfaf087-908f-4d01-82ed-2f46e2cd50e2",
+      "id": "e3ba5df3-453c-43c0-9eb1-11094a1f8692",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "3539e66f-08c1-4ee6-87c1-8e9b8a592215",
+      "id": "4dd4cf76-f4ea-406d-9180-d9b948892d60",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "9b6d943c-78e7-416b-9f66-cec27571d45a",
+      "id": "699f7d0d-4a88-4036-b5cc-8027edca70ff",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "33bba816-10e2-4862-8b42-f4254a8fc788",
+      "id": "24aae0a4-80f4-4c28-b573-61f2660be2d7",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "04d8d0f6-baa8-4f2f-b09e-d6b48a854052",
+      "id": "0631c0ac-cdf0-429d-90fa-13b03b895b66",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "b9c9fb80-959e-46c9-9f77-78c2c8ca3f81",
+      "id": "c4fa97b6-3c7e-4a26-8428-1b2730927fd5",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "67b16a95-01b4-4bf0-b313-94fe47866e2a",
+      "id": "bc1dad91-3c18-4e8f-b01c-80dd2f6781fe",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "5db9b427-fe9a-48be-a366-e332e5f87a08",
+      "id": "fe16bd67-2551-48f9-a2ce-7977da8e1533",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
