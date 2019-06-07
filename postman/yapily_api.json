@@ -4728,6 +4728,273 @@
               "body": "{\"error\":{\"code\":401,\"status\":\"UNAUTHORIZED\",\"message\":\"Full authentication is required to access this resource\"}}"
             }
           ]
+        },
+        {
+          "name": "Get Account Statement File",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
+                "exec": [
+                  "let valUtils = eval(globals.valueUtils);",
+                  "valUtils.consentExists();",
+                  "valUtils.accountIdExists();"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "19eaf391-5c2f-43ec-8015-70d4a0a0a7e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts/{{account-id}}/statements/{{statement-id}}/file",
+            "description": "Get the statement file for a specific account.\n\nFeature: `ACCOUNT_TRANSACTIONS`"
+          },
+          "response": [
+            {
+              "id": "2bf1f7ce-6742-4626-bb36-ebae15d9b3aa",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api.yapily.com/accounts/{{account-id}}/transactions?with=merchant&from=2017-01-01T00:00:00.000Z&before=2019-01-01T00:00:00.000Z&limit=30&sort=date",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "yapily",
+                    "com"
+                  ],
+                  "path": [
+                    "accounts",
+                    "{{account-id}}",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "with",
+                      "value": "merchant",
+                      "description": "*Optional*. Include the merchant information in the transaction details.\n\nRequires institution with feature: `ACCOUNT_TRANSACTIONS_WITH_MERCHANT`"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2017-01-01T00:00:00.000Z",
+                      "description": "*Optional*. Date time [ISO8601 format](/#date-time-format)\n\nNote: For some institutions the **from** and **before** dates need to be within the range of the consent. "
+                    },
+                    {
+                      "key": "before",
+                      "value": "2019-01-01T00:00:00.000Z",
+                      "description": "*Optional*. Date time [ISO8601 format](/#date-time-format)\n\nNote: For some institutions the **from** and **before** dates need to be within the range of the consent. "
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30",
+                      "description": "*Optional*. Maximum number of transaction records per request."
+                    },
+                    {
+                      "key": "sort",
+                      "value": "date",
+                      "description": "*Optional*. \nSorting by date ASCENDING: **date**\n\nSorting by date DESCENDING value: **-date**"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Jan 2019 11:59:09 GMT"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "114"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 google"
+                },
+                {
+                  "key": "Alt-Svc",
+                  "value": "clear"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            },
+            {
+              "id": "36196067-0fc2-4822-b81a-377126a5317a",
+              "name": "200 OK Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/transactions"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "109",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 18 May 2018 15:05:34 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"cca49220-5ae4-4496-a202-2e3d622659e2\",\n        \"count\": 4,\n        \"pagination\": {\n            \"totalCount\": 4,\n            \"self\": {\n                \"from\": \"2018-10-15T13:38:10.37Z\",\n                \"before\": \"2018-10-17T13:38:10.37Z\",\n                \"limit\": 100,\n                \"sort\": \"-date\"\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"5f767afb-436a-4516-95fe-c460b1df3e04\",\n            \"date\": \"2018-10-16T17:20:19.95Z\",\n            \"amount\": -1,\n            \"currency\": \"GBP\",\n            \"description\": \"A gift\"\n        },\n        {\n            \"id\": \"9a91eccc-dfb8-4e1d-9844-4d6b2485f9ea\",\n            \"date\": \"2018-10-16T17:19:46.912Z\",\n            \"amount\": -1,\n            \"currency\": \"GBP\",\n            \"description\": \"A gift\"\n        },\n        {\n            \"id\": \"aa86b689-c285-4381-b267-76475bcbe368\",\n            \"date\": \"2018-10-16T17:18:58.237Z\",\n            \"amount\": -12.66,\n            \"currency\": \"GBP\",\n            \"description\": \"Test\"\n        },\n        {\n            \"id\": \"110c6cec-8d4d-43d1-bb0c-a1c2d9075acf\",\n            \"date\": \"2018-10-16T17:16:06.008Z\",\n            \"amount\": -10.01,\n            \"currency\": \"GBP\",\n            \"description\": \"Test\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/f0ecd8e8-f85d-4547-a070-756c3dfc0571/transactions?from=2018-10-15T13:38:10.370Z&before&limit&sort=-date\"\n    }\n}"
+            },
+            {
+              "id": "7427f879-689e-43e3-873b-53e758d41653",
+              "name": "200 OK No Pagination",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/transactions"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"cca49220-5ae4-4496-a202-2e3d622659e2\",\n        \"count\": 4\n    },\n    \"data\": [\n        {\n            \"id\": \"5f767afb-436a-4516-95fe-c460b1df3e04\",\n            \"date\": \"2018-10-16T17:20:19.95Z\",\n            \"amount\": -1,\n            \"currency\": \"GBP\",\n            \"description\": \"A gift\"\n        },\n        {\n            \"id\": \"9a91eccc-dfb8-4e1d-9844-4d6b2485f9ea\",\n            \"date\": \"2018-10-16T17:19:46.912Z\",\n            \"amount\": -1,\n            \"currency\": \"GBP\",\n            \"description\": \"A gift\"\n        },\n        {\n            \"id\": \"aa86b689-c285-4381-b267-76475bcbe368\",\n            \"date\": \"2018-10-16T17:18:58.237Z\",\n            \"amount\": -12.66,\n            \"currency\": \"GBP\",\n            \"description\": \"Test\"\n        },\n        {\n            \"id\": \"110c6cec-8d4d-43d1-bb0c-a1c2d9075acf\",\n            \"date\": \"2018-10-16T17:16:06.008Z\",\n            \"amount\": -10.01,\n            \"currency\": \"GBP\",\n            \"description\": \"Test\"\n        }\n    ]\n}"
+            }
+          ]
         }
       ],
       "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
@@ -5458,103 +5725,103 @@
   ],
   "variable": [
     {
-      "id": "1c9458f9-a0c2-49e4-b7c3-923167ee898c",
+      "id": "c585e2b2-c969-4dd3-ba4e-1eafc20016fc",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "96ff801f-62ae-4d91-bf3e-c018b2a80a19",
+      "id": "877a43b8-ff47-4236-862d-cf3940b6579a",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "bc666ed6-e651-446e-95b3-13d5e995dbbd",
+      "id": "c6ad450c-cd06-4aed-b939-df8623a902c0",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "aa1e1161-e0f6-490d-9a92-932f53f3ae63",
+      "id": "ed21c610-e71d-4280-93bc-b67b88860ed1",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "89971099-25f8-4a0d-a75d-5a10ca6158cb",
+      "id": "7130a7bf-dfec-4edc-9d0b-6b7f008a8895",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "1d4adb89-b12a-4769-a384-3a072e92a7ea",
+      "id": "22c7d0fc-a23e-483b-8622-eefc1fb99132",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "03cf884b-bde6-45c6-8e66-efded99ef106",
+      "id": "d703a152-9429-44ea-943b-c3283af919c7",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "5441df21-d2be-46cf-9a07-445937d5aa2c",
+      "id": "db8189ec-055b-48db-992c-0e88734ad6fd",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "5c8513fc-6233-49dc-b287-9a11847691f9",
+      "id": "10e9cbbf-aab1-44d2-85bc-72c77d5d232c",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "e3ba5df3-453c-43c0-9eb1-11094a1f8692",
+      "id": "7aafb36c-303d-441c-9f91-c59120a0bbea",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "4dd4cf76-f4ea-406d-9180-d9b948892d60",
+      "id": "110159db-155f-4a0f-b99b-e47d83a9cea2",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "699f7d0d-4a88-4036-b5cc-8027edca70ff",
+      "id": "eeff92f0-db13-401c-ab89-395078ffd24d",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "24aae0a4-80f4-4c28-b573-61f2660be2d7",
+      "id": "7d0d4975-dc3f-4cbe-b7b9-73ee3365ff47",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "0631c0ac-cdf0-429d-90fa-13b03b895b66",
+      "id": "5d74b37e-7933-4052-8020-0d2577dbdbe5",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "c4fa97b6-3c7e-4a26-8428-1b2730927fd5",
+      "id": "230fb3a6-66b9-4bdb-8e53-9c880dd0fcce",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "bc1dad91-3c18-4e8f-b01c-80dd2f6781fe",
+      "id": "fcf75800-7bb0-4130-9bef-9db1467c13fb",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "fe16bd67-2551-48f9-a2ce-7977da8e1533",
+      "id": "952b88bc-cf81-4884-8ca8-cab6b1b29f60",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
