@@ -1250,7 +1250,7 @@
             "method": "GET",
             "header": [],
             "url": "https://api.yapily.com/consents",
-            "description": "You can retrieve the consents for your application, filtered by any number of **userUuid**s, **applicationUserId**s, **institution**s and **status**es. Note that if any filter value does not match (e.g. `&applicationUserId=validUser&applicationUserId=nonExistentUser`) no consents will be returned.\n\nAll filter parameters are optional.\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| filter[applicationUserId] | Any valid applicationUserId for your application | _Optional._ Only return consents for this application user. | String |\n| filter[userUuid] | Any valid [userUuid](#d98a8253-9252-c129-9b4f-6073dc1ae01e) for your application | _Optional._  Only return consents for this Yapily user. | String |\n| filter[institution] | Any [institution](#ae9baa6b-6a74-aa96-6f6e-a15ce8c86af8) configured for your application | _Optional._ Only return consents that have been given for this institution. |  String |\n| filter[status] | [Any valid status](#e51b648f-693a-9477-f565-b939754b5166) | _Optional._ Only return consents that have been given for this institution. |  String |"
+            "description": "You can retrieve the consents for your application, filtered by any number of **userUuid**s, **applicationUserId**s, **institution**s and **status**es. Note that if any filter value does not match (e.g. `&applicationUserId=validUser&applicationUserId=nonExistentUser`) no consents will be returned. The default limit for the consents retrieved is 20. The consents are ordered by the day created. Use the offest to iterate over the consents.\n\nAll filter parameters are optional.\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| filter[applicationUserId] | Any valid applicationUserId for your application | _Optional._ Only return consents for this application user. | String |\n| filter[userUuid] | Any valid [userUuid](#d98a8253-9252-c129-9b4f-6073dc1ae01e) for your application | _Optional._  Only return consents for this Yapily user. | String |\n| filter[institution] | Any [institution](#ae9baa6b-6a74-aa96-6f6e-a15ce8c86af8) configured for your application | _Optional._ Only return consents that have been given for this institution. |  String |\n| filter[status] | [Any valid status](#e51b648f-693a-9477-f565-b939754b5166) | _Optional._ Only return consents that have been given for this institution. |  String |\n\n|from| (Any valid date)|Optional. Use this parameter to |filter consents created after the date specified| Date|\n|before| (Any valid date)|Optional. Use this parameter to |filter consents created before the date specified| Date|\n|limit| (Any valid number between 0 and 20)|Optional. Use this parameter to limit consent results, max limit is 20| Number|\n|offset| (Any valid number greater than 0)|Optional. Use this parameter to specify the offset of the results| Number|"
           },
           "response": [
             {
@@ -6409,109 +6409,109 @@
   ],
   "variable": [
     {
-      "id": "5403d222-31bb-422e-8218-2d7904bf201e",
+      "id": "0a0fa4e3-f9d6-4bc0-93cf-75cc1d19cf3c",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "1d25c56c-ab28-495e-8fa0-b9682a03959d",
+      "id": "ccb78369-4167-4986-9269-e33839440c7b",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "d46278ab-5c91-4469-86aa-e429a40982b0",
+      "id": "b64f5ce9-1a46-4781-b98b-67f35ca7845e",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "487fab13-2693-431a-a185-b3ec61fcb842",
+      "id": "5c951177-0ae2-43a2-bbec-ed24059ec22c",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "6f576f94-1475-40b0-a6c5-e664cf9881b5",
+      "id": "c0751d68-a04a-49a0-8cc0-3556d3c8abe5",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "b3d47a60-eb2a-42ef-a1fc-6dc47a67e81b",
+      "id": "ff481d7c-3a2a-4d19-b181-d82dc550f28c",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "c5794f42-69fc-40c7-87c4-87209cefb5be",
+      "id": "0ccfcec8-1d7f-4a12-8753-2cf134abdff7",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "7f5e685a-79c7-47d8-89c1-d1d4c349bcbd",
+      "id": "7077ec44-ba26-4ac9-96a0-cf0835f30aed",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "65663167-d2f3-4aa3-8ab1-c9709b9be09f",
+      "id": "ac596bfe-e5f4-45bf-987e-dbdebe1a4e94",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "9ae80f13-2fba-4d95-9a2d-ec7174b3fca7",
+      "id": "62c36889-ce92-4763-a6b8-39ae92606f79",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "5d940fa2-dcb3-4834-ad83-57769b84b85d",
+      "id": "86182ae5-b770-4ea9-9fb6-bf8f6c4aae3f",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "09d7dbf5-15c4-4763-86c2-d15b760cd520",
+      "id": "de5bce96-2ee6-4c38-aa88-591faba71001",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "012b26b1-4321-4dd3-a17f-0489bbc81e37",
+      "id": "46f4a99d-6096-47ce-a72e-f6f99d98eb3a",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "79c5d8f8-7cb4-44e0-86f5-9026148a800f",
+      "id": "32493971-f248-45a9-b878-0d8dca2738ec",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "6c513bc7-5150-4e76-86f0-f453d8449ecd",
+      "id": "7bb9dcc6-2a9a-468b-9694-d263874f2316",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "b9aee420-082a-4ab1-ae64-339bd4696c0a",
+      "id": "61532184-f48b-4e9c-92a5-6b3711ea4726",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "56709cc3-ece3-44e0-906e-d492562ff830",
+      "id": "2a38fd07-2ade-4053-b760-6bfc0f2f8e5a",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "bb1ae999-6d65-4d14-bc5e-57babe8831d6",
+      "id": "220cf1b4-ea72-4cc6-9e3a-7ea35dcf7474",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
