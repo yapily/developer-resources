@@ -5794,6 +5794,80 @@
               "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
             }
           ]
+        },
+        {
+          "name": "Get Account Periodic Payments",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "98e43700-e9c7-4598-b337-42e86b099216",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments",
+            "description": "Get the list periodic payments (standing order in UK) for an account.\n\nFeature: \n\n`ACCOUNT_PERIODIC_PAYMENTS`\n\nResponse:\n\n| Name | Description | Type |\n| ----------- | ----------| -----------|\n|id |_Optional_. A unique identifier used to identify the periodic payment order resource.| String |\n|statusDetails| Details of the periodic payments status.| |\n|statusDetails.status| Status of a Periodic Payment Order. Possible values are ACTIVE, INACTIVE or UNKNOWN.| String|\n|Payee |  Contains details about the beneficiary. | |\n|payee.accountIdentifications| Contains details about the beneficiary's account details. |  |\n|payee.accountIdentifications.type| Beneficiary account identification type. Possible values SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH | String |\n|payee.accountIdentifications.identification| Provides the value to identify the beneficiary account identification. | String |\n|payee.name|_Optional_. The name of the beneficiary.| String |\n|reference| _Optional_. Unique reference, as assigned by the beneficiary, to unambiguously refer to the payment transaction.|String  |\n|firstPaymentAmount| The amount of the first Periodic Payment. | |\n|firstPaymentAmount.amount| A number of monetary units specified in an active currency. | BigDecimal |\n|firstPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String |\n|firstPaymentDateTime| The date on which the first payment for a Periodic Payment schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|nextPaymentAmount| _Optional_. Contains the `amount` and `currency` of the next periodic payment.| |\n|nextPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency. | BigDecimal |\n|nextPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String | \n|nextPaymentDateTime| _Optional_. The date on which the next payment for a Periodic Order schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|finalPaymentAmount| _Optional_. Contains the `amount` and `currency` of the final periodic payment.||\n|finalPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency.| BigDecimal |\n|finalPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). |String |\n|finalPaymentDateTime| _Optional_. The date on which the final payment for a Periodic Payment schedule will be made. | [Date](https://docs.yapily.com/#date-time-format) |\n|frequency|The frequency details of the Periodic Payment.| |\n|frequency.frequencyType| The frequency value of the periodic payment. Possible values are DAILY, EVERY_WORKING_DAY, CALENDAR_DAY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, EVERY_TWO_MONTHS, QUARTERLY, SEMIANNUAL, ANNUAL. | Enum |\n|frequencyDetails.intervalWeek| _Optional_. The `intervalWeek` is used with frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).| Integer |\n|frequency.intervalMonth| _Optional_. The `intervalMonth` is used with frequency value of MONTHLY. It is used to define the frequency of the month (i.e. every 4th month).| Integer |\n|frequency.executionDay| _Optional_. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n\n&nbsp;  \n&nbsp;   \n\n__Frequency explained__\n\nFrequency for Periodic Payment Order follows ISO20022 `EventFrequency7Code` data set.\n\n| Name | Definition |\n| ---- | ---------- |\n|ANNUAL| Event takes place once a year.|\n|SEMIANNUAL| Event takes place every six months or two times a year.|\n|QUATERLY| Event takes place every three months or four times a year. |\n|MONTHLY| Event takes place every month.|\n|EVERY_TWO_MONTHS| Event takes place every two months. |\n|WEEKLY| Event takes place once a week.|\n|EVERY_TWO_WEEKS| Event takes place every two weeks. |\n|DAILY| Event takes place every day.|\n\nThe above data set is also extended to other values inorder to support non ISO values of frequency:\n\n| Name | Definition |\n| ---- | ---------- |\n|EVERY_WORKING_DAY| Event takes place every working day i.e. every day of the week except 'SATURDAY' and 'SUNDAY'|\n|CALENDER_DAY| Event takes every calendar day|\n\nThe above frequency values along with other three fields complete the frequency model i.e.\n\n| Field | Description |\n| ---- | ---------- |\n|intervalWeek| The intervalWeek is used with frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).|\n|intervalMonth| The intervalMonth is used with frequency value of MONTHLY. It is used to define the frequency of the month (i.e. every 4th month).|\n|executionDay| The executionDay is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).|\n\n__Frequency examples__:\n\n|Description | ExecutionDay | IntervalWeek | IntervalMonth| Frequency|\n| --- | --- | --- | --- | --- |\n| Every day | - | - | - | EVERYDAY |\n| Every working day | - | - | - | EVERY_WORKING_DAY |\n| Every 15 Calendar day. | 15 | - | - | CALENDAR_DAY|\n| Every week, on the 3rd day of the week. | 3 | - | 1 | WEEKLY|\n| Every 2nd week, on the 3rd day of the week. | 3 | - | 2 | EVERY_TWO_WEEKS |\n| Every 3rd week, on the 3rd day of the week. | 3 | 3 | 3 | WEEKLY|\n| Every month, on the 2nd week of the month, and on the third day of the week. | 3 | 2 | 1 | MONTHLY|\n| Every month, on the first day of the month. | 1 | - | 1 | MONTHLY|\n| Every 2nd month, on the 15th day of the month. | 15 | - | 2 | EVERY_TWO_MONTHS|\n| Every 3rd month, on the 15th day of the month. | 15 | - | 3 | MONTHLY|\n| Every 6th month, on the 15th day of the month. | 15 | - | - | SEMIANNUAL|\n| Every 12 month, on the 3rd day. | 3 | - | - | ANNUAL|\n| Every Quarter | - | - | - | QUARTERLY|\n"
+          },
+          "response": [
+            {
+              "id": "2e92d31d-a4f4-43b7-8dc6-1f28b5d35d3e",
+              "name": "200 OK (PERIODIC PAYMENTS)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e7b01315-cbc5-4d0b-91e8-4f77cb1a3253\",\n        \"count\": 2,\n        \"pagination\": {\n            \"totalCount\": 2,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"100000000000000000000010\",\n            \"statusDetails\": {\n                \"status\": \"UNKNOWN\"\n            },\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"20012001\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"181818\"\n                    }\n                ]\n            },\n            \"reference\": \"Glock Hire\",\n            \"firstPaymentAmountDetails\": {\n                \"amount\": 199.95,\n                \"currency\": \"GBP\"\n            },\n            \"firstPaymentDateTime\": \"2012-01-10T00:00:00Z\",\n            \"nextPaymentAmountDetails\": {\n                \"amount\": 199.95,\n                \"currency\": \"GBP\"\n            },\n            \"nextPaymentDateTime\": \"2018-01-10T00:00:00Z\",\n            \"finalPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"finalPaymentDateTime\": \"2020-01-10T00:00:00Z\",\n            \"frequencyDetails\": {\n                \"frequency\": \"MONTHLY\",\n                \"intervalWeek\": 1,\n                \"executionDay\": 1\n            },\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"100000000000000000000011\",\n            \"statusDetails\": {\n                \"status\": \"UNKNOWN\"\n            },\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"19871897\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"202020\"\n                    }\n                ]\n            },\n            \"reference\": \"Allowance\",\n            \"firstPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"firstPaymentDateTime\": \"2015-09-30T23:00:00Z\",\n            \"nextPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"nextPaymentDateTime\": \"2018-01-01T00:00:00Z\",\n            \"frequencyDetails\": {\n                \"frequency\": \"DAILY\"\n            },\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/periodic-payment-orders?limit=1000\"\n    }\n}"
+            },
+            {
+              "id": "961b297a-435c-4457-93bd-933bdd5fceab",
+              "name": "401 UNAUTHORIZED",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            }
+          ]
         }
       ],
       "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
@@ -6557,109 +6631,109 @@
   ],
   "variable": [
     {
-      "id": "d9def010-a6bc-419f-8b89-0929da3fd2d5",
+      "id": "132441fb-602c-411c-a4b6-51d1429daa1a",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "c30cc6e4-13f1-44fe-b699-e7f30c873c8c",
+      "id": "35f7a219-e995-40b3-8a59-92542442cbd4",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "43f0175c-7688-423d-9017-2c68547eee67",
+      "id": "9ef9d344-7631-4199-9a78-8274f4bf6b3d",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "9577c640-24b5-4533-b9ad-734e3bb31f16",
+      "id": "1d103076-195d-4644-a426-461a5abd0359",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "fff33031-e7d1-4158-91cb-83c462abad5d",
+      "id": "f7b51b17-1725-44da-9e04-b57a2c2671a4",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "d3ec14fd-10c6-4ef3-90e6-16ce28bdd92a",
+      "id": "dea2d5bf-5e61-4791-915d-6a09f26203bc",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "a366010b-627a-49da-bf0e-edcc5a598390",
+      "id": "3cf580b3-e2e4-4eef-aaa5-4dd5c2b19d9f",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "d8f8fc38-4b8f-47ed-8652-15ae99bb1a68",
+      "id": "ddfc8985-b951-4781-9c1d-46bf0a1942bb",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "a796fcd9-4537-4078-abb1-e44c98e21a2a",
+      "id": "d0d35659-8c3e-4a9b-b5d2-52e4092eec8c",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "2d448fe1-fad8-4ce8-b4a2-717d11b3ef3c",
+      "id": "8108266a-1c11-48df-a78d-0cc4a50269f0",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "750cb0cf-1bf5-4947-a324-c8f736dfe4e6",
+      "id": "2858e74c-fd8b-4541-80f2-05dd67bcec9d",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "b75de35b-ee39-41c6-9b07-983b9e7c415a",
+      "id": "705b90d7-eaba-4add-b9b4-d3d4c4a90c11",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "49f0ee0e-8ad5-4b38-ac11-b3274a9929d5",
+      "id": "8285707b-3fee-4506-bb59-32954948af55",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "f7e48d0b-8c83-49a4-bd0e-2fadf874b706",
+      "id": "20d05941-0c3a-4592-ae37-1da8b72a341b",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "b2d798dd-8eff-4a3b-b9e3-7c585f5a344b",
+      "id": "8b6731f2-89f0-4d17-820e-4809a3edc95b",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "34432704-c767-43ec-b3ce-774404c6b0e8",
+      "id": "e570a790-0f67-48e4-9a5b-8f46b636b06b",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "47f287ee-93cc-4e8e-bc64-c1917781658c",
+      "id": "3403579b-6500-46b9-a237-5727680e4499",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "de870762-d141-441e-9ddd-cc941aa8fe8d",
+      "id": "d398fa51-0d09-4eaa-aa9b-caca24456566",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
