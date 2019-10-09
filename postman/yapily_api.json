@@ -5899,158 +5899,6 @@
       "name": "Payments",
       "item": [
         {
-          "name": "Create Authorisation Request for a Single Payment",
-          "_postman_id": "2451562f-0e4d-4c23-9fd1-9c48bde72e98",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\t\"amount\":0.00,\n\t\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\t\"name\":\"RECIPIENT_NAME\",\n\t\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\t\"reference\":\"REFERENCE\",\n\t\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\t\"sortCode\":\"SORT_CODE\"\n\t}\n}"
-            },
-            "url": "https://api.yapily.com/payment-sortcode-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a single payment.\n\nFeature: `INITIATE_SINGLE_PAYMENT_SORTCODE`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Either the userUuid or applicationUserId must be provided._ The uuid for your application user. | String |\n| applicationUserId | _Either the userUuid or applicationUserId must be provided._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create a single payment](https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6). | Object |\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
-          },
-          "response": [
-            {
-              "id": "db6f0b4b-b47e-4f67-8db2-dc2f241c0b97",
-              "name": "201 Created",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\",\n\t\"oneTimeToken\": \"true\",\n\t\"paymentRequest\": {\n\t\t\"amount\": 166.7,\n\t\t\"currency\": \"GBP\",\n\t\t\"name\": \"Bojack\",\n\t\t\"country\": \"GB\",\n\t\t\"reference\": \"House Bills\",\n\t\t\"accountNumber\": \"12345678\",\n\t\t\"sortCode\": \"11-11-11\"\n\t}\n}"
-                },
-                "url": "https://api.yapily.com/payment-sortcode-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"60137e10-157f-4966-9ce4-12f9c48c8f20\"\n    },\n    \"data\": {\n        \"id\": \"130b9c0c-773f-430c-b9a3-ef55cda59384\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-18T14:08:15Z\",\n        \"expiresAt\": \"2018-10-18T14:12:15Z\",\n        \"timeToExpireInMillis\": 239483,\n        \"featureScope\": [\n            \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_SINGLE_PAYMENT_SORTCODE\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=383a7a2cf3d94f99806c87beb71a7c65&nonce=383a7a2cf3d94f99806c87beb71a7c65&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIzODNhN2EyY2YzZDk0Zjk5ODA2Yzg3YmViNzFhN2M2NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJQYTY4YzgwMTMtYzI3NS00ZmUxLWE0NmUtMjI4YTJiNDM3OWVjIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IlBhNjhjODAxMy1jMjc1LTRmZTEtYTQ2ZS0yMjhhMmI0Mzc5ZWMiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMzgzYTdhMmNmM2Q5NGY5OTgwNmM4N2JlYjcxYTdjNjUiLCJqdGkiOiIyYTRmNTZkNi03YWQ2LTQxODUtOGQ5ZS01ZGY2ZGRhYjRkOWYiLCJpYXQiOjE1Mzk4NzE2OTUsImV4cCI6MTUzOTg3MzQ5NX0.mkvkcGrB0KW_OP9tQrbzGYdWL4FrRQc0lJYrTQ-m0zzqBNDAFqocBwV6R9YtAnaJeF0hDfjhQaQEF4iN7F0qa4OoZ-kbf6LIDglxMyNKHNf37-F0L06kRM36s0rv1WJxCOW910wjFg75renPKjwQHJU9EfotLPO3y2-vd--IpIzIwW64uyiKuP6bvNJ5dmecotmWQISZ5CDReURHEkwGzovWklVagiiVSrai9xi370YFSLXqmXPRl6pLQT2T6JnTNcOMhTEHzkTbx0z8TpGmuWxMKyqcWJt1KlSm8wSdsq6mqXt_oyvPDJFFb3lfb8tkkeTt-nCHj3ggzbeS8xbR2w\"\n    }\n}"
-            },
-            {
-              "id": "4ef9aac0-62a4-43de-aaf8-c53a01e79fca",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\": \"{{senderAccountId}}\",\n\t\t\"amount\": 1.00,\n\t\t\"currency\": \"{{currency}}\",\n\t\t\"name\": \"{{name}}\",\n\t\t\"country\": \"{{country}}\",\n\t\t\"reference\": \"{{reference}}\",\n\t\t\"accountNumber\": \"{{accountNumber}}\",\n\t\t\"sortCode\": \"{{sortCode}}\"\n\t}\n}"
-                },
-                "url": "https://api.yapily.com/payment-sortcode-auth-requests"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Date",
-                  "value": "Wed, 09 Jan 2019 12:13:14 GMT"
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "114"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 google"
-                },
-                {
-                  "key": "Alt-Svc",
-                  "value": "clear"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            },
-            {
-              "id": "df5cc2c3-49a7-43cd-987b-90db706213bf",
-              "name": "201 Created (with known sender account Id)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\",\n\t\"oneTimeToken\": \"true\",\n\t\"paymentRequest\": {\n\t\t\"senderAccountId\": \"9bd5ae68-2266-4dad-865b-4980550a72b7\",\n\t\t\"amount\": 166.7,\n\t\t\"currency\": \"GBP\",\n\t\t\"name\": \"Bojack\",\n\t\t\"country\": \"GB\",\n\t\t\"reference\": \"House Bills\",\n\t\t\"accountNumber\": \"12345678\",\n\t\t\"sortCode\": \"11-11-11\"\n\t}\n}"
-                },
-                "url": "https://api.yapily.com/payment-sortcode-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"60137e10-157f-4966-9ce4-12f9c48c8f20\"\n    },\n    \"data\": {\n        \"id\": \"130b9c0c-773f-430c-b9a3-ef55cda59384\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-18T14:08:15Z\",\n        \"expiresAt\": \"2018-10-18T14:12:15Z\",\n        \"timeToExpireInMillis\": 239483,\n        \"featureScope\": [\n            \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_SINGLE_PAYMENT_SORTCODE\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=383a7a2cf3d94f99806c87beb71a7c65&nonce=383a7a2cf3d94f99806c87beb71a7c65&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIzODNhN2EyY2YzZDk0Zjk5ODA2Yzg3YmViNzFhN2M2NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJQYTY4YzgwMTMtYzI3NS00ZmUxLWE0NmUtMjI4YTJiNDM3OWVjIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IlBhNjhjODAxMy1jMjc1LTRmZTEtYTQ2ZS0yMjhhMmI0Mzc5ZWMiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMzgzYTdhMmNmM2Q5NGY5OTgwNmM4N2JlYjcxYTdjNjUiLCJqdGkiOiIyYTRmNTZkNi03YWQ2LTQxODUtOGQ5ZS01ZGY2ZGRhYjRkOWYiLCJpYXQiOjE1Mzk4NzE2OTUsImV4cCI6MTUzOTg3MzQ5NX0.mkvkcGrB0KW_OP9tQrbzGYdWL4FrRQc0lJYrTQ-m0zzqBNDAFqocBwV6R9YtAnaJeF0hDfjhQaQEF4iN7F0qa4OoZ-kbf6LIDglxMyNKHNf37-F0L06kRM36s0rv1WJxCOW910wjFg75renPKjwQHJU9EfotLPO3y2-vd--IpIzIwW64uyiKuP6bvNJ5dmecotmWQISZ5CDReURHEkwGzovWklVagiiVSrai9xi370YFSLXqmXPRl6pLQT2T6JnTNcOMhTEHzkTbx0z8TpGmuWxMKyqcWJt1KlSm8wSdsq6mqXt_oyvPDJFFb3lfb8tkkeTt-nCHj3ggzbeS8xbR2w\"\n    }\n}"
-            }
-          ]
-        },
-        {
           "name": "Create Single Payment",
           "_postman_id": "4521aa4d-75c2-4c22-9629-acb96c14e4e6",
           "request": {
@@ -6631,109 +6479,109 @@
   ],
   "variable": [
     {
-      "id": "254b1587-8045-4c22-bfff-0ab5fb3a91d1",
+      "id": "6d4edc91-2f0b-4215-9cfc-510d967879cd",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "bd0622d1-58d5-470f-9279-b854c47f7053",
+      "id": "c376e6ce-6822-4d68-9627-83b3ac1619c8",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "af6731cd-dce3-4c77-a152-df21f386f42a",
+      "id": "534f2624-d29b-4da2-86c0-7608afb78fe0",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "cefc252d-4578-43eb-9185-d6f0d7a36cc9",
+      "id": "4044fbb9-0c37-47d0-bf81-994d3cf9abdd",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "042ee8ba-1e75-47a8-b3d3-1716129bcc40",
+      "id": "b4accda1-bf6c-41ac-b06f-d7cf6054d5df",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "1e39c3ff-2d86-444c-9a12-2bb868ccd3e0",
+      "id": "888ed01a-13ad-4a2d-8ce4-19911054c9cd",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "111a6647-80a2-41b9-b491-78037a2ea906",
+      "id": "8f283b71-c92a-4d83-ace2-02507cca0f05",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "654e6116-e3c7-4517-9031-b15922e4a806",
+      "id": "277353e6-0aa7-44de-948f-0da1fdb6a398",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "665a46f7-05c6-4364-8ec6-dd97edb0b0fd",
+      "id": "bfa38eed-6f29-4470-9b41-fa3ac75f44d7",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "bade68c6-a074-4fd0-a424-4a73766ce808",
+      "id": "9218fea6-7fee-4b0b-9454-d534e2f441a8",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "09c0fab2-bed9-4276-91da-eb721c385b66",
+      "id": "d3eb9134-df42-4b6d-bb9b-9681d11189e4",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "20587d8c-f720-49d8-84b0-af8eb439d7a7",
+      "id": "c4c04f4a-5bee-4a94-95fb-14e09120e3b3",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "cf4ec7b3-c28f-41a7-9d7d-c95d01f6b453",
+      "id": "514d641f-9d86-47bf-af78-f5a3fee142d6",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "519f7369-a009-4111-a19a-ee9ac9a7a017",
+      "id": "377f1f0d-ffe0-46eb-8737-f7420f88ce7a",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "3948026e-29fc-4cf7-b08f-b1f271b52f9b",
+      "id": "b87579a2-76dc-4c08-bce9-34cd4ce01c34",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "01f812ee-a48c-49c4-8781-3343a38b13d2",
+      "id": "feaf976d-cc76-4826-9998-f7698c634265",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "2014573b-0ab2-481b-83b9-84e4315ba25f",
+      "id": "9358f3ff-cfea-4630-9e59-68ca9e9e2d6c",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "953716e8-c13d-44f6-8882-3f3e6f4c062d",
+      "id": "b19b293c-b779-4513-aafa-17eb43a7e3c5",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
