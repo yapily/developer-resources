@@ -5899,126 +5899,6 @@
       "name": "Payments",
       "item": [
         {
-          "name": "Get Single Payment Status",
-          "_postman_id": "d0de129d-63c4-42e5-9769-a03069fa08ce",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": "https://api.yapily.com/payments/{{payment-id}}",
-            "description": "Feature: `EXISTING_PAYMENTS_DETAILS`"
-          },
-          "response": [
-            {
-              "id": "4766e046-622b-47bc-a1a7-31cf86b71b84",
-              "name": "200 OK Response",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Institution",
-                    "value": "{{institution-id}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/payment-initiations/{{payment-id}}"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"bef75eab-f6f2-4c87-a040-3962e22f5d81\"\n    },\n    \"data\": {\n        \"id\": \"52768366-60e3-4561-8db3-0e3649d1a638\",\n        \"status\": \"COMPLETED\",\n        \"createdAt\": \"2018-10-18T14:25:50Z\"\n    }\n}"
-            },
-            {
-              "id": "a5169a0e-8eb8-463d-a608-09fdca6e3ac0",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "url": "https://api.yapily.com/payments/{{payment-id}}"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Date",
-                  "value": "Wed, 09 Jan 2019 12:12:20 GMT"
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "114"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 google"
-                },
-                {
-                  "key": "Alt-Svc",
-                  "value": "clear"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            }
-          ]
-        },
-        {
           "name": "Transfer",
           "_postman_id": "19909d3a-0d5c-4e06-b97e-0d779df3b49d",
           "request": {
@@ -6212,109 +6092,109 @@
   ],
   "variable": [
     {
-      "id": "ad277ca1-ccd8-4434-bf48-338cd9b952fd",
+      "id": "54475bc4-247f-4f06-9231-34a6d93e50fd",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "a4e4a480-3983-4d42-94e6-020c146fae16",
+      "id": "ab857cb9-c908-4cf9-b872-d95fdd5032f1",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "052791aa-c3f5-4c7b-88af-2ab9ce8087f0",
+      "id": "4a23d8c0-d279-4dfe-a3f7-737535aa2ecb",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "baba571b-5012-4880-b56b-9cb5ba7e0433",
+      "id": "d4455d59-4e28-4f1b-bdf2-45ac2eaa2c8a",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "6f47c162-04da-423c-9bb8-b63f87c60ba7",
+      "id": "97e31f03-d9f9-4423-b56f-0fbb4cbf4ba3",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "f2164c58-cfd6-4d3b-9707-998887d69bc1",
+      "id": "a0e79e13-a9e5-45fe-8b90-1c7c25163b49",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "754a31c8-ec38-4e16-8347-5540a0e3d9d9",
+      "id": "b7c73c3e-6b3c-4d69-ae5c-05d2ea061a55",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "31b3c96f-f5cb-481c-82f2-dbb11bb04ed7",
+      "id": "9f1cc05d-9e28-4548-8f4d-dd0f8cc97bf3",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "ab9bd6d9-abc5-4670-aecb-77b3c18559d2",
+      "id": "ecfba7ae-6d32-4358-9dcf-bd5a7ae32ed1",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "089fbe3c-a761-4a0e-aff7-9e885ef6db13",
+      "id": "9efeeb05-04f9-406b-b2a7-1aae5dea5a45",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "9ca0546f-43fd-4ff7-9ecb-650536078850",
+      "id": "4b924e83-b5a5-429e-9e64-b12b9dfabb56",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "c2f11e9e-1476-43ac-8f54-9088f841f41a",
+      "id": "6d06c4af-0b32-419b-b402-4075f5406e3e",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "3ecf7797-e24a-413b-b3e1-e0a798c45169",
+      "id": "76503c88-693f-4943-926d-404dccd551d7",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "d7f06f07-326e-4b0a-ac23-5b204c79b887",
+      "id": "494b1bac-d1f2-499b-8572-af96203c9126",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "8e3d7549-77f3-4675-b4ae-776a18c3d5d7",
+      "id": "40959cf3-ba48-4467-8da1-fcfbb622d6fd",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "75f3334e-1f13-4297-9efb-96c80d177694",
+      "id": "aabb48d2-f2f3-4c3e-9b4a-3e9fc3652842",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "0c3a0ced-38f1-4d3b-9799-570b842d1ff1",
+      "id": "651558f7-2970-4149-8a63-64d7271b50ad",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "80745f7e-b112-4546-863c-5c681274df06",
+      "id": "848e7299-63b0-4c68-bda0-baa6a94e2849",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
