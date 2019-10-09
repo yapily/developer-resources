@@ -5899,273 +5899,6 @@
       "name": "Payments",
       "item": [
         {
-          "name": "Create Single Payment",
-          "_postman_id": "4521aa4d-75c2-4c22-9629-acb96c14e4e6",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"senderAccountId\":\"SENDER_ACCOUNT_ID\",\n\t\"amount\":0.00,\n\t\"currency\":\"3_LETTER_CURRENCY_CODE\",\n\t\"name\":\"RECIPIENT_NAME\",\n\t\"country\":\"2_LETTER_COUNTRY_CODE\",\n\t\"reference\":\"REFERENCE\",\n\t\"accountNumber\":\"ACCOUNT_NUMBER\",\n\t\"sortCode\":\"SORT_CODE\"\n}"
-            },
-            "url": "https://api.yapily.com/payment-sortcode",
-            "description": "Feature: `CREATE_SINGLE_PAYMENT_SORTCODE`\n\nFollow the [user authorisation flow](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) to create a single payment, unless creating a payment for an institution with **credentialsType** `API_KEY`.\n\nNote: the payload of this request must exactly match the payment authorisation request in the [payment authorisation request](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98).\n\n| Field | Description | Type |\n| - | - | - |\n| senderAccountId | _Optional._ The institution account id of the sender. Currently only required by institutions with the **credentialsType** `API_KEY` | String |\n| amount | The decimal representation of the amount | Number |\n| currency | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP) | String |\n| name | The recipient [person or business] name | String |\n| country | The [2-letter country code](https://www.gov.uk/government/publications/iso-country-codes--2) of the payment destination. Always \"GB\" for UK domestic payments | String |\n| reference | _Optional._ Payment reference/description | String |\n| accountNumber | Recipient account number | String |\n| sortCode | Recipient sort code | String |"
-          },
-          "response": [
-            {
-              "id": "e397995e-1e6f-4c55-9e29-b2005e0d1044",
-              "name": "201 Created",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"name\":\"Hollyhock\",\n\t\"amount\":1.00,\n\t\"currency\":\"GBP\",\n\t\"reference\":\"A gift\",\n\t\"country\":\"GB\",\n\t\"accountNumber\":\"87654321\",\n\t\"sortCode\":\"123456\",\n\t\"paymentReferenceId\":\"my-reference-id-123456789\"\n}"
-                },
-                "url": "https://api.yapily.com/payments/sortcode"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "158",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 27 Jul 2018 15:28:07 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"data\": {\n        \"id\": \"1e5e32c0-638c-40cd-bff5-e8d4ccca3dcd\",\n        \"status\": \"PENDING\",\n        \"createdAt\": \"2018-07-27T15:28:07.15Z\"\n    }\n}"
-            },
-            {
-              "id": "a865ef68-122a-4a3f-9c20-eb3d89c12a4b",
-              "name": "400 Bad Request",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"accountNumber\":\"87654321\",\n\t\"sortCode\":\"123456\"\n}"
-                },
-                "url": "https://api.yapily.com/payments/sortcode"
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "121",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 27 Jul 2018 15:30:35 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"status\": \"BAD_REQUEST\",\n        \"message\": \"Missing required creator property 'senderAccountId' (index 0)\"\n    }\n}"
-            },
-            {
-              "id": "2bbb3a24-c8bc-450d-a73d-875ca6b8c2be",
-              "name": "201 Created (with known sender account Id)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS",
-                    "description": "or `Bearer ACCESS_TOKEN`",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"senderAccountId\":\"acc_12345ABCDEfghij0987654\",\n\t\"name\":\"Hollyhock\",\n\t\"amount\":1.00,\n\t\"currency\":\"GBP\",\n\t\"reference\":\"A gift\",\n\t\"country\":\"GB\",\n\t\"accountNumber\":\"87654321\",\n\t\"sortCode\":\"123456\",\n\t\"paymentReferenceId\":\"my-reference-id-123456789\"\n}"
-                },
-                "url": "https://api.yapily.com/payment-sortcode"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"data\": {\n        \"id\": \"1e5e32c0-638c-40cd-bff5-e8d4ccca3dcd\",\n        \"status\": \"PENDING\",\n        \"createdAt\": \"2018-07-27T15:28:07.15Z\"\n    }\n}"
-            }
-          ]
-        },
-        {
           "name": "Get Single Payment Status",
           "_postman_id": "d0de129d-63c4-42e5-9769-a03069fa08ce",
           "request": {
@@ -6479,109 +6212,109 @@
   ],
   "variable": [
     {
-      "id": "ace44fcf-2c22-4c16-95ec-60d4cd1b57a6",
+      "id": "ad277ca1-ccd8-4434-bf48-338cd9b952fd",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "5f222a01-70bd-4f9a-8aa0-4c730e0d2004",
+      "id": "a4e4a480-3983-4d42-94e6-020c146fae16",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "baedd6cb-4bb4-4a39-a15c-758a59c48b5b",
+      "id": "052791aa-c3f5-4c7b-88af-2ab9ce8087f0",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "35b7d004-0bcb-4055-8507-e009b94016a2",
+      "id": "baba571b-5012-4880-b56b-9cb5ba7e0433",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "0217a7dc-32ca-43a7-9934-547094374368",
+      "id": "6f47c162-04da-423c-9bb8-b63f87c60ba7",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "b5d29da4-7b3e-4d0d-a009-3aae4c13644a",
+      "id": "f2164c58-cfd6-4d3b-9707-998887d69bc1",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "f9894731-cf23-4c05-b3e9-479390523f54",
+      "id": "754a31c8-ec38-4e16-8347-5540a0e3d9d9",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "d0d2bca3-c0b4-47b1-9112-dac5ab7d67e6",
+      "id": "31b3c96f-f5cb-481c-82f2-dbb11bb04ed7",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "a64f32e5-40fa-4893-9667-0da0dc1b7bfe",
+      "id": "ab9bd6d9-abc5-4670-aecb-77b3c18559d2",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "f0f36e49-6b4d-44b3-a5d1-23ead2cff7d2",
+      "id": "089fbe3c-a761-4a0e-aff7-9e885ef6db13",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "e72a1d46-a6e8-45f5-807f-926f45ffb53b",
+      "id": "9ca0546f-43fd-4ff7-9ecb-650536078850",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "ae5da65b-dd1f-4773-a4ca-0b74f01e5a90",
+      "id": "c2f11e9e-1476-43ac-8f54-9088f841f41a",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "74ecfba9-7efd-493d-a4de-b229e4165f5e",
+      "id": "3ecf7797-e24a-413b-b3e1-e0a798c45169",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "f7a21d1c-8f1a-4860-b746-40d4152e1363",
+      "id": "d7f06f07-326e-4b0a-ac23-5b204c79b887",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "581dbe19-2fc4-4017-a767-c18e19c23830",
+      "id": "8e3d7549-77f3-4675-b4ae-776a18c3d5d7",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "f55ae058-73dc-4093-abf7-b2716de56718",
+      "id": "75f3334e-1f13-4297-9efb-96c80d177694",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "68f38190-09d1-4762-a2ca-a5af9d8e8da8",
+      "id": "0c3a0ced-38f1-4d3b-9799-570b842d1ff1",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "b757839e-f49c-43bd-a2d5-41eea94882ab",
+      "id": "80745f7e-b112-4546-863c-5c681274df06",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
