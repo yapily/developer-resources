@@ -5822,7 +5822,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments",
-            "description": "Returns a list of periodic payments (standing orders in the UK) for a specific account.\n\nFeature: \n\n`ACCOUNT_PERIODIC_PAYMENTS`\n\nResponse:\n\n| Name | Description | Type |\n| ----------- | ----------| -----------|\n|id |_Optional_. A unique identifier used to identify the periodic payment order resource.| String |\n|statusDetails| Details of the periodic payments status.| |\n|statusDetails.status| Status of a Periodic Payment Order. Possible values are ACTIVE, INACTIVE or UNKNOWN.| String|\n|Payee |  Contains details about the beneficiary. | |\n|payee.accountIdentifications| Contains details about the beneficiary's account details. |  |\n|payee.accountIdentifications.type| Beneficiary account identification type. Possible values SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH | String |\n|payee.accountIdentifications.identification| Provides the value to identify the beneficiary account identification. | String |\n|payee.name|_Optional_. The name of the beneficiary.| String |\n|reference| _Optional_. Unique reference, as assigned by the beneficiary, to unambiguously refer to the payment transaction.|String  |\n|firstPaymentAmount| The amount of the first Periodic Payment. | |\n|firstPaymentAmount.amount| A number of monetary units specified in an active currency. | BigDecimal |\n|firstPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String |\n|firstPaymentDateTime| The date on which the first payment for a Periodic Payment schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|nextPaymentAmount| _Optional_. Contains the `amount` and `currency` of the next periodic payment.| |\n|nextPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency. | BigDecimal |\n|nextPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String | \n|nextPaymentDateTime| _Optional_. The date on which the next payment for a Periodic Order schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|finalPaymentAmount| _Optional_. Contains the `amount` and `currency` of the final periodic payment.||\n|finalPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency.| BigDecimal |\n|finalPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). |String |\n|finalPaymentDateTime| _Optional_. The date on which the final payment for a Periodic Payment schedule will be made. | [Date](https://docs.yapily.com/#date-time-format) |\n|frequency|The frequency details of the Periodic Payment.| |\n|frequency.frequencyType| The frequency value of the periodic payment. Possible values are DAILY, EVERY_WORKING_DAY, CALENDAR_DAY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, EVERY_TWO_MONTHS, QUARTERLY, SEMIANNUAL, ANNUAL. | Enum |\n|frequencyDetails.intervalWeek| _Optional_. The `intervalWeek` is used with frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).| Integer |\n|frequency.intervalMonth| _Optional_. The `intervalMonth` is used with frequency value of MONTHLY. It is used to define the frequency of the month (i.e. every 4th month).| Integer |\n|frequency.executionDay| _Optional_. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n\n&nbsp;  \n&nbsp;   \n\n__Possible values for frequencyDetails.frequency__\n\nFrequency values defined by the ISO20022 `EventFrequency7Code` data set:\n\n`ANNUAL`, `SEMIANNUAL`, `QUATERLY`, `MONTHLY`, `EVERY_TWO_MONTHS`, `WEEKLY`, `EVERY_TWO_WEEKS`, `DAILY`.\n\nOther supported values of frequency:\n\n| Name | Definition |\n| ---- | ---------- |\n|EVERY_WORKING_DAY| Event takes place every working day (every day of the week except 'SATURDAY' and 'SUNDAY').|\n|CALENDER_DAY| Event takes place on a calendar day. For example, 13 means '13th'.|\n\n__Other fields in the frequencyDetails object__\n\n| Field | Description |\n| ---- | ---------- |\n|intervalWeek| The intervalWeek is used with a frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (for example, every 2nd week) or week in a month ( i.e. 2nd week of a month).|\n|intervalMonth| The intervalMonth is used with frequency value of MONTHLY. It is used to define the frequency of the month (for example, every 4th month).|\n|executionDay| The executionDay is used to define the day on which payment is to be executed. (for example, every 2nd week, on the 3rd day of the week would have an `executionDay` of 3).|\n\n__Frequency examples__:\n\n|Description | ExecutionDay | IntervalWeek | IntervalMonth| Frequency|\n| --- | --- | --- | --- | --- |\n| Every day. | - | - | - | EVERYDAY |\n| Every working day. | - | - | - | EVERY_WORKING_DAY |\n| Every 15th day of the month. | 15 | - | - | CALENDAR_DAY|\n| Every week, on the 3rd day of the week. | 3 | 1 | - | WEEKLY|\n| Every 2nd week, on the 3rd day of the week. | 3 | 2 | - | EVERY_TWO_WEEKS |\n| Every 3rd week, on the 3rd day of the week. | 3 | 3 | - | WEEKLY|\n| Every month, on the 2nd week of the month, and on the third day of the week. | 3 | 2 | 1 | MONTHLY|\n| Every month, on the first day of the month. | 1 | - | 1 | MONTHLY|\n| Every 2nd month, on the 15th day of the month. | 15 | - | 2 | EVERY_TWO_MONTHS|\n| Every 3rd month, on the 15th day of the month. | 15 | - | 3 | MONTHLY|\n| Every 6th month, on the 15th day of the month. | 15 | - | - | SEMIANNUAL|\n| Every 12 month, on the 3rd day. | 3 | - | - | ANNUAL|\n| Every quarter. | - | - | - | QUARTERLY|"
+            "description": "Returns a list of periodic payments (standing orders in the UK) for a specific account.\n\nFeature: \n\n`ACCOUNT_PERIODIC_PAYMENTS`\n\nResponse:\n\n| Name | Description | Type |\n| ----------- | ----------| -----------|\n|id |_Optional_. A unique identifier used to identify the periodic payment order resource.| String |\n|statusDetails| Details of the periodic payments status.| |\n|statusDetails.status| Status of a Periodic Payment Order. Possible values are ACTIVE, INACTIVE or UNKNOWN.| String|\n|Payee |  Contains details about the beneficiary. | |\n|payee.accountIdentifications| Contains details about the beneficiary's account details. |  |\n|payee.accountIdentifications.type| Beneficiary account identification type. Possible values SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH | String |\n|payee.accountIdentifications.identification| Provides the value to identify the beneficiary account identification. | String |\n|payee.name|_Optional_. The name of the beneficiary.| String |\n|reference| _Optional_. Unique reference, as assigned by the beneficiary, to unambiguously refer to the payment transaction.|String  |\n|firstPaymentAmount| The amount of the first Periodic Payment. | |\n|firstPaymentAmount.amount| A number of monetary units specified in an active currency. | BigDecimal |\n|firstPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String |\n|firstPaymentDateTime| The date on which the first payment for a Periodic Payment schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|nextPaymentAmount| _Optional_. Contains the `amount` and `currency` of the next periodic payment.| |\n|nextPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency. | BigDecimal |\n|nextPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String | \n|nextPaymentDateTime| _Optional_. The date on which the next payment for a Periodic Order schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|finalPaymentAmount| _Optional_. Contains the `amount` and `currency` of the final periodic payment.||\n|finalPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency.| BigDecimal |\n|finalPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). |String |\n|finalPaymentDateTime| _Optional_. The date on which the final payment for a Periodic Payment schedule will be made. | [Date](https://docs.yapily.com/#date-time-format) |\n|frequency|The frequency details of the Periodic Payment.| |\n|frequency.frequencyType| The frequency value of the periodic payment. Possible values are DAILY, EVERY_WORKING_DAY, CALENDAR_DAY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, EVERY_TWO_MONTHS, QUARTERLY, SEMIANNUAL, ANNUAL. | Enum |\n|frequencyDetails.intervalWeek| _Optional_. The `intervalWeek` is used with frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).| Integer |\n|frequency.intervalMonth| _Optional_. The `intervalMonth` is used with frequency value of MONTHLY. It is used to define the frequency of the month (i.e. every 4th month).| Integer |\n|frequency.executionDay| _Optional_. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n\n&nbsp;  \n&nbsp;   \n\n__Possible values for frequencyDetails.frequency__\n\nFrequency values defined by the ISO20022 `EventFrequency7Code` data set:\n\n`ANNUAL`, `SEMIANNUAL`, `QUATERLY`, `MONTHLY`, `EVERY_TWO_MONTHS`, `WEEKLY`, `EVERY_TWO_WEEKS`, `DAILY`.\n\nOther supported values of frequency:\n\n| Name | Definition |\n| ---- | ---------- |\n|EVERY_WORKING_DAY| Event takes place every working day (every day of the week except 'SATURDAY' and 'SUNDAY').|\n|CALENDER_DAY| Event takes place on a calendar day. For example, 13 means '13th'.|\n\n__Other fields in the frequencyDetails object__\n\n| Field | Description |\n| ---- | ---------- |\n|intervalWeek| The intervalWeek is used with a frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (for example, every 2nd week) or week in a month ( i.e. 2nd week of a month).|\n|intervalMonth| The intervalMonth is used with frequency value of MONTHLY. It is used to define the frequency of the month (for example, every 4th month).|\n|executionDay| The executionDay is used to define the day on which payment is to be executed. (for example, every 2nd week, on the 3rd day of the week would have an `executionDay` of 3).|\n\n__Frequency examples__:\n\n|Description | ExecutionDay | IntervalWeek | IntervalMonth| Frequency|\n| --- | --- | --- | --- | --- |\n| Every day. | - | - | - | EVERYDAY |\n| Every working day. | - | - | - | EVERY_WORKING_DAY |\n| Every 15th day of the month. | 15 | - | - | CALENDAR_DAY|\n| Every week, on the 3rd day of the week. | 3 | 1 | - | WEEKLY|\n| Every 2nd week, on the 3rd day of the week. | 3 | 2 | - | EVERY_TWO_WEEKS |\n| Every 3rd week, on the 3rd day of the week. | 3 | 3 | - | WEEKLY|\n| Every month, on the 2nd week of the month, and on the third day of the week. | 3 | 2 | - | MONTHLY|\n| Every month, on the first day of the month. | 1 | - | 1 | MONTHLY|\n| Every 2nd month, on the 15th day of the month. | 15 | - | 2 | EVERY_TWO_MONTHS|\n| Every 3rd month, on the 15th day of the month. | 15 | - | 3 | MONTHLY|\n| Every 6th month, on the 15th day of the month. | 15 | - | - | SEMIANNUAL|\n| Every 12 month, on the 3rd day. | 3 | - | - | ANNUAL|\n| Every quarter. | - | - | - | QUARTERLY|"
           },
           "response": [
             {
@@ -6533,109 +6533,109 @@
   ],
   "variable": [
     {
-      "id": "78f5ab75-0124-4ecf-8d3e-423ee3276dd3",
+      "id": "e49adeef-1138-4c31-a0f9-d6a459e252f3",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "1f3762a9-f3f7-47ca-b9fe-9a6759896686",
+      "id": "134c4bae-2738-4403-aeda-7e1151e3eef9",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "32da426e-700f-4669-914e-05f1a37f05de",
+      "id": "1a33c34b-d3e4-431d-a393-9fb94bd32748",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "99a3a6ba-af58-43bd-8743-dc5916fc1bb7",
+      "id": "8bc7c535-7747-4aa4-871c-2c2f9141f525",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "ce7ba0a6-49d4-4511-a4f0-b79ec39943f6",
+      "id": "4603cc54-916a-47c4-b18b-2f1655716b99",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "dc405f98-3f89-4a1e-918e-16a5bd9aa3f4",
+      "id": "efbd67fa-ecd0-4dd2-b62d-d2e6285b96a7",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "f2798e3e-674b-4df5-8b9e-4da8b3897519",
+      "id": "8ab13d68-1bea-48f6-8614-9a5d15fb59cd",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "3a953ee0-1c73-4d66-b44b-aeafe468ecb0",
+      "id": "57d2aa8d-8d9e-49eb-bf64-ef00075f779b",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "b8aa66dc-0e77-49b3-a40b-e54640baa6ee",
+      "id": "e0af2d4e-b498-43b8-a18f-28f55787fdfb",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "7cf356ca-4b2a-4a4a-9f78-145f0c0de6e7",
+      "id": "f558b5b6-f11c-4910-b533-e5fcb9d79808",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "c0d77a9e-2536-42d9-af5e-44cb85678205",
+      "id": "d6ea74c4-2b0d-4b40-b743-c1d92a0517b7",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "fc6cebf1-2ff5-4cbd-869f-7d2a709e45ae",
+      "id": "12fc5577-b7f3-4175-9209-22ebfb438ecf",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "e7ea2356-75b3-4be4-b7b2-ebfd5c98c6bc",
+      "id": "8accdcc7-5738-4e85-a0fe-1e3ca314af65",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "c587ade3-ed4d-4fa1-81f8-01a86ea6fb59",
+      "id": "aa4cb610-7186-493c-91b8-a13ce1644f62",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "80782110-7339-43d3-b800-2bd4cb902ab0",
+      "id": "8d7cf4c5-51a0-4d83-98e9-d7133ed20844",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "ef50b0b1-95a9-466e-bd5e-e49491960083",
+      "id": "5e705b42-9c0e-41c0-b694-fe8f6f6e2e49",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "d25ce112-a6d3-4ec5-a064-7180d3444abd",
+      "id": "64cd4cc8-c4d6-45b4-9a6a-48de807b2f5a",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "9c74e11a-7401-4339-9f3d-0f1049479645",
+      "id": "22668c7c-86f2-4011-9f03-197347f575f8",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
