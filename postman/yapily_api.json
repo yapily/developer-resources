@@ -6021,7 +6021,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n\t\"payerAccountIdentifications\":[  \n           {  \n               \"type\":\"TYPE_OF_IDENTIFICATION\",\n               \"identification\":\"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n    \"amount\":{  \n         \"value\":\"0.00\",\n         \"currency\":\"3_LETTER_CURRENCY_CODE\"\n      },\n    \"reference\":\"REFERENCE\",\n    \"type\":\"PAYMENT_TYPE\",\n    \"payee\":{  \n        \"name\":\"PAYEE_NAME\",\n        \"address\":{  \n            \"addressLines\":[  \n               \"ADDRESS_LINES\"\n            ],\n            \"streetName\":\"STREET_NAME\",\n            \"buildingNumber\":\"BUILDING_NUMBER\",\n            \"postCode\":\"POST_CODE\",\n            \"townName\":\"TOWN_NAME\",\n            \"county\":[  \n               \"COUNTY_NAME\"\n            ],\n            \"country\":\"2_LETTER_COUNTRY_CODE\",\n            \"department\":\"DEPARTMENT_NAME\",\n            \"subDepartment\":\"SUB_DEPARTMENT_NAME\",\n            \"addressType\":\"TYPE_OF_ADDRESS\"\n        },\n        \"accountIdentifications\":[  \n           {  \n               \"type\":\"TYPE_OF_IDENTIFICATION\",\n               \"identification\":\"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"customerId\":\"CUSTOMER_ID\",\n        \"merchantCategoryCode\":\"MERCHANT_CATEGORY_CODE\"\n    }\n}"
+              "raw": "{\n\t\"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n\t\"payerAccountIdentifications\":[  \n           {  \n               \"type\":\"TYPE_OF_IDENTIFICATION\",\n               \"identification\":\"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n    \"amount\":{  \n         \"amount\":\"0.00\",\n         \"currency\":\"3_LETTER_CURRENCY_CODE\"\n      },\n    \"reference\":\"REFERENCE\",\n    \"type\":\"PAYMENT_TYPE\",\n    \"payee\":{  \n        \"name\":\"PAYEE_NAME\",\n        \"address\":{  \n            \"addressLines\":[  \n               \"ADDRESS_LINES\"\n            ],\n            \"streetName\":\"STREET_NAME\",\n            \"buildingNumber\":\"BUILDING_NUMBER\",\n            \"postCode\":\"POST_CODE\",\n            \"townName\":\"TOWN_NAME\",\n            \"county\":[  \n               \"COUNTY_NAME\"\n            ],\n            \"country\":\"2_LETTER_COUNTRY_CODE\",\n            \"department\":\"DEPARTMENT_NAME\",\n            \"subDepartment\":\"SUB_DEPARTMENT_NAME\",\n            \"addressType\":\"TYPE_OF_ADDRESS\"\n        },\n        \"accountIdentifications\":[  \n           {  \n               \"type\":\"TYPE_OF_IDENTIFICATION\",\n               \"identification\":\"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"customerId\":\"CUSTOMER_ID\",\n        \"merchantCategoryCode\":\"MERCHANT_CATEGORY_CODE\"\n    }\n}"
             },
             "url": "https://api.yapily.com/payments",
             "description": "Create a payment request.\n\nFeature: \n\n`CREATE_PAYMENT`, \n`CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n\nNote: \n1) The payload of this request must exactly match the payment authorisation request in the [payment authorisation request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b).\n\n\n| Field | Description | Type |\n| - | - | - |\n| paymentIdempotencyId | Unique identifier provided by payment initiator to identify the payment.Max 35 characters. | String |\n| payerAccountIdentifications | _Optional._ Payer's insititution account identifiers.| Collection |\n| payerAccountIdentifications.type | Type of identification.Possible values are SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH, PAYM.| String |\n| payerAccountIdentifications.identification | Value of the identication as per the type. i.e. If type is mentioned as SORT_CODE then value will a six digit valid sort code.| String |\n| amount | _Optional._ The representation of the amount and currency. | Object |\n| amount.amount | The decimal representation of the amount. | Number |\n| amount.currency | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n| reference | _Optional._ Payment reference/description | String |\n| type | Payment type. Possible values are DOMESTIC_PAYMENT, DOMESTIC_SCHEDULED_PAYMENT, DOMESTIC_VARIABLE_RECURRING_PAYMENT. | String |\n| paymentDateTime | _Optional_ The date on which payment is to be scheduled. It is mandatory for Scheduled payments and should be a future date. |[Date](https://docs.yapily.com/#date-time-format)|\n| contextType | _Optional._ Payment context type. Possible values are BILL, GOODS, SERVICES, OTHER, PERSON_TO_PERSON. | String |\n| payee | The details of the beneficiary [person or business]. | Object |\n| payee.name | The name of beneficiary | String |\n| payee.address | The address of beneficiary.| Object |\n| payee.address.addressLines | _Optional._ The address lines. | [String] |\n| payee.address.streetName | _Optional._ The street name. | String |\n| payee.address.buildingNumber | _Optional._ The building number. | String |\n| payee.address.postCode | _Optional._ The post code. | String |\n| payee.address.townName | _Optional._ The town name. | String |\n| payee.address.county | _Optional._ The county name. | [String] |\n| payee.address.country | The [2-letter country code](https://www.gov.uk/government/publications/iso-country-codes--2) of the payment destination. Always \"GB\" for UK domestic payments. | String |\n| payee.address.department | _Optional._ The department name. | String |\n| payee.address.subDepartment | _Optional._ The sub department name. | String |\n| payee.address.addressType | _Optional._ The type of the address. Possible values are:BUSINESS, CORRESPONDENCE, DELIVERY_TO, MAIL_TO, PO_BOX, POSTAL, RESIDENTIAL, STATEMENT. | String |\n| payee.accountIdentifications | Payee's insititution account identifiers like account number and sortcode or IBAN. | Collection |\n| payee.accountIdentifications.type | Type of identification.Possible values are SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH, PAYM.| String |\n| payee.accountIdentifications.identification | Value of the identication as per the type. If type is mentioned as SORT_CODE then value will a six digit valid sort code.| String |\n| payee.merchantId | _Optional._ A merchant ID is a unique code provided by payment processor to the merchant. | String |\n| payee.merchantCategoryCode | _Optional._ Category code of the merchant in case Payee is business. | String |\n\n__Payment type explained__:\n\n|Payment Type | Description | \n| :--------- | :---------- | \n| DOMESTIC_PAYMENT | Initiate and create domestic payments. |\n| DOMESTIC_SCHEDULED_PAYMENT | Initiate and create domestic scheduled payments. |"
@@ -6450,109 +6450,109 @@
   ],
   "variable": [
     {
-      "id": "1d28d23f-0c37-40ea-b90b-d5e2de2d3899",
+      "id": "9b8297fa-a9ae-4013-ba1d-4657f415b190",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "3a19cfb1-4eac-4cd3-bb37-ceb6a0d84c4b",
+      "id": "1ca21cf2-94c8-44c9-8d2d-31b9f4852a38",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "e0c3b06f-1e36-494a-bea4-6cbd83ae8243",
+      "id": "38b54f79-d2ea-4b18-aea7-024000b3a018",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "6d23d56a-133e-4d10-8fac-c11c28c84234",
+      "id": "a18c86fc-a994-4c88-b1ba-e3abc654a743",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "0fca34f3-3fd3-49a2-a45b-86f6b46fd502",
+      "id": "300be042-7d19-499b-b912-31cd2aee30d9",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "82585680-6422-42b5-b78f-115f0b8bc5f3",
+      "id": "138659f3-edda-493f-b318-8711128a3855",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "b08efc00-990a-4d16-87a1-1ea55e1099b2",
+      "id": "aba49696-8299-40e1-ab7a-865b1ceb6af7",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "46aa7fec-b6a9-4b1b-bd1f-43d04710ff64",
+      "id": "ac880c06-ae7d-4890-826c-7212c5516010",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "6ce72b6c-9491-4a80-bbff-39147536a325",
+      "id": "0801abca-0c2f-4c54-b28e-d67b29415f48",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "bb7fc619-6a83-47b7-96ed-bc076b1e9569",
+      "id": "74f2828b-d2d3-4f89-94e0-d47e61e1c01c",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "09e68e8e-987e-462b-96bb-deb64c5d929d",
+      "id": "ab660824-b7f0-4b48-b60e-18d48aee5fcc",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "b61e6873-8d7c-4508-8005-c83227a2d10a",
+      "id": "5b4d86ca-9e42-414b-85f5-b89657737915",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "a3570b37-a646-4a11-b2b1-97e27ebf5511",
+      "id": "0e681902-bf88-4a76-8f06-fce620f506df",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "aa0b548a-debe-42bf-b446-2d82476a0a9f",
+      "id": "988db05b-9e9e-451b-8ee6-3373399bc532",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "caf56754-be9f-4960-b234-f0d7f94557e3",
+      "id": "8356a410-5962-49db-8946-031dbfb8a26b",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "b6c07e0f-fe3e-4996-be5c-48234a04e477",
+      "id": "4f004d49-b749-4355-867f-9801de48a8b5",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "bfdd9dbb-4631-439d-bc52-2175abeb10a2",
+      "id": "7eb9b292-2b4a-4fe7-b60d-e6d5bfd55d10",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "842a8817-2b0f-45b8-83bc-3b42454ee823",
+      "id": "dd84e115-69ed-44ad-ba5b-c702a311951c",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
