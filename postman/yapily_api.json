@@ -5914,7 +5914,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"totalMaxAmount\": \"MAX_AMOUNT_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"maxAmountPerRequest\": \"MAX_AMOUNT_PER_REQUEST_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"expiresAt\": \"EXPIRY_DATE\",\n    \"startsAt\": \"START_DATE\",\n    \"allowOverdraft\": \"false\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}"
+              "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"totalMaxAmount\": \"MAX_AMOUNT_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"maxAmountPerRequest\": \"MAX_AMOUNT_PER_REQUEST_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"expiresAt\": \"EXPIRY_DATE\",\n    \"startsAt\": \"START_DATE\",\n    \"allowOverdraft\": \"false\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}"
             },
             "url": "https://api.yapily.com/payment-auth-requests",
             "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a payment.\n\nFeature: \n`INITIATE_PAYMENT`, \n`INITIATE_DOMESTIC_SCHEDULED_PAYMENT`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Either the userUuid or applicationUserId must be provided._ The uuid for your application user. | String |\n| applicationUserId | _Either the userUuid or applicationUserId must be provided._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | This nested object should exactly match the payment object that you intend to submit when you [create payment](https://docs.yapily.com/?version=latest#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c). | Object |\n| startsAt | _Optional._ The payment consent start date. | Date |\n| expiresAt | _Optional._ The payment consent expiry date. | Date |\n| totalMaxAmount | _Optional._ The decimal representation of total maximum amount per consent. This value should be in same currency of payment amount. | Number |\n| maxAmountPerRequest | _Optional._ The decimal representation of maximum amount per request. This value should be in same currency of payment amount. | Number |\n| allowOverdraft | _Optional._ The 'allowOverdraft' field enable bank to use over draft limit for payment if set to true. Default value is false.| Boolean |\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
@@ -6450,109 +6450,109 @@
   ],
   "variable": [
     {
-      "id": "d8fa6674-d683-4778-be26-4d20a402e1ec",
+      "id": "a06d194e-f276-48ba-9db3-9923aa89d4ab",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "92936a00-0161-4f58-9589-e3940756d5dc",
+      "id": "30e1e816-b457-4c62-9bdb-557afea5647c",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "65e34daf-ba3f-44ef-a4bd-0ab07a3640c4",
+      "id": "ecbb557e-1e4f-47de-92b7-6dadf1f6f305",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "263bdd99-c3da-4569-ab6b-94ba43cc650c",
+      "id": "054c3afa-1282-4ec2-8be4-4008eb5a5a08",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "40709ed9-9873-48a8-8bbd-580b16a59b29",
+      "id": "4f227b66-51e6-46e4-9972-fe05fb6235ea",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "0ebce4ef-3f6a-4c00-9c64-6b88fa3179de",
+      "id": "97e31037-da1c-42ee-8e5e-7f912fbf620a",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "875831dd-7248-4b34-bb80-4bedf764b894",
+      "id": "e199a7a1-229e-4747-b371-7bd5ae3287a8",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "801d4c46-c195-4cb1-84d8-f993025a6ea0",
+      "id": "d24fbfde-9c9d-4d6f-b76e-adefbcc8e3e5",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "2129c04d-d2d8-48e9-9470-73e57321822c",
+      "id": "44c01f01-3bde-43b6-8fe7-b69261fbe125",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "d473b7ca-daec-4f5a-a2f4-8da51e1a5334",
+      "id": "3e48c8e1-950f-4181-a2c3-765ed824f2b2",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "a4d6c8f0-f649-4a6b-a5a3-f58d4a305224",
+      "id": "d2b6039a-613d-489a-9b24-9508cb258486",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "85466d76-a439-4694-924f-ade3fd00bb9e",
+      "id": "d613937f-e3e8-4e28-b0c7-b0a32b5e2dec",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "1ca9a61c-2c12-48c0-890f-b56d95c56284",
+      "id": "20ab7ea3-5529-4653-adc1-ae0b71d38403",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "770c1d07-bdaa-45ae-bd38-0f566c7db0a8",
+      "id": "5719ec51-e981-431a-8a94-ef7d2f313d75",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "50a28d08-7b10-494a-ba68-bf89b06eba2a",
+      "id": "640e5068-0403-4315-a1e8-9f0cddf9a4b0",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "ab07c8af-6283-420f-8208-12e0d8a638d2",
+      "id": "3623122f-1164-42bb-9b4e-1aad3359cd5b",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "4abf76a1-3c06-477a-8051-a504a94d7cd3",
+      "id": "8010821c-602a-4f10-986d-c852f9239fb7",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "618a4bf7-86b6-4c83-b31a-62e43c2d2d1c",
+      "id": "ce4df8c5-0d6a-4bec-819a-dcbeaf4f4688",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
