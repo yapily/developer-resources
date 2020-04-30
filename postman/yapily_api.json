@@ -3562,7 +3562,7 @@
               "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}"
             },
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data. You will\n\nFeature: `INITIATE_ACCOUNT_REQUEST`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Either the userUuid or applicationUserId must be provided._ The uuid for your application user. | String |\n| applicationUserId | _Either the userUuid or applicationUserId must be provided._ Your identifier for the application user. | String |\n| institutionId | The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. | Object |\n| accountRequest.transactionFrom | _Optional._ Timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ Timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that this consent will expire. Note: not supported by all institutions. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | _Optional._ Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: INTIATE_ACCOUNT_REQUEST, ACCOUNT, ACCOUNTS, ACCOUNT_TRANSACTIONS, ACCOUNT_TRANSACTIONS_WITH_MERCHANT | Array |\n\nIf the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution.\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
+            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data. You will\n\nFeature: `INITIATE_ACCOUNT_REQUEST`\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | The uuid for your application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| applicationUserId | Your identifier for the application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| institutionId | The institution Id for the bank that the user will use to pay. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. | Object |\n| accountRequest.transactionFrom | _Optional._ Timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ Timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that this consent will expire. Note: This is not supported by all institutions. In such case, the request will not fail but property will be ignored and the `Consent` will not have an expiry date | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | _Optional._ Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: INTIATE_ACCOUNT_REQUEST, ACCOUNT, ACCOUNTS, ACCOUNT_TRANSACTIONS, ACCOUNT_TRANSACTIONS_WITH_MERCHANT | Array |\n\nIf the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution.\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
           },
           "response": [
             {
@@ -6662,109 +6662,109 @@
   ],
   "variable": [
     {
-      "id": "fe5ae688-eb54-4a70-ad3f-37bc1abffee7",
+      "id": "f84b5603-87ef-4e1a-aab7-dd4c3f14cb84",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "71616550-36ca-47ec-990c-de9d15a487dd",
+      "id": "c3e392ca-033e-40a6-835b-48d360ddb3ef",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "55886a6d-1d4f-4464-9481-86240d7a1a47",
+      "id": "09ed70a0-d1b4-4c42-b8f2-8e68ab94f653",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "2d86c8e7-f53b-4b21-878e-c1d0ac3ac0ea",
+      "id": "d954c74e-3544-445f-8491-00c48f47ccd1",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "988791c2-de5e-4561-8adf-9757ae3010a2",
+      "id": "1a411f71-fd3b-44d6-b537-f0ec2d505ebf",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "efe08b54-ad9e-43e7-a6b7-fa5f50a8cf8a",
+      "id": "ff9c597d-e46d-4c6c-ab0f-6ab899d8de03",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "fe00011f-ff3e-4767-8fcc-bbeede9276be",
+      "id": "eff19d8a-ddbe-4a0b-b05a-effe5c21f7fe",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "1011f916-d7b2-4bad-917a-22da5f817288",
+      "id": "8f3bdad5-6641-491e-9642-2ce15d035f80",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "c94ed4a6-2706-46fe-9734-9af3a8ac5362",
+      "id": "8c555679-283f-4d29-a527-3c773171d3a3",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "1da774b2-034e-4eca-a9c7-9f91a20eb3ea",
+      "id": "c01862c3-ea4b-4fe0-acc8-a325b55ad62d",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "639ad118-3b37-4e00-8d84-156c082894a3",
+      "id": "71115d77-7c00-4830-bd5f-84c582233d3e",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "d9cd0673-3df4-425a-af07-52ff78b13da5",
+      "id": "8caaa92c-61ee-4a4c-af53-a94451d6924b",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "becaa3b7-ce12-4ea0-95eb-858bbc199b94",
+      "id": "81e89034-2432-4e27-9fbb-7f07c453b1ce",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "4bbb0c47-88aa-4f88-b974-42694c0398e1",
+      "id": "b8f0e614-da1d-4b91-9963-a87ead341a7a",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "35005236-0033-49e2-8944-526d3ffe29c4",
+      "id": "2bf560bd-18d2-43b1-a38f-2be6141befcb",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "face34a1-1111-4e8b-9c60-b263016e31df",
+      "id": "fdc90c64-b99e-4427-94ce-cc6947d8a214",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "8ca33d1b-1f3b-4e49-93fb-73ecb55cd363",
+      "id": "e1303f2f-e98c-4a05-a766-8f8bec9669f1",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "0dcd0267-ea7c-4e1d-a8e3-2c15eefcae84",
+      "id": "80c1df65-c73a-45bf-8488-0aaa1fdc40d4",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
