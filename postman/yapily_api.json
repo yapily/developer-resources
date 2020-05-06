@@ -1762,7 +1762,7 @@
               "raw": "{\n\t\"oneTimeToken\":\"ONE_TIME_TOKEN\"\n}"
             },
             "url": "https://api.yapily.com/consent-one-time-token",
-            "description": "Retrieve a consent by supplying a `oneTimeToken`. One time tokens cannot be used again after successfully being exchanged for a consent token.One time token is only valid for 3 minutes and in unlikely case of it being expired, \"Get User Consent\" endpoint should be used to fetch the consent token.\n\nNote: to receive a one time token, set `oneTimeToken` to `true` in your [financial data authorisation request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)."
+            "description": "Retrieve a consent by supplying a `oneTimeToken`. One time tokens cannot be used again after successfully being exchanged for a consent token.One time token is only valid for 3 minutes and in unlikely case of it being expired, \"Get User Consent\" endpoint should be used to fetch the consent token.\n\nNote: to receive a one time token, set `oneTimeToken` to `true` in your [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)."
           },
           "response": [
             {
@@ -1849,7 +1849,7 @@
               "raw": "{\n\t\"accessToken\": \"ACCESS_TOKEN\",\n\t\"refreshToken\": \"REFRESH_TOKEN\",\n\t\"scope\": \"SCOPE\",\n\t\"institutionId\": \"{{institution-id}}\"\n}"
             },
             "url": "https://api.yapily.com/users/{{user-uuid}}/consents",
-            "description": "For standard user authorised requests, ignore this endpoint and make an authorisation request instead to obtain a Yapily *consent token*, following the authorisation flow for either [financial data](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [payments](https://docs.yapily.com/#2451562f-0e4d-4c23-9fd1-9c48bde72e98).\n\nThis endpoint is particularly for creating a Yapily **consent token** by sending **OAuth2 access token** or **API key** data.\n\nThe most common use cases for creating consent tokens with this data:\n- The financial institution provides API keys to access user data. This applies to any institution with the _credentialsType_ of `API_KEY`\n- You already have the access token for a user and want to allow Yapily to manage your integration and [token refreshing](https://tools.ietf.org/html/rfc6749#section-1.5)\n\nNote the distinction between access tokens, API keys and the Yapily consent token. An [OAuth2 access token](https://tools.ietf.org/html/rfc6749) is a short-lived, refreshable object created by a third party to authorise access to the end user's resources. Similarly, an API key is created by a third party and is valid until either the institution or end user revokes access. The consent token returned by Yapily is a generic, longer-lived token specifically for use with this API that abstracts multiple methods of representing consent and handles the mechanisms for using and refreshing tokens.\n\n| Field | Description | Type |\n| - | - | - |\n| institutionId | The [`institution-id`](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010) for the institution that provided the token | String |\n| accessToken | Either the OAuth2 access token _or_ the API key string, depending on the institution's authorisation flow. Note: this field also has the alias **apiKey** for this reason. | String |\n| refreshToken | _Optional._ The OAuth2 refresh token string. Note: If provided, Yapily will immediately attempt a token refresh, invalidating the existing access token. | String |\n| scope | _Optional._ The OAuth2 scope | String |"
+            "description": "For standard user authorised requests, ignore this endpoint and execute a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) to obtain a Yapily *consent token*.\n\nThis endpoint is particularly for creating a Yapily **consent token** by sending **OAuth2 access token** or **API key** data.\n\nThe most common use cases for creating consent tokens with this data:\n- The financial institution provides API keys to access user data. This applies to any institution with the _credentialsType_ of `API_KEY`\n- You already have the access token for a user and want to allow Yapily to manage your integration and [token refreshing](https://tools.ietf.org/html/rfc6749#section-1.5)\n\nNote the distinction between access tokens, API keys and the Yapily consent token. An [OAuth2 access token](https://tools.ietf.org/html/rfc6749) is a short-lived, refreshable object created by a third party to authorise access to the end user's resources. Similarly, an API key is created by a third party and is valid until either the institution or end user revokes access. The consent token returned by Yapily is a generic, longer-lived token specifically for use with this API that abstracts multiple methods of representing consent and handles the mechanisms for using and refreshing tokens.\n\n| Field | Description | Type |\n| - | - | - |\n| institutionId | The [`institution-id`](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010) for the institution that provided the token | String |\n| accessToken | Either the OAuth2 access token _or_ the API key string, depending on the institution's authorisation flow. Note: this field also has the alias **apiKey** for this reason. | String |\n| refreshToken | _Optional._ The OAuth2 refresh token string. Note: If provided, Yapily will immediately attempt a token refresh, invalidating the existing access token. | String |\n| scope | _Optional._ The OAuth2 scope | String |"
           },
           "response": [
             {
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "e52ca0af-49d3-468d-a34b-0b9d4d004bd9",
+      "id": "31b1ca74-7841-414b-bbb1-42b4d33ed324",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "f3867817-8e5e-4456-b621-81542ebc33c8",
+      "id": "f31770ba-99da-423c-af3a-6243b58724e8",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "e67e58bd-09bd-4963-8096-dc1eee9b0cc8",
+      "id": "47f4b5e1-bf73-4a5b-9f97-d48e7ecf904b",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "16e33574-1b07-4a3e-8b37-c32171e98dac",
+      "id": "eab0ebd4-b129-48b2-9cbc-527574ed214e",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "9453b280-f117-4098-bd9e-e787ca8e3908",
+      "id": "f445920d-97ac-4920-8c56-b031f375db75",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "6a8c04e4-168b-4b01-b5e2-4ea43b063f88",
+      "id": "0e691b36-fc21-4c7c-856c-7302a083218f",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "e3640ffc-8657-4e57-87f2-2936c21af82c",
+      "id": "450f131e-8c7d-4a61-af38-5475e311e67d",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "331db97e-cf68-4cc9-84ad-54a7c65307e4",
+      "id": "33449a86-e059-46f4-9698-099a754cfb5f",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "441928fd-6211-4abf-9317-ba0b3e00c978",
+      "id": "cd0cda3e-9e91-47b1-a442-a7d8af8bfce9",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "fed6b823-09bf-495d-8787-f63eee4e79b6",
+      "id": "02087f7b-37b6-49b0-b494-757fa08c336b",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "3dd9afe7-0a45-4a6e-b348-c6478a108722",
+      "id": "85b64292-4d9a-4dee-b297-dff73a050a19",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "51a4e659-b9c3-4b71-8f43-cc1a23e324fe",
+      "id": "c9b6e840-6f50-47d9-b086-cc45b2fb76ab",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "37235186-93a3-47f7-9327-c8b4abf6a3bd",
+      "id": "18947a84-d266-49ef-a3ff-09742743c015",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "94aac679-3d6d-432b-9c2f-81c66fd26a32",
+      "id": "2131bdf3-6a43-4c1b-bc4d-6e531820c0ee",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "69b008cb-5250-4b66-8de5-94015b8675f1",
+      "id": "a12679b1-7d27-4845-9ed8-e0f741fe680e",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "46b73503-6245-45ca-9bc7-df1787784387",
+      "id": "254c2546-a6c8-4210-ab61-d81700bb254a",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "a4ac93e3-bca1-49aa-ace7-6fb75cd67046",
+      "id": "ca06ce05-f1ed-4b3f-a1e8-ed7ee32f1306",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "61856796-0d9c-4db3-8201-75b9bcb51af0",
+      "id": "80546836-581f-4e80-9bc7-14c7c0fed2a5",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
