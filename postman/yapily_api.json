@@ -6103,212 +6103,6 @@
           ]
         },
         {
-          "name": "Create Authorisation Request for Payment Copy",
-          "_postman_id": "0741547c-79f9-4f11-97bc-f99180211c8d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}",
-              "options": {
-                "raw": {}
-              }
-            },
-            "url": "https://api.yapily.com/payment-auth-requests",
-            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a payment.\n\nFeature: \n\n`INITIATE_DOMESTIC_SINGLE_PAYMENT`, \n`INITIATE_DOMESTIC_SCHEDULED_PAYMENT`,\n`INITIATE_DOMESTIC_PERIODIC_PAYMENT`,\n`INITIATE_INTERNATIONAL_SINGLE_PAYMENT`\n\nRequest fields\n\n| Field |  |Description | Type |\n| - | - | - | - |\n| userUuid | _Conditional_ | The uuid for your application user. </br> ___Condition___ </br> Either the userUuid or applicationUserId must be provided.  | String |\n| applicationUserId | _Conditional_ | Your identifier for the application user. </br> ___Condition___ </br> Either the userUuid or applicationUserId must be provided. Your identifier for the application user. | String |\n| institutionId | _Mandatory_ |The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional_ | The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional_ | The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | _Mandatory_ |This nested object should exactly match the payment object that you intend to submit when you [create payment](https://docs.yapily.com/?version=latest#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c). | Object |\n\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
-          },
-          "response": [
-            {
-              "id": "227f8f64-6370-4168-bc9e-a87c74162abc",
-              "name": "201 Created ( DOMESTIC SCHEDULED PAYMENT)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n    \"expiresAt\":\"2019-10-17T14:42:53Z\",\n    \"startsAt\":\"2019-06-26T14:42:53Z\",\n\t\"paymentRequest\": {\n\t  \"type\" : \"DOMESTIC_SCHEDULED_PAYMENT\",\n      \"paymentIdempotencyId\":\"1d54cf71bfe44b1b8e67247aed455d96\",\n      \"paymentDateTime\" : \"2019-12-26T14:42:53Z\",\n      \"reference\":\"REFERENCE\",\n      \"contextType\":\"OTHER\",\n       \"amount\":{  \n         \"amount\":\"4.00\",\n         \"currency\":\"GBP\"\n      },\n      \"payee\":{  \n         \"name\":\"Ksh\",\n         \"address\":{ \n            \"addressLines\":[  \n               \"22\"\n            ],\n            \"streetName\":\"22\",\n            \"buildingNumber\":\"buildingNumber1\",\n            \"postCode\":\"BG2 7QW\",\n            \"townName\":\"London\",\n            \"county\":[  \n               \"Berks\"\n            ],\n            \"country\":\"GB\",\n            \"department\":\"department1\",\n            \"subDepartment\":\"subDepartment1\",\n            \"addressType\":\"BUSINESS\"\n         },\n         \"accountIdentifications\":[  \n            {  \n               \"type\":\"SORT_CODE\",\n               \"identification\":\"204514\"\n            },\n            {  \n               \"type\":\"ACCOUNT_NUMBER\",\n               \"identification\":\"00000825\"\n            }\n         ],\n         \"customerId\":\"1234567789\",\n         \"merchantCategoryCode\":\"1234\"\n      }\n\t}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/payment-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"249a7ce3-d366-44ab-b160-82c2c9f99c19\"\n    },\n    \"data\": {\n        \"id\": \"ee72a319-f431-4937-b20e-c868f7f73a71\",\n        \"userUuid\": \"b15d434c-86a0-4a30-ba05-c90c86d239ae\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2019-09-26T15:43:40.844Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_DOMESTIC_SCHEDULED_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"startsAt\": \"2019-06-26T14:42:53Z\",\n        \"allowOverdraft\": false,\n        \"authorisationUrl\": \"https://modelobankauth2018.o3bank.co.uk:4101/auth?client_id=97984176-6fab-44f8-b531-e7399245972a&response_type=code+id_token&state=9ac9700e6a604312a60e0509c15a1ad9&nonce=9ac9700e6a604312a60e0509c15a1ad9&scope=openid+payments&redirect_uri=https%3A%2F%2Fdevelopment-auth.yapily.com%2F&request=eyJraWQiOiJYUXVyd3BtSmhrZmFKb3dFelg1Wm8xS3pZWTQiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL21vZGVsb2JhbmthdXRoMjAxOC5vM2JhbmsuY28udWs6NDEwMSIsInNjb3BlIjoib3BlbmlkIHBheW1lbnRzIiwiaXNzIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwiY2xpZW50X2lkIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2RldmVsb3BtZW50LWF1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjlhYzk3MDBlNmE2MDQzMTJhNjBlMDUwOWMxNWExYWQ5IiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6InNkcC0yLTc4MWMyMTlhLWVkNTMtNDU3MC1iNzBmLWRmMWQyMzA3MzIyYiIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJzZHAtMi03ODFjMjE5YS1lZDUzLTQ1NzAtYjcwZi1kZjFkMjMwNzMyMmIiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiOWFjOTcwMGU2YTYwNDMxMmE2MGUwNTA5YzE1YTFhZDkiLCJqdGkiOiJkYzg5NGZhZi1hODRiLTRhNGMtYWNlMi1lY2M2NWIyMWFiNTciLCJpYXQiOjE1Njk1MTI2MjEsImV4cCI6MTU2OTUxNDQyMX0.lAVRW-GL7y-LrYZx5r9Jnxtz5GaDJAiKnAWW03TE5hul47yrizESl26iTgOjzSZ7jMNFp8OoAFx9bYiPxzKzHe3BpBbRTPPNEI-wdvS0tGpfZ5RNtXOGgHzBwv7xu-tBFCAzaZlnRMptlGZncWm3ukwGAWyOM0UP0sfkqgi8aTJklH5SPKxy7xRTmsDGg_7rEiho-eVpwd3BIqRjJDI5BZVkEllbRY25wkXK3LQNdY_ZmwJ1Hf-6tMoxNLBnhnx4XGJBz4perAJ39zKqJzFO47TLFU_U7vOOF2ignULbmIOVK2JDzwTivfuCF-IvlgeDkf7z6aPmZf6G2008HRXoKQ\"\n    }\n}"
-            },
-            {
-              "id": "318b9ded-1b0c-4fc9-a27e-4e4787e07c8f",
-              "name": "201 Created ( DOMESTIC PERIODIC PAYMENT)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"Tester lloyds Test\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"http://display-parameters.herokuapp.com/\",\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PERIODIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d52\",\n        \"reference\": \"Yapily Test\",\n        \"contextType\": \"OTHER\",\n        \"paymentDateTime\": \"2020-01-21T09:39:44.474Z\",\n        \"amount\": {\n            \"amount\": \"1.10\",\n            \"currency\": \"GBP\"\n        },\n        \"payee\": {\n            \"name\": \"Mr Tester\",\n            \"address\": {\n                \"addressLines\": [\n                    \"3 Honey Gardens\"\n                ],\n                \"country\": \"GB\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"12345678\"\n                },\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"123456\"\n                }\n            ]\n        },\n        \"periodicPayment\": {\n            \"frequency\": {\n                \"type\": \"MONTHLY\"\n            },\n            \"numberofPayments\": \"10\"\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/payment-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"50698f5bce1e4463e5b54a02018c6fa1\"\n    },\n    \"data\": {\n        \"id\": \"35cacbed-1f39-4f1e-9e10-2688f702a08b\",\n        \"userUuid\": \"b7b2f52b-d8e8-403c-8fb1-c6e3635a9871\",\n        \"applicationUserId\": \"Tester lloyds Test\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-01-21T09:39:44.474Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=adn-bKyGhe0mdwv9WZPSWtPty4GDMJsq6QdwE13tE29L&response_type=code+id_token&state=71145a259ea24d93a2ca9af89af06c1d&nonce=71045a259ea24d93a2ca9af89af06c1d&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnRpYWEuYmFyY2xheXMuY29tIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiJiZG4tYkt5R2hlMG1kd3Y5V1pQU1d0UHR5NEdETUpzcTZRZHdFMTN0RTI5TCIsImNsaWVudF9pZCI6ImJkbi1iS3lHaGUwbWR3djlXWlBTV3RQdHk0R0RNSnNxNlFkd0UxM3RFMjlMIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2F1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjcxMDQ1YTI1OWVhMjRkOTNhMmNhOWFmODlhZjA2YzFkIiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZZ0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkJBUkNMQVlTLVAtMTAwMDAwMDAyMDk4NjgiLCJlc3NlbnRpYWwiOnRydWV9fSwidXNlcmluZm8iOnsib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiQkFSQ0xBWVMtUC0xMDAwMDAwMDIwOTg2OCIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3MTA0NWEyNTllYTI0ZDkzYTJjYTlhZjg5YWYwNmMxZCIsImp0aSI6IjE3M2JhYzYwLThiYzUtNGM3NC1hN2I0LTk5NDRjNjM5OWY4YiIsImlhdCI6MTU3OTU5OTU4NCwiZXhwIjoxNTc5NjAxMzg0fQ.kcuIuJJVtnW1RyZE2W0osEZiFUqpW1p7mszbn6d-4H1v0qqBHEqqI8zohzovEnSw9N6z5741o6VSpH7W5nbO3DshrZ__Y7FB7aPHSe2QyDcbqrwUwXEqToara0I2VaLWBOBUfqgqo_dWYXF8lndqYObiUCaptvdaO5R1QX8Q35YveAomu_RzgSa5DAs03IDeVf7XVPMGIteFN_hUhJD6oS4jyvXG6QFSn44fmlVxbIZbWlXBayKtsiomiWMMKtXLHY7j-KcrMrEIl5pKjmmkiIk30Rvdx-_4G4lG-BhBd_xIw-URz-vCEjZKiI_VzSkxZXuUw0X8_PN1wZgfP7BKkA\"\n    }\n}"
-            },
-            {
-              "id": "6906cb31-befc-4849-ad0d-d32cc1b93118",
-              "name": "201 Created (INTERNATIONAL PAYMENT)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"Tester lloyds Test\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"http://display-parameters.herokuapp.com/\",\n    \"paymentRequest\": {\n        \"type\": \"INTERNATIONAL_PAYMENT\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d52\",\n        \"reference\": \"Yapily Test\",\n        \"contextType\": \"OTHER\",\n        \"amount\": {\n            \"amount\": \"1.10\",\n            \"currency\": \"EUR\"\n        },\n        \"payee\": {\n            \"name\": \"Mr Tester\",\n            \"address\": {\n                \"addressLines\": [\n                    \"3 Honey Gardens\"\n                ],\n                \"country\": \"GR\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"GR19 REKO 0090 7071 1490 50\"\n                },\n                {\n                    \"type\": \"BIC\",\n                    \"identification\": \"REKOGR21\"\n                }\n            ]\n        },\n        \"internationalPayment\": {\n            \"currencyOfTransfer\": \"EUR\"\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/payment-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"50698f5bce1e4463e5b54a02018c6fa1\"\n    },\n    \"data\": {\n        \"id\": \"35cacbed-1f39-4f1e-9e10-2688f702a08b\",\n        \"userUuid\": \"b7b2f52b-d8e8-403c-8fb1-c6e3635a9871\",\n        \"applicationUserId\": \"Simon lloyds Test\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-01-21T09:39:44.474Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_INTERNATIONAL_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=adn-bKyGhe0mdwv9WZPSWtPty4GDMJsq6QdwE13tE29L&response_type=code+id_token&state=71145a259ea24d93a2ca9af89af06c1d&nonce=71045a259ea24d93a2ca9af89af06c1d&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnRpYWEuYmFyY2xheXMuY29tIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiJiZG4tYkt5R2hlMG1kd3Y5V1pQU1d0UHR5NEdETUpzcTZRZHdFMTN0RTI5TCIsImNsaWVudF9pZCI6ImJkbi1iS3lHaGUwbWR3djlXWlBTV3RQdHk0R0RNSnNxNlFkd0UxM3RFMjlMIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2F1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjcxMDQ1YTI1OWVhMjRkOTNhMmNhOWFmODlhZjA2YzFkIiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZZ0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkJBUkNMQVlTLVAtMTAwMDAwMDAyMDk4NjgiLCJlc3NlbnRpYWwiOnRydWV9fSwidXNlcmluZm8iOnsib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiQkFSQ0xBWVMtUC0xMDAwMDAwMDIwOTg2OCIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3MTA0NWEyNTllYTI0ZDkzYTJjYTlhZjg5YWYwNmMxZCIsImp0aSI6IjE3M2JhYzYwLThiYzUtNGM3NC1hN2I0LTk5NDRjNjM5OWY4YiIsImlhdCI6MTU3OTU5OTU4NCwiZXhwIjoxNTc5NjAxMzg0fQ.kcuIuJJVtnW1RyZE2W0osEZiFUqpW1p7mszbn6d-4H1v0qqBHEqqI8zohzovEnSw9N6z5741o6VSpH7W5nbO3DshrZ__Y7FB7aPHSe2QyDcbqrwUwXEqToara0I2VaLWBOBUfqgqo_dWYXF8lndqYObiUCaptvdaO5R1QX8Q35YveAomu_RzgSa5DAs03IDeVf7XVPMGIteFN_hUhJD6oS4jyvXG6QFSn44fmlVxbIZbWlXBayKtsiomiWMMKtXLHY7j-KcrMrEIl5pKjmmkiIk30Rvdx-_4G4lG-BhBd_xIw-URz-vCEjZKiI_VzSkxZXuUw0X8_PN1wZgfP7BKkA\"\n    }\n}"
-            },
-            {
-              "id": "ca13e289-9f8d-4382-8397-fa0f16e7e9d5",
-              "name": "201 Created ( DOMESTIC PAYMENT WITH PAYER)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d96\",\n        \"reference\": \"REFERENCE\",\n        \"contextType\": \"OTHER\",\n        \"payer\": {\n            \"name\": \"Ash\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"123456\"\n                },\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"12345678\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"4.00\",\n            \"currency\": \"GBP\"\n        },\n        \"payee\": {\n            \"name\": \"Ksh\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"204514\"\n                },\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"00000825\"\n                }\n            ]\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/payment-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a0498a22-515f-4dce-88f9-dd7d008eca2b\"\n    },\n    \"data\": {\n        \"id\": \"742d0980-42fb-4607-ad7f-44723e420838\",\n        \"userUuid\": \"b15d434c-86a0-4a30-ba05-c90c86d239ae\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2019-09-26T15:18:05.443Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"startsAt\": \"2019-06-26T14:42:53Z\",\n        \"allowOverdraft\": false,\n        \"authorisationUrl\": \"https://modelobankauth2018.o3bank.co.uk:4101/auth?client_id=97984176-6fab-44f8-b531-e7399245972a&response_type=code+id_token&state=8e5214f296e4464e974072d7e7d0e076&nonce=8e5214f296e4464e974072d7e7d0e076&scope=openid+payments&redirect_uri=https%3A%2F%2Fdevelopment-auth.yapily.com%2F&request=eyJraWQiOiJYUXVyd3BtSmhrZmFKb3dFelg1Wm8xS3pZWTQiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL21vZGVsb2JhbmthdXRoMjAxOC5vM2JhbmsuY28udWs6NDEwMSIsInNjb3BlIjoib3BlbmlkIHBheW1lbnRzIiwiaXNzIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwiY2xpZW50X2lkIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2RldmVsb3BtZW50LWF1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjhlNTIxNGYyOTZlNDQ2NGU5NzQwNzJkN2U3ZDBlMDc2IiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6InNkcC0xLWFhOWQwOTQxLTQzZmYtNGFiYi04MTI5LTRkNTZiNjIwYjhlZSIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJzZHAtMS1hYTlkMDk0MS00M2ZmLTRhYmItODEyOS00ZDU2YjYyMGI4ZWUiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiOGU1MjE0ZjI5NmU0NDY0ZTk3NDA3MmQ3ZTdkMGUwNzYiLCJqdGkiOiI0YTIyNWMxNi1jZmQxLTQwZTktOGFiMi1mZjIxM2UzNzkyZGYiLCJpYXQiOjE1Njk1MTEwODYsImV4cCI6MTU2OTUxMjg4Nn0.g6GOFFEtT5T3ymiKSbu0YrvCbfMvIexbS_kpnA_pwFrt6kFqXFPTLCgkD7Tv3i8j7bTsS-FluX7sZtNxALGvYK67DrkCyVHn1mMepiBi41cTNWTj6t0wAqJ-3fsQd6vpaC4MsjblwFb5ib39qCUy-GgGAHDDx7SEojqpI41chEB_e6Fd10noQCRpogZw3UvZmY88lGpwlgdtJt0o937jPnQbotEXRJWQue2ir9SQWLvOAbnm9jLfRujZx-68lbLU-3O3Gxz6xTgEQMDLRlDevMryBCuouIvv5eALnczC_X_GLrCXjaQxsmKe7un0kfU6iN6tdgQF7oI0xyb50T6oaw\"\n    }\n}"
-            },
-            {
-              "id": "e3666584-658f-4d74-8757-32499abbc002",
-              "name": "201 Created ( DOMESTIC PAYMENT)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"paymentRequest\": {\n\t  \"type\" : \"DOMESTIC_PAYMENT\",\n      \"paymentIdempotencyId\":\"1d54cf71bfe44b1b8e67247aed455d96\",\n      \"reference\":\"REFERENCE\",\n      \"contextType\":\"OTHER\",\n       \"amount\":{  \n         \"amount\":\"4.00\",\n         \"currency\":\"GBP\"\n      },\n      \"payee\":{  \n         \"name\":\"Ksh\",\n         \"accountIdentifications\":[  \n            {  \n               \"type\":\"SORT_CODE\",\n               \"identification\":\"204514\"\n            },\n            {  \n               \"type\":\"ACCOUNT_NUMBER\",\n               \"identification\":\"00000825\"\n            }\n         ]\n      }\n\t}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/payment-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a0498a22-515f-4dce-88f9-dd7d008eca2b\"\n    },\n    \"data\": {\n        \"id\": \"742d0980-42fb-4607-ad7f-44723e420838\",\n        \"userUuid\": \"b15d434c-86a0-4a30-ba05-c90c86d239ae\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2019-09-26T15:18:05.443Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"startsAt\": \"2019-06-26T14:42:53Z\",\n        \"allowOverdraft\": false,\n        \"authorisationUrl\": \"https://modelobankauth2018.o3bank.co.uk:4101/auth?client_id=97984176-6fab-44f8-b531-e7399245972a&response_type=code+id_token&state=8e5214f296e4464e974072d7e7d0e076&nonce=8e5214f296e4464e974072d7e7d0e076&scope=openid+payments&redirect_uri=https%3A%2F%2Fdevelopment-auth.yapily.com%2F&request=eyJraWQiOiJYUXVyd3BtSmhrZmFKb3dFelg1Wm8xS3pZWTQiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL21vZGVsb2JhbmthdXRoMjAxOC5vM2JhbmsuY28udWs6NDEwMSIsInNjb3BlIjoib3BlbmlkIHBheW1lbnRzIiwiaXNzIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwiY2xpZW50X2lkIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2RldmVsb3BtZW50LWF1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjhlNTIxNGYyOTZlNDQ2NGU5NzQwNzJkN2U3ZDBlMDc2IiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6InNkcC0xLWFhOWQwOTQxLTQzZmYtNGFiYi04MTI5LTRkNTZiNjIwYjhlZSIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJzZHAtMS1hYTlkMDk0MS00M2ZmLTRhYmItODEyOS00ZDU2YjYyMGI4ZWUiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiOGU1MjE0ZjI5NmU0NDY0ZTk3NDA3MmQ3ZTdkMGUwNzYiLCJqdGkiOiI0YTIyNWMxNi1jZmQxLTQwZTktOGFiMi1mZjIxM2UzNzkyZGYiLCJpYXQiOjE1Njk1MTEwODYsImV4cCI6MTU2OTUxMjg4Nn0.g6GOFFEtT5T3ymiKSbu0YrvCbfMvIexbS_kpnA_pwFrt6kFqXFPTLCgkD7Tv3i8j7bTsS-FluX7sZtNxALGvYK67DrkCyVHn1mMepiBi41cTNWTj6t0wAqJ-3fsQd6vpaC4MsjblwFb5ib39qCUy-GgGAHDDx7SEojqpI41chEB_e6Fd10noQCRpogZw3UvZmY88lGpwlgdtJt0o937jPnQbotEXRJWQue2ir9SQWLvOAbnm9jLfRujZx-68lbLU-3O3Gxz6xTgEQMDLRlDevMryBCuouIvv5eALnczC_X_GLrCXjaQxsmKe7un0kfU6iN6tdgQF7oI0xyb50T6oaw\"\n    }\n}"
-            },
-            {
-              "id": "e778b74b-e96b-4457-a994-7e2c7c1a0f34",
-              "name": "400 Bad Request",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"totalMaxAmount\": \"MAX_AMOUNT_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"maxAmountPerRequest\": \"MAX_AMOUNT_PER_REQUEST_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"expiresAt\": \"EXPIRY_DATE\",\n    \"startsAt\": \"START_DATE\",\n    \"allowOverdraft\": \"false\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"value\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}"
-                },
-                "url": "https://api.yapily.com/payment-auth-requests"
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
-            }
-          ]
-        },
-        {
           "name": "Create Payment",
           "_postman_id": "1fd6bf92-7333-4b46-be2c-1a92a3c72b1c",
           "protocolProfileBehavior": {
@@ -6565,6 +6359,212 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"2d45e62f-a34a-4537-9b3b-d01fcd10ecc7\"\n    },\n    \"data\": {\n        \"id\": \"277ca9eb968948d4b5f8bfa4b6b6b16f\",\n        \"institutionConsentId\": \"cdaff58244df4387ba14dbc6809319c3\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455a21\",\n        \"paymentLifecycleId\": \"12a554dea74276e8b1b44efb17fc45d\",\n        \"status\": \"COMPLETED\",\n        \"statusDetails\": {\n            \"status\": \"COMPLETED\",\n            \"statusUpdateDate\": \"2020-01-18T16:33:35.172Z\"\n        },\n        \"payeeDetails\": {\n            \"name\": \"Tester\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"12345678\"\n                },\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"123456\"\n                }\n            ]\n        },\n        \"reference\": \"Yapily Test\",\n        \"amount\": 1.1,\n        \"currency\": \"GBP\",\n        \"firstPaymentAmount\": {\n            \"amount\": 1.1,\n            \"currency\": \"GBP\"\n        },\n        \"firstPaymentDateTime\": \"2020-01-21T09:39:44.474Z\",\n        \"numberOfPayments\": \"10\",\n        \"createdAt\": \"2020-01-18T16:33:27.151Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Bulk Payment Authorisation Request",
+          "_postman_id": "0741547c-79f9-4f11-97bc-f99180211c8d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "https://api.yapily.com/payment-auth-requests",
+            "description": "Initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a payment.\n\nFeature: \n\n`INITIATE_DOMESTIC_SINGLE_PAYMENT`, \n`INITIATE_DOMESTIC_SCHEDULED_PAYMENT`,\n`INITIATE_DOMESTIC_PERIODIC_PAYMENT`,\n`INITIATE_INTERNATIONAL_SINGLE_PAYMENT`\n\nRequest fields\n\n| Field |  |Description | Type |\n| - | - | - | - |\n| userUuid | _Conditional_ | The uuid for your application user. </br> ___Condition___ </br> Either the userUuid or applicationUserId must be provided.  | String |\n| applicationUserId | _Conditional_ | Your identifier for the application user. </br> ___Condition___ </br> Either the userUuid or applicationUserId must be provided. Your identifier for the application user. | String |\n| institutionId | _Mandatory_ |The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional_ | The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional_ | The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | _Mandatory_ |This nested object should exactly match the payment object that you intend to submit when you [create payment](https://docs.yapily.com/?version=latest#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c). | Object |\n\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
+          },
+          "response": [
+            {
+              "id": "227f8f64-6370-4168-bc9e-a87c74162abc",
+              "name": "201 Created ( DOMESTIC SCHEDULED PAYMENT)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n    \"expiresAt\":\"2019-10-17T14:42:53Z\",\n    \"startsAt\":\"2019-06-26T14:42:53Z\",\n\t\"paymentRequest\": {\n\t  \"type\" : \"DOMESTIC_SCHEDULED_PAYMENT\",\n      \"paymentIdempotencyId\":\"1d54cf71bfe44b1b8e67247aed455d96\",\n      \"paymentDateTime\" : \"2019-12-26T14:42:53Z\",\n      \"reference\":\"REFERENCE\",\n      \"contextType\":\"OTHER\",\n       \"amount\":{  \n         \"amount\":\"4.00\",\n         \"currency\":\"GBP\"\n      },\n      \"payee\":{  \n         \"name\":\"Ksh\",\n         \"address\":{ \n            \"addressLines\":[  \n               \"22\"\n            ],\n            \"streetName\":\"22\",\n            \"buildingNumber\":\"buildingNumber1\",\n            \"postCode\":\"BG2 7QW\",\n            \"townName\":\"London\",\n            \"county\":[  \n               \"Berks\"\n            ],\n            \"country\":\"GB\",\n            \"department\":\"department1\",\n            \"subDepartment\":\"subDepartment1\",\n            \"addressType\":\"BUSINESS\"\n         },\n         \"accountIdentifications\":[  \n            {  \n               \"type\":\"SORT_CODE\",\n               \"identification\":\"204514\"\n            },\n            {  \n               \"type\":\"ACCOUNT_NUMBER\",\n               \"identification\":\"00000825\"\n            }\n         ],\n         \"customerId\":\"1234567789\",\n         \"merchantCategoryCode\":\"1234\"\n      }\n\t}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"249a7ce3-d366-44ab-b160-82c2c9f99c19\"\n    },\n    \"data\": {\n        \"id\": \"ee72a319-f431-4937-b20e-c868f7f73a71\",\n        \"userUuid\": \"b15d434c-86a0-4a30-ba05-c90c86d239ae\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2019-09-26T15:43:40.844Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_DOMESTIC_SCHEDULED_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"startsAt\": \"2019-06-26T14:42:53Z\",\n        \"allowOverdraft\": false,\n        \"authorisationUrl\": \"https://modelobankauth2018.o3bank.co.uk:4101/auth?client_id=97984176-6fab-44f8-b531-e7399245972a&response_type=code+id_token&state=9ac9700e6a604312a60e0509c15a1ad9&nonce=9ac9700e6a604312a60e0509c15a1ad9&scope=openid+payments&redirect_uri=https%3A%2F%2Fdevelopment-auth.yapily.com%2F&request=eyJraWQiOiJYUXVyd3BtSmhrZmFKb3dFelg1Wm8xS3pZWTQiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL21vZGVsb2JhbmthdXRoMjAxOC5vM2JhbmsuY28udWs6NDEwMSIsInNjb3BlIjoib3BlbmlkIHBheW1lbnRzIiwiaXNzIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwiY2xpZW50X2lkIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2RldmVsb3BtZW50LWF1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjlhYzk3MDBlNmE2MDQzMTJhNjBlMDUwOWMxNWExYWQ5IiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6InNkcC0yLTc4MWMyMTlhLWVkNTMtNDU3MC1iNzBmLWRmMWQyMzA3MzIyYiIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJzZHAtMi03ODFjMjE5YS1lZDUzLTQ1NzAtYjcwZi1kZjFkMjMwNzMyMmIiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiOWFjOTcwMGU2YTYwNDMxMmE2MGUwNTA5YzE1YTFhZDkiLCJqdGkiOiJkYzg5NGZhZi1hODRiLTRhNGMtYWNlMi1lY2M2NWIyMWFiNTciLCJpYXQiOjE1Njk1MTI2MjEsImV4cCI6MTU2OTUxNDQyMX0.lAVRW-GL7y-LrYZx5r9Jnxtz5GaDJAiKnAWW03TE5hul47yrizESl26iTgOjzSZ7jMNFp8OoAFx9bYiPxzKzHe3BpBbRTPPNEI-wdvS0tGpfZ5RNtXOGgHzBwv7xu-tBFCAzaZlnRMptlGZncWm3ukwGAWyOM0UP0sfkqgi8aTJklH5SPKxy7xRTmsDGg_7rEiho-eVpwd3BIqRjJDI5BZVkEllbRY25wkXK3LQNdY_ZmwJ1Hf-6tMoxNLBnhnx4XGJBz4perAJ39zKqJzFO47TLFU_U7vOOF2ignULbmIOVK2JDzwTivfuCF-IvlgeDkf7z6aPmZf6G2008HRXoKQ\"\n    }\n}"
+            },
+            {
+              "id": "318b9ded-1b0c-4fc9-a27e-4e4787e07c8f",
+              "name": "201 Created ( DOMESTIC PERIODIC PAYMENT)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"Tester lloyds Test\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"http://display-parameters.herokuapp.com/\",\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PERIODIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d52\",\n        \"reference\": \"Yapily Test\",\n        \"contextType\": \"OTHER\",\n        \"paymentDateTime\": \"2020-01-21T09:39:44.474Z\",\n        \"amount\": {\n            \"amount\": \"1.10\",\n            \"currency\": \"GBP\"\n        },\n        \"payee\": {\n            \"name\": \"Mr Tester\",\n            \"address\": {\n                \"addressLines\": [\n                    \"3 Honey Gardens\"\n                ],\n                \"country\": \"GB\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"12345678\"\n                },\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"123456\"\n                }\n            ]\n        },\n        \"periodicPayment\": {\n            \"frequency\": {\n                \"type\": \"MONTHLY\"\n            },\n            \"numberofPayments\": \"10\"\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"50698f5bce1e4463e5b54a02018c6fa1\"\n    },\n    \"data\": {\n        \"id\": \"35cacbed-1f39-4f1e-9e10-2688f702a08b\",\n        \"userUuid\": \"b7b2f52b-d8e8-403c-8fb1-c6e3635a9871\",\n        \"applicationUserId\": \"Tester lloyds Test\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-01-21T09:39:44.474Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=adn-bKyGhe0mdwv9WZPSWtPty4GDMJsq6QdwE13tE29L&response_type=code+id_token&state=71145a259ea24d93a2ca9af89af06c1d&nonce=71045a259ea24d93a2ca9af89af06c1d&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnRpYWEuYmFyY2xheXMuY29tIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiJiZG4tYkt5R2hlMG1kd3Y5V1pQU1d0UHR5NEdETUpzcTZRZHdFMTN0RTI5TCIsImNsaWVudF9pZCI6ImJkbi1iS3lHaGUwbWR3djlXWlBTV3RQdHk0R0RNSnNxNlFkd0UxM3RFMjlMIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2F1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjcxMDQ1YTI1OWVhMjRkOTNhMmNhOWFmODlhZjA2YzFkIiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZZ0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkJBUkNMQVlTLVAtMTAwMDAwMDAyMDk4NjgiLCJlc3NlbnRpYWwiOnRydWV9fSwidXNlcmluZm8iOnsib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiQkFSQ0xBWVMtUC0xMDAwMDAwMDIwOTg2OCIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3MTA0NWEyNTllYTI0ZDkzYTJjYTlhZjg5YWYwNmMxZCIsImp0aSI6IjE3M2JhYzYwLThiYzUtNGM3NC1hN2I0LTk5NDRjNjM5OWY4YiIsImlhdCI6MTU3OTU5OTU4NCwiZXhwIjoxNTc5NjAxMzg0fQ.kcuIuJJVtnW1RyZE2W0osEZiFUqpW1p7mszbn6d-4H1v0qqBHEqqI8zohzovEnSw9N6z5741o6VSpH7W5nbO3DshrZ__Y7FB7aPHSe2QyDcbqrwUwXEqToara0I2VaLWBOBUfqgqo_dWYXF8lndqYObiUCaptvdaO5R1QX8Q35YveAomu_RzgSa5DAs03IDeVf7XVPMGIteFN_hUhJD6oS4jyvXG6QFSn44fmlVxbIZbWlXBayKtsiomiWMMKtXLHY7j-KcrMrEIl5pKjmmkiIk30Rvdx-_4G4lG-BhBd_xIw-URz-vCEjZKiI_VzSkxZXuUw0X8_PN1wZgfP7BKkA\"\n    }\n}"
+            },
+            {
+              "id": "6906cb31-befc-4849-ad0d-d32cc1b93118",
+              "name": "201 Created (INTERNATIONAL PAYMENT)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"Tester lloyds Test\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"http://display-parameters.herokuapp.com/\",\n    \"paymentRequest\": {\n        \"type\": \"INTERNATIONAL_PAYMENT\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d52\",\n        \"reference\": \"Yapily Test\",\n        \"contextType\": \"OTHER\",\n        \"amount\": {\n            \"amount\": \"1.10\",\n            \"currency\": \"EUR\"\n        },\n        \"payee\": {\n            \"name\": \"Mr Tester\",\n            \"address\": {\n                \"addressLines\": [\n                    \"3 Honey Gardens\"\n                ],\n                \"country\": \"GR\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"GR19 REKO 0090 7071 1490 50\"\n                },\n                {\n                    \"type\": \"BIC\",\n                    \"identification\": \"REKOGR21\"\n                }\n            ]\n        },\n        \"internationalPayment\": {\n            \"currencyOfTransfer\": \"EUR\"\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"50698f5bce1e4463e5b54a02018c6fa1\"\n    },\n    \"data\": {\n        \"id\": \"35cacbed-1f39-4f1e-9e10-2688f702a08b\",\n        \"userUuid\": \"b7b2f52b-d8e8-403c-8fb1-c6e3635a9871\",\n        \"applicationUserId\": \"Simon lloyds Test\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-01-21T09:39:44.474Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_INTERNATIONAL_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=adn-bKyGhe0mdwv9WZPSWtPty4GDMJsq6QdwE13tE29L&response_type=code+id_token&state=71145a259ea24d93a2ca9af89af06c1d&nonce=71045a259ea24d93a2ca9af89af06c1d&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnRpYWEuYmFyY2xheXMuY29tIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiJiZG4tYkt5R2hlMG1kd3Y5V1pQU1d0UHR5NEdETUpzcTZRZHdFMTN0RTI5TCIsImNsaWVudF9pZCI6ImJkbi1iS3lHaGUwbWR3djlXWlBTV3RQdHk0R0RNSnNxNlFkd0UxM3RFMjlMIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2F1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjcxMDQ1YTI1OWVhMjRkOTNhMmNhOWFmODlhZjA2YzFkIiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZZ0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkJBUkNMQVlTLVAtMTAwMDAwMDAyMDk4NjgiLCJlc3NlbnRpYWwiOnRydWV9fSwidXNlcmluZm8iOnsib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiQkFSQ0xBWVMtUC0xMDAwMDAwMDIwOTg2OCIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3MTA0NWEyNTllYTI0ZDkzYTJjYTlhZjg5YWYwNmMxZCIsImp0aSI6IjE3M2JhYzYwLThiYzUtNGM3NC1hN2I0LTk5NDRjNjM5OWY4YiIsImlhdCI6MTU3OTU5OTU4NCwiZXhwIjoxNTc5NjAxMzg0fQ.kcuIuJJVtnW1RyZE2W0osEZiFUqpW1p7mszbn6d-4H1v0qqBHEqqI8zohzovEnSw9N6z5741o6VSpH7W5nbO3DshrZ__Y7FB7aPHSe2QyDcbqrwUwXEqToara0I2VaLWBOBUfqgqo_dWYXF8lndqYObiUCaptvdaO5R1QX8Q35YveAomu_RzgSa5DAs03IDeVf7XVPMGIteFN_hUhJD6oS4jyvXG6QFSn44fmlVxbIZbWlXBayKtsiomiWMMKtXLHY7j-KcrMrEIl5pKjmmkiIk30Rvdx-_4G4lG-BhBd_xIw-URz-vCEjZKiI_VzSkxZXuUw0X8_PN1wZgfP7BKkA\"\n    }\n}"
+            },
+            {
+              "id": "ca13e289-9f8d-4382-8397-fa0f16e7e9d5",
+              "name": "201 Created ( DOMESTIC PAYMENT WITH PAYER)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d96\",\n        \"reference\": \"REFERENCE\",\n        \"contextType\": \"OTHER\",\n        \"payer\": {\n            \"name\": \"Ash\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"123456\"\n                },\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"12345678\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"4.00\",\n            \"currency\": \"GBP\"\n        },\n        \"payee\": {\n            \"name\": \"Ksh\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"SORT_CODE\",\n                    \"identification\": \"204514\"\n                },\n                {\n                    \"type\": \"ACCOUNT_NUMBER\",\n                    \"identification\": \"00000825\"\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a0498a22-515f-4dce-88f9-dd7d008eca2b\"\n    },\n    \"data\": {\n        \"id\": \"742d0980-42fb-4607-ad7f-44723e420838\",\n        \"userUuid\": \"b15d434c-86a0-4a30-ba05-c90c86d239ae\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2019-09-26T15:18:05.443Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"startsAt\": \"2019-06-26T14:42:53Z\",\n        \"allowOverdraft\": false,\n        \"authorisationUrl\": \"https://modelobankauth2018.o3bank.co.uk:4101/auth?client_id=97984176-6fab-44f8-b531-e7399245972a&response_type=code+id_token&state=8e5214f296e4464e974072d7e7d0e076&nonce=8e5214f296e4464e974072d7e7d0e076&scope=openid+payments&redirect_uri=https%3A%2F%2Fdevelopment-auth.yapily.com%2F&request=eyJraWQiOiJYUXVyd3BtSmhrZmFKb3dFelg1Wm8xS3pZWTQiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL21vZGVsb2JhbmthdXRoMjAxOC5vM2JhbmsuY28udWs6NDEwMSIsInNjb3BlIjoib3BlbmlkIHBheW1lbnRzIiwiaXNzIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwiY2xpZW50X2lkIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2RldmVsb3BtZW50LWF1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjhlNTIxNGYyOTZlNDQ2NGU5NzQwNzJkN2U3ZDBlMDc2IiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6InNkcC0xLWFhOWQwOTQxLTQzZmYtNGFiYi04MTI5LTRkNTZiNjIwYjhlZSIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJzZHAtMS1hYTlkMDk0MS00M2ZmLTRhYmItODEyOS00ZDU2YjYyMGI4ZWUiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiOGU1MjE0ZjI5NmU0NDY0ZTk3NDA3MmQ3ZTdkMGUwNzYiLCJqdGkiOiI0YTIyNWMxNi1jZmQxLTQwZTktOGFiMi1mZjIxM2UzNzkyZGYiLCJpYXQiOjE1Njk1MTEwODYsImV4cCI6MTU2OTUxMjg4Nn0.g6GOFFEtT5T3ymiKSbu0YrvCbfMvIexbS_kpnA_pwFrt6kFqXFPTLCgkD7Tv3i8j7bTsS-FluX7sZtNxALGvYK67DrkCyVHn1mMepiBi41cTNWTj6t0wAqJ-3fsQd6vpaC4MsjblwFb5ib39qCUy-GgGAHDDx7SEojqpI41chEB_e6Fd10noQCRpogZw3UvZmY88lGpwlgdtJt0o937jPnQbotEXRJWQue2ir9SQWLvOAbnm9jLfRujZx-68lbLU-3O3Gxz6xTgEQMDLRlDevMryBCuouIvv5eALnczC_X_GLrCXjaQxsmKe7un0kfU6iN6tdgQF7oI0xyb50T6oaw\"\n    }\n}"
+            },
+            {
+              "id": "e3666584-658f-4d74-8757-32499abbc002",
+              "name": "201 Created ( DOMESTIC PAYMENT)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"paymentRequest\": {\n\t  \"type\" : \"DOMESTIC_PAYMENT\",\n      \"paymentIdempotencyId\":\"1d54cf71bfe44b1b8e67247aed455d96\",\n      \"reference\":\"REFERENCE\",\n      \"contextType\":\"OTHER\",\n       \"amount\":{  \n         \"amount\":\"4.00\",\n         \"currency\":\"GBP\"\n      },\n      \"payee\":{  \n         \"name\":\"Ksh\",\n         \"accountIdentifications\":[  \n            {  \n               \"type\":\"SORT_CODE\",\n               \"identification\":\"204514\"\n            },\n            {  \n               \"type\":\"ACCOUNT_NUMBER\",\n               \"identification\":\"00000825\"\n            }\n         ]\n      }\n\t}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a0498a22-515f-4dce-88f9-dd7d008eca2b\"\n    },\n    \"data\": {\n        \"id\": \"742d0980-42fb-4607-ad7f-44723e420838\",\n        \"userUuid\": \"b15d434c-86a0-4a30-ba05-c90c86d239ae\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2019-09-26T15:18:05.443Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"startsAt\": \"2019-06-26T14:42:53Z\",\n        \"allowOverdraft\": false,\n        \"authorisationUrl\": \"https://modelobankauth2018.o3bank.co.uk:4101/auth?client_id=97984176-6fab-44f8-b531-e7399245972a&response_type=code+id_token&state=8e5214f296e4464e974072d7e7d0e076&nonce=8e5214f296e4464e974072d7e7d0e076&scope=openid+payments&redirect_uri=https%3A%2F%2Fdevelopment-auth.yapily.com%2F&request=eyJraWQiOiJYUXVyd3BtSmhrZmFKb3dFelg1Wm8xS3pZWTQiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL21vZGVsb2JhbmthdXRoMjAxOC5vM2JhbmsuY28udWs6NDEwMSIsInNjb3BlIjoib3BlbmlkIHBheW1lbnRzIiwiaXNzIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwiY2xpZW50X2lkIjoiOTc5ODQxNzYtNmZhYi00NGY4LWI1MzEtZTczOTkyNDU5NzJhIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2RldmVsb3BtZW50LWF1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjhlNTIxNGYyOTZlNDQ2NGU5NzQwNzJkN2U3ZDBlMDc2IiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6InNkcC0xLWFhOWQwOTQxLTQzZmYtNGFiYi04MTI5LTRkNTZiNjIwYjhlZSIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJzZHAtMS1hYTlkMDk0MS00M2ZmLTRhYmItODEyOS00ZDU2YjYyMGI4ZWUiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiOGU1MjE0ZjI5NmU0NDY0ZTk3NDA3MmQ3ZTdkMGUwNzYiLCJqdGkiOiI0YTIyNWMxNi1jZmQxLTQwZTktOGFiMi1mZjIxM2UzNzkyZGYiLCJpYXQiOjE1Njk1MTEwODYsImV4cCI6MTU2OTUxMjg4Nn0.g6GOFFEtT5T3ymiKSbu0YrvCbfMvIexbS_kpnA_pwFrt6kFqXFPTLCgkD7Tv3i8j7bTsS-FluX7sZtNxALGvYK67DrkCyVHn1mMepiBi41cTNWTj6t0wAqJ-3fsQd6vpaC4MsjblwFb5ib39qCUy-GgGAHDDx7SEojqpI41chEB_e6Fd10noQCRpogZw3UvZmY88lGpwlgdtJt0o937jPnQbotEXRJWQue2ir9SQWLvOAbnm9jLfRujZx-68lbLU-3O3Gxz6xTgEQMDLRlDevMryBCuouIvv5eALnczC_X_GLrCXjaQxsmKe7un0kfU6iN6tdgQF7oI0xyb50T6oaw\"\n    }\n}"
+            },
+            {
+              "id": "e778b74b-e96b-4457-a994-7e2c7c1a0f34",
+              "name": "400 Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"totalMaxAmount\": \"MAX_AMOUNT_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"maxAmountPerRequest\": \"MAX_AMOUNT_PER_REQUEST_IN_CURRENCY_OF_PAYMENT_AMOUNT\",\n    \"expiresAt\": \"EXPIRY_DATE\",\n    \"startsAt\": \"START_DATE\",\n    \"allowOverdraft\": \"false\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"value\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}"
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
             }
           ]
         },
@@ -6869,109 +6869,109 @@
   ],
   "variable": [
     {
-      "id": "a7f4f7d0-054d-404d-8939-974ff50734fc",
+      "id": "0421d2a6-bd55-4daa-812b-6a1f1c2fc011",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "059cbf1c-89df-4248-bf78-4f020acbc05f",
+      "id": "8b638134-d75f-4b11-ba1f-c038ff360a64",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "cd5c3ad8-d215-4884-9b58-d4eea812aecc",
+      "id": "49c4f83d-8504-47a8-b3af-0571068b3b28",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "d4a04a6c-0478-4603-aaf4-78fd0c5d54c3",
+      "id": "02d4e9c7-35c6-4a16-906a-b9b64fe9fd72",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "bf9d333a-54d4-4ade-88db-d9aaabd0dea2",
+      "id": "4b8b7e37-ca11-4f43-8342-42c3fa7a4da4",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "3860cc75-8380-410f-a622-1c825ca77831",
+      "id": "df77a5bd-ba21-4b42-9d2b-361ea7ea37b2",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "8407470d-f01b-4345-b648-f99ca8ab420f",
+      "id": "4fa54c7f-b14c-415d-81a8-b8589d5940f5",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "8cbbe376-0fef-41e0-8394-77da8943bb7f",
+      "id": "45419d1d-66ae-4f65-b5bc-071c34a3b2d1",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "2291f633-5fb0-44e9-80ca-d0576cd87441",
+      "id": "7a5713a5-e082-451f-8e87-c795403b4216",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "2127095e-fe83-44f5-94d0-d3c58707917f",
+      "id": "2c3cb90c-98d0-43b0-9152-cf82c9d524ee",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "9ba9ed61-4174-4657-9981-a02a88cefad1",
+      "id": "bbee4e52-9778-4708-87e0-7dea2c4e5ec5",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "127c20b4-cfbd-402b-9172-eef0ecd7bcb4",
+      "id": "c7959bab-9cbf-49c0-94ea-868aba93a1b4",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "5775da0b-7730-4efa-8369-51d50f99d059",
+      "id": "97b769d4-a166-4938-90ed-a2fa3afc2251",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "49545d8e-9170-412a-828f-95b76ac97b24",
+      "id": "fe659b9f-943c-4df2-b158-d35d8b3346d3",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "e06e5f17-e906-4b18-bf55-c7a490d32ddf",
+      "id": "1d9bbb74-a21b-458f-90c2-a7f5af2f8e11",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "41bedf7a-b1f2-4169-8192-d14b28868dd3",
+      "id": "0a951e37-1e00-421c-9fe0-8322552980e0",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "f599aa73-37f5-4fcb-ad0d-75f8c373be20",
+      "id": "4ee5923a-24f9-402c-9832-5110f650f2f9",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "01a79059-618c-41da-9c8d-ff1f23fd3b1c",
+      "id": "6d689f06-3229-4acb-996d-7d71c159a278",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
