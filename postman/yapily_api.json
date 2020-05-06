@@ -6384,7 +6384,7 @@
               }
             },
             "url": "https://api.yapily.com/bulk-payment-auth-requests",
-            "description": "Used to initiate a the payment authorisation process and direct users to the login screen of their financial institution in order to give their consent for a bulk payment.\n\nFeature: \n\n`INITIATE_BULK_PAYMENT`\n\nRequest fields\n\n| Field |  |Description | Type |\n| - | - | - | - |\n| userUuid | _Conditional_ | The uuid for your application user. </br> ___Condition___ </br> Either the `userUuid` or `applicationUserId` must be provided.  | String |\n| applicationUserId | _Conditional_ | Your identifier for the application user. </br> ___Condition___ </br> Either the `userUuid` or `applicationUserId` must be provided. Your identifier for the application user. | String |\n| institutionId | _Mandatory_ |The `institution-id` for the bank that the user will use to pay. | String |\n| callback | _Optional_ | The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional_ | The one time token value should be marked as 'true' to receive one time token. This field should be used in conjunction with `callback` url.  | Boolean |\n| paymentRequest | _Mandatory_ | This nested object is **different** from `paymentRequest` in a normal [payment authorisation request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). <br><br> It must be an exact match of the payment request body that is sent in [bulk payment request](). | Object |\n| paymentRequest.executionDateTime | _Optional_ | The time at which the bulk payment will be executed. If omitted, the payment will be executed immediately once the bulk payment is executed. | [Date](https://docs.yapily.com/#date-time-format) |\n| paymentRequest.payments | _Mandatory_ | An array of `Payment` objects to be executed. Each `Payment` is the  | Array |\n\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
+            "description": "Used to initiate a the payment authorisation process and direct users to the login screen of their financial institution in order to give their consent for a bulk payment.\n\nFeature: \n\n`INITIATE_BULK_PAYMENT`\n\nRequest fields\n\n| Field |  |Description | Type |\n| - | - | - | - |\n| userUuid | _Conditional_ | The uuid for your application user. </br> ___Condition___ </br> Either the `userUuid` or `applicationUserId` must be provided.  | String |\n| applicationUserId | _Conditional_ | Your identifier for the application user. </br> ___Condition___ </br> Either the `userUuid` or `applicationUserId` must be provided. | String |\n| institutionId | _Mandatory_ |The `institution-id` for the bank that the user will use to pay. | String |\n| callback | _Optional_ | The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional_ | The one time token value should be marked as 'true' to receive one time token. This field should be used in conjunction with `callback` url.  | Boolean |\n| paymentRequest | _Mandatory_ | This nested object is **different** from `paymentRequest` in a normal [payment authorisation request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). <br><br> It must be an exact match of the payment request body that is sent in [bulk payment request](). | Object |\n| paymentRequest.executionDateTime | _Optional_ | The time at which the bulk payment will be executed. If omitted, the payment will be executed immediately once the bulk payment is executed. | [Date](https://docs.yapily.com/#date-time-format) |\n| paymentRequest.payments | _Mandatory_ | An array of payment objects to be executed. Each object refers to a single [payment request object for a single payments](https://docs.yapily.com/?version=latest#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c).  | Array |\n\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
           },
           "response": [
             {
@@ -6754,109 +6754,109 @@
   ],
   "variable": [
     {
-      "id": "4d55448f-d853-4804-b229-41614aa9c53a",
+      "id": "bca12da8-028a-40d4-bbdd-605188e3281f",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "50b30236-3e2d-4364-b096-20aa3761a3dc",
+      "id": "5ec8377b-a6cf-4d51-ab3d-27a69d87edef",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "ce6c9ce4-7b26-4690-be48-057e4739be97",
+      "id": "b06614b9-168d-4990-9968-5dbaad1cbc3f",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "58c5dce1-7cf6-4e41-989c-2ddc99d37cd1",
+      "id": "e8bda277-a2a2-4ff7-847e-37f4c17c4796",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "6ee00312-41ac-418a-aa4a-35a52d7e0cfd",
+      "id": "151c2007-c00a-4126-a875-d34552ef0350",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "84d2e3b9-d30b-474d-9349-3247ab4ee6d1",
+      "id": "24300397-8dff-41d9-b1ba-92737bd3b343",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "8f091f9a-c68f-48a6-bde5-29a90b212ab1",
+      "id": "183f0e78-0a2f-4133-b091-924a1bc54266",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "3711f40d-08d2-46bc-9423-16e20e407e1e",
+      "id": "9c519232-2a16-4a6f-bbd6-9f641113472e",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "38630adf-a672-4837-a224-b1380ab65292",
+      "id": "b615f42a-1ab7-4ace-a616-7628210c4e8b",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "101a663d-39f9-47d5-b35c-72c923149771",
+      "id": "28b38d2a-51c0-4540-a386-bcbf739b9b12",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "9374aa96-8dd7-4375-b388-1c5acff9a2b9",
+      "id": "3636141e-27ee-477e-aef3-5305aefec01c",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "9bcef359-e707-4541-bb01-008e364cad08",
+      "id": "d78069df-a5c7-4998-948e-16cb1543f3a7",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "3ec9e99a-98a0-418c-989d-dcd081bd0da2",
+      "id": "e9559a8b-8779-4c98-80ea-e4eb1e3ba360",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "3525b308-0550-468e-b484-e4ba52855647",
+      "id": "eafaf12d-916e-4809-84c5-c133410f053f",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "4fdde917-e9ed-4d9a-89e1-1e6746f8af7c",
+      "id": "58a38c0e-0b18-461e-b310-6bd7cade8e98",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "c798ba20-df4e-4d59-941d-711e16f663a7",
+      "id": "3bba17ff-8ec3-490e-a390-597fc478ecc7",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "7e12948d-10c5-4c66-8fe0-3d2e6a646739",
+      "id": "b5c82c53-f482-4c19-9d3f-cfa8af27fc6d",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "a3aa12cb-9d11-4206-baa5-fda36c4dcbb7",
+      "id": "3703c5ea-3895-4807-ba14-91fc2b68f887",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
