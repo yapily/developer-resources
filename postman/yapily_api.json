@@ -6125,7 +6125,7 @@
               "raw": "{\n    \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n    \"payer\": {\n        \"name\": \"PAYER_NAME\",\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ]\n    },\n    \"amount\": {\n        \"amount\": \"0.00\",\n        \"currency\": \"3_LETTER_CURRENCY_CODE\"\n    },\n    \"reference\": \"REFERENCE\",\n    \"type\": \"PAYMENT_TYPE\",\n    \"payee\": {\n        \"name\": \"PAYEE_NAME\",\n        \"address\": {\n            \"addressLines\": [\n                \"ADDRESS_LINES\"\n            ],\n            \"streetName\": \"STREET_NAME\",\n            \"buildingNumber\": \"BUILDING_NUMBER\",\n            \"postCode\": \"POST_CODE\",\n            \"townName\": \"TOWN_NAME\",\n            \"county\": [\n                \"COUNTY_NAME\"\n            ],\n            \"country\": \"2_LETTER_COUNTRY_CODE\",\n            \"department\": \"DEPARTMENT_NAME\",\n            \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n            \"addressType\": \"TYPE_OF_ADDRESS\"\n        },\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"customerId\": \"CUSTOMER_ID\",\n        \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n    }\n}"
             },
             "url": "https://api.yapily.com/payments",
-            "description": "Create a payment request.\n\nFeature: \n\n`CREATE_DOMESTIC_SINGLE_PAYMENT`,\n`CREATE_DOMESTIC_SCHEDULED_PAYMENT`,\n`CREATE_DOMESTIC_PERIODIC_PAYMENT`,\n`CREATE_INTERNATIONAL_SINGLE_PAYMENT`.\n\n\nNote: \n1) The payload of this request must exactly match the `paymentRequest` in the [payment authorisation request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b).\n\n</br>\n\n*Payment types*:\n\n|Payment Type | Description | Feature |\n| :--------- | :---------- | :---------- |\n| DOMESTIC_PAYMENT | Initiate and create domestic single payments. | `INITIATE_DOMESTIC_SINGLE_PAYMENT`, `CREATE_DOMESTIC_SINGLE_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n| DOMESTIC_SCHEDULED_PAYMENT | Initiate and create domestic scheduled payments. | `INITIATE_DOMESTIC_SCHEDULED_PAYMENT`, `CREATE_DOMESTIC_SCHEDULED_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n| DOMESTIC_PERIODIC_PAYMENT | Initiate and create domestic periodic payments.They are known as Standing Order in UK. |`INITIATE_DOMESTIC_PERIODIC_PAYMENT`, `CREATE_DOMESTIC_PERIODIC_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n| INTERNATIONAL_PAYMENT | Initiate and create international single payments. | `INITIATE_INTERNATIONAL_SINGLE_PAYMENT`, `CREATE_INTERNATIONAL_SINGLE_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n\n</br>\n\n*The following table will provide details of the fields which are common to* **all payment types.**\n\n| Field | | Description | Type |\n| - | - | - | - |\n| paymentIdempotencyId | _Mandatory_ | Unique identifier provided by payment initiator to identify the payment. Maximum 35 characters long as per the Open Banking spec. | String |\n| payer.accountIdentifications | _Conditional_ | Payer's insititution account identifiers. </br> ___Condition___ </br>  1. Payer account identification is must when Payer and Payee are in Europe.</br> 2. Payer account identification should be provided if Payer account is required to be locked. | Collection |\n| payer.accountIdentifications.</br>name | _Optional_ | The name of the Debtor or Payer.| String |\n| payer.accountIdentifications.</br>type | | Type of identification.Possible values are SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH, PAYM, NCC.| String |\n| payer.accountIdentifications.</br>identification | | Value of the identication as per the type. i.e. If type is mentioned as SORT_CODE then value will a six digit valid sort code.| String |\n| amount | _Mandatory_ | The representation of the amount and currency. | Object |\n| amount.amount | _Mandatory_ | The decimal representation of the amount. | Number |\n| amount.currency | _Mandatory_ | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n| reference | _Optional_ | Payment reference/description. Maximum 18 characters long. | String |\n| type | _Mandatory_ | Payment type. Possible values are DOMESTIC_PAYMENT, DOMESTIC_SCHEDULED_PAYMENT, DOMESTIC_PERIODIC_PAYMENT, INTERNATIONAL_PAYMENT. | String |\n| paymentDateTime | _Conditional_ | The date on which payment is to be scheduled. </br> ___Condition___ </br> 1. Domestic Scheduled Payment: It must be a future date. </br> 2. Domestic Periodic Payment: The date of the first payment and must be provided. |[Date](https://docs.yapily.com/#date-time-format)|\n| contextType | _Optional_ | Payment context type. Possible values are BILL, GOODS, SERVICES, OTHER, PERSON_TO_PERSON. | String |\n| payee | _Mandatory_ |The details of the beneficiary [person or business]. | Object |\n| payee.name | _Mandatory_ | The name of beneficiary | String |\n| payee.address | _Mandatory_ | The address of beneficiary. It is required for `INTERNATIONAL_PAYMENT`. | Object |\n| payee.address.addressLines | _Conditional_ | The address lines. </br> ___Condition___ </br> 1. It is must for `INTERNATIONAL_PAYMENT` | [String] |\n| payee.address.streetName | _Conditional_ | The street name. </br> ___Condition___ </br> 1. It is must for `INTERNATIONAL_PAYMENT`. | String |\n| payee.address.buildingNumber | _Optional_ | The building number. | String |\n| payee.address.postCode | _Optional_ | The post code. | String |\n| payee.address.townName | _Conditional_ | The town name. </br> ___Condition___ </br> 1. It is must for `INTERNATIONAL_PAYMENT`. | String |\n| payee.address.county | _Optional_ | The county name. | [String] |\n| payee.address.country | _Mandatory_ | The [2-letter country code](https://www.gov.uk/government/publications/iso-country-codes--2) of the payment destination. Always \"GB\" for UK domestic payments. | String |\n| payee.address.department | _Optional_ | The department name. | String |\n| payee.address.subDepartment | _Optional_ | The sub department name. | String |\n| payee.address.addressType | _Optional_ | The type of the address. Possible values are:BUSINESS, CORRESPONDENCE, DELIVERY_TO, MAIL_TO, PO_BOX, POSTAL, RESIDENTIAL, STATEMENT. | String |\n| payee.accountIdentifications | _Mandatory_ | Payee's insititution account identifiers like account number and sortcode or IBAN. | Collection |\n| payee.accountIdentifications.</br>type | _Mandatory_ | Type of identification.Possible values are SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH, PAYM.| String |\n| payee.accountIdentifications.</br>identification | _Mandatory_ | Value of the identication as per the type. If type is mentioned as SORT_CODE then value will a six digit valid sort code.| String |\n| payee.merchantId | _Optional_ | A merchant ID is a unique code provided by payment processor to the merchant. | String |\n| payee.merchantCategoryCode | _Optional_ | Category code of the merchant in case Payee is business. | String |\n| periodicPayment | _Conditional_ | ___Condition___ </br> 1. It is mandatory for domestic periodic payments. | Object |\n| internationalPayment | _Conditional_ | ___Condition___ </br> 1. It is mandatory for international single payments. | Object |\n\n</br>\n\n*The following table will provide details of the fields which are specific to* **domestic periodic payments.**\n\n| Field | | Description | Type |\n| - | - | - | - |\n|periodicPayment.</br>frequency.type | _Mandatory_ | The frequency value of the periodic payment. Possible values are DAILY, EVERY_WORKING_DAY, CALENDAR_DAY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, EVERY_TWO_MONTHS, QUARTERLY, SEMIANNUAL, ANNUAL. | Enum |\n|periodicPayment.</br>frequency.intervalWeek| _Conditional_ | ___Condition___ </br> 1. The `intervalWeek` is used with frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).| Integer |\n|periodicPayment.</br>frequency.intervalMonth| _Conditional_ | ___Condition___ </br> 1. The `intervalMonth` is used with frequency value of MONTHLY. It is used to define the frequency of the month (i.e. every 4th month).| Integer |\n|periodicPayment.</br>frequency.executionDay| _Conditional_ |  ___Condition___ </br> 1. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n|periodicPayment.</br>numberOfPayments| _Conditional_ |  ___Condition___ </br> 1. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n|periodicPayment.</br>nextPaymentDateTime| _Optional_ | The next payment date time. | [Date](https://docs.yapily.com/#date-time-format) |\n|periodicPayment.</br>nextPaymentAmount| _Optional_ | The recurring payment amount. | Object |\n|periodicPayment.</br>nextPaymentAmount.amount| _Mandatory_ | The decimal representation of the amount.| Number |\n|periodicPayment.</br>nextPaymentAmount.currency| _Mandatory_ | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n|periodicPayment.</br>finalPaymentDateTime| _Optional_| The final payment date and time.| [Date](https://docs.yapily.com/#date-time-format) |\n|periodicPayment.</br>finalPaymentAmount| _Optional_ | The final payment amount. | Object |\n|periodicPayment.</br>finalPaymentAmount.amount| _Mandatory_ | The decimal representation of the amount.| Number |\n|periodicPayment.</br>finalPaymentAmount.currency| _Mandatory_ | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n\n</br>\n\n*The following table will provide details of the fields which are specific to* **international single payments.**\n\n| Field | | Description | Type |\n| - | - | - | - |\n|internationalPayment.</br>currencyOfTransfer| _Mandatory_ | The currency of the to be transferred amount, which is different from the currency of the payer's account. The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n|internationalPayment.</br>exchangeRateInformation | _Optional_ |  | Object |\n|internationalPayment.</br>exchangeRateInformation.unitCurrency | _Mandatory_|Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP. The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n|internationalPayment.</br>exchangeRateInformation.rate| _Optional_| The factor used for conversion of an amount from one currency to another. | Number |\n|internationalPayment.</br>exchangeRateInformation.rateType| _Mandatory_|The type used to complete the currency exchange.Valid values are ACTUAL, AGREED and INDICATIVE. | String |\n|internationalPayment.</br>exchangeRateInformation.</br> foreignExchangeContractReference| _Conditional_| Unique and unambiguous reference to the foreign exchange contract agreed between the payer and the payee agent. </br> ___Condition___ </br> 1. Used with `AGREED` rate type. | String |\n|internationalPayment.purpose.| _Optional_| The external purpose code.The purpose code are [ISO20022](www.iso20022.org) values. | String |\n|internationalPayment.priority| _Optional_| The indicator of order of importance that the PSU would like the ASPSP to apply to the processing of the payments. Valid values are NORMAL, URGENT | String |\n|internationalPayment.chargeBearer| _Optional_|Specifies which party/parties will bear the charges associated with the processing of the payment transaction.Valid values are DEBT, CRED, SHAR and SLEV. | String |"
+            "description": "Create a payment request.\n\nFeature: \n\n`CREATE_DOMESTIC_SINGLE_PAYMENT`,\n`CREATE_DOMESTIC_SCHEDULED_PAYMENT`,\n`CREATE_DOMESTIC_PERIODIC_PAYMENT`,\n`CREATE_INTERNATIONAL_SINGLE_PAYMENT`.\n\n\nNote: \n1) The payload of this request must exactly match the `paymentRequest` in the [payment authorisation request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b).\n\n</br>\n\n*Payment types*:\n\n|Payment Type | Description | Feature |\n| :--------- | :---------- | :---------- |\n| DOMESTIC_PAYMENT | Initiate and create domestic single payments. | `INITIATE_DOMESTIC_SINGLE_PAYMENT`, `CREATE_DOMESTIC_SINGLE_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n| DOMESTIC_SCHEDULED_PAYMENT | Initiate and create domestic scheduled payments. | `INITIATE_DOMESTIC_SCHEDULED_PAYMENT`, `CREATE_DOMESTIC_SCHEDULED_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n| DOMESTIC_PERIODIC_PAYMENT | Initiate and create domestic periodic payments.They are known as Standing Order in UK. |`INITIATE_DOMESTIC_PERIODIC_PAYMENT`, `CREATE_DOMESTIC_PERIODIC_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n| INTERNATIONAL_PAYMENT | Initiate and create international single payments. | `INITIATE_INTERNATIONAL_SINGLE_PAYMENT`, `CREATE_INTERNATIONAL_SINGLE_PAYMENT`, `EXISTING_PAYMENT_DETAILS` |\n\n<h1>The PaymentRequest object</h1>\n<h2>Common Properties</h2>\n\nThe following table provides details of the fields that are common in the `PaymentRequest` object in **all payment types**.\n\n| Field | | Description | Type |\n| - | - | - | - |\n| paymentIdempotencyId | _Mandatory_ | Unique identifier provided by payment initiator to identify the payment. Maximum 35 characters long as per the Open Banking spec. | String |\n| payer.accountIdentifications | _Conditional_ | Payer's insititution account identifiers. </br> ___Condition___ </br>  1. Payer account identification is must when Payer and Payee are in Europe.</br> 2. Payer account identification should be provided if Payer account is required to be locked. | Collection |\n| payer.accountIdentifications.</br>name | _Optional_ | The name of the Debtor or Payer.| String |\n| payer.accountIdentifications.</br>type | | Type of identification.Possible values are SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH, PAYM, NCC.| String |\n| payer.accountIdentifications.</br>identification | | Value of the identication as per the type. i.e. If type is mentioned as SORT_CODE then value will a six digit valid sort code.| String |\n| amount | _Mandatory_ | The representation of the amount and currency. | Object |\n| amount.amount | _Mandatory_ | The decimal representation of the amount. | Number |\n| amount.currency | _Mandatory_ | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n| reference | _Optional_ | Payment reference/description. Maximum 18 characters long. | String |\n| type | _Mandatory_ | Payment type. Possible values are DOMESTIC_PAYMENT, DOMESTIC_SCHEDULED_PAYMENT, DOMESTIC_PERIODIC_PAYMENT, INTERNATIONAL_PAYMENT. | String |\n| paymentDateTime | _Conditional_ | The date on which payment is to be scheduled. </br> ___Condition___ </br> 1. Domestic Scheduled Payment: It must be a future date. </br> 2. Domestic Periodic Payment: The date of the first payment and must be provided. |[Date](https://docs.yapily.com/#date-time-format)|\n| contextType | _Optional_ | Payment context type. Possible values are BILL, GOODS, SERVICES, OTHER, PERSON_TO_PERSON. | String |\n| payee | _Mandatory_ |The details of the beneficiary [person or business]. | Object |\n| payee.name | _Mandatory_ | The name of beneficiary | String |\n| payee.address | _Mandatory_ | The address of beneficiary. It is required for `INTERNATIONAL_PAYMENT`. | Object |\n| payee.address.addressLines | _Conditional_ | The address lines. </br> ___Condition___ </br> 1. It is must for `INTERNATIONAL_PAYMENT` | [String] |\n| payee.address.streetName | _Conditional_ | The street name. </br> ___Condition___ </br> 1. It is must for `INTERNATIONAL_PAYMENT`. | String |\n| payee.address.buildingNumber | _Optional_ | The building number. | String |\n| payee.address.postCode | _Optional_ | The post code. | String |\n| payee.address.townName | _Conditional_ | The town name. </br> ___Condition___ </br> 1. It is must for `INTERNATIONAL_PAYMENT`. | String |\n| payee.address.county | _Optional_ | The county name. | [String] |\n| payee.address.country | _Mandatory_ | The [2-letter country code](https://www.gov.uk/government/publications/iso-country-codes--2) of the payment destination. Always \"GB\" for UK domestic payments. | String |\n| payee.address.department | _Optional_ | The department name. | String |\n| payee.address.subDepartment | _Optional_ | The sub department name. | String |\n| payee.address.addressType | _Optional_ | The type of the address. Possible values are:BUSINESS, CORRESPONDENCE, DELIVERY_TO, MAIL_TO, PO_BOX, POSTAL, RESIDENTIAL, STATEMENT. | String |\n| payee.accountIdentifications | _Mandatory_ | Payee's insititution account identifiers like account number and sortcode or IBAN. | Collection |\n| payee.accountIdentifications.</br>type | _Mandatory_ | Type of identification.Possible values are SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH, PAYM.| String |\n| payee.accountIdentifications.</br>identification | _Mandatory_ | Value of the identication as per the type. If type is mentioned as SORT_CODE then value will a six digit valid sort code.| String |\n| payee.merchantId | _Optional_ | A merchant ID is a unique code provided by payment processor to the merchant. | String |\n| payee.merchantCategoryCode | _Optional_ | Category code of the merchant in case Payee is business. | String |\n| periodicPayment | _Conditional_ | ___Condition___ </br> 1. It is mandatory for domestic periodic payments. | Object |\n| internationalPayment | _Conditional_ | ___Condition___ </br> 1. It is mandatory for international single payments. | Object |\n\n</br>\n\n*The following table will provide details of the fields which are specific to* **domestic periodic payments.**\n\n| Field | | Description | Type |\n| - | - | - | - |\n|periodicPayment.</br>frequency.type | _Mandatory_ | The frequency value of the periodic payment. Possible values are DAILY, EVERY_WORKING_DAY, CALENDAR_DAY, WEEKLY, EVERY_TWO_WEEKS, MONTHLY, EVERY_TWO_MONTHS, QUARTERLY, SEMIANNUAL, ANNUAL. | Enum |\n|periodicPayment.</br>frequency.intervalWeek| _Conditional_ | ___Condition___ </br> 1. The `intervalWeek` is used with frequency value of WEEKLY or MONTHLY. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).| Integer |\n|periodicPayment.</br>frequency.intervalMonth| _Conditional_ | ___Condition___ </br> 1. The `intervalMonth` is used with frequency value of MONTHLY. It is used to define the frequency of the month (i.e. every 4th month).| Integer |\n|periodicPayment.</br>frequency.executionDay| _Conditional_ |  ___Condition___ </br> 1. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n|periodicPayment.</br>numberOfPayments| _Conditional_ |  ___Condition___ </br> 1. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n|periodicPayment.</br>nextPaymentDateTime| _Optional_ | The next payment date time. | [Date](https://docs.yapily.com/#date-time-format) |\n|periodicPayment.</br>nextPaymentAmount| _Optional_ | The recurring payment amount. | Object |\n|periodicPayment.</br>nextPaymentAmount.amount| _Mandatory_ | The decimal representation of the amount.| Number |\n|periodicPayment.</br>nextPaymentAmount.currency| _Mandatory_ | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n|periodicPayment.</br>finalPaymentDateTime| _Optional_| The final payment date and time.| [Date](https://docs.yapily.com/#date-time-format) |\n|periodicPayment.</br>finalPaymentAmount| _Optional_ | The final payment amount. | Object |\n|periodicPayment.</br>finalPaymentAmount.amount| _Mandatory_ | The decimal representation of the amount.| Number |\n|periodicPayment.</br>finalPaymentAmount.currency| _Mandatory_ | The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n\n</br>\n\n*The following table will provide details of the fields which are specific to* **international single payments.**\n\n| Field | | Description | Type |\n| - | - | - | - |\n|internationalPayment.</br>currencyOfTransfer| _Mandatory_ | The currency of the to be transferred amount, which is different from the currency of the payer's account. The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n|internationalPayment.</br>exchangeRateInformation | _Optional_ |  | Object |\n|internationalPayment.</br>exchangeRateInformation.unitCurrency | _Mandatory_|Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP. The [3-letter currency code](https://www.xe.com/iso4217.php) used to execute the payment (e.g. GBP). | String |\n|internationalPayment.</br>exchangeRateInformation.rate| _Optional_| The factor used for conversion of an amount from one currency to another. | Number |\n|internationalPayment.</br>exchangeRateInformation.rateType| _Mandatory_|The type used to complete the currency exchange.Valid values are ACTUAL, AGREED and INDICATIVE. | String |\n|internationalPayment.</br>exchangeRateInformation.</br> foreignExchangeContractReference| _Conditional_| Unique and unambiguous reference to the foreign exchange contract agreed between the payer and the payee agent. </br> ___Condition___ </br> 1. Used with `AGREED` rate type. | String |\n|internationalPayment.purpose.| _Optional_| The external purpose code.The purpose code are [ISO20022](www.iso20022.org) values. | String |\n|internationalPayment.priority| _Optional_| The indicator of order of importance that the PSU would like the ASPSP to apply to the processing of the payments. Valid values are NORMAL, URGENT | String |\n|internationalPayment.chargeBearer| _Optional_|Specifies which party/parties will bear the charges associated with the processing of the payment transaction.Valid values are DEBT, CRED, SHAR and SLEV. | String |"
           },
           "response": [
             {
@@ -6754,109 +6754,109 @@
   ],
   "variable": [
     {
-      "id": "e65af63c-4524-44f4-b970-8e3e78401d93",
+      "id": "87ba2f1b-9629-4647-8479-7256e1c6cc61",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "004bf509-53e5-41fe-a3b0-3005fc415554",
+      "id": "31037cb6-c280-4361-ad64-22b35ffa93ff",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "4477fe8a-9e1d-4326-89a9-2a3f5e38c87c",
+      "id": "a32256b5-1203-4800-a27b-8603c443c701",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "069f5124-ddf2-4aa5-9014-2c44469d31cd",
+      "id": "f7a48579-774d-4b19-a43f-8cf5bcc12380",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "b69464bb-ba35-4cd8-838f-b3eac653cca8",
+      "id": "f8d03e1c-558f-477b-a5cd-2a365972c03e",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "32eeabe6-aabb-43c4-b609-45dc7e94d7b2",
+      "id": "040211a4-879f-441e-8256-36844ff2c592",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "fa3d0f38-b886-4ee0-8022-90e953ea60bc",
+      "id": "02073af1-d5d6-4b18-b132-db4c334a98a0",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "9e60ddf2-3895-4697-9753-0cdeaeb79ba0",
+      "id": "9d6c7480-7ed6-4dc0-a523-34018c593be4",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "cfb8c3e8-011b-40c8-9f17-2f375e13dcd2",
+      "id": "8516dca2-0c01-492a-aa10-e8b26a1b7cd7",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "80061f09-b694-41a4-a655-2f760b08efa8",
+      "id": "695d29d4-37d5-4ca9-b846-335a7cef16b7",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "cf622aff-2c83-4990-b0f3-437e5b579464",
+      "id": "ce49a063-3356-4e00-a1e6-0a0930d76325",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "bb10622b-c6a4-41cb-afa7-1317cf12c562",
+      "id": "322a9d02-1bfa-462a-85b0-68ba9ab4b97c",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "bd5a3ef5-aeca-43ec-898a-80a0d1ecd4a9",
+      "id": "38683cc8-67d0-45e1-829b-903ea73045e7",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "6c83bd5c-7097-4171-8956-e49338f27f63",
+      "id": "172ab062-48d7-4ad0-9e97-1bfe057dbd01",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "f6c309fa-a048-4565-8129-70b1e98a4bc3",
+      "id": "6e02206a-1aca-4344-a190-84605d620ab0",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "7a8364e3-d70b-4616-9a51-5b83260ee1db",
+      "id": "018dcc1c-4124-4254-b160-0dafdc6ed11e",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "ff26bdcf-b0ce-4ca8-9314-b0788453ab38",
+      "id": "d9c938f6-ea63-47f4-ad33-e1c75e2a99d6",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "4ec3ea42-419b-4208-b6f1-61dc4ba9720e",
+      "id": "c9d3893f-63ab-4a9a-9c13-9f0faee1feba",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
