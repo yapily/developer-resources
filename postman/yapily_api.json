@@ -4103,7 +4103,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts",
-            "description": "Returns all accounts and balances for the end user associated with the presented consent token.\n\nFeature: `ACCOUNTS`"
+            "description": "Feature: `ACCOUNTS`\n\nReturns all accounts and balances for the end user associated with the presented consent token."
           },
           "response": [
             {
@@ -6378,7 +6378,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n        \"payments\": [\n            {\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"type\": \"PAYMENT_TYPE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"addressLines\": [\n                            \"ADDRESS_LINES\"\n                        ],\n                        \"streetName\": \"STREET_NAME\",\n                        \"buildingNumber\": \"BUILDING_NUMBER\",\n                        \"postCode\": \"POST_CODE\",\n                        \"townName\": \"TOWN_NAME\",\n                        \"county\": [\n                            \"COUNTY_NAME\"\n                        ],\n                        \"country\": \"2_LETTER_COUNTRY_CODE\",\n                        \"department\": \"DEPARTMENT_NAME\",\n                        \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                        \"addressType\": \"TYPE_OF_ADDRESS\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ],\n                    \"customerId\": \"CUSTOMER_ID\",\n                    \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n                }\n            }\n        ]\n    }\n}",
+              "raw": "{\n    \"userUuid\": \"{{user-uuid}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"paymentRequest\": \n    {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"type\": \"PAYMENT_TYPE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"addressLines\": [\n                            \"ADDRESS_LINES\"\n                        ],\n                        \"streetName\": \"STREET_NAME\",\n                        \"buildingNumber\": \"BUILDING_NUMBER\",\n                        \"postCode\": \"POST_CODE\",\n                        \"townName\": \"TOWN_NAME\",\n                        \"county\": [\n                            \"COUNTY_NAME\"\n                        ],\n                        \"country\": \"2_LETTER_COUNTRY_CODE\",\n                        \"department\": \"DEPARTMENT_NAME\",\n                        \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                        \"addressType\": \"TYPE_OF_ADDRESS\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ],\n                    \"customerId\": \"CUSTOMER_ID\",\n                    \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n                }\n            }\n        ]\n    }\n}",
               "options": {
                 "raw": {}
               }
@@ -6409,7 +6409,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/payment-auth-requests"
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
               },
               "status": "Created",
               "code": 201,
@@ -6441,7 +6441,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/payment-auth-requests"
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
               },
               "status": "Bad Request",
               "code": 400,
@@ -6508,7 +6508,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/payments"
+                "url": "https://api.yapily.com/bulk-payments"
               },
               "status": "Bad Request",
               "code": 400,
@@ -6544,7 +6544,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/payments"
+                "url": "https://api.yapily.com/bulk-payments"
               },
               "status": "Created",
               "code": 201,
@@ -6580,7 +6580,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/payments"
+                "url": "https://api.yapily.com/bulk-payments"
               },
               "status": "Forbidden",
               "code": 403,
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "b8efd6ed-b186-4bb4-9ba3-7163def9ccd8",
+      "id": "613ba9a5-5745-4f67-8923-1a95444947d1",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "9604340f-ab5a-46bc-a5be-a87ed5338eaf",
+      "id": "ccc03cf5-9ca0-4a67-9a6c-90c8edc6da8a",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "316da32c-15a1-4f1b-8f24-6e4792490ab6",
+      "id": "d0acceab-133f-49df-b1a5-c9ea4f17af55",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "243aa578-9f28-40f2-8fcf-423e4787937c",
+      "id": "69bb3375-3b78-453d-8db6-819c50f50e15",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "8b311b8f-7c3f-4ec5-b317-f73a8ce3ec58",
+      "id": "8266e88c-41b9-4e8b-8e3c-25e193b938d5",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "6d42c672-8516-4b14-a6ef-47917ff2d4ef",
+      "id": "ccb02508-b69d-41e2-b544-2d96f9b315f9",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "60daf2d7-b9fa-4812-b589-0412c952297d",
+      "id": "36dbf934-00d4-4522-8f8f-db0c0017eeb3",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "b0a3ca07-d842-4565-899f-8661d1b77c43",
+      "id": "65284fcd-426a-4ea0-bb19-aa6387ce518f",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "84d81ded-2fea-44ef-aa81-ea3de5fd1762",
+      "id": "dfe1829a-dbb7-4817-af1f-e6bc1f114faa",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "e9c14b98-bc23-4742-8a99-807c664d2c05",
+      "id": "1fb1c740-1227-42d1-b15f-6c51fbc549e1",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "e766a5b9-a790-4f74-85b1-45a383949959",
+      "id": "c1fc7b42-6851-4dae-8799-2ff1b7108494",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "5a34cfea-db5f-47ec-af55-043945e1340e",
+      "id": "d0924129-4fe5-4be6-a4a3-67de05d5c339",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "0c8ee3bb-865c-4874-aa8e-c66577697b36",
+      "id": "9667d6fa-4376-4d24-b458-f378571671e9",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "98089ae6-005d-4586-b22b-d6792a706bd0",
+      "id": "9bd6457c-de1a-425b-8ff6-6f36217b70e3",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "11695184-2f3d-4c21-8c2e-337762ffb2e7",
+      "id": "2eab7119-d8dc-4c0d-b781-50fdda9e4874",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "0636569b-bb37-4407-adcb-e73b9fcc60c8",
+      "id": "0874e1c1-ef46-4d46-abed-4a6c2a95f8d2",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "23d48864-923f-4fc6-b3fe-ac592fa0b185",
+      "id": "306ca6f6-a8eb-4431-81d7-d9b2e41e1639",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "bde46ae7-0df5-4126-a976-e62de09d916f",
+      "id": "71e77b5b-fbd3-49fd-804d-0cbce5276454",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
