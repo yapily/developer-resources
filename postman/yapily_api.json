@@ -2463,7 +2463,7 @@
         }
       ],
       "_postman_id": "e51b648f-693a-9477-f565-b939754b5166",
-      "description": "The `Consent` object contains data that identifies a user's consent for a specific financial institution within a Yapily application. Other than the `id` of the consent, the `institution-id` for the corresponding institution and the user identifiers `user-uuid` and `application-user-id`, it contains various details that indicates how the `Consent` can be used:\n\n- `status` - The current state of the `Consent` object which informs what subsequent requests can or should be executed. See the [Consent Status](./#consent-status) section for more.\n- `featureScope` - An array of [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) that finitely describes what functions the account holder has given access to when using that `Consent`. When creating an [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), you can optionally set which features the user should consent for. It is also worth noting that the features for payments are completely different from those for obtaining financial data and to be aware that using a payment consent to get account information or vice versa will fail. \n- `consentToken` - The user's consent encoded as a JSON Web Token (JWT) which is made available once the user has authorised consent with their bank. The value of the token is used when using the [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoints with the request header `Consent: \"{{consent-token}}\"`. \n\n<h6 id=\"consent-status\">Consent Status</h6>\n\nThe status of a `Consent` object reflects the status of a user's authorisation with a particular institution and can be one of the following:\n\n| Status  | Description |\n| ------ | ------------ |\n| `AWAITING_AUTHORIZATION` | Occurs when an [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [Create Authorisation Request for Payment](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) is executed. The `Consent` object remains in the `AWAITING_AUTHORIZATION` state until the user authorises consent with the relevant institution using the `authorisationUrl`. |\n| `AWAITING_RE_AUTHORIZATION` | Occurs when a `Consent` that was previously `AUTHORIZED` requires the account holder's consent for continued access to their [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) with respect to the features in the `Consent`. |\n| `AUTHORIZED` | Occurs when a user has successfully given their consent from the bank to access their account information or to execute a payment. The `Consent` transitions from `AWAITING_AUTHORIZATION` to `AUTHORIZED` and a `consentToken` to execute the associated request is created and attached to the object. |\n| `CONSUMED` | Occurs after successfully executing a payment request. As a payment `Consent` object is single use only, it transitions from `AUTHORIZED` (once the user has authorised the payment) to `CONSUMED` which indicates that it can no longer be used to execute subsequent payment requests. This is a _terminal state_ *. |\n| `REJECTED` | Occurs after when the user is redirected to the `authorisationUrl` and chooses not to give consent to their account information or to execute a payment. The `Consent` object transitions from `AWAITING_AUTHORIZATION` to `REJECTED`. This is a _terminal state_ *.  |\n| `REVOKED` | Occurs when a `Consent` object that was previously `AUTHORIZED` is `REVOKED` by the institution. This occurs when the user has requested to stop giving access to their account information through their bank which can happen at any time. This is a _terminal state_ *. |\n| `FAILED` | Occurs when the user authorises their consent but there is a failure in the institution's domain during the token exchange process between the institution and Yapily. The `Consent` object transitions from `AWAITING_AUTHORIZATION` to `FAILED` and the expected `consentToken` will not be available. You can attempt to obtain a valid `consentToken` by executing [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049). |\n| `EXPIRED` | Occurs at the value of `AccountRequest.expiresAt` if specified by the user when creating an authorisation request and supported by the bank. The Consent object was previously `AUTHORIZED` but once `EXPIRED`, it can no longer be used or re-authorised. This is a _terminal state_ *. |\n\n__Note:__ The status of a `Consent` can transition to another over the course of time or by executing requests unless it is a _terminal state_. Once a terminal state is reached, it can not be changed.",
+      "description": "The `Consent` object contains data that identifies a user's consent for a specific financial institution within a Yapily application. Other than the `id` of the consent, the `institution-id` for the corresponding institution and the user identifiers `user-uuid` and `application-user-id`, it contains various details that indicates how the `Consent` can be used:\n\n- `status` - The current state of the `Consent` object which informs what subsequent requests can or should be executed. See the [Consent Status](./#consent-status) section for more.\n- `featureScope` - An array of [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) that finitely describes what functions the account holder has given access to when using that `Consent`. When creating an [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), you can optionally set which features the user should consent for. It is also worth noting that the features for payments are completely different from those for obtaining financial data and to be aware that using a payment consent to get account information or vice versa will fail. \n- `consentToken` - The user's consent encoded as a JSON Web Token (JWT) which is made available once the user has authorised consent with their bank. The value of the token is used when using the [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoints with the request header `Consent: \"{{consent-token}}\"`. \n\n<br>\n<h4 id=\"consent-status\">Consent Status</h4>\n\nThe status of a `Consent` object reflects the status of a user's authorisation with a particular institution and can be one of the following:\n\n| Status  | Description |\n| ------ | ------------ |\n| `AWAITING_AUTHORIZATION` | Occurs when an [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [Create Authorisation Request for Payment](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) is executed. The `Consent` object remains in the `AWAITING_AUTHORIZATION` state until the user authorises consent with the relevant institution using the `authorisationUrl`. |\n| `AWAITING_RE_AUTHORIZATION` | Occurs when a `Consent` that was previously `AUTHORIZED` requires the account holder's consent for continued access to their [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) with respect to the features in the `Consent`. |\n| `AUTHORIZED` | Occurs when a user has successfully given their consent from the bank to access their account information or to execute a payment. The `Consent` transitions from `AWAITING_AUTHORIZATION` to `AUTHORIZED` and a `consentToken` to execute the associated request is created and attached to the object. |\n| `CONSUMED` | Occurs after successfully executing a payment request. As a payment `Consent` object is single use only, it transitions from `AUTHORIZED` (once the user has authorised the payment) to `CONSUMED` which indicates that it can no longer be used to execute subsequent payment requests. This is a _terminal state_ *. |\n| `REJECTED` | Occurs after when the user is redirected to the `authorisationUrl` and chooses not to give consent to their account information or to execute a payment. The `Consent` object transitions from `AWAITING_AUTHORIZATION` to `REJECTED`. This is a _terminal state_ *.  |\n| `REVOKED` | Occurs when a `Consent` object that was previously `AUTHORIZED` is `REVOKED` by the institution. This occurs when the user has requested to stop giving access to their account information through their bank which can happen at any time. This is a _terminal state_ *. |\n| `FAILED` | Occurs when the user authorises their consent but there is a failure in the institution's domain during the token exchange process between the institution and Yapily. The `Consent` object transitions from `AWAITING_AUTHORIZATION` to `FAILED` and the expected `consentToken` will not be available. You can attempt to obtain a valid `consentToken` by executing [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049). |\n| `EXPIRED` | Occurs at the value of `AccountRequest.expiresAt` if specified by the user when creating an authorisation request and supported by the bank. The Consent object was previously `AUTHORIZED` but once `EXPIRED`, it can no longer be used or re-authorised. This is a _terminal state_ *. |\n\n__Note:__ The status of a `Consent` can transition to another over the course of time or by executing requests unless it is a _terminal state_. Once a terminal state is reached, it can not be changed.",
       "event": [
         {
           "listen": "prerequest",
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "05600300-868a-4bce-83bd-bc8fa8a24ced",
+      "id": "c5fdbf6b-5239-4fb6-b72d-bbfb2ed7c188",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "c00f1252-5615-4285-83f2-11825546d90a",
+      "id": "8e0d37e0-531a-493d-8399-4a038103dd9e",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "c30f5aca-53a8-4978-a639-f8aa40d04e46",
+      "id": "8265729c-2af8-42aa-919f-133696f88f18",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "bc457d2c-5da1-4ba9-9736-e606ff46f7f4",
+      "id": "91c5453b-c036-48ef-b4a3-1babf8198f52",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "267bc6c4-d26e-4f9a-9e5a-07f0da144d10",
+      "id": "683125ce-9911-418c-8a43-170efd0aa080",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "b0e8fff5-451e-4742-bd51-66dee9871795",
+      "id": "5917a037-8e5e-480a-9c53-f14d40ffe8c3",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "8359480b-a8f5-4fa9-8678-f2b71357efa1",
+      "id": "ae7920de-d7df-4aef-a770-bc132fa033ae",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "0ed64ae0-e28f-4e3b-a067-1d8a2d4cd563",
+      "id": "94af4dbc-d724-4bbd-acbd-f0e1999f3db7",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "2cbd9abf-b0b8-4d87-8aa3-41e172a9449f",
+      "id": "77af9a9b-f653-44aa-bdef-8299cf9e005c",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "636d10a9-ffda-4857-a677-4e5faedb94fd",
+      "id": "7f1f14cd-d0bb-45f2-b80a-92b4b538acb8",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "5babfbc7-5155-4e45-b14d-8fb31b9aa257",
+      "id": "ec47e738-066f-40e6-90de-43b389679685",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "76bee87f-c399-4e78-a728-74029a45cdf5",
+      "id": "e141f172-5e58-4b65-b819-6889f638d2c8",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "9d429e57-ca62-49cf-a58d-6eb8575d9e5b",
+      "id": "1e3466de-7059-4b27-9b5c-85e471987d2c",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "43dc3a58-816f-4b34-bfb0-990e4c7d13ea",
+      "id": "a84b7114-6840-4564-bff5-23e696f646bd",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "7165939a-7c01-4f88-8503-12b71bd9dc1d",
+      "id": "ebd6f796-122a-403d-9900-79ac36198c3b",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "ed778a58-420b-40ca-84cd-75b231b4a6e7",
+      "id": "c963a4ae-f138-40e9-b64a-a9c46eeac75b",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "8e4f50e0-57f8-404a-96ca-2b9ce75a93e0",
+      "id": "a4c2b410-8ca6-4e6a-913e-ce3cbdb23f32",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "e1365829-6604-4ee7-95f4-d3ec4fd6980b",
+      "id": "76966dd9-8756-4ec8-bdc9-f5eefa4b204d",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
