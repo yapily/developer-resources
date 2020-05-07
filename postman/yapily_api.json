@@ -3977,7 +3977,7 @@
               }
             ],
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Used to prompt the account holder for continued access to their financial data. This endpoint should be used when a `Consent` that was previously `AUTHORIZED` can no longer be used to retrieve data. Only the original features that were specified when the `Consent` can be re-authorised. \n\n<h6>Conditions</h6>\n\n1. A payment `Consent` can not be re-authorised because it is single use only. Once the payment request is made, the `Consent` reaches the terminal state `CONSUMED` and is no longer usable. \n\n2. A financial data `Consent` can be re-authorised at any time as long as it is not in any on of the following [terminal states](./#consent-status):\n  - `EXPIRED`\n  - `REJECTED`\n  - `REVOKED`\n\nIf your financial data `Consent` is in a terminal state, it can no longer be used and a new `Consent` needs to be created from a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) for continued access to the user's data.\n\n<h6>When to re-authorise?</h6>\n\nFor the CMA9, each institution must prompt for Strong Customer Authentication (SCA) every 90 days to remain compliant. This means that the maximum period that any endpoint can be accessed without any interaction with the user is 90 days. \n\n<h6>Restrictions enforced by institutions</h6>  \n\nIt is common for institutions to enforce their own restrictions on specific endpoints, drastically reducing the period where no authorisation from the user is required to as little as 5 minutes e.g. _identity_ or _historical data older than 90 days_. We currently do not publicly release information on how each institution behaves as this information is subject to change. \n\nYou can usually identify when an endpoint requires re-authorisation by the emergence of `FORBIDDEN 403` errors for requests to financial data endpoints that previously returned `OK 200`. In light of this, we recommend that you design flows which prompt for SCA when requests for financial data returns `FORBIDDEN 403` errors."
+            "description": "Used to prompt the account holder for continued access to their financial data. This endpoint should be used when a `Consent` that was previously `AUTHORIZED` can no longer be used to retrieve data. Only the original features that were specified when the `Consent` can be re-authorised. \n\n<br>\n<h4>Conditions</h4>\n\n1. A payment `Consent` can not be re-authorised because it is single use only. Once the payment request is made, the `Consent` reaches the terminal state `CONSUMED` and is no longer usable. \n\n2. A financial data `Consent` can be re-authorised at any time as long as it is not in any on of the following [terminal states](./#consent-status):\n  - `EXPIRED`\n  - `REJECTED`\n  - `REVOKED`\n\nIf your financial data `Consent` is in a terminal state, it can no longer be used and a new `Consent` needs to be created from a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) for continued access to the user's data.\n\n<br>\n<h4>When to re-authorise?</h4>\n\nFor the CMA9, each institution must prompt for Strong Customer Authentication (SCA) every 90 days to remain compliant. This means that the maximum period that any endpoint can be accessed without any interaction with the user is 90 days. \n\n<br>\n<h4>Restrictions enforced by institutions</h4>  \n\nIt is common for institutions to enforce their own restrictions on specific endpoints, drastically reducing the period where no authorisation from the user is required to as little as 5 minutes e.g. _identity_ or _historical data older than 90 days_. We currently do not publicly release information on how each institution behaves as this information is subject to change. \n\nYou can usually identify when an endpoint requires re-authorisation by the emergence of `FORBIDDEN 403` errors for requests to financial data endpoints that previously returned `OK 200`. In light of this, we recommend that you design flows which prompt for SCA when requests for financial data returns `FORBIDDEN 403` errors."
           },
           "response": [
             {
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "c5fdbf6b-5239-4fb6-b72d-bbfb2ed7c188",
+      "id": "a263c69c-5d99-4280-b798-780d5c51f2c6",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "8e0d37e0-531a-493d-8399-4a038103dd9e",
+      "id": "64fd0db9-78e2-4657-94d3-1449f49e3f72",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "8265729c-2af8-42aa-919f-133696f88f18",
+      "id": "01ec5495-1b39-4ffb-88ad-169d8224b812",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "91c5453b-c036-48ef-b4a3-1babf8198f52",
+      "id": "55142872-17ce-4190-b61a-0dcc20453407",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "683125ce-9911-418c-8a43-170efd0aa080",
+      "id": "a79ee944-85ed-4525-b54a-e276bcce419f",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "5917a037-8e5e-480a-9c53-f14d40ffe8c3",
+      "id": "a5202406-da59-4569-b6a8-13f09b4b3409",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "ae7920de-d7df-4aef-a770-bc132fa033ae",
+      "id": "e13882ed-4991-491c-94d3-ee7ac706909c",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "94af4dbc-d724-4bbd-acbd-f0e1999f3db7",
+      "id": "ad4ee9aa-b0a2-4da3-9df8-a5e8c3dd6b56",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "77af9a9b-f653-44aa-bdef-8299cf9e005c",
+      "id": "7e8049ea-f512-46ea-9ba1-838f5cd50e16",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "7f1f14cd-d0bb-45f2-b80a-92b4b538acb8",
+      "id": "faf8c56e-cda5-4f60-88ca-009752be7d91",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "ec47e738-066f-40e6-90de-43b389679685",
+      "id": "5e6c6b7e-888f-442d-94d1-9daa0e8e8db1",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "e141f172-5e58-4b65-b819-6889f638d2c8",
+      "id": "75992e22-21ee-4b30-aee9-12ec36d9fb35",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "1e3466de-7059-4b27-9b5c-85e471987d2c",
+      "id": "48985726-cd57-46b1-b28c-091508215afc",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "a84b7114-6840-4564-bff5-23e696f646bd",
+      "id": "392798a5-65c7-4070-bc3a-a314f8834a36",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "ebd6f796-122a-403d-9900-79ac36198c3b",
+      "id": "8cb7aa7d-ea99-4083-b831-fb099cbd3790",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "c963a4ae-f138-40e9-b64a-a9c46eeac75b",
+      "id": "d63b7c9c-f869-4535-b4c3-5e51bb73a412",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "a4c2b410-8ca6-4e6a-913e-ce3cbdb23f32",
+      "id": "e66c021f-2797-463e-a69a-845c8441c749",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "76966dd9-8756-4ec8-bdc9-f5eefa4b204d",
+      "id": "2fdd604f-0b19-48a2-985e-516ee442dcec",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
