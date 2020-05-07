@@ -3977,7 +3977,7 @@
               }
             ],
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Initiate the re-authorisation process of the consent specified in the consent header."
+            "description": "Used to prompt the account holder for continued access to their financial data. This endpoint should be used when a `Consent` that was previously `AUTHORIZED` can no longer be used to retrieve data. Only the original features that were specified when the `Consent` can be re-authorised. \n\n<h6>Conditions</h6>\n\n1. A payment `Consent` can not be re-authorised because it is single use only. Once the payment request is made, the `Consent` reaches the terminal state `CONSUMED` and is no longer usable. \n\n2. A financial data `Consent` can be re-authorised at any time as long as it is not in any on of the following [terminal states](./#consent-status):\n  - `EXPIRED`\n  - `REJECTED`\n  - `REVOKED`\n\nIf your financial data `Consent` is in a terminal state, it can no longer be used and a new `Consent` needs to be created from a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) for continued access to the user's data.\n\n<h6>When to re-authorise?</h6>\n\nFor the CMA9, each institution must prompt for Strong Customer Authentication (SCA) every 90 days to remain compliant. This means that the maximum period that any endpoint can be accessed without any interaction with the user is 90 days. \n\n<h6>Restrictions enforced by institutions</h6>  \n\nIt is common for institutions to enforce their own restrictions on specific endpoints, drastically reducing the period where no authorisation from the user is required to as little as 5 minutes e.g. _identity_ or _historical data older than 90 days_. We currently do not publicly release information on how each institution behaves as this information is subject to change. \n\nYou can usually identify when an endpoint requires re-authorisation by the emergence of `FORBIDDEN 403` errors for requests to financial data endpoints that previously returned `OK 200`. In light of this, we recommend that you design flows which prompt for SCA when requests for financial data returns `FORBIDDEN 403` errors."
           },
           "response": [
             {
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "353f6f2f-65af-4174-9eb1-3fc2df6e4a43",
+      "id": "05600300-868a-4bce-83bd-bc8fa8a24ced",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "e1618f94-7c89-426b-bfb2-14f50f98a2bd",
+      "id": "c00f1252-5615-4285-83f2-11825546d90a",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "e17c2e0e-8da0-4d57-b0ae-f4f1d7cb9588",
+      "id": "c30f5aca-53a8-4978-a639-f8aa40d04e46",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "c4cf3f03-ef2d-49a4-8fb5-2190282ae421",
+      "id": "bc457d2c-5da1-4ba9-9736-e606ff46f7f4",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "9f002f88-9070-455f-84f5-de10b2ce23b9",
+      "id": "267bc6c4-d26e-4f9a-9e5a-07f0da144d10",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "967ba0ae-95a0-48b3-bd0a-33160d91a7ad",
+      "id": "b0e8fff5-451e-4742-bd51-66dee9871795",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "d188b331-f130-4611-ab80-0b8597771ac6",
+      "id": "8359480b-a8f5-4fa9-8678-f2b71357efa1",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "7db92ca0-5776-42ad-9ce7-0fec68615318",
+      "id": "0ed64ae0-e28f-4e3b-a067-1d8a2d4cd563",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "7478c5d7-f5c6-47f6-b7ab-9c99973f85b8",
+      "id": "2cbd9abf-b0b8-4d87-8aa3-41e172a9449f",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "07a8e0fb-a7be-4c98-a050-9559c42923ef",
+      "id": "636d10a9-ffda-4857-a677-4e5faedb94fd",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "1b615884-5b1a-4f61-b66f-f40c66f92a4c",
+      "id": "5babfbc7-5155-4e45-b14d-8fb31b9aa257",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "0d3f9b1d-f20b-4def-aa3c-ac6ec1c3020f",
+      "id": "76bee87f-c399-4e78-a728-74029a45cdf5",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "b169658d-ac96-42e3-92eb-643641449b1d",
+      "id": "9d429e57-ca62-49cf-a58d-6eb8575d9e5b",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "45f17c37-1545-41b5-8912-bb4155463f07",
+      "id": "43dc3a58-816f-4b34-bfb0-990e4c7d13ea",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "f627866e-8bc1-4a34-a963-11b77aef39d8",
+      "id": "7165939a-7c01-4f88-8503-12b71bd9dc1d",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "f112ed7d-64cb-49f9-92f9-edebf18c55d6",
+      "id": "ed778a58-420b-40ca-84cd-75b231b4a6e7",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "57e798e8-8013-466a-b483-64e7bd56accd",
+      "id": "8e4f50e0-57f8-404a-96ca-2b9ce75a93e0",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "cc88c7db-3f85-423e-bd76-d631ff3b81f1",
+      "id": "e1365829-6604-4ee7-95f4-d3ec4fd6980b",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
