@@ -4552,7 +4552,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/transactions",
-            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. This endpoint will always return a maximum of 1,000 transactions. The underlying bank may have a smaller limit and in such case, where the user's request returns transactions that exceeds the bank's limit, Yapily will make multiple calls behind the scenes to retrieve these transactions up until the 1000 limit. Beyond 1,000 transactions, the customer will then need to make a new request and use the `offset` parameter described below to fetch the remaining transactions. \n\n<h4>Query string parameters</h4>\n\n| Key | Description | Type |\n| - | - | - |\n| from | _Optional._ All transactions returned should be after this date.<br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| before | _Optional._ All transactions returned should be before this date. <br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | _Optional._ The number of transaction records to be returned. <br><br>**Note:** Must be between **0** and **1000** when specified.| Number |\n| sort | _Optional._ [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with `date` or descending with `-date`. The default sort order is descending. | String |\n| offset | _Optional._ The number of transaction records to be skipped. Used primarily with [paginated results](./#) <br><br>**Note:** Must be greater than or equal to **0** when specified.| Number |\n\n"
+            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. This endpoint will always return a maximum of 1,000 transactions. The underlying bank may have a smaller limit and in such case, where the user's request returns transactions that exceeds the bank's limit, Yapily will make multiple calls behind the scenes to retrieve these transactions up until the 1000 limit. Beyond 1,000 transactions, the customer will then need to make a new request and use the `offset` parameter to fetch the remaining transactions. See the [Using Pagination](./using-pagination) section below for more information.\n\n<h4>Query string parameters</h4>\n\n| Key | Description | Type |\n| - | - | - |\n| from | _Optional._ All transactions returned should be after this date.<br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| before | _Optional._ All transactions returned should be before this date. <br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | _Optional._ The number of transaction records to be returned. <br><br>**Note:** Must be between **0** and **1000** when specified.| Number |\n| sort | _Optional._ [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with `date` or descending with `-date`. The default sort order is descending. | String |\n| offset | _Optional._ The number of transaction records to be skipped. Used primarily with [paginated results](./#) <br><br>**Note:** Must be greater than or equal to **0** when specified.| Number |\n\n<h4 id=\"using-pagination\">Using pagination</h4>"
           },
           "response": [
             {
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "6fe7b2bf-bc20-4103-bf97-225ebc4b5e59",
+      "id": "be30552b-9833-4dd4-998e-d78a0073ec0a",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "eff52a9b-f1b2-487a-be61-1ee39116874a",
+      "id": "062e3ec0-79e5-4159-86c4-bf285729f1c0",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "5e9dbf7c-8ae7-4d45-bd96-4f07fc012d19",
+      "id": "31f68996-17ed-40e1-a0be-1da1b08863b5",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "42c2175d-5a4a-40b6-9eee-7a3ab882bdc9",
+      "id": "6d7a2cdf-a921-49c1-95f7-63c6863e3bcc",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "07943b9c-a52a-4a2a-a888-14807355dfca",
+      "id": "013174b2-5a7b-4fdf-85d7-4bb07748b923",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "f7aa1cfd-ce47-4086-8a34-5cd7f50c2a7f",
+      "id": "081dbf30-f24c-48b2-8e2c-2b78fd3a1309",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "1104e3ae-605a-4a93-8af1-a25141521cd6",
+      "id": "855b231d-d631-4837-9ea0-dc72135d4083",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "e6b6c79d-8646-4b89-a84e-eba63682b8d7",
+      "id": "3079edc4-b437-4f5b-81f3-4b2002da48e4",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "344322c9-d030-47d1-af3f-3edd8b1e6d9e",
+      "id": "a6fa9357-1c8e-4764-9704-a2093db8cdbf",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "6e13f393-3125-49d8-8791-b95a71b1c433",
+      "id": "9b8a8769-620a-452e-ac5d-e4a319cbedeb",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "d7863c0a-c5e7-4aac-8e45-24d978f6b682",
+      "id": "37010e6e-bc1e-4b3a-ae76-6cc54f81ee19",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "5abda314-6818-43bc-893d-c143dc11e3fb",
+      "id": "b21360b2-649f-4981-8f85-e3c240b53c04",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "fa14a024-2afb-415a-b745-455f25cb8615",
+      "id": "18c911b3-5c7c-4c4c-987c-a04b4c16cf97",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "55012972-459a-4e49-8253-79be87427d98",
+      "id": "58fd2dd5-3eb8-48f4-b99a-ebe7af7443f6",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "a707391a-3f3b-4ecd-b5b2-db11e7a9a91d",
+      "id": "613e73fc-d4e9-4cd3-8a35-f080538858cf",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "9a729eaf-a4e1-4671-8b65-5a18752da827",
+      "id": "e8b069fe-cf9c-414e-be31-85a240436737",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "1403dce4-d0fb-45ce-b270-60980d984b5d",
+      "id": "c2237fcc-311d-4bd7-9b21-7906566905ea",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "d42c01c1-2852-4ba1-abb6-852294852a45",
+      "id": "b6bd2faf-105b-481a-b98d-fe7e533e1f76",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
