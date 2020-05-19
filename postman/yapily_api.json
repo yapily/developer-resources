@@ -4552,7 +4552,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/transactions",
-            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. This endpoint will always return a maximum of 1,000 transactions. The underlying bank may have a smaller limit and in such case, where the user's request returns transactions that exceeds the bank's limit, Yapily will make multiple calls behind the scenes to retrieve these transactions up until the 1000 limit. Beyond 1,000 transactions, the customer will then need to make a new request and use the `offset` parameter to fetch the remaining transactions. See the [Using Pagination](./#using-pagination) section below for more information.\n\n<h4>Query string parameters</h4>\n\n| Key | Description | Type |\n| - | - | - |\n| from | _Optional._ All transactions returned should be after this date.<br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| before | _Optional._ All transactions returned should be before this date. <br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | _Optional._ The number of transaction records to be returned. <br><br>**Note:** Must be between **0** and **1000** when specified.| Number |\n| sort | _Optional._ [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with `date` or descending with `-date`. The default sort order is descending. | String |\n| offset | _Optional._ The number of transaction records to be skipped. Used primarily with [paginated results](./#using-pagination) <br><br>**Note:** Must be greater than or equal to **0** when specified.| Number |\n\n<h4 id=\"using-pagination\">Using pagination</h4>\n\nIn cases where the request for transactions exceeds 1000 transactions or when you wish to display a paginated set of results when using the `limit` parameter, be sure to follow these steps:\n\n- Step 1: Send the initial request. The `pagination.totalCount` property in the response will tell you how many transactions you query would return without any `limit` you have defined or Yapily's 1000 transaction limit. If the `totalCount` is more than the `limit` you specified or more than 1000 transactions (if no `limit` is specified), proceed unto Step 2. Otherwise, you have received the full amount of transactions for your request.\n\n- Step 2: Execute the request again and specify the `offset` property and increment it by the number by `X` to get the next `X` transactions (where `X` is the value of `limit` or the next 1000 transactions if no `limit` is specified). \n\n- Step 3: If the `count` is equal to the `limit` (which is the value of `limit` if specified or 1000 if no `limit` is specified) repeat this step as there are more transactions. Otherwise, if the `count` is less than `limit` (which is the value of `limit` or 1000 if no `limit` is specified), you have reached the end of the paginated results. \n\n<h5>Example: No limit specified</h5>\n\nA request returning 6500 transactions without any `limit`\n1. `GET /accounts/x/transactions` returns transactions 1-1000\n2. `GET /accounts/x/transactions?offset=1000` returns transactions 1001-2000\n3. `GET /accounts/x/transactions?offset=6000` returns transactions 6001-6500\n\n<h5>Example: Specifying a limit</h5>\n\nA request returning 467 transactions with a `limit=50`:\n1. `GET /accounts/x/transactions?limit=50` returns transactions 1-50\n2. `GET /accounts/x/transactions?limit=50&offset=50` returns transactions 51-100\n3. `GET /accounts/x/transactions?limit=50&offset=450` returns transactions 451-467\n\n "
+            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. This endpoint will always return a maximum of 1,000 transactions. The underlying bank may have a smaller limit and in such case, where the user's request returns transactions that exceeds the bank's limit, Yapily will make multiple calls behind the scenes to retrieve these transactions up until the 1000 limit. Beyond 1,000 transactions, the customer will then need to make a new request and use the `offset` parameter to fetch the remaining transactions. See the [Using Pagination](./#using-pagination) section below for more information.\n\n<h4>Query string parameters</h4>\n\n| Key | Description | Type |\n| - | - | - |\n| from | _Optional._ All transactions returned should be after this date.<br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| before | _Optional._ All transactions returned should be before this date. <br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | _Optional._ The number of transaction records to be returned. <br><br>**Note:** Must be between **0** and **1000** when specified.| Number |\n| sort | _Optional._ [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with `date` or descending with `-date`. The default sort order is descending. | String |\n| offset | _Optional._ The number of transaction records to be skipped. Used primarily with [paginated results](./#using-pagination) <br><br>**Note:** Must be greater than or equal to **0** when specified.| Number |\n\n<h4 id=\"using-pagination\">Using pagination</h4>\n\nIn cases where the request for transactions exceeds 1000 transactions or when you wish to display a paginated set of results when using the `limit` parameter, be sure to follow these steps:\n\n- Step 1: Send the initial request. The `pagination.totalCount` property in the response will tell you how many transactions you query would return without `pagination.self.limit`. If `pagination.totalCount` is more than the `pagination.self.limit`, proceed unto Step 2. Otherwise, you have received the full amount of transactions for your request.\n\n- Step 2: Execute the request again and specify the `offset` property and increment it by the number by `X` to get the next `X` transactions (where `X` is the value of `pagination.self.limit`). \n\n- Step 3: If the `count` is equal to the `pagination.self.limit` (which is the value of `limit` if specified in the request or 1000 if not specified) repeat this step as there are more transactions. Otherwise, if the `count` is less than `pagination.self.limit`, you have reached the end of the paginated results. \n<br>\n<h5>Example: No limit specified</h5>\n\nA request returning 6500 transactions without any `limit`\n1. `GET /accounts/x/transactions` returns transactions 1-1000\n2. `GET /accounts/x/transactions?offset=1000` returns transactions 1001-2000\n3. `GET /accounts/x/transactions?offset=6000` returns transactions 6001-6500\n\n<h5>Example: Specifying a limit</h5>\n\nA request returning 467 transactions with a `limit=50`:\n1. `GET /accounts/x/transactions?limit=50` returns transactions 1-50\n2. `GET /accounts/x/transactions?limit=50&offset=50` returns transactions 51-100\n3. `GET /accounts/x/transactions?limit=50&offset=450` returns transactions 451-467\n\n "
           },
           "response": [
             {
@@ -6893,109 +6893,109 @@
   ],
   "variable": [
     {
-      "id": "2ffa08e1-0d9b-4446-92cd-5f84ab0d46b4",
+      "id": "04837f58-f5dd-4b89-a368-0a7453fa9ea8",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "2e9f6286-1124-4aa6-baea-2ca0eef94f9d",
+      "id": "7d25e9e5-a94e-4d6b-840f-cdf1bdf2c9fb",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "b6d6c432-fac4-4c8c-9d2f-72313528127e",
+      "id": "425e7564-3f5d-4a87-91ff-ca50c3660cea",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "344033ad-7100-4d1d-80bf-5dfe5fe073d8",
+      "id": "3f188f73-7d68-4736-acaa-3486ccd66a84",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "b2711e33-47a3-4a1f-9937-dd1e23bf6917",
+      "id": "9d2e0c17-ed5c-4fe3-972f-9259858ceca6",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "e86fe6c4-e6f4-4e02-b147-25af6905cd6e",
+      "id": "3c0102c6-ff98-4ffa-9baf-4f3a74323fd6",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "eb4f8608-1e30-4860-9ce5-538860b72ef9",
+      "id": "e66f2415-648d-4d7d-ac29-f6149cd517e1",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "3b134ecb-3086-4f9a-b352-103345c8e4d3",
+      "id": "0c7283a9-da89-42b2-9f3d-9a366477fa09",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "2d5d938f-7bcc-4321-b0c3-f33d58696e47",
+      "id": "b6978af2-846d-43c7-a7c9-ee362458cddd",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "820cc345-8c11-45ce-b438-af973227097a",
+      "id": "53f25337-8460-490a-b94e-dbc61b024107",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "a89bbcd1-4f6f-40a9-9454-2d7ee3d9e0c3",
+      "id": "01a5c719-3181-4d2c-9fd5-87c9c9f7e53b",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "f9e9cad9-5e99-4f02-83cc-f85abe297765",
+      "id": "4f1297cb-b083-4750-ab48-9ddd25f95f86",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "a22d2a23-d7bb-4422-9bb4-cb8f3dc3e5a7",
+      "id": "4b6940de-4077-4720-b240-de225f867900",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "f6f55285-3449-43ed-95cf-834ecf9a6aac",
+      "id": "a385f367-bc96-4616-ad8c-5915cc08a2b9",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "52a2695a-7f46-47a7-9f8b-2f90171921ca",
+      "id": "7c4656ba-d199-428c-9107-713c0c29af04",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "603efb19-a970-4c94-8a52-847462149795",
+      "id": "42992981-2234-49ff-bf63-c754d9632eae",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "4dab10f8-1ea9-448e-b538-66df8cc85690",
+      "id": "f82fe3c3-88a2-44c4-92bc-db8ab696742d",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "84a13945-fca0-4fcc-9889-d9deb1b21bb9",
+      "id": "d127d3aa-13e9-4af0-acf0-13680ab446e0",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
