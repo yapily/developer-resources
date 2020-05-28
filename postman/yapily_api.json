@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "f3a9e404-3759-7f64-ba7d-146278477f0a",
     "name": "Yapily API",
-    "description": "The Yapily API enables connections between your application and users' banks. For more information visit [yapily.com](https://www.yapily.com).\n\n# Get Started\n1. Register a developer account on [dashboard.yapily.com](https://dashboard.yapily.com/register)\n2. Create an application:\n  * Configure a `callback` URL if it suits your application. [More details below](/#authorising-user-consent).\n  * Select the financial institutions you would like your application to connect to.\n  * See [this wiki guide](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) for details on obtaining credentials for each of the financial institutions. Alternatively, if you are connecting to a sandbox institution, you can use the preconfigured _sandbox credentials_.\n3. Your application will be issued with a unique `application-key` and `application-secret` to use when connecting to the Yapily API\n\n**You are now ready to connect to the Yapily API**\n\n### Alternatively...\n[Follow this tutorial](https://github.com/yapily/developer-resources/wiki/Tutorial:-Get-account-balance-and-transactions) to learn how to obtain account information using Postman or one of the Swagger-generated SDKs.\n\n# API Authentication\n\nThe Yapily API supports secure connection via either [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) or [Token Authentication](https://auth0.com/learn/token-based-authentication-made-easy/) used to secure all API endpoints. The credentials can be found as the `application-key` and `application-secret` created in the Dashboard following the steps above.\n\nFor example, to connect using basic authentication, each request must be signed with the correct header `Authorization: Basic {{app-credentials}}` where *`app-credentials` = Base64 encoded(`application-key` + \":\" + `application-secret`)*.\n\nAll requests are required to access the API via [HTTPS](https://en.wikipedia.org/wiki/HTTPS).\n\n# Authorising User Consent\n\nIn order to access a user's financial data or to facilitate a payment on behalf of the user, the user will need to authenticate with their financial institution and give explicit consent. In most cases, this will involve redirecting users to their institution's authorisation screen either in the web browser or if on a mobile, using the user's mobile banking application providing it is installed. In any case, the goal is to obtain a `consentToken` which is supplied as the `Consent` header parameter to sign [Financial Data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) requests.\n\nThere are several options to obtain a `consentToken` once a user has given authorisation:\n\n## Polling the Consent Object\n\nIf a `callback` is not specified when creating either an account authorisation request or payment authorisation request, the status of the consent will need to be monitored by [retrieving all consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) or by [retrieving a specific users consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) to obtain the associated `consentToken` to execute the request. The [consent status](/#consent-status) will need to be monitored until the user authorises consent and the consent object transitions from `AWAITING_AUTHORIZATION` to `AUTHORIZED`. The `consentToken` will be available in the `Consent` object only when the consent becomes `AUTHORIZED`.\n\n## Using a Callback \n\nAfter a user successfully authorises consent in the institution's domain, the callback defines where the user will be redirected to e.g. The url of a confirmation page in your web or mobile application. When you are redirected to the callback, the `consent`, `user-uuid` and `institution` will be available as query parameters. In order to use a callback in your application, you must first login to the [Yapily Dashboard](dashboard.yapily.com) and add the callback to the Yapily application linked to your application. \n\nThe Dashboard allows you to add multiple callbacks if this is required for your application. If you have multiple callbacks at the same domain, you can simply add one callback at the domain with a trailing forward slash e.g. If your domain was `https://tpp-application` and you wanted to register the following two callbacks: \n\n```\nhttps://tpp-application/confirmation-accounts\nhttps://tpp-application/confirmation-payments\n```\n\nYou could add `https://tpp-application/` as a single callback rather than individually defining both of these callbacks.\n\n**NOTE: When adding callbacks to the dashboard, remember to include the scheme**\n\n## Using a Callback with a One Time Token (OTT)\n\nA One Time Token (OTT) is an optional means of obtaining consent if you're concerned about exposing the consent token as a query parameter. To enable this feature, ensure that the `oneTimeToken` field is provided in either the [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) along with the `callback`. The response of either authorisation request will contain the `one-time-token` query parameter, which can be [exchanged for a consent token](/#e51b648f-693a-9477-f565-b939754b5166). Once exchanged endpoint has been called, the `consentToken` will be accessible from the POST request's response body.\n\n# Re-authorising User Consent\n\nAfter initial authorisation for account requests, it is likely that you will need to prompt the user to continue to give consent to accessing their [Financial Data](https://docs.yapily.com/?version=latest#5f9e4f24-ac6a-409b-a87b-5c233b035d5b). See [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049) request to learn about the conditions that need to be met.\n\n# Open Banking UK\n\nThe 9 largest banks and building societies in the UK follow the Open Banking standard. For more information and to enable connectivity to these institutions, see the [Open Banking guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-UK). \n\n# HTTP Response Codes\n| Http code | Description |\n| - | - |\n| 200 | Successful request. |\n| 201 | Successful request + Resource created. |\n| 400 | Bad request. Where possible Yapily will return details of why the request failed. |\n| 401 | Unauthorised request to the Yapily API. |\n| 403 | Forbidden request where a valid consent token is required. |\n| 404 | Resource not found. |\n| 405 | HTTP method not allowed. |\n| 406 | Your application did not accept JSON. |\n| 409 | Attempted action conflicts with current application state. Actions to resolve will be returned in the body of the response where possible. |\n| 424 | Failed Dependency. Unable to complete request to the institution. |\n| 500 | Internal server error, due to an undetermined issue. |\n| 501 | Not Implemented. The requested feature is unavailable for the specified institution. |\n\n## Features\n\nEach of the Yapily API [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) corresponds to a [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) or [Payments](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoint and each feature name can be seen on this page under its respective endpoint. Each [consent token](https://docs.yapily.com/#e51b648f-693a-9477-f565-b939754b5166) represents user permission to access a set of features, represented in the body of the consent token object as a `featureScope` array.\n\n## Date time format\nDate time values follow the ISO 8601 format with timezone `yyyy-MM-dd'T'HH:mm:ss.SSSZ` e.g. \"2019-12-25T01:30:00.000+00:00\" or \"2019-12-25T00:00:00Z\". \n\n**NOTE: Please ensure date time values are URL encoded when sending a request.**\n\n[Visit the wiki](https://github.com/yapily/developer-resources/wiki) for more information.\n\n## Getting Support\nYou can get in touch via [Slack](https://yapily.slack.com/) ([request to join](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform)) or by sending an email to developers@yapily.com. Each request made to the Yapily API will return a unique `tracing-id`. Including the `tracing-id` in your message will help the support team to investigate issues quicker.\n\n## Specifications\nDetails of the API schemas and descriptions of specific fields can be seen in the [Swagger (2.0) specification](https://api.yapily.com/docs/swagger.json) and the [API Explorer](https://api.yapily.com/explorer).",
+    "description": "The Yapily API enables connections between your application and users' banks. For more information visit [yapily.com](https://www.yapily.com).\n\n# Get Started\n1. Register a developer account on [dashboard.yapily.com](https://dashboard.yapily.com/register)\n2. Create an application:\n  * Configure a `callback` URL if it suits your application. [More details below](/#using-a-callback).\n  * Select the financial institutions you would like your application to connect to.\n  * See [this wiki guide](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) for details on obtaining credentials for each of the financial institutions. Alternatively, if you are connecting to a sandbox institution, you can use the preconfigured _sandbox credentials_.\n3. Your application will be issued with a unique `application-key` and `application-secret` to use when connecting to the Yapily API\n\n**You are now ready to connect to the Yapily API**\n\n### Alternatively...\n[Follow this tutorial](https://github.com/yapily/developer-resources/wiki/Tutorial:-Get-account-balance-and-transactions) to learn how to obtain account information using Postman or one of the Swagger-generated SDKs.\n\n# API Authentication\n\nThe Yapily API supports secure connection via either [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) or [Token Authentication](https://auth0.com/learn/token-based-authentication-made-easy/) used to secure all API endpoints. The credentials can be found as the `application-key` and `application-secret` created in the Dashboard following the steps above.\n\nFor example, to connect using basic authentication, each request must be signed with the correct header `Authorization: Basic {{app-credentials}}` where *`app-credentials` = Base64 encoded(`application-key` + \":\" + `application-secret`)*.\n\nAll requests are required to access the API via [HTTPS](https://en.wikipedia.org/wiki/HTTPS).\n\n# Authorising User Consent\n\nIn order to access a user's financial data or to facilitate a payment on behalf of the user, the user will need to authenticate with their financial institution and give explicit consent. In most cases, this will involve redirecting users to their institution's authorisation screen either in the web browser or if on a mobile, using the user's mobile banking application providing it is installed. In any case, the goal is to obtain a `consentToken` which is supplied as the `Consent` header parameter to sign [Financial Data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) requests.\n\nThere are several options to obtain a `consentToken` once a user has given authorisation:\n\n## Polling the Consent Object\n\nIf a `callback` is not specified when creating either an account authorisation request or payment authorisation request, the status of the consent will need to be monitored by [retrieving all consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) or by [retrieving a specific users consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) to obtain the associated `consentToken` to execute the request. The [consent status](/#consent-status) will need to be monitored until the user authorises consent and the consent object transitions from `AWAITING_AUTHORIZATION` to `AUTHORIZED`. The `consentToken` will be available in the `Consent` object only when the consent becomes `AUTHORIZED`.\n\n## Using a Callback \n\nAfter a user successfully authorises consent in the institution's domain, the callback defines where the user will be redirected to e.g. The url of a confirmation page in your web or mobile application. When you are redirected to the callback, the `consent`, `user-uuid` and `institution` will be available as query parameters. In order to use a callback in your application, you must first login to the [Yapily Dashboard](dashboard.yapily.com) and add the callback to the Yapily application linked to your application. \n\nThe Dashboard allows you to add multiple callbacks if this is required for your application. If you have multiple callbacks at the same domain, you can simply add one callback at the domain with a trailing forward slash e.g. If your domain was `https://tpp-application` and you wanted to register the following two callbacks: \n\n```\nhttps://tpp-application/confirmation-accounts\nhttps://tpp-application/confirmation-payments\n```\n\nYou could add `https://tpp-application/` as a single callback rather than individually defining both of these callbacks.\n\n**NOTE: When adding callbacks to the dashboard, remember to include the scheme**\n\n## Using a Callback with a One Time Token (OTT)\n\nA One Time Token (OTT) is an optional means of obtaining consent if you're concerned about exposing the consent token as a query parameter. To enable this feature, ensure that the `oneTimeToken` field is provided in either the [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) along with the `callback`. The response of either authorisation request will contain the `one-time-token` query parameter, which can be [exchanged for a consent token](/#e51b648f-693a-9477-f565-b939754b5166). Once exchanged endpoint has been called, the `consentToken` will be accessible from the POST request's response body.\n\n# Re-authorising User Consent\n\nAfter initial authorisation for account requests, it is likely that you will need to prompt the user to continue to give consent to accessing their [Financial Data](https://docs.yapily.com/?version=latest#5f9e4f24-ac6a-409b-a87b-5c233b035d5b). See [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049) request to learn about the conditions that need to be met.\n\n# Open Banking UK\n\nThe 9 largest banks and building societies in the UK follow the Open Banking standard. For more information and to enable connectivity to these institutions, see the [Open Banking guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-UK). \n\n# HTTP Response Codes\n| Http code | Description |\n| - | - |\n| 200 | Successful request. |\n| 201 | Successful request + Resource created. |\n| 400 | Bad request. Where possible Yapily will return details of why the request failed. |\n| 401 | Unauthorised request to the Yapily API. |\n| 403 | Forbidden request where a valid consent token is required. |\n| 404 | Resource not found. |\n| 405 | HTTP method not allowed. |\n| 406 | Your application did not accept JSON. |\n| 409 | Attempted action conflicts with current application state. Actions to resolve will be returned in the body of the response where possible. |\n| 424 | Failed Dependency. Unable to complete request to the institution. |\n| 500 | Internal server error, due to an undetermined issue. |\n| 501 | Not Implemented. The requested feature is unavailable for the specified institution. |\n\n## Features\n\nEach of the Yapily API [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) corresponds to a [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) or [Payments](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoint and each feature name can be seen on this page under its respective endpoint. Each [consent token](https://docs.yapily.com/#e51b648f-693a-9477-f565-b939754b5166) represents user permission to access a set of features, represented in the body of the consent token object as a `featureScope` array.\n\n## Date time format\nDate time values follow the ISO 8601 format with timezone `yyyy-MM-dd'T'HH:mm:ss.SSSZ` e.g. \"2019-12-25T01:30:00.000+00:00\" or \"2019-12-25T00:00:00Z\". \n\n**NOTE: Please ensure date time values are URL encoded when sending a request.**\n\n[Visit the wiki](https://github.com/yapily/developer-resources/wiki) for more information.\n\n## Getting Support\nYou can get in touch via [Slack](https://yapily.slack.com/) ([request to join](https://docs.google.com/forms/d/e/1FAIpQLSe6Xalk1MPm-Cus0g5Q6PzkK45DFQHGyPrTc2r5rqyxic8Dow/viewform)) or by sending an email to developers@yapily.com. Each request made to the Yapily API will return a unique `tracing-id`. Including the `tracing-id` in your message will help the support team to investigate issues quicker.\n\n## Specifications\nDetails of the API schemas and descriptions of specific fields can be seen in the [Swagger (2.0) specification](https://api.yapily.com/docs/swagger.json) and the [API Explorer](https://api.yapily.com/explorer).",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -6508,7 +6508,7 @@
           "response": [
             {
               "id": "e3666584-658f-4d74-8757-32499abbc002",
-              "name": "201 Created (BULK PAYMENT REQUEST)",
+              "name": "201 Created (BULK PAYMENT AUTH REQUEST - BARCLAYS)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -6569,6 +6569,36 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
+            },
+            {
+              "id": "ce936f86-9178-411d-afd4-8ba928e6898d",
+              "name": "201 Created (BULK PAYMENT AUTH REQUEST - LLOYDS",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"user@company.com\",\n    \"institutionId\": \"lloydsbusiness\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p1\",\n                \"reference\": \"Bulk Payment 1\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payer\": {\n                    \"name\": \"Business Account Name 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p2\",\n                \"reference\": \"Bulk Payment 2\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 2\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p3\",\n                \"reference\": \"Bulk Payment 3\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 3\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
             }
           ]
         },
@@ -6598,48 +6628,12 @@
               }
             },
             "url": "https://api.yapily.com/bulk-payments",
-            "description": "Feature: `CREATE_BULK_PAYMENT`\n\nUsed to create a bulk payment request. This endpoint is used once a user has authorised a [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d) with their bank. \n\n**Note:** The payload of this request must be an exact match of the `PaymentRequest` object in the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d)."
+            "description": "Feature: `CREATE_BULK_PAYMENT`\n\nUsed to create a bulk payment request from a **business account**. This endpoint is used once a user has authorised a [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d) with their bank. \n\n**Note:** The payload of this request must be an exact match of the `PaymentRequest` object in the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d)."
           },
           "response": [
             {
-              "id": "a97ad011-f7b1-4db9-a995-cb59500a41a2",
-              "name": "400 Bad Request",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n    \"payments\": [\n        {\n            \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d96\",\n            \"reference\": \"REFERENCE_1\",\n            \"contextType\": \"OTHER\",\n            \"amount\": {\n                \"amount\": \"4.00\",\n                \"currency\": \"GBP\"\n            },\n            \"payee\": {\n                \"name\": \"Michael Anderson\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"123456\"\n                    },\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"00001111\"\n                    }\n                ],\n                \"customerId\": \"8675\",\n                \"merchantCategoryCode\": \"12\"\n            }\n        },\n        {\n            \"type\": \"DOMESTIC_PAYMENT\",\n            \"paymentIdempotencyId\": \"b455d961d7aedbfe4454cf711b8e6724\",\n            \"reference\": \"REFERENCE_2\",\n            \"contextType\": \"OTHER\",\n            \"amount\": {\n                \"amount\": \"9.00\",\n                \"currency\": \"GBP\"\n            },\n            \"payee\": {\n                \"name\": \"Michelle Roberts\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"998877\"\n                    },\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"12345678\"\n                    }\n                ],\n                \"customerId\": \"9856\",\n                \"merchantCategoryCode\": \"32\"\n            }\n        }\n    ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payments"
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"600f8039-2cd2-452c-9ab3-9bcd5631730f\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
-            },
-            {
               "id": "e02402e6-d4d7-464a-b910-20257362d5bb",
-              "name": "201 Created (BULK PAYMENT)",
+              "name": "201 Created (BULK PAYMENT REQUEST - BARCLAYS)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -6674,7 +6668,75 @@
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"d778eb267a16985fc4d7b04ccbd00d46\"\n    },\n    \"data\": {\n        \"id\": \"BARCLAYS-P-10000000337598\",\n        \"institutionConsentId\": \"BARCLAYS-P-10000000337598\",\n        \"status\": \"COMPLETED\",\n        \"statusDetails\": {\n            \"status\": \"COMPLETED\",\n            \"statusUpdateDate\": \"2020-05-01T11:37:16+01:00\"\n        },\n        \"amount\": 13.00,\n        \"amountDetails\": {\n            \"amount\": 13.00\n        },\n        \"createdAt\": \"2020-05-01T11:32:51+01:00\"\n    }\n}"
             },
             {
-              "id": "e5e860ea-f6b8-49e7-aa64-b8f34829a446",
+              "id": "5b60f06d-f2e6-4965-abc5-76958103910b",
+              "name": "201 Created (BULK PAYMENT REQUEST - LLOYDS)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"payments\": [\n        {\n            \"type\": \"DOMESTIC_PAYMENT\",\n            \"paymentIdempotencyId\": \"p1\",\n            \"reference\": \"Bulk Payment 1\",\n            \"amount\": {\n                \"amount\": \"0.1\",\n                \"currency\": \"GBP\"\n            },\n            \"payer\": {\n                \"name\": \"Business Account Name 1\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"XXXXXXXX\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"XXXXXX\"\n                    }\n                ]\n            },\n            \"payee\": {\n                \"name\": \"Recipient account 1\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"XXXXXXXX\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"XXXXXX\"\n                    }\n                ]\n            }\n        },\n        {\n            \"type\": \"DOMESTIC_PAYMENT\",\n            \"paymentIdempotencyId\": \"p2\",\n            \"reference\": \"Bulk Payment 2\",\n            \"amount\": {\n                \"amount\": \"0.1\",\n                \"currency\": \"GBP\"\n            },\n            \"payee\": {\n                \"name\": \"Recipient account 2\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"XXXXXXXX\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"XXXXXX\"\n                    }\n                ]\n            }\n        },\n        {\n            \"type\": \"DOMESTIC_PAYMENT\",\n            \"paymentIdempotencyId\": \"p3\",\n            \"reference\": \"Bulk Payment 3\",\n            \"amount\": {\n                \"amount\": \"0.1\",\n                \"currency\": \"GBP\"\n            },\n            \"payee\": {\n                \"name\": \"Recipient account 3\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"XXXXXXXX\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"XXXXXX\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/bulk-payments"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"d778eb267a16985fc4d7b04ccbd00d46\"\n    },\n    \"data\": {\n        \"id\": \"LLOYDS-P-10000000337598\",\n        \"institutionConsentId\": \"LLOYDS-P-10000000337598\",\n        \"status\": \"COMPLETED\",\n        \"statusDetails\": {\n            \"status\": \"COMPLETED\",\n            \"statusUpdateDate\": \"2020-05-01T11:37:16+01:00\"\n        },\n        \"amount\": 0.3,\n        \"amountDetails\": {\n            \"amount\": 0.3\n        },\n        \"createdAt\": \"2020-05-01T11:32:51+01:00\"\n    }\n}"
+            },
+            {
+              "id": "a60968a2-d893-4708-ab55-9b10d075eedc",
+              "name": "400 Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n    \"payments\": [\n        {\n            \"paymentIdempotencyId\": \"1d54cf71bfe44b1b8e67247aed455d96\",\n            \"reference\": \"REFERENCE_1\",\n            \"contextType\": \"OTHER\",\n            \"amount\": {\n                \"amount\": \"4.00\",\n                \"currency\": \"GBP\"\n            },\n            \"payee\": {\n                \"name\": \"Michael Anderson\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"123456\"\n                    },\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"00001111\"\n                    }\n                ],\n                \"customerId\": \"8675\",\n                \"merchantCategoryCode\": \"12\"\n            }\n        },\n        {\n            \"type\": \"DOMESTIC_PAYMENT\",\n            \"paymentIdempotencyId\": \"b455d961d7aedbfe4454cf711b8e6724\",\n            \"reference\": \"REFERENCE_2\",\n            \"contextType\": \"OTHER\",\n            \"amount\": {\n                \"amount\": \"9.00\",\n                \"currency\": \"GBP\"\n            },\n            \"payee\": {\n                \"name\": \"Michelle Roberts\",\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"998877\"\n                    },\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"12345678\"\n                    }\n                ],\n                \"customerId\": \"9856\",\n                \"merchantCategoryCode\": \"32\"\n            }\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/bulk-payments"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"600f8039-2cd2-452c-9ab3-9bcd5631730f\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
+            },
+            {
+              "id": "bf132f02-aace-4529-8c2f-8290e9e96e73",
               "name": "403 Forbidden",
               "originalRequest": {
                 "method": "POST",
@@ -6701,10 +6763,8 @@
                 },
                 "url": "https://api.yapily.com/bulk-payments"
               },
-              "status": "Forbidden",
-              "code": 403,
               "_postman_previewlanguage": "json",
-              "header": [],
+              "header": null,
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"error\": {\n        \"code\": 403,\n        \"tracingId\": \"3f44a7af-ca2d-4d3b-8d27-1a90932224a6\",\n        \"status\": \"FORBIDDEN\",\n        \"source\": \"USER\",\n        \"message\": \"The given consent can not be used. The consent status is [EXPIRED]. Please re-authorise. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"raw\": [],\n    \"monitoring\": []\n}"
@@ -7012,109 +7072,109 @@
   ],
   "variable": [
     {
-      "id": "44c685ac-cf7b-4bb9-b3e5-bbca4ad7343e",
+      "id": "b22474a0-9d7d-477e-b750-42cc0f8dee52",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "2a2ca9b7-7c7a-4402-b0b6-052d657574ec",
+      "id": "6afc9128-2feb-49dc-bb38-6c608be89257",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "1a249c64-4ddd-47ce-90c2-e5d350dfedeb",
+      "id": "1aaee726-8645-4ba1-8c58-1d6fc01038ec",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "bbf8c729-c145-4595-8e0e-f0fdae430a26",
+      "id": "e1fb5df2-91b2-48f3-9977-88d707652b3a",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "43fc4c39-b881-44d7-82dd-640f73dc44b3",
+      "id": "7cd449a1-590f-47f9-8af2-c233ca7bd7a8",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "0b85664f-432c-4e09-8363-55e38d40dfdc",
+      "id": "695a43b1-e175-4dcc-a586-73865d9df9f3",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "19d3dcb1-e6c2-42a7-93bb-bce09bb8e257",
+      "id": "4f8570f0-6c70-476d-9aa2-17fe3d5da229",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "c7eafa55-d556-43d1-b729-b86dca3efe38",
+      "id": "3c3debee-6956-46b4-8754-019d06ce704f",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "efd5be6f-704e-4960-ad95-e186e6b83377",
+      "id": "4769d1c4-e948-41e4-bb30-f6424339e8e8",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "c0a87410-0430-44d7-ba50-31ba67377899",
+      "id": "2fd49293-2249-4284-b2de-a951adf04ccd",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "8400f56f-0e63-4015-9538-b13900116c1c",
+      "id": "67bf28d8-e7ff-4499-afb7-78a4f2ccdd68",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "1f6d035e-6040-4d67-a3a5-c0f1028a5f24",
+      "id": "e8e8e6fb-dc25-48b0-a4b3-a1ff06e60cb7",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "5bbf6255-816a-4946-8d00-d49d7b759295",
+      "id": "4bba81fa-e602-420c-a363-1f38cf9fda61",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "db9b58fa-c1f4-454c-b656-1ade541c1385",
+      "id": "781bf4eb-3763-4ace-9d10-d7f9e1215ba4",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "04339e71-0923-43fe-9ad6-62838c4875f9",
+      "id": "f5b56cd7-4fec-4f0e-b70a-c0e7e95f3553",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "bef8b0f8-7742-462b-be8a-6a952459267b",
+      "id": "8b802e4b-7665-4d6c-b009-827d39b6682c",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "7a60cb7c-3a9a-4207-ac2f-f84d6b05ce13",
+      "id": "4e3fa286-389b-4985-a8e8-b967561b26f4",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "dd944236-16c9-4f4e-8af7-ab2a6c78b50c",
+      "id": "7801f223-faf4-48b3-ba8e-b661093de0f5",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
