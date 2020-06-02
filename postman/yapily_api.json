@@ -6030,6 +6030,20 @@
               {
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "key": "Psu-Id",
+                "value": "{{psu-id}}",
+                "description": "Represents the user's login ID for the Institution to a personal account",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Psu-Corporate-Id",
+                "value": "{{psu-corporate-id}}",
+                "description": "Represents the user's login ID for the Institution to a business account",
+                "type": "text",
+                "disabled": true
               }
             ],
             "body": {
@@ -6039,39 +6053,7 @@
                 "raw": {}
               }
             },
-            "url": {
-              "raw": "https://api.yapily.com/payment-auth-requests?Content-Type=application/json",
-              "protocol": "https",
-              "host": [
-                "api",
-                "yapily",
-                "com"
-              ],
-              "path": [
-                "payment-auth-requests"
-              ],
-              "query": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json",
-                  "type": "text"
-                },
-                {
-                  "key": "Psu-Id",
-                  "value": "{{psu-id}}",
-                  "description": "Represents the user's login ID for the Institution to a personal account",
-                  "type": "text",
-                  "disabled": true
-                },
-                {
-                  "key": "Psu-Corporate-Id",
-                  "value": "{{psu-corporate-id}}",
-                  "description": "Represents the user's login ID for the Institution to a business account",
-                  "type": "text",
-                  "disabled": true
-                }
-              ]
-            },
+            "url": "https://api.yapily.com/payment-auth-requests",
             "description": "Features: \n\n- `INITIATE_DOMESTIC_SINGLE_PAYMENT`\n- `INITIATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `INITIATE_DOMESTIC_PERIODIC_PAYMENT`\n- `INITIATE_INTERNATIONAL_SINGLE_PAYMENT`\n\nUsed to initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a payment.\n\n<h4>Request properties</h4>\n\n| Field |  |Description | Type |\n| - | - | - | - |\n| userUuid | _Conditional_ | The uuid for your application user. </br> ___Condition___ </br> Either the userUuid or applicationUserId must be provided.  | String |\n| applicationUserId | _Conditional_ | Your identifier for the application user. </br> ___Condition___ </br> Either the userUuid or applicationUserId must be provided. Your identifier for the application user. | String |\n| institutionId | _Mandatory_ |The institution-id for the bank that the user will use to pay. | String |\n| callback | _Optional_ | The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional_ | The one time token value should be marked as 'true' to receive one time token. This field should be used in conjuction with `callback` url.  | Boolean |\n| paymentRequest | _Mandatory_ |This nested object should exactly match the payment object that you intend to submit when you execute a [Create Payment](https://docs.yapily.com/?version=latest#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c) request. | Object |\n\n\nNote: `userUuid` is the primary identifier. If you would prefer to use your own supplied identifier to manage users, make sure to only provide the `applicationUserId` and omit the `userUuid`."
           },
           "response": [
@@ -7121,109 +7103,109 @@
   ],
   "variable": [
     {
-      "id": "f7571446-1d3d-4855-83c6-c541a99a4ea4",
+      "id": "38ec15b3-246e-4e11-95ee-9ddc1a15bdf0",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "25ff773b-a4a8-4d28-80f3-741a8b1c0a94",
+      "id": "495e06d7-c919-4738-a6bc-b49229f7313b",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "75cc4460-5cbe-4de0-8bd1-21038b656e87",
+      "id": "5ee0a354-c191-4d56-ac60-958d5514be60",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "1883135d-fe39-4b42-8c92-67acf0a56d62",
+      "id": "e7d780f1-a40f-4b21-8972-b6495da0452c",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "61eccdbd-af79-494b-b55c-c830e41454f3",
+      "id": "1d7002f3-dad5-4b3d-b8eb-341b59cf6d6b",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "7345e621-b7b6-4712-8438-737505a5b783",
+      "id": "2169e303-6dee-4b24-b3d4-098b039491d3",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "6e56d3ca-05a3-4e47-a4ef-429c4db744f1",
+      "id": "27bb4c1a-6bf8-49cc-8442-0dcdfd0b74a0",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "703ba377-1c4a-4bab-9147-74b0878d1fa3",
+      "id": "84f85f02-e1ba-4a38-aedf-b773a02e3b15",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "a7ef09d4-a3b6-47ef-aa6e-07a1b4f0c5d8",
+      "id": "ed8816e1-56fe-42b7-8bb7-57403094124e",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "b954e45c-fa4b-42a9-8b82-f8f116034a0b",
+      "id": "fed866c8-6f98-48da-8c62-0c747e7e4496",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "38cd46b5-5d2e-49bf-8a98-56ed8bffcbe2",
+      "id": "d875d74c-6db3-45f0-bf34-690e324f67b3",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "c21876e5-83ed-41b3-9b00-1750074c7c58",
+      "id": "4e1b3810-e10f-486e-a0bb-07bce9844bd0",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "10a86671-3fe7-4023-909a-0e854c8c141c",
+      "id": "eab40f73-3f99-42ea-88b1-6c0b35de5353",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "0d037ab1-5306-4368-a3d9-78a2d87c5712",
+      "id": "3be16e36-b21a-4acc-b273-e586db154e89",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "a298f788-b4c7-4675-8129-3b48768a42b6",
+      "id": "e0add3ce-6796-4289-887b-a76884006888",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "bdc81f76-4834-4900-b535-9a55dab90b72",
+      "id": "6e7cc162-3d39-4130-a43f-ed4720fafbbd",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "7b8748c7-d66e-4279-a90c-979e7c49537e",
+      "id": "873b799f-c234-444d-8a46-994f96b272b3",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "dc00dc59-0370-455f-a0ad-2dcf4e7c629b",
+      "id": "815aac8a-2777-4272-aa61-2afcd78805a7",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
