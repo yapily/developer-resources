@@ -3542,7 +3542,7 @@
         }
       ],
       "_postman_id": "3958d848-2acd-10c4-dfff-b1ea5b63d84d",
-      "description": "An Institution object represents any Account Serving Payment Servicing Provider (ASPSP) that has been integrated and is accessible through the Yapily APIs (ASPSPs are entities that publish Read/Write APIs to permit, with customer consent, payments initiated by third party providers and/or make their customers\u2019 account transaction data available to third party providers via their API end points).\n\nAny one of the following would be represented as Institution:\n\nTraditional banks e.g. Santander\nNeo-banks e.g. Monzo\nBuilding societies e.g. Cumberland Building Society\n\n<h2 id=\"conditional-psu-ids\">Conditional PSU identifiers</h2>\nAs part of the SCA process in authorising any request for user's financial data or to initiate a payment on their behalf, some Institutions require extra information in the form of *PSU* values in order to successfully authorise the request. \n\nThe endpoints which require this data are all the authorisation endpoints:\n- [Create Account Authorisation Request](https://docs.yapily.com/?version=latest#2d2c9547-47b2-4e0e-a6e0-73451bc4a287)\n- [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049)\n- [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)\n- [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d)\n\nFor each of these requests, the values `psu-id` and `psu-corporate-id` will be necessary in the following cases:\n\n| BANK                      | PSU-ID    | PSU-CORPORATE-ID |\n|---------------------------|-----------|------------------|\n| Deutsche Bank             | Mandatory | -                |\n| Noris Bank                | Mandatory | -                |\n| Handelsbanken Business UK | -         | Mandatory        |\n\nFor all other banks in the EU that Yapily integrates with, they will not require any of these PSU values. \n\n<h3>Design Considerations</h3>\nAs a third party provider, when integrating with any of the banks listed in the table above, consider how you can build your applications to capture the values from your users as they trigger any of the authorisation requests."
+      "description": "An Institution object represents any Account Serving Payment Servicing Provider (ASPSP) that has been integrated and is accessible through the Yapily APIs (ASPSPs are entities that publish Read/Write APIs to permit, with customer consent, payments initiated by third party providers and/or make their customers\u2019 account transaction data available to third party providers via their API end points).\n\nAny one of the following would be represented as Institution:\n\nTraditional banks e.g. Santander\nNeo-banks e.g. Monzo\nBuilding societies e.g. Cumberland Building Society\n\n<h2 id=\"conditional-psu-ids\">Conditional PSU Identifiers</h2>\nAs part of the SCA process in authorising any request for user's financial data or to initiate a payment on their behalf, some Institutions require extra information in the form of *PSU* values in order to successfully authorise the request. \n\nThe endpoints which require this data are all the authorisation endpoints:\n- [Create Account Authorisation Request](https://docs.yapily.com/?version=latest#2d2c9547-47b2-4e0e-a6e0-73451bc4a287)\n- [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049)\n- [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)\n- [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d)\n\nFor each of these requests, the values `psu-id` and `psu-corporate-id` will be necessary in the following cases:\n\n| BANK                      | PSU-ID    | PSU-CORPORATE-ID |\n|---------------------------|-----------|------------------|\n| Deutsche Bank             | Mandatory | -                |\n| Noris Bank                | Mandatory | -                |\n| Handelsbanken Business UK | -         | Mandatory        |\n\nFor all other banks in the EU that Yapily integrates with, they will not require any of these PSU values. \n\n<h3>Design Considerations</h3>\nAs a third party provider, when integrating with any of the banks listed in the table above, consider how you can build your applications to capture the values from your users as they trigger any of the authorisation requests."
     },
     {
       "name": "Financial Data",
@@ -7134,109 +7134,109 @@
   ],
   "variable": [
     {
-      "id": "57e2911a-d205-450e-b7ce-2171c0e3fff0",
+      "id": "9d2eced4-707c-4367-93be-2b5aec53004a",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "5401f5f8-d275-422c-a029-257b143f2fcf",
+      "id": "eb696592-7b6a-4c50-9a70-be4de212da9c",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "c5011280-32a7-46ef-95aa-636d30a27fdb",
+      "id": "9a44c9d0-dd28-4049-80db-8a807a2edb5e",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "1e28cc77-6c7e-401f-a5bf-5f87466b51cd",
+      "id": "d7a3d3ec-00fd-4344-98b7-42a6bf092476",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "2525de53-95e4-4bf6-ba54-4bea1a2b56f4",
+      "id": "0a665ca2-0d4e-447a-88f1-2f6908991e13",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "142c7ec6-abe7-4f1b-99f4-6bd08a49da46",
+      "id": "31b4bc18-9d9b-4e97-bb20-46c7429d2d95",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "ee951420-8abb-4131-a798-dcd1818b897c",
+      "id": "dd4c5acf-6ca9-4696-9f47-7afecd790d90",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "4785a440-7cb4-44d6-8e83-78800e2872a0",
+      "id": "4c5ce76f-5759-49b4-aa03-93a0bfefc51d",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "239a1d1f-4a3c-4a6f-b8ec-1be3176201aa",
+      "id": "108fca98-f194-45ab-aeb9-af3716eec875",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "76da6d3b-573d-46ff-a93f-4dfdfba6f0e5",
+      "id": "c816a807-5952-4743-ae3a-9c943acd9bdf",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "18fcd3ae-5ecb-459c-a008-f934a2a342b9",
+      "id": "c0bd00e3-1acb-4bf6-8e0b-a36b128ca2ca",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "391727e2-e0ef-49b0-b2d7-35fb594e563a",
+      "id": "d5370631-3156-4f27-92ae-e8a3a32a73c3",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "c8f6f5f5-b1cf-4e17-ad64-57171cf67f4d",
+      "id": "92eb870b-1255-409a-8a5b-e63ab8a19398",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "e5ad0483-ae51-40cc-b4b8-3747dd61a247",
+      "id": "783d2078-e89f-46c5-9881-7594e4938848",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "06cadb35-4935-4b3e-9468-84e789ace474",
+      "id": "18f6b6d7-2b35-4d22-8538-4d3616c7b7bc",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "df08ae3f-cd96-4d6a-b721-f86bdc666bc5",
+      "id": "f8282039-63aa-416e-82b9-401cc4cc12f0",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "40e06422-4e0c-4113-a34d-8c40ae8269ff",
+      "id": "5fd64a28-dd65-4363-b605-6b86bde7caf6",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "dc79ac5c-f8df-4cab-8a5a-442733606b8f",
+      "id": "d3d9edd7-b208-44fe-9534-336468f4c622",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
