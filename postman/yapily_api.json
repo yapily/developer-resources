@@ -3556,11 +3556,28 @@
               {
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "key": "Psu-Id",
+                "value": "{{psu-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "Psu-Corporate-Id",
+                "value": "{{psu-corporate-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                "type": "text",
+                "disabled": true
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}"
+              "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}",
+              "options": {
+                "raw": {}
+              }
             },
             "url": "https://api.yapily.com/account-auth-requests",
             "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nInitiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data.\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | _Conditional_. The uuid for your application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| applicationUserId | _Conditional_. Your identifier for the application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| institutionId | _Required_. Used to\u00a0identify the `Institution`\u00a0that holds your user's account. | String |\n| callback | _Optional._ The callback url to receive the consent token. | String |\n| oneTimeToken | _Optional._ Set this property to `true` to receive a one time token. This field should be used in conjunction with `callback` url.  | Boolean |\n| accountRequest | _Optional._ Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. <br><br> __Note:__ If the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution. | Object |\n| accountRequest.transactionFrom | _Optional._ The timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | _Optional._ The timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | _Optional._ The date that the associated `Consent` for the request will expire. <br><br>__Note:__ If this supported by the bank, specifying this is property is opting out of having a long-lived consent that can be perpetually re-authorised by the user. This will add an `expiresAt` field on the `Consent` object which will render it unusable after this date. <br><br> __Note:__ This is not supported by all institutions. In such case, the request will not fail but the property will be ignored and the `Consent` that is created will not have an expiry date. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | _Optional._ Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: `INITIATE_ACCOUNT_REQUEST`, `ACCOUNT`, `ACCOUNTS`, `ACCOUNT_TRANSACTIONS` | Array |"
@@ -3973,6 +3990,18 @@
               {
                 "key": "Consent",
                 "value": "{{consent-token}}",
+                "type": "text"
+              },
+              {
+                "key": "Psu-Id",
+                "value": "{{psu-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                "type": "text"
+              },
+              {
+                "key": "Psu-Corporate-Id",
+                "value": "{{psu-corporate-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
                 "type": "text"
               }
             ],
@@ -7103,109 +7132,109 @@
   ],
   "variable": [
     {
-      "id": "4cbccea9-a1ac-49de-a741-ac9f1a352198",
+      "id": "c44ac112-ae0a-4027-b973-992aaa1faa7e",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "8ff704c6-8076-4e25-a92f-d7a41abf2401",
+      "id": "74d0273b-aea3-4160-bd7e-e542778f47a8",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "988b9624-dffb-4771-880a-99a14733b221",
+      "id": "d5ac8cfe-4e49-4f1b-a9ef-26871016e050",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "9887950f-45d3-48f3-ab4e-4eb156f4ea42",
+      "id": "54f39b89-55b5-4b35-ace0-65eac9f032a5",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "87ce96fb-492f-41c9-98fb-587f3a5a6e63",
+      "id": "241c2a86-7057-4f03-ab3f-9d0ec615ce86",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "90085302-d867-4a36-9e35-6c65c427d585",
+      "id": "c144aaaf-b9fe-462e-8e29-13067920d188",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "b0d8441c-cf1b-41e2-9031-47eec14e721c",
+      "id": "62ca386c-66a5-4ed5-bf71-1be1fef793ba",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "23ab9216-0a3d-4a72-8c49-73f2a9b4e8fe",
+      "id": "1bc6f515-67fe-4466-9131-5202eba09c56",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "4d54d6b6-430c-41a4-a683-49b0af55dafa",
+      "id": "c40a9a18-9b4e-4bfa-99df-77ce5193297e",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "f690b063-0648-46d6-bf9f-3a6fde81d0ef",
+      "id": "cabc3ec8-6668-4042-a9e0-f9081b6c1515",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "71cefd66-5a3b-4804-bc8b-845198b76b94",
+      "id": "5a274fab-a196-4e0d-9140-0ac487d520dd",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "7d03be72-28ba-47c9-a370-b8b00f8fc2e0",
+      "id": "3a738ef3-219b-4229-8d9c-de7f41a94bac",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "a8122924-be41-4810-bfa7-22991ba02758",
+      "id": "c52179ea-6713-420f-bbd2-00f0d9a024be",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "d779e25d-3031-4a99-8cad-89f9afe0769e",
+      "id": "97e7c685-4e70-4b3b-a594-2c6cecfad01c",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "4cf2a2e0-eaad-4ee2-9461-569a650d9e5c",
+      "id": "65602f13-c9fc-45c0-885c-62ecdf8fa865",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "2bbb857a-9ff4-4695-a0b9-f875bf69da6b",
+      "id": "1fa4fa05-fd6d-4d43-ae2a-63ce67fb8039",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "b649a910-cc88-45db-a846-e736084efe37",
+      "id": "27305fec-a5eb-43ff-8afb-821755bf6a6d",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "2cbf06f6-5ef8-4070-80c3-a8e82f12581d",
+      "id": "c538ebcc-ebc1-4a6f-96f1-7bdb244d65d8",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
