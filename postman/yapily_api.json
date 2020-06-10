@@ -3542,7 +3542,7 @@
         }
       ],
       "_postman_id": "3958d848-2acd-10c4-dfff-b1ea5b63d84d",
-      "description": "An Institution object represents any Account Serving Payment Servicing Provider (ASPSP) that has been integrated and is accessible through the Yapily APIs (ASPSPs are entities that publish Read/Write APIs to permit, with customer consent, payments initiated by third party providers and/or make their customers\u2019 account transaction data available to third party providers via their API end points).\n\nAny one of the following would be represented as Institution:\n\nTraditional banks e.g. Santander\nNeo-banks e.g. Monzo\nBuilding societies e.g. Cumberland Building Society\n\n<h2 id=\"conditional-psu-ids\">Conditional PSU Identifiers</h2>\n\nAs part of the SCA process in authorising any request for user's financial data or to initiate a payment on their behalf, some institutions require extra information in the form of **PSU** values in order to successfully authorise the request. \n\nThe endpoints which require this data are all the authorisation endpoints:\n- [Create Account Authorisation Request](https://docs.yapily.com/?version=latest#2d2c9547-47b2-4e0e-a6e0-73451bc4a287)\n- [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049)\n- [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)\n- [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d)\n\nFor each of these requests, the values `psu-id`, `psu-corporate-id` and `psu-ip-address` will be required in the following cases:\n\n| BANK                      | PSU-ID    | PSU-CORPORATE-ID | PSU-IP-ADDRESS |\n|---------------------------|-----------|------------------|----------------|\n| Deutsche Bank             | Mandatory | -                | Mandatory*     |\n| Noris Bank                | Mandatory | -                | Mandatory*     |\n| Handelsbanken Business UK | -         | Mandatory        | Mandatory*     |\n\n\\* This defaults to **127.0.0.1** if not provided by the customer\n\nFor all other banks in the EU that Yapily integrates with, they will not require any of these PSU values. \n\n<h3>Design Considerations</h3>\nAs a third party provider, when integrating with any of the banks listed in the table above, consider how you can build your applications to capture the values from your users as they trigger any of the authorisation requests.\n\n<h2>Institutions from the CBI Globe Gateway</h2>\n\nThe **CBI Globe Gateway** allows Italian institutions and other entities to expose their APIs in conformance with the PSD2 directive. Yapily has integrated with the CBI Globe Gateway to allow third parties to connect with Italian institutions.\n\nYapily is connected to following Italian institutions through CBI Globe:\n- Posta Italiane\n- Intesa Sanpaolo\n- Banca Nazionale del Lavoro ( BNL)\n- UbiBanca\n- Banco di Sardegna\n- Banco BPM\n- Monte dei Paschi di Siena\n- Banca WIDIBA (WIP)\n\nFor each of these banks the consents have different restrictions that you should be aware of when requesting a user's financial data. "
+      "description": "An Institution object represents any Account Serving Payment Servicing Provider (ASPSP) that has been integrated and is accessible through the Yapily APIs (ASPSPs are entities that publish Read/Write APIs to permit, with customer consent, payments initiated by third party providers and/or make their customers\u2019 account transaction data available to third party providers via their API end points).\n\nAny one of the following would be represented as Institution:\n\nTraditional banks e.g. Santander\nNeo-banks e.g. Monzo\nBuilding societies e.g. Cumberland Building Society\n\n<h2 id=\"conditional-psu-ids\">Conditional PSU Identifiers</h2>\n\nAs part of the SCA process in authorising any request for user's financial data or to initiate a payment on their behalf, some institutions require extra information in the form of **PSU** values in order to successfully authorise the request. \n\nThe endpoints which require this data are all the authorisation endpoints:\n- [Create Account Authorisation Request](https://docs.yapily.com/?version=latest#2d2c9547-47b2-4e0e-a6e0-73451bc4a287)\n- [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049)\n- [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)\n- [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d)\n\nFor each of these requests, the values `psu-id`, `psu-corporate-id` and `psu-ip-address` will be required in the following cases:\n\n| BANK                      | PSU-ID    | PSU-CORPORATE-ID | PSU-IP-ADDRESS |\n|---------------------------|-----------|------------------|----------------|\n| Deutsche Bank             | Mandatory | -                | Mandatory*     |\n| Noris Bank                | Mandatory | -                | Mandatory*     |\n| Handelsbanken Business UK | -         | Mandatory        | Mandatory*     |\n\n\\* This defaults to **127.0.0.1** if not provided by the customer\n\nFor all other banks in the EU that Yapily integrates with, they will not require any of these PSU values. \n\n<h3>Design Considerations</h3>\nAs a third party provider, when integrating with any of the banks listed in the table above, consider how you can build your applications to capture the values from your users as they trigger any of the authorisation requests.\n\n<h2 id=\"cbi-globe-institutions\">Institutions from the CBI Globe Gateway</h2>\n\nThe **CBI Globe Gateway** allows Italian institutions and other entities to expose their APIs in conformance with the PSD2 directive. Yapily has integrated with the CBI Globe Gateway to allow third parties to connect with Italian institutions.\n\nYapily is connected to following Italian institutions through CBI Globe:\n- Posta Italiane\n- Intesa Sanpaolo\n- Banca Nazionale del Lavoro ( BNL)\n- UbiBanca\n- Banco di Sardegna\n- Banco BPM\n- Monte dei Paschi di Siena\n- Banca WIDIBA (WIP)\n\nFor each of these banks the consents have different restrictions that you should be aware of when requesting a user's financial data. "
     },
     {
       "name": "Financial Data",
@@ -3699,234 +3699,6 @@
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
             },
             {
-              "id": "e20b94fe-2c15-4255-94fa-c36a089b8af4",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\"\n\t}\n}"
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "131",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 17:45:14 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\"",
-                  "name": "WWW-Authenticate",
-                  "description": "Indicates the authentication scheme that should be used to access the requested entity."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            },
-            {
-              "id": "3f9fcc8c-c7d7-4a5e-a7cd-c4dfee574abe",
-              "name": "404 Not Found",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\"\n\t}\n}"
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "status": "Not Found",
-              "code": 404,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Encoding",
-                  "value": "gzip",
-                  "name": "Content-Encoding",
-                  "description": "The type of encoding used on the data."
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 17:47:31 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "Transfer-Encoding",
-                  "value": "chunked",
-                  "name": "Transfer-Encoding",
-                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-                },
-                {
-                  "key": "Vary",
-                  "value": "Accept-Encoding",
-                  "name": "Vary",
-                  "description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "b536a631-246a-4385-bfa9-e77d46c0d41e",
-                  "name": "Yapily-Tracing-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\"error\":{\"code\":404,\"tracingId\":\"b536a631-246a-4385-bfa9-e77d46c0d41e\",\"status\":\"NOT_FOUND\",\"message\":\"User with uuid [37138ee8-ab9a-496c-be99-07ae353fb876] not found. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"}}"
-            },
-            {
               "id": "1b65b064-ed4f-48ca-ae1c-caa55bcfadc5",
               "name": "201 Created (with applicationUserId)",
               "originalRequest": {
@@ -3962,12 +3734,19 @@
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json"
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
                   }
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n\t\"institutionId\": \"forgerock-sandbox\",\n\t\"callback\": \"https://tpp.application/callback\",\n\t\"oneTimeToken\": \"true\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\",\n\t\t\"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNTS\"\n        ]\n\t}\n}"
+                  "raw": "{\n\t\"applicationUserId\": \"{{application-user-id}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\",\n\t\t\"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNTS\"\n        ]\n\t}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
                 },
                 "url": "https://api.yapily.com/account-auth-requests"
               },
@@ -3978,6 +3757,363 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNTS\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
+            },
+            {
+              "id": "d2011f72-6190-41b1-84e9-fc3799574f06",
+              "name": "201 Created (CBI Globe Gateway Accounts)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"applicationUserId\": \"user-123456\",\n\t\"institutionId\": \"institution\",\n\t\"callback\": \"https://tpp.application/callback\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"applicationUserId\": \"user-123456s\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"institution\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNTS_WITHOUT_BALANCE\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
+            },
+            {
+              "id": "6870c5ed-8cc1-4975-8da4-63c1e8d157b8",
+              "name": "201 Created (CBI Globe Gateway Account Details)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"user-123456\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"https://tpp.application/callback\",\n     \"accountRequest\": {\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"applicationUserId\": \"user-123456s\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"institution\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNT_WITHOUT_BALANCE\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
+            },
+            {
+              "id": "38739ba3-da05-4d8f-a4aa-4efc21a09c7b",
+              "name": "201 Created (CBI Globe Gateway Account Balances)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"user-123456\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"https://tpp.application/callback\",\n     \"accountRequest\": {\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"applicationUserId\": \"user-123456s\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"institution\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
+            },
+            {
+              "id": "97d291c6-b54c-487a-9196-b22e0e1fe5eb",
+              "name": "201 Created (CBI Globe Gateway Account Transactions)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"user-123456\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"https://tpp.application/callback\",\n     \"accountRequest\": {\n        \"accountIdentifiersForTransaction\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"applicationUserId\": \"user-123456s\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"institution\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
+            },
+            {
+              "id": "fcd6a07c-6823-4b38-95ef-ae42158ca4f7",
+              "name": "201 Created (CBI Globe Gateway Account Balances and Transactions)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"user-123456\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"https://tpp.application/callback\",\n     \"accountRequest\": {\n        \"accountIdentifiersForTransaction\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ],\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"applicationUserId\": \"user-123456s\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"institution\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n        \t\"ACCOUNT_BALANCES\",\n            \"ACCOUNT_TRANSACTIONS\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
+            },
+            {
+              "id": "0252d942-32aa-435c-b2b3-0c9135b58287",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\",\n\t\"oneTimeToken\": \"{{one-time-token}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\"\n\t}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            },
+            {
+              "id": "ca5510eb-3c67-4bd1-8c84-e7206ff1e2f3",
+              "name": "404 Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"applicationUserId\": \"{{application-user-id}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"accountRequest\": {\n\t\t\"transactionFrom\": \"2017-09-01T00:00:00+00:00\",\n\t\t\"transactionTo\": \"2018-05-02T00:00:00+00:00\",\n\t\t\"expiresAt\": \"2019-05-02T00:00:00+00:00\"\n\t}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 404,\n        \"tracingId\": \"b536a631-246a-4385-bfa9-e77d46c0d41e\",\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"User with uuid [37138ee8-ab9a-496c-be99-07ae353fb876] not found. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n    }\n}"
             }
           ]
         },
@@ -7162,109 +7298,109 @@
   ],
   "variable": [
     {
-      "id": "7caca2f6-6f1e-46dc-a426-dfa1bb13ef6d",
+      "id": "34113a48-9548-4797-9cd5-ebe2e835e5ab",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "ec1524ad-7a7f-4fbe-a483-b0ea68a41497",
+      "id": "8724ffe8-853f-401d-aa03-18543682563b",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "2524d5a8-23c3-4292-98f8-05414208402b",
+      "id": "29c97fd4-13fd-4de9-9438-159ea8146f74",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "303d6cb4-20d2-4622-9bf0-9eee0a9c6214",
+      "id": "5ddd285c-306c-450f-91b1-062d10f1b862",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "3e0dba58-cccd-477c-aa19-d6e7f571809f",
+      "id": "9fde9594-cae9-4332-99d5-40cd2183e5f0",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "480e6490-ac2e-4338-8ce9-04f20e79363f",
+      "id": "db5854a7-b032-42a2-8091-a8fd3c03bb88",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "d23f7050-2708-4807-83db-1cf13c1203e1",
+      "id": "9c9c4ce6-8596-4692-8f29-8f343540b4df",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "d3bec228-21a1-42c1-ac0f-ba7afa896e26",
+      "id": "73ef1ecf-465f-4d9b-8574-1365eb39dd24",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "3031bae5-38b1-4e56-b4be-5410f4ed5ae7",
+      "id": "fb18fbe0-ae95-4fa2-965a-1921b451fbbd",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "8fcf8b5e-05a4-49c1-a925-4954fa602f44",
+      "id": "77359b61-62ca-42e6-9e6f-81277fd54d54",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "4595b00b-91c6-456b-be56-cd8686bf86bf",
+      "id": "96c631f2-4dbe-413c-a8b0-882ed6478d33",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "9ea4a234-b711-4ca8-a121-a70c00e0b852",
+      "id": "f114a6fc-d890-45d3-a3db-7c92d330bc73",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "05147c7a-5ee2-47d8-be73-740d4e64fc70",
+      "id": "53b93395-395f-4785-9b4e-a41d9d084dc1",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "f1680486-f881-4f50-9dcf-5b0fe8a3ee0b",
+      "id": "8706ce05-ee4c-4194-982c-6890facfc7cb",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "d3ac6a99-c2b8-4d19-bdf5-2e9543626eb6",
+      "id": "15482cf6-4557-4554-8499-0a8cf7e230d3",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "456678f3-724e-42c6-8080-06a71cc1e1ba",
+      "id": "0c2ccc4c-f74f-420e-882d-97f956f42ed0",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "baa51b6b-2dd4-4e80-a1e6-60226b97d9ad",
+      "id": "d64082af-a265-45f8-a3a6-afb95e3393e3",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "6c41d01c-4026-4ba8-950d-1a3f6f506824",
+      "id": "c5e5447d-3895-4370-8f40-d27e9586b01c",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
