@@ -3587,7 +3587,7 @@
               }
             },
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nInitiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data.\n\n**Note:** Depending on the `Institution`, this endpoint may require you to define **PSU values** in the header of the request. See [Conditional PSU Identifiers](./#conditional-psu-ids) for more information.\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | ___Conditional___. The uuid for your application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| applicationUserId | ___Conditional___. Your identifier for the application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| institutionId | ___Mandatory___. Used to\u00a0identify the `Institution`\u00a0that holds your user's account. | String |\n| callback | ___Optional___. The callback url to receive the consent token. | String |\n| oneTimeToken | ___Optional___. Set this property to `true` to receive a one time token. This field should be used in conjunction with `callback` url.  | Boolean |\n| accountRequest | ___Optional___. Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. <br><br> __Note:__ If the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution. | Object |\n| accountRequest.transactionFrom | ___Optional___. The timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | ___Optional___. The timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | ___Optional___. The date that the associated `Consent` for the request will expire. <br><br>__Note:__ If this supported by the bank, specifying this is property is opting out of having a long-lived consent that can be perpetually re-authorised by the user. This will add an `expiresAt` field on the `Consent` object which will render it unusable after this date. <br><br> __Note:__ This is not supported by all institutions. In such case, the request will not fail but the property will be ignored and the `Consent` that is created will not have an expiry date. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | ___Optional___. Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: `INITIATE_ACCOUNT_REQUEST`, `ACCOUNT`, `ACCOUNTS`, `ACCOUNT_TRANSACTIONS`. For banks that are connected through the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions) see the [Authorisation for banks connected through CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe) section. | Array |\n\n<h2 id=\"cbi-globe-auth\">Authorisation for banks connected through CBI Globe Gateway</h2>\n\nFor banks listed in the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions), there are other conditional properties that must be supplied in order to retrieve financial data. The only features that can be obtained from banks connected through the CBI Globe Gateway are: \n- `ACCOUNT_BALANCES`\n- `ACCOUNT_TRANSACTIONS`\n- `ACCOUNT_WITHOUT_BALANCE`\n- `ACCOUNTS_WITHOUT_BALANCE`\n\nRequest fields\n\n| Field | Description | Type |\n|-|-|-|"
+            "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nInitiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data.\n\n**Note:** Depending on the `Institution`, this endpoint may require you to define **PSU values** in the header of the request. See [Conditional PSU Identifiers](./#conditional-psu-ids) for more information.\n\nRequest fields\n\n| Field | Description | Type |\n| - | - | - |\n| userUuid | ___Conditional___. The uuid for your application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| applicationUserId | ___Conditional___. Your identifier for the application user. Either the `userUuid` or `applicationUserId` must be provided. | String |\n| institutionId | ___Mandatory___. Used to\u00a0identify the `Institution`\u00a0that holds your user's account. | String |\n| callback | ___Optional___. The callback url to receive the consent token. | String |\n| oneTimeToken | ___Optional___. Set this property to `true` to receive a one time token. This field should be used in conjunction with `callback` url.  | Boolean |\n| accountRequest | ___Optional___. Contains details of the consent to be requested from the user. This will likely be used by the institution to populate the consent screen presented to the user when requesting authorisation for your application. <br><br> __Note:__ If the `accountRequest` is not set, Yapily will request a default set of permissions, usually with transactions from 2 years previous and 1 years into the future with the maximum consent duration supported by the institution. | Object |\n| accountRequest.transactionFrom | ___Optional___. The timestamp of earliest transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.transactionTo | ___Optional___. The timestamp of last transaction to be requested. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.expiresAt | ___Optional___. The date that the associated `Consent` for the request will expire. <br><br>__Note:__ If this supported by the bank, specifying this is property is opting out of having a long-lived consent that can be perpetually re-authorised by the user. This will add an `expiresAt` field on the `Consent` object which will render it unusable after this date. <br><br> __Note:__ This is not supported by all institutions. In such case, the request will not fail but the property will be ignored and the `Consent` that is created will not have an expiry date. | [Date](https://docs.yapily.com/#date-time-format) |\n| accountRequest.featureScope | ___Optional___. Specify the set of features for which your application requires authorisation. Depending on the institution, this may also populate a consent screen during user authentication. Possible values: `INITIATE_ACCOUNT_REQUEST`, `ACCOUNT`, `ACCOUNTS`, `ACCOUNT_TRANSACTIONS`. </br></br>__Note:** For banks that are connected through the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions) see the [Authorisation for banks connected through CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe) section. | Array |\n\n<h2 id=\"cbi-globe-auth\">Authorisation for banks connected through CBI Globe Gateway</h2>\n\nFor banks listed in the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions), there are other conditional properties that must be supplied in order to retrieve financial data. The only features that can be obtained from banks connected through the CBI Globe Gateway are: \n- `ACCOUNT_BALANCES`\n- `ACCOUNT_TRANSACTIONS`\n- `ACCOUNT_WITHOUT_BALANCE`\n- `ACCOUNTS_WITHOUT_BALANCE`\n\nRequest fields\n\n| Field | Description | Type |\n|-|-|-|"
           },
           "response": [
             {
@@ -7298,109 +7298,109 @@
   ],
   "variable": [
     {
-      "id": "ba547bad-dafd-4c4b-b094-3c5d74158fd7",
+      "id": "856de48b-6050-4dac-8608-1ba5fe2db521",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "b6a0021f-81db-45cd-9d10-d9e69369ad16",
+      "id": "b014ad19-b117-4859-961f-efc35d3a9a47",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "10dbdbd1-aa5c-446c-965d-e146084cf836",
+      "id": "dfb87e0b-a41b-4ce8-95a1-dd70a7043e4e",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "b74bd52b-d070-4837-bc5c-0f281876a63d",
+      "id": "a6dfe46a-6219-4624-a16a-ad162a67e927",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "81f60cde-8593-4208-8476-fb1ca72718e8",
+      "id": "2b090ace-5ed2-4038-83d0-04e4b2758fcc",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "cecbc89c-062d-4245-a70a-a8b6c8471b33",
+      "id": "cb0b0664-f152-46d7-8d0a-9f8e1a9dec71",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "1512ecc9-40f0-477c-8deb-2e1bb2ec8df2",
+      "id": "da26f7c6-4c00-492f-bafb-1b76d5927c01",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "e0e734b3-c8d8-4a2f-81d5-4a40eedb527f",
+      "id": "5fbef9e2-6458-4a29-9910-75c7dfad3fb0",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "f5bde172-76b9-40a4-b9a4-5758835db78b",
+      "id": "b964eaa2-c0c5-42c7-9c93-8b1600c5aea4",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "03c78018-09d3-4054-982d-630c1aaac1d4",
+      "id": "85251ae8-b349-4009-ba1e-ce1bbe40834f",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "324aa40c-d94e-4d2e-9944-e05ba23c26a0",
+      "id": "2aaa2003-0c6a-47fb-8da1-1e6927f2947a",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "518eda35-807a-43fc-a4be-e9d2146b5599",
+      "id": "7b6beb63-6554-40d5-8acc-de6b8ecde2b5",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "18b6831b-6087-4cf6-9496-d62b9daa5a38",
+      "id": "ed81182e-7d33-4885-a4a5-7cd2441484f4",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "1dbe87c0-d9e5-4ace-b00a-0cca6e4dae47",
+      "id": "e58a627f-1ec2-4778-a8c6-62ea0feb6b60",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "75fb3242-e701-4750-b677-565e33a2f0c2",
+      "id": "90d4b9fe-3a4d-4cb4-9f0d-91cbaeb1020e",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "2b92136d-f876-49a6-bfe0-83f6f01d7ec4",
+      "id": "27012685-b947-4bb0-a997-38b5a27a82c0",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "8c41cb2d-8b2f-41c3-8f15-97fdfee90296",
+      "id": "f80a2b27-df79-4acc-a062-c3c1507b76ff",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "1861cab1-67ef-4ccd-8a08-58bc0b8fc767",
+      "id": "c1e66a7b-d1aa-4fac-93ee-e01ded8e406d",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
