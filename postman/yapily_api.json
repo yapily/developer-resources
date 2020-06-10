@@ -6169,6 +6169,194 @@
               "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
             }
           ]
+        },
+        {
+          "name": "Get Accounts Copy",
+          "_postman_id": "e41b1298-7158-4b2b-9b68-64cd28cb24f4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts",
+            "description": "Feature: `ACCOUNTS`, `ACCOUNTS_WITHOUT_BALANCE`\n\nReturns all accounts and balances for the end user associated with the presented consent token.\n\n__Note__: For banks that use the CBI Global Gateway to expose their open banking APIs, the feature will always be `ACCOUNTS_WITHOUT_BALANCE` and the balance will not be in response payload. "
+          },
+          "response": [
+            {
+              "id": "6c34b203-1986-4f6f-b80a-30b7dff0760d",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Jan 2019 12:00:11 GMT"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "114"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 google"
+                },
+                {
+                  "key": "Alt-Svc",
+                  "value": "clear"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            },
+            {
+              "id": "a9685ded-97e0-4370-8235-d505e8637cd6",
+              "name": "200 OK Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "133",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 18 May 2018 14:21:02 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"meta\": {\n    \"tracingId\": \"6f936f73-32b9-4817-9e26-5d01b31493f7\",\n    \"count\": 2\n  },\n  \"data\": [\n    {\n      \"id\": \"2e2a69a2-1641-4889-af47-8de9496e8e9c\",\n      \"type\": \"Personal - Current\",\n      \"balance\": 10458.26,\n      \"description\": \"BigBank current account\",\n      \"currency\": \"GBP\",\n      \"usageType\": \"PERSONAL\",\n      \"accountType\": \"CURRENT\",\n      \"nickname\": \"B. Hman\",\n      \"accountNames\": [\n        {\n          \"name\": \"HORSEMAN B MAIN\"\n        },\n        {\n          \"name\": \"HORSEMAN B BILLS\"\n        }\n      ],\n      \"accountIdentifications\": [\n        {\n          \"type\": \"IBAN\",\n          \"identification\": \"GB93UBKL12345612345678\"\n        },\n        {\n          \"type\": \"SORT_CODE\",\n          \"identification\": \"123456\"\n        },\n        {\n          \"type\": \"ACCOUNT_NUMBER\",\n          \"identification\": \"12345678\"\n        }\n      ],\n      \"accountBalances\": [\n        {\n          \"type\": \"CLOSING_BOOKED\",\n          \"dateTime\": \"2019-12-25T16:03:43.374Z\",\n          \"balanceAmount\": {\n            \"amount\": 10458.26,\n            \"currency\": \"GBP\"\n          },\n          \"creditLineIncluded\": false,\n          \"creditLines\": [\n            {\n              \"type\": \"AVAILABLE\",\n              \"creditLineAmount\": {\n                \"amount\": 15458.26,\n                \"currency\": \"GBP\"\n              }\n            },\n            {\n              \"type\": \"CREDIT\",\n              \"creditLineAmount\": {\n                \"amount\": 500.00,\n                \"currency\": \"GBP\"\n              }\n            },\n            {\n              \"type\": \"PRE_AGREED\",\n              \"creditLineAmount\": {\n                \"amount\": 500.00,\n                \"currency\": \"GBP\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"ac0550cf-568c-470c-9d08-47388f20d1b8\",\n      \"type\": \"Personal - Charge Card\",\n      \"balance\": 1327.75,\n      \"description\": \"BigBank charge card account\",\n      \"currency\": \"GBP\",\n      \"usageType\": \"PERSONAL\",\n      \"accountType\": \"CHARGE_CARD\",\n      \"nickname\": \"B. Hman 2\",\n      \"accountNames\": [\n        {\n          \"name\": \"HORSEMAN B SPLASH CARD\"\n        }\n      ],\n      \"accountIdentifications\": [\n        {\n          \"type\": \"IBAN\",\n          \"identification\": \"GB93UBKL65432187654321\"\n        },\n        {\n          \"type\": \"SORT_CODE\",\n          \"identification\": \"654321\"\n        },\n        {\n          \"type\": \"ACCOUNT_NUMBER\",\n          \"identification\": \"87654321\"\n        }\n      ],\n      \"accountBalances\": [\n        {\n          \"type\": \"INTERIM_BOOKED\",\n          \"dateTime\": \"2019-12-25T16:03:43.374Z\",\n          \"balanceAmount\": {\n            \"amount\": 1327.75,\n            \"currency\": \"GBP\"\n          },\n          \"creditLineIncluded\": false,\n          \"creditLines\": []\n        },\n        {\n          \"type\": \"INTERIM_AVAILABLE\",\n          \"dateTime\": \"2019-12-25T16:03:43.374Z\",\n          \"balanceAmount\": {\n            \"amount\": 672.25,\n            \"currency\": \"GBP\"\n          },\n          \"creditLineIncluded\": true,\n          \"creditLines\": [\n            {\n              \"type\": \"AVAILABLE\",\n              \"creditLineAmount\": {\n                \"amount\": 672.25,\n                \"currency\": \"GBP\"\n              }\n            },\n            {\n              \"type\": \"CREDIT\",\n              \"creditLineAmount\": {\n                \"amount\": 2000.00,\n                \"currency\": \"GBP\"\n              }\n            },\n            {\n              \"type\": \"PRE_AGREED\",\n              \"creditLineAmount\": {\n                \"amount\": 2000.00,\n                \"currency\": \"GBP\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+            }
+          ]
         }
       ],
       "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
@@ -7298,109 +7486,109 @@
   ],
   "variable": [
     {
-      "id": "7759b782-6173-4a8f-a6ff-571497e97fe7",
+      "id": "f7d71034-2506-44b7-8b7f-78bccb9afeff",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "761c6194-36aa-4909-924d-6caa2df14963",
+      "id": "fe16921b-f5bb-4ce2-ac87-1a3f66753d63",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "65f9a04e-724a-4ae7-a5a5-de1f2284632a",
+      "id": "26b0de76-e4fe-4a93-8b2d-debbb05602ca",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "209df991-d871-452f-a51e-b97bd0e1c50a",
+      "id": "59173efd-1cf4-42e9-8bb0-299701e63232",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "31e8f1a2-930f-4199-bd63-7cf2701335b2",
+      "id": "b0884d84-4ade-4405-bb4f-3706863f7909",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "a3090284-a742-46e2-8f7c-2a06d26054b0",
+      "id": "af6fb109-cda6-4f1d-97f7-4482189529f6",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "52a12ad1-6ba5-4768-ba9a-15a14dcfa558",
+      "id": "de697a5c-0d03-4601-b537-1772220f8204",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "2792ed97-191f-4fc2-a249-ca72729627af",
+      "id": "5f734856-0d84-4ff3-849b-a72d0748ee51",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "7e42b4b8-0867-4592-bf0e-08cff4ee27b0",
+      "id": "111f07a4-f4da-4f2b-a390-0e70e018126b",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "1f56ebdb-c545-47f1-a11d-fef95fff2eb8",
+      "id": "bc06822f-d2e8-497a-ac9b-91245b8604c0",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "0b005dd4-380f-4179-9a38-d944714ee3ca",
+      "id": "9edb982f-6e37-413f-b760-182471f0d235",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "3841be85-bd71-4380-b937-abcb21f1fad8",
+      "id": "d19fa99d-bbbe-4c04-9c98-c98c9aecd18a",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "fad6b85d-8461-4b01-acf1-17e94c062171",
+      "id": "0c65c74a-570a-4c5d-a412-ac98b067fbc9",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "15f4b8b8-d38a-48d7-a787-9f9ef63291a2",
+      "id": "1b31abfe-acac-4c3c-ae2b-f8acd22d4352",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "2c930ffe-02b1-4a7d-b773-c586af39ef51",
+      "id": "fd5db734-7fba-405e-aed8-3a1ba51569aa",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "7ffd3cda-d57e-48f9-976f-e5e3d771e51f",
+      "id": "6cfee49d-f97f-400f-91f0-caad77dbb59f",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "8288498b-dc78-49d1-9583-92753555762c",
+      "id": "c8a3e33b-2a1f-420d-8d56-67523837abf8",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "060ee8d5-54cb-44fb-8056-a8f800a37ce5",
+      "id": "7bf4f907-aaeb-4e4b-8c33-675d6b4bbf8a",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
