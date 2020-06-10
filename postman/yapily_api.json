@@ -4284,7 +4284,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts",
-            "description": "Feature: `ACCOUNTS`, `ACCOUNTS_WITHOUT_BALANCE`\n\nReturns all accounts and balances for the end user associated with the presented consent token.\n\n__Note__: For banks that use the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions) to expose their open banking APIs, the feature will always be `ACCOUNTS_WITHOUT_BALANCE` and the balance will not be in response payload. "
+            "description": "Features: `ACCOUNTS`, `ACCOUNTS_WITHOUT_BALANCE`\n\nReturns all accounts and balances for the end user associated with the presented consent token.\n\n__Note__: For banks that use the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions) to expose their open banking APIs, the feature will always be `ACCOUNTS_WITHOUT_BALANCE` and the balance will not be in response payload. "
           },
           "response": [
             {
@@ -4469,7 +4469,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}",
-            "description": "Feature: `ACCOUNT`\n\nReturns the account and balance details of a specific account belonging to the end user associated with the presented consent token."
+            "description": "Feature: `ACCOUNT_WITHOUT_BALANCE`\n\nReturns the account and balance details of a specific account belonging to the end user associated with the presented consent token.\n\n__Note__: For banks that use the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions) to expose their open banking APIs, the feature will always be `ACCOUNT_WITHOUT_BALANCE` and the balance will not be in response payload. "
           },
           "response": [
             {
@@ -4724,7 +4724,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/balances",
-            "description": "Feature: `ACCOUNTS`, `ACCOUNTS_WITHOUT_BALANCE`\n\nReturns all accounts and balances for the end user associated with the presented consent token.\n\n__Note__: For banks that use the CBI Global Gateway to expose their open banking APIs, the feature will always be `ACCOUNTS_WITHOUT_BALANCE` and the balance will not be in response payload. "
+            "description": "Feature: `ACCOUNT_BALANCES`\n\nReturns the balance for the end user associated with the presented consent token.\n\n__Note__: This endpoint is only for obtaining the balances of an account belonging to an `Institution` that exposes their APIs through the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions). If the `Institution` you wish to obtain balance data is not in CBI Globe, use [Get Account](https://docs.yapily.com/?version=latest#757fde49-a294-bbff-d5f9-2c21c5f57be0) or [Get Accounts](https://docs.yapily.com/?version=latest#23faf44e-1093-c676-63ea-369e41ea902d)"
           },
           "response": [
             {
@@ -7486,109 +7486,109 @@
   ],
   "variable": [
     {
-      "id": "5dddb8c5-2702-4064-8b4c-7843450aef3d",
+      "id": "91150146-d66f-49bc-8c29-fcbc6ec09a83",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "cd80e8e6-f89b-4be4-a102-8cc5491ef8ca",
+      "id": "4bbe166e-1db5-43bb-819e-69ea18cc2a72",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "4428c7cd-d766-4d3e-8d80-0720ea28f65d",
+      "id": "7ff5114f-c781-4de3-b3af-534b316d9b3f",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "64d701d4-d135-4d7a-838a-179ba496c785",
+      "id": "358c2012-3ad3-4753-8216-2f65412c0813",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "bd6bca71-d870-4eff-a6f4-c4dc807ece4d",
+      "id": "3835b00a-ea60-4522-92dc-ac439d3809e6",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "6df25f97-064c-4c71-b6e1-10fc07bfe760",
+      "id": "d4511008-6633-47bf-bbd4-58dbedfb888a",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "0451cbab-4cd0-47e0-b259-f528f6fac7fd",
+      "id": "7dad9d92-9a27-410c-8d9e-9e962048ca6c",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "7fc5ddab-5559-40c2-85b7-35f8ddd38b97",
+      "id": "6a8a58ca-a4da-4b7a-b110-52fbeed0dd9c",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "90be8857-9920-4c78-8792-e82074b1cc53",
+      "id": "852e5f92-2019-4d7b-8e00-3ffb7ef09346",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "c6b68403-e72f-47aa-8e8d-6c246d11ef33",
+      "id": "0d1ec18d-12ff-42f3-92f3-5a835a986206",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "8e0f5535-5c49-4ef0-80c9-0369b47dc32a",
+      "id": "f896629d-9288-4602-a5c9-e0ee7ef8ac89",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "fac1823e-b9cc-4b9e-a506-65638b0178e8",
+      "id": "28b9fc8c-549b-408f-900e-2a9db3eaa2d1",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "c587d761-5d44-4dc9-8732-b1e6fc027020",
+      "id": "63032151-54b9-4d8a-ad6a-599fdb65a6e7",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "2fab391c-269a-4c72-aa61-dedf08c5f1b7",
+      "id": "c7d05f8b-8233-408f-b49c-ce44be040909",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "0ae76262-0db3-4d4a-bc9e-57b2af73168c",
+      "id": "0ab6f674-ee3e-48c6-b593-8badd064cb3f",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "eaeebcf4-f3d8-4b3d-88a4-8859cbadc897",
+      "id": "24465736-a3dd-4adb-93a9-a904373b5458",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "192369ea-6b75-45e5-bb0b-27711a2f5f58",
+      "id": "f7d6cacd-fc31-4541-bd1a-755379dc43bf",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "48a53ad4-7f4e-4626-b888-6bc9b5e25234",
+      "id": "df87cc22-b0e6-4b5a-9531-1d5fb371139a",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
