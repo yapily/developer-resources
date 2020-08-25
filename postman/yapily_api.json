@@ -6731,7 +6731,7 @@
               "raw": "{\n    \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n    \"payer\": {\n        \"name\": \"PAYER_NAME\",\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ]\n    },\n    \"amount\": {\n        \"amount\": \"0.00\",\n        \"currency\": \"3_LETTER_CURRENCY_CODE\"\n    },\n    \"reference\": \"REFERENCE\",\n    \"type\": \"PAYMENT_TYPE\",\n    \"payee\": {\n        \"name\": \"PAYEE_NAME\",\n        \"address\": {\n            \"addressLines\": [\n                \"ADDRESS_LINES\"\n            ],\n            \"streetName\": \"STREET_NAME\",\n            \"buildingNumber\": \"BUILDING_NUMBER\",\n            \"postCode\": \"POST_CODE\",\n            \"townName\": \"TOWN_NAME\",\n            \"county\": [\n                \"COUNTY_NAME\"\n            ],\n            \"country\": \"2_LETTER_COUNTRY_CODE\",\n            \"department\": \"DEPARTMENT_NAME\",\n            \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n            \"addressType\": \"TYPE_OF_ADDRESS\"\n        },\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"customerId\": \"CUSTOMER_ID\",\n        \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n    }\n}"
             },
             "url": "https://api.yapily.com/payments",
-            "description": "Features: \n- `CREATE_DOMESTIC_SINGLE_PAYMENT`\n- `CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`\n- `CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `CREATE_DOMESTIC_PERIODIC_PAYMENT`\n- `CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `CREATE_INTERNATIONAL_SINGLE_PAYMENT`\n- `CREATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `CREATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT`\n\nUsed to initiate a payment request at a bank on behalf of a user. For more information about initiating payments, see [POST Create Payment](https://kb.yapily.com/display/YAD/POST+Create+Payment+Request) in the Knowledge Base.\n\n<h1 id=\"the-request-body\">The request body</h1>\n\nAs this endpoint is used to create multiple types of payments, there are properties which are common across all payments and others which are specific to particular payment types. As mentioned above, the payload of this request must be an exact match of the `PaymentRequest` object in the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). For bulk payments, the following applies for each item in the `PaymentRequest.payments` array when executing the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d). \n\nFor more information on how to create different types of payments see the articles of interest:\n- [Domestic Single Payments](https://kb.yapily.com/display/YAD/Domestic+Single+Payments)\n- [International Single Payments](https://kb.yapily.com/display/YAD/International+Single+Payments)\n- [Periodic Payments](https://kb.yapily.com/display/YAD/Periodic+Payments)\n- [Scheduled Payments](https://kb.yapily.com/display/YAD/Scheduled+Payments)\n"
+            "description": "Features: \n- `CREATE_DOMESTIC_SINGLE_PAYMENT`\n- `CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`\n- `CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `CREATE_DOMESTIC_PERIODIC_PAYMENT`\n- `CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `CREATE_INTERNATIONAL_SINGLE_PAYMENT`\n- `CREATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `CREATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT`\n\nUsed to initiate a payment request at a bank on behalf of a user. For more information about initiating payments, see [POST Create Payment](https://kb.yapily.com/display/YAD/POST+Create+Payment+Request) in the Knowledge Base."
           },
           "response": [
             {
@@ -7648,109 +7648,109 @@
   ],
   "variable": [
     {
-      "id": "8ed695bb-b4cd-4de9-922c-cb56b8d2e949",
+      "id": "d7c294ca-e53c-4ecb-a324-52a5a6e9355f",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "ece483eb-66ac-4fb4-9d9c-1dd5b6c45477",
+      "id": "5659a3c9-a71e-4269-83e5-7bccf20668f6",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "125311fe-30cd-41d1-940d-0a3238fe4fe4",
+      "id": "74be1b92-7f66-4c5b-b8fb-f3a53d1c2f66",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "bc1a71da-6d60-4f21-bdf3-9064e060af25",
+      "id": "bb4b55d9-3559-43b9-a981-67da3bfbfa36",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "3fa89875-d669-443d-8e59-ed7c3340be5a",
+      "id": "83039dd0-2e90-45d9-ae69-d8b1b5d19f37",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "e9280667-4497-4cc0-bd6e-346c650bb7df",
+      "id": "76497e63-844f-480b-96de-0a86bae1c57f",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "f82a52b7-6ac6-4599-b779-6af19bd7f410",
+      "id": "1f976242-ac5c-40c6-982d-f010a107cea5",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "734bd4f3-a274-44ab-9842-df2b40edf630",
+      "id": "cf2edadd-a8c9-4f5c-ac6a-dc67b2b6eb8c",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "d7c297af-b6e1-4efa-9cd5-ea708a51f9bc",
+      "id": "05769f07-e13c-44ad-a8b0-71c2d6a2087f",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "9c5bc47b-6d5f-42fa-a03e-5940b0aef858",
+      "id": "d4220f8f-3dea-40ae-ae2c-8e8c49846e52",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "705fb481-68b9-49d7-ab90-87033c4eac68",
+      "id": "c7e399d0-3a66-43f7-a079-4bd405dbc49c",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "34894320-5c62-41d7-af9d-949961b3b6b8",
+      "id": "fb87cefb-bf37-4696-96fd-27e6e4faf09b",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "0f5fce9f-a27e-4590-ae77-82c5314996c6",
+      "id": "cb0f61a1-9419-4206-bb09-4ee6b3a2241c",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "3fcd1dd4-a205-4ed6-b9c6-8dedb023012b",
+      "id": "6055250e-8bac-43a6-990f-2d9e60417de5",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "7fa20fa8-2f9d-4fd6-a424-c68ddde18b9a",
+      "id": "8ff740aa-91cf-4790-8a75-7eb72d1a45f6",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "54b5888d-d291-4225-a5fa-198761ddaf5c",
+      "id": "caee5bd5-d578-497e-8261-569ac5b9ab3d",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "b21f27b8-7387-460b-ad47-d98cfefc0a7e",
+      "id": "08989452-d0e0-41cf-9366-febf71e39e0e",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "fbcf3e9a-392c-492c-b40d-0add80a6a757",
+      "id": "0adcc966-b73c-47a3-a545-95baeeddcc66",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
