@@ -4251,7 +4251,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}",
-            "description": "Feature: `ACCOUNT_WITHOUT_BALANCE`\n\nReturns the account and balance details of a specific account belonging to the end user associated with the presented consent token.\n\n__Note__: For banks that use the [CBI Globe Gateway](https://docs.yapily.com/?version=latest#cbi-globe-institutions) to expose their open banking APIs, the feature will always be `ACCOUNT_WITHOUT_BALANCE` and the balance will not be in response payload. Use [Get Balances](https://docs.yapily.com/?version=latest#e41b1298-7158-4b2b-9b68-64cd28cb24f4) to obtain data about an account's balance."
+            "description": "Feature: `ACCOUNT_WITHOUT_BALANCE`\n\nReturns the account and balance details of a specific account belonging to the end user associated with the presented consent token.\n\n__Note__: For banks that use the [CBI Globe Gateway](https://kb.yapily.com/display/YAD/CBI+Globe+Gateway) to expose their open banking APIs, the feature will always be `ACCOUNT_WITHOUT_BALANCE` and the balance will not be in response payload. Use [Get Balances](https://docs.yapily.com/?version=latest#e41b1298-7158-4b2b-9b68-64cd28cb24f4) to obtain data about an account's balance."
           },
           "response": [
             {
@@ -4752,7 +4752,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/transactions",
-            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. This endpoint will always return a maximum of 1,000 transactions. The underlying bank may have a smaller limit and in such case, where the user's request returns transactions that exceeds the bank's limit, Yapily will make multiple calls behind the scenes to retrieve these transactions up until the 1000 limit. Beyond 1,000 transactions, the customer will then need to make a new request and use the `offset` parameter to fetch the remaining transactions. See the [Using Pagination](./#using-pagination) section below for more information.\n\n<h4>Query string parameters</h4>\n\n| Key | Description | Type |\n| - | - | - |\n| from | _Optional._ All transactions returned should be after this date.<br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| before | _Optional._ All transactions returned should be before this date. <br><br>**Note**: For some institutions the `from` and `before` dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |\n| limit | _Optional._ The number of transaction records to be returned. <br><br>**Note:** Must be between **0** and **1000** when specified.| Number |\n| sort | _Optional._ [Sort](https://jsonapi.org/format/#fetching-sorting) transaction records by date ascending with `date` or descending with `-date`. The default sort order is descending. | String |\n| offset | _Optional._ The number of transaction records to be skipped. Used primarily with [paginated results](./#using-pagination) <br><br>**Note:** Must be greater than or equal to **0** when specified.| Number |\n| cursor | _Optional._ This property is not currently in use.| String |\n\n<h4 id=\"using-pagination\">Using pagination</h4>\n\nIn cases where the request for transactions exceeds 1000 transactions or when you wish to display a paginated set of results when using the `limit` parameter, be sure to follow these steps:\n\n- Step 1: Send the initial request. The `pagination.totalCount` property in the response will tell you how many transactions you query would return without `pagination.self.limit`. If `pagination.totalCount` is more than the `pagination.self.limit`, proceed unto Step 2. Otherwise, you have received the full amount of transactions for your request.\n\n- Step 2: Execute the request again and specify the `offset` property and increment it by the number by `X` to get the next `X` transactions (where `X` is the value of `pagination.self.limit`). \n\n- Step 3: If the `count` is equal to the `pagination.self.limit` (which is the value of `limit` if specified in the request or 1000 if not specified) repeat this step as there are more transactions. Otherwise, if the `count` is less than `pagination.self.limit`, you have reached the end of the paginated results. \n<br>\n\n<h5>Example: No limit specified</h5>\n\nA request returning 6500 transactions without any `limit`\n1. `GET /accounts/x/transactions` returns transactions 1-1000\n2. `GET /accounts/x/transactions?offset=1000` returns transactions 1001-2000\n3. `GET /accounts/x/transactions?offset=6000` returns transactions 6001-6500\n\n<h5>Example: Specifying a limit</h5>\n\nA request returning 467 transactions with a `limit=50`:\n1. `GET /accounts/x/transactions?limit=50` returns transactions 1-50\n2. `GET /accounts/x/transactions?limit=50&offset=50` returns transactions 51-100\n3. `GET /accounts/x/transactions?limit=50&offset=450` returns transactions 451-467\n\n "
+            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. See [Get Transactions](https://kb.yapily.com/display/YAD/GET+Get+Transactions) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -5365,7 +5365,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/statements",
-            "description": "Feature: `ACCOUNT_STATEMENTS`\n\nGet the statements for a specific account.\n\nQuery string parameters (_all parameters are optional_)\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| from | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. |  [Date](https://docs.yapily.com/#date-time-format) |\n| before | (Any valid date) | Date time [ISO8601 format](/#date-time-format) Note: For some institutions the **from** and **before** dates need to be within the range of the consent. | [Date](https://docs.yapily.com/#date-time-format) |"
+            "description": "Feature: `ACCOUNT_STATEMENTS`\n\nGet the statements for a specific account.\n\n| Property | Description | Type |\n| - | - | - |\n| from | _**Optional**_. The date to start looking for account statements. <br><br>**Note:** For some institutions the **from** and **before** dates need to be within the range of the consent. |  [Date](https://kb.yapily.com/display/YAD/Date+Format) |\n| before | _**Optional**_. The date to stop looking for account statements. <br><br>**Note:** For some institutions the **from** and **before** dates need to be within the range of the consent. | [Date](https://kb.yapily.com/display/YAD/Date+Format) |"
           },
           "response": [
             {
@@ -5994,7 +5994,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits",
-            "description": "Feature: `ACCOUNT_DIRECT_DEBIT`\n\nGet the list of direct debits for an account.\n\nResponse:\n\n\n| Name | Description | Type |\n| ----------- | ----------| -----------|\n|id| _Optional_. A unique identifier used to identify the direct debit resource | String |\n|statusDetails| Details of the direct debit status.||\n|statusDetails.status| Status. Possible values are ACTIVE, INACTIVE or UNKNOWN.| String|\n|Payee |  Contains details about the beneficiary. | |\n|payee.name| The name of the beneficiary.|String|\n|reference| A code that is unique to the Direct Debit, provided by the company claiming the payment.| String  |\n|previousPaymentAmount| Contains details of the most recent direct debit collection. | Amount |\n|previousPaymentAmount.amount| A number of monetary units specified in an active currency. |BigDecimal |\n| previousPaymentAmount.currency | [3-letter currency code](https://www.xe.com/iso4217.php). |String |\n| previousPaymentDateTime | The date of the most recent direct debit collection.| [Date](https://docs.yapily.com/#date-time-format) |"
+            "description": "Feature: `ACCOUNT_DIRECT_DEBIT`\n\nGet the list of direct debits for an account. \n\nSee [GET Account Direct Debits](https://kb.yapily.com/display/YAD/GET+Get+Account+Direct+Debits) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -7385,109 +7385,109 @@
   ],
   "variable": [
     {
-      "id": "26f6627e-ba11-4b6e-bddb-2404bec6e411",
+      "id": "b1145713-3586-40ab-b2cb-510d11830632",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "476721d2-c77e-46ae-8151-2d8434a3f28c",
+      "id": "42cfa231-758e-4764-90c1-205e58390a00",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "3201a65f-5737-402e-8f03-940fb5064171",
+      "id": "38483402-7179-41b0-a2ff-110b9a645379",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "cd88acd1-fb86-48d1-ab73-1c1ce5340f72",
+      "id": "13d657c0-3f42-4800-a54f-283bb9087418",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "d3686317-8a86-4cbb-8722-4d1857e2e1e0",
+      "id": "6d897ee4-46e8-4fa0-ae56-e49c1cc324aa",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "fdc0190e-4fa2-4e2b-a5f4-6269656d2bbb",
+      "id": "f8fd714d-f5c4-4f15-9b4b-a78b2bfc97f5",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "1e6b5b5d-e96c-4391-b606-882e7787417b",
+      "id": "e3bb5719-7236-47f4-a6db-406da95b0b32",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "913aae76-bfe3-4daf-86dd-a3aec0645dd8",
+      "id": "4a1413bd-e22a-42ce-a53e-87d128341651",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "b0b35514-b825-4b04-a529-e3c041572dd9",
+      "id": "ee3be768-1c93-42e9-a2c9-941a49dadfe4",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "c9814826-f59b-410b-a2c3-734476abb847",
+      "id": "45b77df8-e116-47a6-91fe-b6c158e6c995",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "2d30a01d-592a-4a43-898e-b7ec3b703d02",
+      "id": "e66e856a-b37b-49cd-abcd-d59d7824ad5f",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "15ba3e4f-be9d-4cd2-a445-a5088a067b13",
+      "id": "0ef007b9-1dde-4b6a-ae04-46ec526fd623",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "afd7c06d-7ae0-4610-8b48-585644be7d41",
+      "id": "5a0f07ef-e456-4c9c-9b39-9862e895da9b",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "7d376559-c6ce-4300-8a2a-b345123c5f66",
+      "id": "41e5be59-8955-49b0-9ac0-52e89733a688",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "d4314a78-1cfc-4f98-80dc-9e756e1dbecc",
+      "id": "b88b9c50-20a7-44b3-9161-79f683d245cb",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "83fb9385-dfc9-4c55-99cb-c491bcc2c852",
+      "id": "021d879d-d905-40b2-bd2d-6efc0247fd0b",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "4e904507-d0bd-4bba-8e7c-f519ff49675c",
+      "id": "8a7c499a-6c75-4497-8496-a90d5162f707",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "ce18b36b-a293-4396-9285-74ea48c1d3b0",
+      "id": "1bf54c68-593e-4337-8e03-1099dc5d7fb9",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
