@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "f3a9e404-3759-7f64-ba7d-146278477f0a",
     "name": "Yapily API",
-    "description": "The Yapily API enables connections between your application and users' banks. For more information visit [yapily.com](https://www.yapily.com).\n\n# Get Started\n1. Register a developer account on [dashboard.yapily.com](https://dashboard.yapily.com/register)\n2. Create an application:\n  * Configure a `callback` URL if it suits your application. [More details below](/#using-a-callback).\n  * Select the financial institutions you would like your application to connect to.\n  * See [this wiki guide](https://github.com/yapily/developer-resources/wiki/Institution-Configurations) for details on obtaining credentials for each of the financial institutions. Alternatively, if you are connecting to a sandbox institution, you can use the preconfigured _sandbox credentials_.\n3. Your application will be issued with a unique `application-key` and `application-secret` to use when connecting to the Yapily API\n\n**You are now ready to connect to the Yapily API**\n\n### Alternatively...\n[Follow this tutorial](https://github.com/yapily/developer-resources/wiki/Tutorial:-Get-account-balance-and-transactions) to learn how to obtain account information using Postman or one of the Swagger-generated SDKs.\n\n# API Authentication\n\nThe Yapily API supports secure connection via either [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) or [Token Authentication](https://auth0.com/learn/token-based-authentication-made-easy/) used to secure all API endpoints. The credentials can be found as the `application-key` and `application-secret` created in the Dashboard following the steps above.\n\nFor example, to connect using basic authentication, each request must be signed with the correct header `Authorization: Basic {{app-credentials}}` where *`app-credentials` = Base64 encoded(`application-key` + \":\" + `application-secret`)*.\n\nAll requests are required to access the API via [HTTPS](https://en.wikipedia.org/wiki/HTTPS).\n\n# Authorising User Consent\n\nIn order to access a user's financial data or to facilitate a payment on behalf of the user, the user will need to authenticate with their financial institution and give explicit consent. In most cases, this will involve redirecting users to their institution's authorisation screen either in the web browser or if on a mobile, using the user's mobile banking application providing it is installed. In any case, the goal is to obtain a `consentToken` which is supplied as the `Consent` header parameter to sign [Financial Data](/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) and [Payments](/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) requests.\n\nThere are several options to obtain a `consentToken` once a user has given authorisation:\n\n## Polling the Consent Object\n\nIf a `callback` is not specified when creating either an account authorisation request or payment authorisation request, the status of the consent will need to be monitored by [retrieving all consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) or by [retrieving a specific users consents](/#d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7) to obtain the associated `consentToken` to execute the request. The [consent status](/#consent-status) will need to be monitored until the user authorises consent and the consent object transitions from `AWAITING_AUTHORIZATION` to `AUTHORIZED`. The `consentToken` will be available in the `Consent` object only when the consent becomes `AUTHORIZED`.\n\n## Using a Callback \n\nAfter a user successfully authorises consent in the institution's domain, the callback defines where the user will be redirected to e.g. The url of a confirmation page in your web or mobile application. When you are redirected to the callback, the `consent`, `user-uuid` and `institution` will be available as query parameters. In order to use a callback in your application, you must first login to the [Yapily Dashboard](dashboard.yapily.com) and add the callback to the Yapily application linked to your application. \n\nThe Dashboard allows you to add multiple callbacks if this is required for your application. If you have multiple callbacks at the same domain, you can simply add one callback at the domain with a trailing forward slash e.g. If your domain was `https://tpp-application` and you wanted to register the following two callbacks: \n\n```\nhttps://tpp-application/confirmation-accounts\nhttps://tpp-application/confirmation-payments\n```\n\nYou could add `https://tpp-application/` as a single callback rather than individually defining both of these callbacks.\n\n**NOTE: When adding callbacks to the dashboard, remember to include the scheme**\n\n## Using a Callback with a One Time Token (OTT)\n\nA One Time Token (OTT) is an optional means of obtaining consent if you're concerned about exposing the consent token as a query parameter. To enable this feature, ensure that the `oneTimeToken` field is provided in either the [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) along with the `callback`. The response of either authorisation request will contain the `one-time-token` query parameter, which can be [exchanged for a consent token](/#e51b648f-693a-9477-f565-b939754b5166). Once exchanged endpoint has been called, the `consentToken` will be accessible from the POST request's response body.\n\n# Re-authorising User Consent\n\nAfter initial authorisation for account requests, it is likely that you will need to prompt the user to continue to give consent to accessing their [Financial Data](https://docs.yapily.com/?version=latest#5f9e4f24-ac6a-409b-a87b-5c233b035d5b). See [Re-authorise Consent](https://docs.yapily.com/?version=latest#b2cf2140-2385-4703-80ea-fd2c69c9e049) request to learn about the conditions that need to be met.\n\n# Configuring an Institution\n\nYapily integrates with many banks across the UK and Europe. For more information and to enable connectivity to these institutions, see the [Open Banking guide](https://github.com/yapily/developer-resources/wiki/Open-Banking-UK). \n\n## Live Banks\n\nIf you have your certificates for AIS and/or PIS ready, you can use any of these banks with your certificates and access live customer data. \n\n## Pre-configured Sandboxes \n\nThese are sandbox environments that come with our certificates ready to use. This is a great option if you want to test Yapily's APIs before using any real banks or data. Yapily recommends that you use the `modelo-sandbox` since it is maintained by the OBIE and is more likely to be stable. While you can use any of the other sandboxes freely, Yapily does not maintain them. \n\n## Sandboxes\n\nThese are sandbox environments that allow you to use your own certificates. As with the pre-configured sandboxes, be aware that Yapily only vouches for the `modelo-sandbox` when testing Open Banking flows.\n\n# HTTP Response Codes\n| Http code | Description |\n| - | - |\n| 200 | Successful request. |\n| 201 | Successful request + Resource created. |\n| 400 | Bad request. Where possible Yapily will return details of why the request failed. |\n| 401 | Unauthorised request to the Yapily API. |\n| 403 | Forbidden request where a valid consent token is required. |\n| 404 | Resource not found. |\n| 405 | HTTP method not allowed. |\n| 406 | Your application did not accept JSON. |\n| 409 | Attempted action conflicts with current application state. Actions to resolve will be returned in the body of the response where possible. |\n| 424 | Failed Dependency. Unable to complete request to the institution. |\n| 500 | Internal server error, due to an undetermined issue. |\n| 501 | Not Implemented. The requested feature is unavailable for the specified institution. |\n\n## Features\n\nEach of the Yapily API [features](https://docs.yapily.com/#ab9d0ee9-0777-48e8-8d58-75e31bf8805e) corresponds to a [Financial Data](https://docs.yapily.com/#5f9e4f24-ac6a-409b-a87b-5c233b035d5b) or [Payments](https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b) endpoint and each feature name can be seen on this page under its respective endpoint. Each [consent token](https://docs.yapily.com/#e51b648f-693a-9477-f565-b939754b5166) represents user permission to access a set of features, represented in the body of the consent token object as a `featureScope` array.\n\n## Date time format\nDate time values follow the ISO 8601 format with timezone `yyyy-MM-dd'T'HH:mm:ss.SSSZ` e.g. \"2019-12-25T01:30:00.000+00:00\" or \"2019-12-25T00:00:00Z\". \n\n**NOTE: Please ensure date time values are URL encoded when sending a request.**\n\n[Visit the wiki](https://github.com/yapily/developer-resources/wiki) for more information.\n\n## Getting Support\nYou can get in touch by sending an email to support@yapily.com. Each request made to the Yapily API will return a unique `tracing-id`. Including the `tracing-id` in your message will help the support team to investigate issues quicker.\n\n## Specifications\nDetails of the API schemas and descriptions of specific fields can be seen in the [Swagger (2.0) specification](https://api.yapily.com/docs/swagger.json) and the [API Explorer](https://api.yapily.com/explorer).",
+    "description": "The Yapily API enables connections between your application and users' banks. For more information visit [yapily.com](https://www.yapily.com).\n\n# Getting Started\n\nThe following steps will guide you through creating a Yapily application that is ready to be used with the Yapily API\n\n1.\u00a0You must first create a Yapily application.\u00a0\n\n   [Create a Yapily Application](https://kb.yapily.com/display/YAD/Create+a+Yapily+Application)\n\n2. The next step is to add at least one `Institution` to your application. To get started quickly as possible, you will configure a pre-configured sandbox:\n\n   [Add a pre-configured sandbox](https://kb.yapily.com/display/YAD/Add+a+sandbox)\n\n3. Finally, the last step is to set up Postman with our Yapily application:\n\n   [Set up a Postman Collection](https://kb.yapily.com/display/YAD/Set+up+a+Postman+Collection)\n\n# Understanding the platform\n\nBefore executing any API requests, it may be worth looking through the following resources to understand how Yapily operates as an Open Banking gateway:\n\n- [Authentication](https://kb.yapily.com/display/YAD/Authentication) - How you securely make connection to your Yapily application\u00a0\n- [Authorisation](https://kb.yapily.com/display/YAD/Authorisation) - How Yapily handles your user's consent to sharing their data or initiating a payment on their behalf\n- [Institutions](https://kb.yapily.com/display/YAD/Institutions) - What is an `Institution`? What is the difference between a bank and an `Institution`?\n- [Yapily Features](https://kb.yapily.com/display/YAD/Yapily+Features) - How Yapily handles the functionality of different banks\u00a0\n\n# Testing the flows\n\nIf you wish to quickly see what is possible using the Yapily API, once you have set up an application, you can run through one of the following guides:\n\n- [Get Accounts and Transactions](https://kb.yapily.com/display/YAD/Get+Accounts+and+Transactions)",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -6731,7 +6731,7 @@
               "raw": "{\n    \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n    \"payer\": {\n        \"name\": \"PAYER_NAME\",\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ]\n    },\n    \"amount\": {\n        \"amount\": \"0.00\",\n        \"currency\": \"3_LETTER_CURRENCY_CODE\"\n    },\n    \"reference\": \"REFERENCE\",\n    \"type\": \"PAYMENT_TYPE\",\n    \"payee\": {\n        \"name\": \"PAYEE_NAME\",\n        \"address\": {\n            \"addressLines\": [\n                \"ADDRESS_LINES\"\n            ],\n            \"streetName\": \"STREET_NAME\",\n            \"buildingNumber\": \"BUILDING_NUMBER\",\n            \"postCode\": \"POST_CODE\",\n            \"townName\": \"TOWN_NAME\",\n            \"county\": [\n                \"COUNTY_NAME\"\n            ],\n            \"country\": \"2_LETTER_COUNTRY_CODE\",\n            \"department\": \"DEPARTMENT_NAME\",\n            \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n            \"addressType\": \"TYPE_OF_ADDRESS\"\n        },\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"customerId\": \"CUSTOMER_ID\",\n        \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n    }\n}"
             },
             "url": "https://api.yapily.com/payments",
-            "description": "Features: \n- `CREATE_DOMESTIC_SINGLE_PAYMENT`\n- `CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`\n- `CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `CREATE_DOMESTIC_PERIODIC_PAYMENT`\n- `CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `CREATE_INTERNATIONAL_SINGLE_PAYMENT`\n- `CREATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `CREATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT`\n\nUsed to initiate a payment request at a bank on behalf of a user. See [POST Create Payment](https://kb.yapily.com/display/YAD/POST+Create+Payment+Request) in the Knowledge Base for more information."
+            "description": "Features: \n- `CREATE_DOMESTIC_SINGLE_PAYMENT`\n- `CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`\n- `CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `CREATE_DOMESTIC_PERIODIC_PAYMENT`\n- `CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `CREATE_INTERNATIONAL_SINGLE_PAYMENT`\n- `CREATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `CREATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT`\n\nUsed to initiate a payment request at a bank on behalf of a user. \n\nSee [POST Create Payment](https://kb.yapily.com/display/YAD/POST+Create+Payment+Request) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -7648,109 +7648,109 @@
   ],
   "variable": [
     {
-      "id": "966314b4-2ca1-4066-ab74-04236cb61cb7",
+      "id": "909c41b9-892c-4814-8ee7-80c1c76530f8",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "074d3a28-81b7-4666-a7dc-171d97f918b3",
+      "id": "b63caebd-d007-4cb6-be65-dbda6515c568",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "00fcaad5-9f87-4265-81f2-1ef3558bda80",
+      "id": "b3f78ae6-b147-4772-95b9-5478a0995cbb",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "00c0166b-1afb-447d-9e35-36fb6c001157",
+      "id": "f35cdc6d-d844-453c-84b2-7371310ce0dd",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "a574816e-08b7-4a1d-a77f-2c94c4b648a9",
+      "id": "42393c16-5e9f-456f-bfe1-d0f901b3df77",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "1f174398-ec7e-4a2f-b06d-f845840642f6",
+      "id": "54bbc083-82d9-411d-855c-7d596c834c45",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "24829c1e-3d03-4417-a58f-c644464de690",
+      "id": "b3192ca3-adb3-49d7-b0f9-328e995fb855",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "88989e91-b69a-4c59-9e3f-82c707bc368f",
+      "id": "3eca7a4e-599b-4524-bdca-ed7a622d5f94",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "e631fbae-9411-46a3-a73f-4515bb346984",
+      "id": "cdfffb87-74fd-45da-a78e-a99d6980a58f",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "d80ef271-11fe-4b66-b16f-13f4021f1359",
+      "id": "dd103e37-75d0-4e6d-92b1-0062b7412c04",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "80354abd-21bf-421b-8568-3cbd98b17b6d",
+      "id": "4021b308-5e91-4da4-bdd7-2a6812f78a61",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "5db7fc13-3e1d-49eb-af73-458764d7e563",
+      "id": "e31a0dfe-0b1e-4c10-b822-a8af2a78e985",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "70a0a209-07fb-43f8-90e2-9a0daed4023a",
+      "id": "976a275e-37eb-43e7-aada-c8fecc0da68a",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "1dc5481d-4f6b-49e3-81f3-28b33d0290c9",
+      "id": "4170a2ac-092a-43cb-a022-9043204fcaee",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "8d9dd951-526f-4309-ae8d-b69713a97c86",
+      "id": "ac36d271-7c66-47b0-b30a-a426931028e6",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "db2e94d9-04af-4339-af21-77fb524f31da",
+      "id": "9406b06e-8f73-4c52-a1d8-6846612143ab",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "e09e1737-aee6-415c-80ca-8f5e3a0ce139",
+      "id": "88a2d395-381a-4c41-9112-9c1af45a36d9",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "d618ef48-9d47-40a3-8ea0-bfee4000c9a8",
+      "id": "54efc0a1-3a30-4ef1-a6e7-c03345fe8362",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
