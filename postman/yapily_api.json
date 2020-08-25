@@ -987,7 +987,7 @@
             "method": "GET",
             "header": [],
             "url": "https://api.yapily.com/consents",
-            "description": "You can retrieve the consents for your application, filtered by any number of **userUuid**s, **applicationUserId**s, **institution**s and **status**es. Note that if any filter value does not match (e.g. `&applicationUserId=validUser&applicationUserId=nonExistentUser`) no consents will be returned. The default limit for the consents retrieved is 20. The consents are ordered by the day created. Use the offest to iterate over the consents.\n\nAll filter parameters are optional.\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| filter[applicationUserId] | Any valid applicationUserId for your application | _Optional._ Only return consents for this application user. | String |\n| filter[userUuid] | Any valid [userUuid](#d98a8253-9252-c129-9b4f-6073dc1ae01e) for your application | _Optional._  Only return consents for this Yapily user. | String |\n| filter[institution] | Any [institution](#ae9baa6b-6a74-aa96-6f6e-a15ce8c86af8) configured for your application | _Optional._ Only return consents that have been given for this institution. |  String |\n| filter[status] | [Any valid status](#e51b648f-693a-9477-f565-b939754b5166) | _Optional._ Only return consents that have been given for this institution. |  String |\n| from | [Any valid date] | _Optional._ Use this parameter to filter consents created after the date specified. |  [Date](https://docs.yapily.com/#date-time-format) |\n| before | [Any valid date] | _Optional._ Use this parameter to filter consents created before the date specified. |  [Date](https://docs.yapily.com/#date-time-format) |\n| limit | [Any valid number between 0 and 20] | _Optional._ Use this parameter to limit consent results, max limit is 20. |  Number |\n| offset | [Any valid number greater than 0] | _Optional._ Use this parameter to specify the offset of the results. |  Number |\n"
+            "description": "Used to retrieve all `Consent` objects in descending order by date (with the most recently created consent at the top). See [GET Get Consents](https://kb.yapily.com/display/YAD/GET+Get+Consents) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -7385,109 +7385,109 @@
   ],
   "variable": [
     {
-      "id": "2d0bbf99-a35c-47aa-8b70-506c4aba02ae",
+      "id": "3c4b3385-c78b-43c9-8855-b8f5c67ddeae",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "a7fd0f4e-1c0e-4c97-94ac-63a76328d5fe",
+      "id": "a5d932df-75c1-4418-b022-9440b842bf43",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "124ff93a-7e54-4d9b-b733-59fba8125a4b",
+      "id": "d0453a46-5dbb-46da-acc3-a2e2538f270b",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "026f1de0-6ef3-489b-8601-2f779ee71077",
+      "id": "93217517-e2d1-4445-b689-9ef165b342f6",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "d4affdef-7975-47b0-8758-f3457619ba46",
+      "id": "9f466ff8-fbea-45d7-b58d-4d7bcbb7e54c",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "5c5744e6-6ba3-4b30-9cd1-139d0350a1cd",
+      "id": "342e6094-e5c6-4e1c-bc6e-c6152c2dab42",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "e86443fa-4b21-495a-8bd3-11d848776aa1",
+      "id": "8863dfbc-429b-4d5b-980c-e9a0f18c5fa1",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "098f71f1-419c-4bee-9bca-e6577d246a7d",
+      "id": "eaf32c5e-290e-4aa3-a9ef-5bb5e95f8021",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "9e5b7649-836a-49d7-affc-ade45ca9fd79",
+      "id": "042c646a-d6b8-4570-bfbb-79f29d0bfe84",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "b7d1edc0-b032-4cd9-9da1-b9d042802b70",
+      "id": "26f440a5-f5b7-4fa9-9df8-f55edb83538a",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "5cf1b67a-5b40-4a50-80e4-7700327c44fc",
+      "id": "f562a17d-f3b3-4eb8-a9a0-6ba443fd764f",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "897fac44-6e26-4317-9a45-c99b4e15cae7",
+      "id": "b1b9553f-f8b4-4125-ba15-b68f5596d5ad",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "7b2beb06-d5e7-43c1-b0b0-7cdaf51d38cb",
+      "id": "3d14b47f-5669-467d-9451-68f2f5e5bfe6",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "94f99958-241d-422c-b5de-1d9aa0f6788d",
+      "id": "a44e23bd-ad26-44f5-aa62-a8094213883f",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "a8b82e5b-57aa-4336-8732-47b860f2ad47",
+      "id": "57a7a020-1cad-4600-8108-bd17294aec07",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "2174bc9e-396f-4278-8555-659b3984c023",
+      "id": "03d3ccd3-1774-470b-bbae-1061672c1003",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "447361bc-2a29-4fc4-b40d-f5603003194e",
+      "id": "99e5a693-5ea7-4e1f-b026-71f125df98f3",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "53d58992-2f99-4b6a-8d29-299e17767caf",
+      "id": "3ced5430-3f6b-4dca-85f8-5b0381fb1848",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
