@@ -6731,7 +6731,7 @@
               "raw": "{\n    \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n    \"payer\": {\n        \"name\": \"PAYER_NAME\",\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ]\n    },\n    \"amount\": {\n        \"amount\": \"0.00\",\n        \"currency\": \"3_LETTER_CURRENCY_CODE\"\n    },\n    \"reference\": \"REFERENCE\",\n    \"type\": \"PAYMENT_TYPE\",\n    \"payee\": {\n        \"name\": \"PAYEE_NAME\",\n        \"address\": {\n            \"addressLines\": [\n                \"ADDRESS_LINES\"\n            ],\n            \"streetName\": \"STREET_NAME\",\n            \"buildingNumber\": \"BUILDING_NUMBER\",\n            \"postCode\": \"POST_CODE\",\n            \"townName\": \"TOWN_NAME\",\n            \"county\": [\n                \"COUNTY_NAME\"\n            ],\n            \"country\": \"2_LETTER_COUNTRY_CODE\",\n            \"department\": \"DEPARTMENT_NAME\",\n            \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n            \"addressType\": \"TYPE_OF_ADDRESS\"\n        },\n        \"accountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"customerId\": \"CUSTOMER_ID\",\n        \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n    }\n}"
             },
             "url": "https://api.yapily.com/payments",
-            "description": "Features: \n- `CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`\n- `CREATE_DOMESTIC_SINGLE_PAYMENT`\n- `CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `CREATE_DOMESTIC_PERIODIC_PAYMENT`\n- `CREATE_INTERNATIONAL_SINGLE_PAYMENT`\n\nUsed to create a payment request. This endpoint is used once a user has authorised a [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) with their bank. Make sure to use the [Create Bulk Payment Request](https://docs.yapily.com/?version=latest#ef4926a7-9916-4665-83af-3168c611614b) endpoint for executing bulk payments.\n\n**Note:** The payload of this request must be an exact match of the `PaymentRequest` object in the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). For bulk payments, the following properties apply for each item in the `PaymentRequest.payments` array when executing the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d).\n\n<h1>Payment types</h1>\n\nSee [Payment Types](https://kb.yapily.com/display/YAD/Payment+Types)\n\n<h1 id=\"payment-status\">Payment Statuses</h1>\n\nSee [Payment Statues](https://kb.yapily.com/display/YAD/Payment+Statuses)\n\n<h1 id=\"the-request-body\">The request body</h1>\n\nAs this endpoint is used to create multiple types of payments, there are properties which are common across all payments and others which are specific to particular payment types. As mentioned above, the payload of this request must be an exact match of the `PaymentRequest` object in the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). For bulk payments, the following applies for each item in the `PaymentRequest.payments` array when executing the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d). \n\nFor more information on how to create different types of payments see the articles of interest:\n- [Domestic Single Payments](https://kb.yapily.com/display/YAD/Domestic+Single+Payments)\n- [International Single Payments](https://kb.yapily.com/display/YAD/International+Single+Payments)\n- [Periodic Payments](https://kb.yapily.com/display/YAD/Periodic+Payments)\n- [Scheduled Payments](https://kb.yapily.com/display/YAD/Scheduled+Payments)\n"
+            "description": "Features: \n- `CREATE_DOMESTIC_SINGLE_PAYMENT`\n- `CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT`\n- `CREATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `CREATE_DOMESTIC_PERIODIC_PAYMENT`\n- `CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `CREATE_INTERNATIONAL_SINGLE_PAYMENT`\n- `CREATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `CREATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT`\n\nUsed to create a payment request. This endpoint is used once a user has authorised a [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) with their bank. Make sure to use the [Create Bulk Payment Request](https://docs.yapily.com/?version=latest#ef4926a7-9916-4665-83af-3168c611614b) endpoint for executing bulk payments.\n\n**Note:** The payload of this request must be an exact match of the `PaymentRequest` object in the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). For bulk payments, the following properties apply for each item in the `PaymentRequest.payments` array when executing the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d). For more information on creating payment, see [POST Create Payment](https://kb.yapily.com/display/YAD/POST+Create+Payment+Request) in the Knowledge Base.\n\n<h1 id=\"the-request-body\">The request body</h1>\n\nAs this endpoint is used to create multiple types of payments, there are properties which are common across all payments and others which are specific to particular payment types. As mentioned above, the payload of this request must be an exact match of the `PaymentRequest` object in the [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b). For bulk payments, the following applies for each item in the `PaymentRequest.payments` array when executing the [Create Bulk Payment Authorisation Request](https://docs.yapily.com/?version=latest#0741547c-79f9-4f11-97bc-f99180211c8d). \n\nFor more information on how to create different types of payments see the articles of interest:\n- [Domestic Single Payments](https://kb.yapily.com/display/YAD/Domestic+Single+Payments)\n- [International Single Payments](https://kb.yapily.com/display/YAD/International+Single+Payments)\n- [Periodic Payments](https://kb.yapily.com/display/YAD/Periodic+Payments)\n- [Scheduled Payments](https://kb.yapily.com/display/YAD/Scheduled+Payments)\n"
           },
           "response": [
             {
@@ -7648,109 +7648,109 @@
   ],
   "variable": [
     {
-      "id": "688fc650-ebfb-43e8-9851-349128e2a947",
+      "id": "d4afa07a-1716-4b15-a1fa-d453d808c381",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "2a60fd8b-a52a-4e8d-9894-b7aba88d4aa9",
+      "id": "e361a476-88a8-4f62-9a81-cb1e2c9d9948",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "5286f62c-1956-4d08-9bf5-2187973e0fd4",
+      "id": "1c766bd9-9efa-42e4-8b00-a01c144453df",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "39476f2b-c45c-4333-bb32-0529b094bb64",
+      "id": "9b5d720d-bf95-4625-8b02-ececc0b5246f",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "88f17c67-dfb2-4dd8-885c-d35062f14714",
+      "id": "c1d9cac3-0ece-45a6-bddc-11922812409b",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "a433582b-103b-4a7b-9d51-748ccf40db05",
+      "id": "40c21506-6b31-435b-9680-90933b6119fa",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "8f08f130-0c80-40fa-a0d8-aac907a0d94b",
+      "id": "5c6670de-0ad1-438f-be80-c136202c82f7",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "621b09f1-f9f4-4f13-ab4f-36109473ffc9",
+      "id": "50be1f53-5fda-43c3-9e4f-4af0cc3fe069",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "50c4865c-b209-4c93-b68f-7889caf19a92",
+      "id": "4fe2715c-a923-49f1-b09e-02740c08e559",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "2daa0757-47aa-48e5-93ff-c680a6a3f974",
+      "id": "3dd06dc2-8495-4503-8434-342f07a9dc82",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "cef4d175-57cd-4e4e-a172-3dcaa810f95c",
+      "id": "ed17966b-5d32-4ce7-88ae-077d625539f2",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "24cf6ddb-fe04-4c01-b53d-9c6b20b254c5",
+      "id": "27909098-507f-43fd-8351-cdf5590c23df",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "68bec8f6-f87c-4c07-95b1-517c23518eae",
+      "id": "946b604f-ce3c-40fa-adb3-63006599df3e",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "a9660f5d-a343-493c-9316-5e59eb5abfc4",
+      "id": "05e60f9a-9b4b-4c59-857a-905d9d5cf140",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "5cebad6e-1b87-4639-bce1-f6d16f655cba",
+      "id": "7a25d335-cc45-44de-96b6-297ac37fb182",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "f07ba947-bec8-40e4-9fd2-293eb075841a",
+      "id": "9c8b5a3d-40c9-4c53-93be-1f0cec195ad5",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "c03a7863-3651-4a40-a2fb-66351fcbe296",
+      "id": "f1b294de-574c-4a90-89c1-c18e3d34d956",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "ff243330-29c9-4543-a30f-6d659cdebaf4",
+      "id": "c1220002-b693-457b-ba0f-4504ec3bec60",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
