@@ -1499,7 +1499,7 @@
               "raw": "{\n\t\"oneTimeToken\":\"ONE_TIME_TOKEN\"\n}"
             },
             "url": "https://api.yapily.com/consent-one-time-token",
-            "description": "Retrieve a consent by supplying a `oneTimeToken`. One time tokens cannot be used again after successfully being exchanged for a consent token.One time token is only valid for 3 minutes and in unlikely case of it being expired, \"Get User Consent\" endpoint should be used to fetch the consent token.\n\n__Note:__ to receive a one time token, set `oneTimeToken` to `true` in your [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)."
+            "description": "Used to retrieve a `consentToken` in exchange for a `oneTimeToken`. One time tokens cannot be used again after successfully being exchanged for a `consentToken`. A one time token is only valid for 3 minutes and in case of it expiring, [Get Consents](https://docs.yapily.com/#e88743bc-a081-434b-b366-35370723da02) should be used to obtain the `consentToken`.\n\n__Note:__ to receive a one time token, set `oneTimeToken` to `true` in your [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) or [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b)."
           },
           "response": [
             {
@@ -7385,109 +7385,109 @@
   ],
   "variable": [
     {
-      "id": "3c4b3385-c78b-43c9-8855-b8f5c67ddeae",
+      "id": "4c0ef802-d12b-420e-be03-8c1d17dc2832",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "a5d932df-75c1-4418-b022-9440b842bf43",
+      "id": "b20efcbf-d37a-48fc-b134-a1ea6a382eed",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "d0453a46-5dbb-46da-acc3-a2e2538f270b",
+      "id": "06648d85-ad77-4d73-b585-c5e438f3ef14",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "93217517-e2d1-4445-b689-9ef165b342f6",
+      "id": "5daade4f-8c7c-4309-80c4-6b13713ae244",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "9f466ff8-fbea-45d7-b58d-4d7bcbb7e54c",
+      "id": "a489597d-9cb1-4bf4-afb7-1a2a99daf33e",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "342e6094-e5c6-4e1c-bc6e-c6152c2dab42",
+      "id": "21509abf-3648-41e4-8aec-9be985b5a144",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "8863dfbc-429b-4d5b-980c-e9a0f18c5fa1",
+      "id": "64c4784c-3915-48d5-b3c0-6c2136d8eb29",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "eaf32c5e-290e-4aa3-a9ef-5bb5e95f8021",
+      "id": "d2cd08f7-da06-48ba-a03f-0ec0d9c5c113",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "042c646a-d6b8-4570-bfbb-79f29d0bfe84",
+      "id": "3dc267f7-2252-44c6-902d-359c576e7270",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "26f440a5-f5b7-4fa9-9df8-f55edb83538a",
+      "id": "67a3ad1f-d4b0-4e18-94b4-005403575ad0",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "f562a17d-f3b3-4eb8-a9a0-6ba443fd764f",
+      "id": "3f4a4784-7cb6-4995-a5eb-9ed4fca540c2",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "b1b9553f-f8b4-4125-ba15-b68f5596d5ad",
+      "id": "05d51b4c-b13a-4238-b8b8-812bfc4d2015",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "3d14b47f-5669-467d-9451-68f2f5e5bfe6",
+      "id": "eebc48e3-5f48-4a3e-9ce5-8b28c16fda4b",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "a44e23bd-ad26-44f5-aa62-a8094213883f",
+      "id": "241a8648-7fa0-4e35-b1db-94d8337acbb4",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "57a7a020-1cad-4600-8108-bd17294aec07",
+      "id": "c4d84013-d27a-482b-a9fc-1142ae950219",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "03d3ccd3-1774-470b-bbae-1061672c1003",
+      "id": "113ed1e4-7652-4c0a-853a-d6f55207fe9a",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "99e5a693-5ea7-4e1f-b026-71f125df98f3",
+      "id": "6cdbf812-02b8-4820-89a0-0e2744994e4a",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "3ced5430-3f6b-4dca-85f8-5b0381fb1848",
+      "id": "f5ec1c5c-4209-449e-b1a0-81023ac23f8d",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
