@@ -4158,7 +4158,7 @@
               }
             ],
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Used to prompt the account holder for continued access to their financial data. This endpoint should be used when a `Consent` that was previously `AUTHORIZED` can no longer be used to retrieve data. Only the original features that were specified when the `Consent` can be re-authorised. \n\n**Note:** Depending on the `Institution`, this endpoint may require you to define **PSU values** in the header of the request. See [Conditional PSU Identifiers](./#conditional-psu-ids) for more information.\n\n<h4>Conditions</h4>\n\n1. A payment `Consent` can not be re-authorised because it is single use only. Once the payment request is made, the `Consent` reaches the terminal state `CONSUMED` and is no longer usable. \n\n2. A financial data `Consent` can be re-authorised at any time as long as it is not in any on of the following [terminal states](./#consent-status):\n  - `EXPIRED`\n  - `REJECTED`\n  - `REVOKED`\n\nIf your financial data `Consent` is in a terminal state, it can no longer be used and a new `Consent` needs to be created from a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) for continued access to the user's data.\n\n<br>\n<h4>When to re-authorise?</h4>\n\nFor the CMA9, each institution must prompt for Strong Customer Authentication (SCA) every 90 days to remain compliant. This means that the maximum period that any endpoint can be accessed without any interaction with the user is 90 days. \n\n<br>\n<h4>Restrictions enforced by institutions</h4>  \n\nIt is common for institutions to enforce their own restrictions on specific endpoints, drastically reducing the period where no authorisation from the user is required to as little as 5 minutes e.g. _identity_ or _historical data older than 90 days_. We currently do not publicly release information on how each institution behaves as this information is subject to change. \n\nYou can usually identify when an endpoint requires re-authorisation by the emergence of `FORBIDDEN 403` errors for requests to financial data endpoints that previously returned `OK 200`. In light of this, we recommend that you design flows which prompt for SCA when requests for financial data returns `FORBIDDEN 403` errors."
+            "description": "Used to prompt the account holder for continued access to their financial data. This endpoint should be used when a `Consent` that was previously `AUTHORIZED` can no longer be used to retrieve data. Only the original features that were specified when the `Consent` can be re-authorised. \n\n**Note:** Depending on the `Institution`, this endpoint may require you to define **PSU values** in the header of the request. See [Conditional PSU Identifiers](https://kb.yapily.com/display/YAD/PSU+Identifiers) for more information.\n\n<h4>Conditions</h4>\n\n1. A payment `Consent` can not be re-authorised because it is single use only. Once the payment request is made, the `Consent` reaches the terminal state `CONSUMED` and is no longer usable. \n\n2. A financial data `Consent` can be re-authorised at any time as long as it is not in any on of the following [terminal states](./#consent-status):\n  - `EXPIRED`\n  - `REJECTED`\n  - `REVOKED`\n\nIf your financial data `Consent` is in a terminal state, it can no longer be used and a new `Consent` needs to be created from a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) for continued access to the user's data.\n\n<br>\n<h4>When to re-authorise?</h4>\n\nFor the CMA9, each institution must prompt for Strong Customer Authentication (SCA) every 90 days to remain compliant. This means that the maximum period that any endpoint can be accessed without any interaction with the user is 90 days. \n\n<br>\n<h4>Restrictions enforced by institutions</h4>  \n\nIt is common for institutions to enforce their own restrictions on specific endpoints, drastically reducing the period where no authorisation from the user is required to as little as 5 minutes e.g. _identity_ or _historical data older than 90 days_. We currently do not publicly release information on how each institution behaves as this information is subject to change. \n\nYou can usually identify when an endpoint requires re-authorisation by the emergence of `FORBIDDEN 403` errors for requests to financial data endpoints that previously returned `OK 200`. In light of this, we recommend that you design flows which prompt for SCA when requests for financial data returns `FORBIDDEN 403` errors."
           },
           "response": [
             {
@@ -7648,109 +7648,109 @@
   ],
   "variable": [
     {
-      "id": "e225541f-eb44-4985-9a1a-47e004a41a9c",
+      "id": "8663c474-da65-4c17-948d-41e69e06c2a3",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "fd345085-ba6f-4d3a-8e06-4da7852defe4",
+      "id": "d8a47863-1dce-4146-bcea-0a29a730e8af",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "1254f53f-8b88-497c-897f-f24139659912",
+      "id": "6a38649f-2554-4fe6-a202-4cabf73d12e5",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "2bd43eba-a514-4a15-a7ba-475dda015b87",
+      "id": "a7f175da-3b65-4828-a222-02e169445ab5",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "02dd25b3-a515-457d-80a5-848a42af0739",
+      "id": "b69ad110-db34-4620-9b00-64c5f1c33d77",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "bf3f34f9-5702-48d1-b0f7-07ef3dc8bf7e",
+      "id": "1a022f6d-3d92-4184-90eb-0b4f0e58f60f",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "421d35de-c4ae-4b27-bae9-bed4520ae16f",
+      "id": "f395d350-ee1c-4a48-890d-f1d5349fef4e",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "850f2972-24bb-41c9-92fe-b8bad53dd11c",
+      "id": "c30119d6-b44d-46e2-aac7-894df5ac5a4e",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "048f1ab3-26aa-4de3-8178-748b698ea825",
+      "id": "22a7b17d-9819-49fa-86f7-84f81c99ec16",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "9db9cfce-e52c-40b3-a4c9-b3f75b8424ee",
+      "id": "76a51040-8a35-4b40-a3c5-0e8ce357743b",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "eaf1acce-0967-44d0-9705-373dd67f5f89",
+      "id": "ef4a6ed5-7b25-41bf-b85f-170feb855f9e",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "ff4a5d0a-9e02-4577-9724-a4b181e0785f",
+      "id": "2c8afd2f-193e-4adb-bef8-e096663f820c",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "0af8231d-b4c7-418b-b5b7-eeb6f87753a1",
+      "id": "d4f5d8ad-2c02-49dc-95d2-6efe56a67ead",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "fbc2652b-8a48-46e9-9059-4d810dd91dc0",
+      "id": "efb45005-01fd-443f-8e3c-38ddf8cc3bf1",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "30fae43b-ff8e-4eb1-aad1-b3d4311157f1",
+      "id": "380409ff-4f93-46a1-b0b6-806019a31e78",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "bee16530-5f37-41c6-bc7c-54a86b288cd5",
+      "id": "71213210-f3f5-405c-a0c5-92ea807637d0",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "b99ef7f8-fbf5-4f15-b59c-22e20ebde3e5",
+      "id": "d6aac602-519d-4b73-a207-e57653bb2a3d",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "533dc67c-e0f9-4bf5-a437-89996fde5a15",
+      "id": "c9f18413-c7af-4874-bfa5-64029013e501",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
