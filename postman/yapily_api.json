@@ -718,269 +718,6 @@
       "name": "Consents",
       "item": [
         {
-          "name": "Get User Consents",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "9f2b47cd-3b35-4475-8be9-d1d763c690ef",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "d0f8ca9d-ac6b-c43c-6fa8-2603fbb896f7",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "https://api.yapily.com/users/{{user-uuid}}/consents",
-            "description": "User consents are returned in **descending** order by date (with the most recently created consent at the top).\n\nQuery string parameters (_All fields are optional._)\n\n| Key | Possible values | Description | Type |\n| - | - | - | - |\n| filter[institution] | (Any valid institution) | Only return consents that have been given for this specific institution |  String |"
-          },
-          "response": [
-            {
-              "id": "012060ae-99e4-46ad-ae93-d523ab13f8a8",
-              "name": "200 OK Response",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  }
-                ],
-                "url": "https://api.yapily.com/users/{{user-uuid}}/consents"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Encoding",
-                  "value": "gzip",
-                  "name": "Content-Encoding",
-                  "description": "The type of encoding used on the data."
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 18 May 2018 14:06:15 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "Transfer-Encoding",
-                  "value": "chunked",
-                  "name": "Transfer-Encoding",
-                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-                },
-                {
-                  "key": "Vary",
-                  "value": "Accept-Encoding",
-                  "name": "Vary",
-                  "description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": "113",
-              "body": "[\n    {\n        \"id\": \"130b9c0c-773f-430c-b9a3-ef55cda59384\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2018-10-18T14:08:15Z\",\n        \"expiresAt\": \"2018-10-18T14:12:15Z\",\n        \"timeToExpireInMillis\": -1214670,\n        \"featureScope\": [\n            \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_SINGLE_PAYMENT_SORTCODE\"\n        ],\n        \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZvcmdlcm9jay1zYW5kYm94IiwiQ09OU0VOVCI6IjEzMGI5YzBjLTc3M2YtNDMwYy1iOWEzLWVmNTVjZGE1OTM4NCIsIlVTRVIiOiIzNzEzOGVlOC1hYjlhLTQ5NmMtYmU5OC0wN2FlMzUzZmI4NzYifQ.65hL8NyAdozq5KzC8OlgoEVf7h1hUvK2lNh2X9R7A3MAoY-wiaKFx_xsf_LvfGBzsJYjRdvGsMvgEmwCogIm1A\"\n    },\n    {\n        \"id\": \"73043d15-39ff-4c5b-bb3c-7b9adf3b8214\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2018-10-18T14:04:18Z\",\n        \"expiresAt\": \"2018-10-18T14:08:18Z\",\n        \"timeToExpireInMillis\": -1452124,\n        \"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\"\n        ],\n        \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZvcmdlcm9jay1zYW5kYm94IiwiQ09OU0VOVCI6IjczMDQzZDE1LTM5ZmYtNGM1Yi1iYjNjLTdiOWFkZjNiODIxNCIsIlVTRVIiOiIzNzEzOGVlOC1hYjlhLTQ5NmMtYmU5OC0wN2FlMzUzZmI4NzYifQ.5ycyNL5dUBYICSTttRaq59qQ5REE08MIedV_1Do8sRzIp39VGTkxW3FhJW93IacOTgZgbXXuKgrqLFmhSRzWbQ\"\n    },\n    {\n        \"id\": \"968140b7-b4e5-4c9e-bc13-9bd3f0c6a151\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"modelo-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-18T14:02:05Z\",\n        \"expiresAt\": \"2018-10-18T14:06:05Z\",\n        \"timeToExpireInMillis\": 0,\n        \"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\"\n        ]\n    }\n]"
-            },
-            {
-              "id": "1af70277-90ab-0b8a-720b-5cb279ccb0a0",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "GET",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "https://api.yapily.com/users/{{user-uuid}}/consents"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "114",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 18 May 2018 14:08:42 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\"",
-                  "name": "WWW-Authenticate",
-                  "description": "Indicates the authentication scheme that should be used to access the requested entity."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": "49",
-              "body": "{\"error\":{\"code\":401,\"status\":\"UNAUTHORIZED\",\"message\":\"Full authentication is required to access this resource\"}}"
-            },
-            {
-              "id": "5c3d90c7-3309-4e38-9677-a2c3b550e245",
-              "name": "200 OK Response - Filtered by institution",
-              "originalRequest": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "https://api.yapily.com/users/{{user-uuid}}/consents?institution=forgerock-sandbox",
-                  "protocol": "https",
-                  "host": [
-                    "api",
-                    "yapily",
-                    "com"
-                  ],
-                  "path": [
-                    "users",
-                    "{{user-uuid}}",
-                    "consents"
-                  ],
-                  "query": [
-                    {
-                      "key": "institution",
-                      "value": "forgerock-sandbox",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "[\n    {\n        \"id\": \"130b9c0c-773f-430c-b9a3-ef55cda59384\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2018-10-18T14:08:15Z\",\n        \"expiresAt\": \"2018-10-18T14:12:15Z\",\n        \"timeToExpireInMillis\": -1214670,\n        \"featureScope\": [\n            \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_SINGLE_PAYMENT_SORTCODE\"\n        ],\n        \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZvcmdlcm9jay1zYW5kYm94IiwiQ09OU0VOVCI6IjEzMGI5YzBjLTc3M2YtNDMwYy1iOWEzLWVmNTVjZGE1OTM4NCIsIlVTRVIiOiIzNzEzOGVlOC1hYjlhLTQ5NmMtYmU5OC0wN2FlMzUzZmI4NzYifQ.65hL8NyAdozq5KzC8OlgoEVf7h1hUvK2lNh2X9R7A3MAoY-wiaKFx_xsf_LvfGBzsJYjRdvGsMvgEmwCogIm1A\"\n    },\n    {\n        \"id\": \"73043d15-39ff-4c5b-bb3c-7b9adf3b8214\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"forgerock-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2018-10-18T14:04:18Z\",\n        \"expiresAt\": \"2018-10-18T14:08:18Z\",\n        \"timeToExpireInMillis\": -1452124,\n        \"featureScope\": [\n            \"ACCOUNT\",\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\"\n        ],\n        \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6ImZvcmdlcm9jay1zYW5kYm94IiwiQ09OU0VOVCI6IjczMDQzZDE1LTM5ZmYtNGM1Yi1iYjNjLTdiOWFkZjNiODIxNCIsIlVTRVIiOiIzNzEzOGVlOC1hYjlhLTQ5NmMtYmU5OC0wN2FlMzUzZmI4NzYifQ.5ycyNL5dUBYICSTttRaq59qQ5REE08MIedV_1Do8sRzIp39VGTkxW3FhJW93IacOTgZgbXXuKgrqLFmhSRzWbQ\"\n    }\n]"
-            }
-          ]
-        },
-        {
           "name": "Delete User Consent",
           "event": [
             {
@@ -7648,109 +7385,109 @@
   ],
   "variable": [
     {
-      "id": "eb271bee-957a-4b85-a593-85cc0020d935",
+      "id": "2d0bbf99-a35c-47aa-8b70-506c4aba02ae",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "d9b92444-7c5f-4ccf-95f3-03246df32af4",
+      "id": "a7fd0f4e-1c0e-4c97-94ac-63a76328d5fe",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "3565c1a2-f9ed-4874-b4a9-f20b51cd46ba",
+      "id": "124ff93a-7e54-4d9b-b733-59fba8125a4b",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "c6c0da3a-d002-4033-9847-2ee2dd1ac32c",
+      "id": "026f1de0-6ef3-489b-8601-2f779ee71077",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "262cd10c-d551-47ad-a95c-7dfc1fd4aff0",
+      "id": "d4affdef-7975-47b0-8758-f3457619ba46",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "3542f263-7945-4785-b6b7-3e36519e0855",
+      "id": "5c5744e6-6ba3-4b30-9cd1-139d0350a1cd",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "0254ced4-fb14-467b-8bd2-7cb40cb93048",
+      "id": "e86443fa-4b21-495a-8bd3-11d848776aa1",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "c495dc4f-14cb-4c5f-8dc4-b72bcdd2ebb5",
+      "id": "098f71f1-419c-4bee-9bca-e6577d246a7d",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "fde22e15-a3f4-44a5-b679-6528898afbae",
+      "id": "9e5b7649-836a-49d7-affc-ade45ca9fd79",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "a3dae567-b81e-4042-8cc9-dacf0e92427f",
+      "id": "b7d1edc0-b032-4cd9-9da1-b9d042802b70",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "1bc7d49c-4bbc-4aa2-9a48-34e21dbfc7b6",
+      "id": "5cf1b67a-5b40-4a50-80e4-7700327c44fc",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "cc18dab8-9b36-4568-a523-ab30977f753a",
+      "id": "897fac44-6e26-4317-9a45-c99b4e15cae7",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "51d7fce0-ebaf-4c04-a88b-43694fcf94de",
+      "id": "7b2beb06-d5e7-43c1-b0b0-7cdaf51d38cb",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "3175f6a8-bf5e-46aa-9731-3acd2659c801",
+      "id": "94f99958-241d-422c-b5de-1d9aa0f6788d",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "c9bb1de3-268d-45f6-9484-3c2c79953d59",
+      "id": "a8b82e5b-57aa-4336-8732-47b860f2ad47",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "28837b6b-598f-491f-8c9d-bafae9fbb390",
+      "id": "2174bc9e-396f-4278-8555-659b3984c023",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "8ccad149-cba6-4268-8811-aef52d018e2e",
+      "id": "447361bc-2a29-4fc4-b40d-f5603003194e",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "8d63ddac-db00-429d-8fa4-bac1dfc5b64b",
+      "id": "53d58992-2f99-4b6a-8d29-299e17767caf",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
