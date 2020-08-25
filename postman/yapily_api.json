@@ -6068,7 +6068,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments",
-            "description": "Feature: `ACCOUNT_SCHEDULED_PAYMENT`\n\nGet the list of scheduled payments for an account.\n\nResponse:\n\n| Name | Description | Type |\n| ----------- | ----------| -----------|\n|id| _Optional_. A unique identifier used to identify the scheduled payment resource. |String |\n|reference| _Optional_. Unique reference, as assigned by the beneficiary, to unambiguously refer to the payment transaction.|String  |\n|Payee |  Contains details about the beneficiary. | |\n|payee.accountIdentifications| List of account identification objects containing details about the beneficiarys' account details. | Array |\n|payee.accountIdentifications.type| Provides the value to identify the beneficiary account identification type.Possible values SORT_CODE, ACCOUNT_NUMBER, IBAN, BBAN, SWIFT, BIC, PAN, MASKED_PAN, MSISDN, ABA, ABA_WIRE, ABA_ACH. | String |\n|payee.accountIdentifications.identification| Provides the value to identify the beneficiary account identification. | String |\n|payee.name|_Optional_. The name of the beneficiary.| String |\n|amountDetails| Contains details of monetary value and currency to be moved from payer to payee (the beneficiary). | |\n|amountDetails.amount| Amount of money to be moved between payer and payee (the beneficiary) in terms of the major unit of currency.|BigDecimal |\n|amountDetails.currency| [3-letter currency code](https://www.xe.com/iso4217.php).  |String|\n|scheduledPaymentDateTime| The date on which the scheduled payment will be initiated.| [Date](https://docs.yapily.com/#date-time-format) |\n|scheduledPaymentType |  Specifies the scheduled payment type requested. Possible values are Arrival or Execution.  |String |"
+            "description": "Feature: `ACCOUNT_SCHEDULED_PAYMENT`\n\nGet the list of scheduled payments for an account.\n\nSee [GET Account Scheduled Payments](https://kb.yapily.com/display/YAD/GET+Get+Account+Scheduled+Payments) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -6142,7 +6142,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments",
-            "description": "Feature: `ACCOUNT_PERIODIC_PAYMENTS`\n\nReturns a list of periodic payments (standing orders in the UK) for a specific account.\n\nResponse:\n\n| Name | Description | Type |\n| ----------- | ----------| -----------|\n|id |_Optional_. A unique identifier used to identify the periodic payment order resource.| String |\n|statusDetails| Details of the periodic payments status.| |\n|statusDetails.status| Status of a Periodic Payment Order. Possible values are `ACTIVE`, `INACTIVE` or `UNKNOWN`.| String|\n|Payee |  Contains details about the beneficiary. | |\n|payee.accountIdentifications| Contains details about the beneficiary's account details. |  |\n|payee.accountIdentifications.type| Beneficiary account identification type. Possible values `SORT_CODE`, `ACCOUNT_NUMBER`, `IBAN`, `BBAN`, `SWIFT`, `BIC`, `PAN`, `MASKED_PAN`, `MSISDN`, `ABA`, `ABA_WIRE`, `ABA_ACH` | String |\n|payee.accountIdentifications.identification| Provides the value to identify the beneficiary account identification. | String |\n|payee.name|_Optional_. The name of the beneficiary.| String |\n|reference| _Optional_. Unique reference, as assigned by the beneficiary, to unambiguously refer to the payment transaction.|String  |\n|firstPaymentAmount| The amount of the first Periodic Payment. | |\n|firstPaymentAmount.amount| A number of monetary units specified in an active currency. | BigDecimal |\n|firstPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String |\n|firstPaymentDateTime| The date on which the first payment for a Periodic Payment schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|nextPaymentAmount| _Optional_. Contains the `amount` and `currency` of the next periodic payment.| |\n|nextPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency. | BigDecimal |\n|nextPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). | String | \n|nextPaymentDateTime| _Optional_. The date on which the next payment for a Periodic Order schedule will be made.| [Date](https://docs.yapily.com/#date-time-format) |\n|finalPaymentAmount| _Optional_. Contains the `amount` and `currency` of the final periodic payment.||\n|finalPaymentAmount.amount| A number of monetary units specified in an active currency where the unit of currency.| BigDecimal |\n|finalPaymentAmount.currency| [3-letter currency code](https://www.xe.com/iso4217.php). |String |\n|finalPaymentDateTime| _Optional_. The date on which the final payment for a Periodic Payment schedule will be made. | [Date](https://docs.yapily.com/#date-time-format) |\n|frequency|The frequency details of the Periodic Payment.| |\n|frequency.frequencyType| The frequency value of the periodic payment. Possible values are `DAILY`, `EVERY_WORKING_DAY`, `CALENDAR_DAY`, `WEEKLY`, `EVERY_TWO_WEEKS`, `MONTHLY`, EVERY_TWO_MONTHS, `QUARTERLY`, `SEMIANNUAL`, `ANNUAL`. | Enum |\n|frequency.intervalWeek| _Optional_. The `intervalWeek` is used with frequency value of `WEEKLY` or `MONTHLY`. It is used to define the frequency of the week (i.e. every 2nd week) or week in a month ( i.e. 2nd week of a month).| Integer |\n|frequency.intervalMonth| _Optional_. The `intervalMonth` is used with frequency value of `MONTHLY`. It is used to define the frequency of the month (i.e. every 4th month).| Integer |\n|frequency.executionDay| _Optional_. The `executionDay` is used to define the day on which payment is to be executed. (i.e. Every 2nd week, on the 3rd day of the week. Here executionDay is 3.).| Integer |\n\n__Possible values for `frequencyDetails.frequency`__\n\nFrequency values defined by the ISO20022 `EventFrequency7Code` data set:\n\n`ANNUAL`, `SEMIANNUAL`, `QUATERLY`, `MONTHLY`, `EVERY_TWO_MONTHS`, `WEEKLY`, `EVERY_TWO_WEEKS`, `DAILY`.\n\nOther supported values of frequency:\n\n| Name | Definition |\n| ---- | ---------- |\n|`EVERY_WORKING_DAY`| Event takes place every working day (every day of the week except Saturday and Sunday).|\n|`CALENDER_DAY`| Event takes place on a calendar day. For example, 13 means '13th'.|\n\n__Other fields in the frequencyDetails object__\n\n| Field | Description |\n| ---- | ---------- |\n|`intervalWeek`| The `intervalWeek` is used with a frequency value of `WEEKLY` or `MONTHLY`. It is used to define the frequency of the week (for example, every 2nd week) or week in a month ( i.e. 2nd week of a month).|\n|`intervalMonth`| The `intervalMonth` is used with frequency value of `MONTHLY`. It is used to define the frequency of the month (for example, every 4th month).|\n|`executionDay`| The `executionDay` is used to define the day on which payment is to be executed. (for example, every 2nd week, on the 3rd day of the week would have an `executionDay` of 3).|\n\n__Frequency examples__:\n\n|Description | ExecutionDay | IntervalWeek | IntervalMonth| Frequency|\n| --- | --- | --- | --- | --- |\n| Every day. | - | - | - | `EVERYDAY` |\n| Every working day. | - | - | - | `EVERY_WORKING_DAY` |\n| Every 15th day of the month. | 15 | - | - | `CALENDAR_DAY`|\n| Every week, on the 3rd day of the week. | 3 | 1 | - | `WEEKLY`|\n| Every 2nd week, on the 3rd day of the week. | 3 | 2 | - | `EVERY_TWO_WEEKS` |\n| Every 3rd week, on the 3rd day of the week. | 3 | 3 | - | `WEEKLY`|\n| Every month, on the 2nd week of the month, and on the third day of the week. | 3 | 2 | - | `MONTHLY`|\n| Every month, on the first day of the month. | 1 | - | 1 | `MONTHLY`|\n| Every 2nd month, on the 15th day of the month. | 15 | - | 2 | `EVERY_TWO_MONTHS`|\n| Every 3rd month, on the 15th day of the month. | 15 | - | 3 | `MONTHLY`|\n| Every 6th month, on the 15th day of the month. | 15 | - | - | `SEMIANNUAL`|\n| Every 12 month, on the 3rd day. | 3 | - | - | `ANNUAL`|\n| Every quarter. | - | - | - | `QUARTERLY`|"
+            "description": "Feature: `ACCOUNT_PERIODIC_PAYMENTS`\n\nReturns a list of periodic payments (standing orders in the UK) for a specific account.\n\nSee [GET Account Periodic Payments](https://kb.yapily.com/display/YAD/GET+Get+Account+Periodic+Payments) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -7385,109 +7385,109 @@
   ],
   "variable": [
     {
-      "id": "b1145713-3586-40ab-b2cb-510d11830632",
+      "id": "008baa59-23be-480d-9424-88461f9b4b54",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "42cfa231-758e-4764-90c1-205e58390a00",
+      "id": "deaf79b1-f690-4e97-ae23-7739d3b43d4f",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "38483402-7179-41b0-a2ff-110b9a645379",
+      "id": "6abc9a74-a268-4a67-9426-ffaf15713fc2",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "13d657c0-3f42-4800-a54f-283bb9087418",
+      "id": "c0a44d60-c598-4685-b35b-a0532fe8349d",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "6d897ee4-46e8-4fa0-ae56-e49c1cc324aa",
+      "id": "2d4d9e11-86d5-46f4-8289-3d002698f783",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "f8fd714d-f5c4-4f15-9b4b-a78b2bfc97f5",
+      "id": "7adb7eb6-437b-4e17-b0b6-d3b0f9956274",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "e3bb5719-7236-47f4-a6db-406da95b0b32",
+      "id": "6d2d8f79-067f-442a-8d70-757eb451d25e",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "4a1413bd-e22a-42ce-a53e-87d128341651",
+      "id": "3858c82b-e561-4949-8cd6-93b64b07be9b",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "ee3be768-1c93-42e9-a2c9-941a49dadfe4",
+      "id": "162a9cf6-94bb-448e-a840-0334d305cf9b",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "45b77df8-e116-47a6-91fe-b6c158e6c995",
+      "id": "babae0ed-c156-4855-9077-908e179b9042",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "e66e856a-b37b-49cd-abcd-d59d7824ad5f",
+      "id": "a7952208-8682-42af-9e4a-24aa184a9a65",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "0ef007b9-1dde-4b6a-ae04-46ec526fd623",
+      "id": "ff39a0b0-6168-4a51-9eb8-a756984dc331",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "5a0f07ef-e456-4c9c-9b39-9862e895da9b",
+      "id": "c0331b10-8ec5-41e0-9afe-d59de0a0cb57",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "41e5be59-8955-49b0-9ac0-52e89733a688",
+      "id": "495ac948-a4ac-47ab-9123-2f3b881bad69",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "b88b9c50-20a7-44b3-9161-79f683d245cb",
+      "id": "58209367-611c-497f-ba6d-c458ab39b932",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "021d879d-d905-40b2-bd2d-6efc0247fd0b",
+      "id": "66675378-68be-4a40-8090-87bd27a5a50f",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "8a7c499a-6c75-4497-8496-a90d5162f707",
+      "id": "7267cf91-4d87-46a8-bc38-6d370b98894a",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "1bf54c68-593e-4337-8e03-1099dc5d7fb9",
+      "id": "98cf5d1e-7875-4e0d-a6bb-5791b29e68c6",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
