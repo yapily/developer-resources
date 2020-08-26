@@ -4066,7 +4066,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts",
-            "description": "Features: `ACCOUNTS`, `ACCOUNTS_WITHOUT_BALANCE`\n\nReturns all accounts and balances for the end user associated with the presented consent token.\n\n__Note__: For banks that use the [CBI Globe Gateway](https://kb.yapily.com/display/YAD/CBI+Globe+Gateway) to expose their open banking APIs, the feature will always be `ACCOUNTS_WITHOUT_BALANCE` and the balance will not be in response payload. Use [Get Balances](https://docs.yapily.com/?version=latest#e41b1298-7158-4b2b-9b68-64cd28cb24f4) to obtain data about an account's balance."
+            "description": "Features: `ACCOUNTS`, `ACCOUNTS_WITHOUT_BALANCE`\n\nReturns all accounts and balances for the end user associated with the presented consent token.\n\nSee [Get Accounts](https://kb.yapily.com/display/YAD/GET+Get+Accounts) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -4506,7 +4506,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/balances",
-            "description": "Feature: `ACCOUNT_BALANCES`\n\nReturns the balance for the end user associated with the presented consent token.\n\n__Note__: This endpoint is only for obtaining the balances of an account belonging to an `Institution` that exposes their APIs through the [CBI Globe Gateway](https://kb.yapily.com/display/YAD/CBI+Globe+Gateway). If the `Institution` you wish to obtain balance data is not in CBI Globe, use [Get Account](https://docs.yapily.com/?version=latest#757fde49-a294-bbff-d5f9-2c21c5f57be0) or [Get Accounts](https://docs.yapily.com/?version=latest#23faf44e-1093-c676-63ea-369e41ea902d)"
+            "description": "Feature: `ACCOUNT_BALANCES`\n\nReturns the balance for the end user associated with the presented consent token.\n\nSee [Get Balances](https://kb.yapily.com/display/YAD/GET+Get+Balances) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -4752,7 +4752,7 @@
               }
             ],
             "url": "https://api.yapily.com/accounts/{{account-id}}/transactions",
-            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. See [Get Transactions](https://kb.yapily.com/display/YAD/GET+Get+Transactions) in the Knowledge Base for more information."
+            "description": "Feature: `ACCOUNT_TRANSACTIONS`\n\nUsed to get the transactions from a specific account. \n\nSee [Get Transactions](https://kb.yapily.com/display/YAD/GET+Get+Transactions) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -7385,109 +7385,109 @@
   ],
   "variable": [
     {
-      "id": "236ce34c-ddd6-477a-952a-1f81e79a09c5",
+      "id": "abbfff7f-4f89-4817-b21d-a01a332808ac",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "6500bd19-91a3-44d9-9f14-270fa13ef5c2",
+      "id": "103b3201-05c5-400f-a0a4-8e3737c9fcd4",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "448fedbb-4aba-4938-a871-f6e535013002",
+      "id": "9649a66d-943d-4d21-85c5-f29a7bc3c25e",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "4a3041f7-093f-410b-87ce-e08546850c6a",
+      "id": "92c5472b-daa9-43d1-abbd-cd4e7c971223",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "a25769ca-eb55-46dd-b327-cc4b85fa0234",
+      "id": "2f63cad9-06f6-481c-b42a-e802b078c72d",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "73d51523-84a5-4a96-9777-2fba2daa0af2",
+      "id": "2c91f011-e510-4bcb-a3d9-4c8e0e597d32",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "2b81332a-cdf0-43f5-94ce-fb71c2fdf4be",
+      "id": "a2e21667-5fe3-4ce4-9e78-2251e863d98c",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "b5d7e2f0-4cae-40bd-ba5e-ae9d73b24f1a",
+      "id": "4d2623a0-050c-4978-af39-f6b0ff88979c",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "44f7f20c-d5b0-41c2-9496-ec851cd2a77e",
+      "id": "5bff0b49-f1d6-4fa6-a2de-97ad2328f038",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "62620989-4c97-4740-aaa0-836f5933cb8a",
+      "id": "0c2c278f-ecc4-49d8-996b-9e0f2cc8cc47",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "fc759f7f-928c-4c07-86e2-22000bd5e530",
+      "id": "aa7b520f-1ab6-4c84-989c-b2c97c772b81",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "3faf6ef4-403f-4715-a8df-ca2232b33a32",
+      "id": "88284ffb-4f3c-42b7-b33b-e4b6eea850af",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "68284ec4-78ee-4d84-b47c-9bff6999b0a4",
+      "id": "d8debf54-2924-4244-8991-aef9a902cd1d",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "46af6243-8918-48fd-afed-bcc491625006",
+      "id": "67da83c0-45ed-4e4b-963d-0c509a53b1ab",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "7807988b-9750-467d-ac83-5946ceeb3143",
+      "id": "e5857af0-766a-4258-a74a-0b8609e65f2e",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "3ec35ccf-49b4-406b-9745-718f238c8006",
+      "id": "63bc4e4b-63d9-4635-a4cf-acde04822346",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "c8e4b34b-47e1-40b0-9f65-45b3be272fce",
+      "id": "2d2a084f-2ed5-4cb6-88a1-70e82fe326be",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "95fbe1e2-a7e6-495e-bbb3-82883298d9cf",
+      "id": "dfe2158f-8939-4942-bd8f-e18bcd13fadc",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
