@@ -6776,7 +6776,7 @@
         }
       ],
       "_postman_id": "5f9e4f24-ac6a-409b-a87b-5c233b035d5b",
-      "description": "In order to access your user's financial data endpoints, you are required to obtain their consent to share this information. This information is stored in an abstraction in Yapily called a [Consent](https://kb.yapily.com/display/YAD/Consent+Object) and is obtained by executing [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287). When the user authorises the request to share their financial data (see the flows below), a `consent-token` is attached to the associated `Consent` object and can be used in the request header to authenticate requests to access the user's financial data. \n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n- **TPP** - Third Party Provider. Your application.\n- **ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nThere are a number of ways for you to build your authorisation flows for your application. Here are some of the options that are available to you:\n\n## Decoupled Account Authorisation Flow\n\nThe [decoupled flow](https://kb.yapily.com/display/YAD/Decoupled+Flow) is the default behaviour when no `callback` option is specified when executing [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287):\n- After the user authorises the account request, Yapily will update the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url) with the `consent-token` to access the user's account information. \n- As no `callback` is specified when creating the authorisation request, you will need to poll the result of [GET Consent](https://docs.yapily.com/#9307df42-da49-4cc0-8b73-dc82989620a4) until the `Consent` object is updated with the `consent-token`. \n- You will then be able to use the `consent-token` to access the user's financial data\n\n![Authorisation_Flows-Decoupled_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Decoupled_Accounts.svg?r=3)\n\n## Coupled Account Authorisation Flow\n\nBy specifying the `callback` option when executing [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), you can use the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) to retrieve a `consent-token` which removes the need to poll the status of the `Consent`:\n- This allows you to have immediate access to the `Consent` after the user authorises the request. \n- This is achieved by redirecting the user to the `callback` after updating the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url). \n- The `consent-token`, `application-user-id`, `user-uuid` and `institution-id` will be available as query string parameters at the `callback` url and then you can obtain account information using this consent as with the decoupled flow\n\n![Authorisation_Flows-Coupled_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_Accounts.svg?r=3)\n\n\n## Coupled Account Authorisation Flow with OTT\n\nAs an addition, when using the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) you can make use of the `one-time-token` when executing [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) to retrieve a `consent-token` without exposing it as a query string parameter at the `callback`:\n- The `one-time-token` is a short lived token that will be available at the callback after redirecting from Yapily's authorisation server once the user authorises the request.\n- The `one-time-token` can then be exchanged for a `consent-token` using [POST Exchange One Time Token (OTT)](https://docs.yapily.com/#82712468-cd42-48aa-84e6-fbe1ee770c77)\n- You can then obtain account information using this `consent-token` as with the other flows\n\n![Authorisation_Flows-Coupled_OTT_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_OTT_Accounts.svg?r=3)",
+      "description": "In order to access your user's financial data endpoints, you are required to obtain their consent to share this information. This information is stored in an abstraction in Yapily called a [Consent](https://kb.yapily.com/display/YAD/Consent+Object) and is obtained by executing [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287). When the user authorises the request to share their financial data (see the flows below), a `consent-token` is attached to the associated `Consent` object and can be used in the request header to authenticate requests to access the user's financial data. \n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n- **TPP** - Third Party Provider. Your application.\n- **ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nThere are a number of ways for you to build your authorisation flows for your application. Here are some of the options that are available to you:\n\n## Decoupled Account Authorisation Flow\n\nThe [decoupled flow](https://kb.yapily.com/display/YAD/Decoupled+Flow) is the default behaviour when no `callback` option is specified when executing [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287):\n- After the user authorises the account request, Yapily will update the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url) with the `consent-token` to access the user's account information. \n- As no `callback` is specified when creating the authorisation request, you will need to poll the result of [GET Consent](https://docs.yapily.com/#9307df42-da49-4cc0-8b73-dc82989620a4) until the `Consent` object is updated with the `consent-token`. \n- You will then be able to use the `consent-token` to access the user's financial data\n\n![Authorisation_Flows-Decoupled_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Decoupled_Accounts.svg?r=3)\n\n## Coupled Account Authorisation Flow\n\nBy specifying the `callback` option when executing [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), you can use the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) to retrieve a `consent-token` which removes the need to poll the status of the `Consent`:\n- This allows you to have immediate access to the `Consent` after the user authorises the request. \n- This is achieved by redirecting the user to the `callback` after updating the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url). \n- The `consent-token`, `application-user-id`, `user-uuid` and `institution-id` will be available as query string parameters at the `callback` url and then you can obtain account information using this consent as with the decoupled flow\n\n![Authorisation_Flows-Coupled_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_Accounts.svg?r=3)\n\n\n## Coupled Account Authorisation Flow with OTT\n\nAs an addition, when using the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) you can make use of the `one-time-token` when executing [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) to retrieve a `consent-token` without exposing it as a query string parameter at the `callback`:\n- The `one-time-token` is a short lived token that will be available at the callback after redirecting from Yapily's authorisation server once the user authorises the request.\n- The `one-time-token` can then be exchanged for a `consent-token` using [POST Exchange One Time Token (OTT)](https://docs.yapily.com/#82712468-cd42-48aa-84e6-fbe1ee770c77)\n- You can then obtain account information using this `consent-token` as with the other flows\n\n![Authorisation_Flows-Coupled_OTT_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_OTT_Accounts.svg?r=3)\n\n## Account Pre-authorisation Flow\n\nThe pre-authorisation flow is required for any bank that has the `INITIATE_PRE_AUTHORISATION` feature:\n- Unlike all of the flows above, this requires the user to first pre-authorise with the Institution using [POST Create Account Pre-Authorisation Request](https://docs.yapily.com/#80b7c51d-88b9-4008-949a-5abe380c73aa)\n- This request will create a generic `Consent with` no ability to access financial data in the `AWAITING_PRE_AUTHORIZATION` state\nOnce the user is redirected to the bank via the `authorisation-url` or the `qr-code-url` and authorises the pre-authorisation request, the `Consent` transitions to the `PRE_AUTHORIZED` state\n- At this point, the user has completed the required pre-authorisation but you will still need an additional authorisation from the user to authorise access to their financial data using [PUT Create Account Authorisation Request](https://docs.yapily.com/#75a4d838-ee3e-43c7-9b28-e1c100f73f1b).\n- Once the user is redirected to the bank via the `authorisation-url` or the `qr-code-url` and authorises the authorisation request, the `Consent` transitions to the `AUTHORIZED` state\n- This will also add the relevant financial data features to the Consent and then you are able to make requests to obtain the user's financial data as usual\n\n![Authorisation_Flows-Coupled_Pre_Accounts](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_Pre_Accounts.svg?r=1)",
       "event": [
         {
           "listen": "prerequest",
@@ -7333,7 +7333,293 @@
             "url": "https://api.yapily.com/payment-auth-requests",
             "description": "Feature: \n- `INITIATE_ACCOUNT_REQUEST`\n\nUsed exclusively with any `Institution` that requires pre-authorisation using [POST Create Payment Pre-authorisation Request](https://docs.yapily.com/#76fca326-e605-462e-a7f7-ea4f4c9314ef). This endpoint is used to update the generic `Consent` created from the pre-authorisation request to a payment `Consent` with the relevant payment features supported by the `Institution` and to then initiate the authorisation process and direct users to the login screen of the `Institution` to give their consent to initiate the payment.\n\nSee [PUT Create Payment Authorisation Request](https://kb.yapily.com/display/YAD/PUT+Create+Payment+Authorisation+Request) in the Knowledge Base for more details."
           },
-          "response": []
+          "response": [
+            {
+              "id": "0e224c34-8bfa-4671-8e33-78bcaec7f1d5",
+              "name": "Ok 200 Request (PAYMENT AUTH USING APPLICATION-USER-ID)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "description": "The consent token",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"e8de92dfb82f46948db502abdbe48e19\",\n        \"amount\": {\n            \"amount\": \"0.10\",\n            \"currency\": \"EUR\"\n        },\n        \"reference\": \"Yapily Test\",\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"payer\": {\n            \"name\": \"Payer Name\",\n            \"accountIdentifications\": [\n                 {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Payee Name\",\n            \"address\":{\n                \"addressLines\":[ \n               \"Torremolinos\"\n            ],\n                \"country\":\"ES\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"5ff05caf682ce166a2491fe02d8a0c9a\"\n    },\n    \"data\": {\n        \"id\": \"21576fbf-ac09-47cc-a079-a3159455e8ca\",\n        \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-09-04T14:51:25.308Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"INITIATE_PRE_AUTHORISATION\",\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            },
+            {
+              "id": "99a13318-59a6-41ff-8f3b-9ec26db76057",
+              "name": " Ok 200 Request (PAYMENT AUTH USING APPLICATION-USER-ID WITH RAW)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "description": "The consent token",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"e8de92dfb82f46948db502abdbe48e19\",\n        \"amount\": {\n            \"amount\": \"0.10\",\n            \"currency\": \"EUR\"\n        },\n        \"reference\": \"Yapily Test\",\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"payer\": {\n            \"name\": \"Payer Name\",\n            \"accountIdentifications\": [\n                 {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Payee Name\",\n            \"address\":{\n                \"addressLines\":[ \n               \"Torremolinos\"\n            ],\n                \"country\":\"ES\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"5ff05caf682ce166a2491fe02d8a0c9a\"\n    },\n    \"data\": {\n        \"id\": \"21576fbf-ac09-47cc-a079-a3159455e8ca\",\n        \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-09-04T14:51:25.308Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"INITIATE_PRE_AUTHORISATION\",\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    },\n    \"raw\": [\n        {\n            \"request\": {\n                \"method\": \"POST\",\n                \"url\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-entrada-xs2a/services/unicajabanco/v1/payments/sepa-credit-transfers\",\n                \"requestInstant\": \"2020-09-04T14:55:05.857Z\",\n                \"headers\": {\n                    \"Authorization\": \"Bearer ...815f8\",\n                    \"tpp-nok-redirect-uri\": \"https://auth.yapily.com/redirect-nok?state=dbf867ea32bb409bb7a2ab70803cee8f\",\n                    \"tpp-redirect-preferred\": \"true\",\n                    \"X-Request-ID\": \"d2dd6a0b-1499-461b-a383-a185328f0d3d\",\n                    \"Digest\": \"SHA-256=13Enu6Zb61bS3Dnw6f/jtVL8ZFs2v00RZvGhrcAAy9c=\",\n                    \"tpp-redirect-uri\": \"https://auth.yapily.com/?state=dbf867ea32bb409bb7a2ab70803cee8f\",\n                    \"X-IBM-Client-ID\": \"aadc0b62-eb0b-4366-96bf-bec864f05e7f\",\n                    \"Signature\": \"keyId=\\\"SN=1,CA=C=ES,ST=MAD,L=MAD,O=HUB-PSD2,OU=HUB-PSD2,CN=safeconnect.com\\\",algorithm=\\\"SHA-256\\\",headers=\\\"digest x-request-id\\\",signature=\\\"Dhf1xbPA5v4RrcUtRJ4qHzTS4kIlSnW7iKyFMjFpIj4uXQMWua1msXEYQjkDfvH+zVxLwT/8OFL+xWYZfBCrt7ERX8In2eQQBOI4DR1yb/88Jt0KbKMjhROlaMzPgV59bZWl72Xv42NQGn7ZUiHx9kch1mI8X2DJ+pSN1haOLrdIYfcHx+40M/GahqYLkUcQhIbuc/KQHIR/ClzkpO32hD20f1owQe2eIHfQ0lOTMI4t4MpOeDQhka/klmdVjjCyLXPxZ+XRYqCIijhe0FHNdZEZ+3JwnmU56+DV81Xrj5wZc8CdjOGTg1qKOo+kGeXtNpfctKqt/C39aQK9l0C3eQ==\\\"\",\n                    \"User-Agent\": \"default\",\n                    \"TPP-Signature-Certificate\": \"MIID6DCCAtCgAwIBAgIBATANBgkqhkiG9w0BAQsFADBpMRgwFgYDVQQDDA9zYWZlY29ubmVjdC5jb20xETAPBgNVBAsMCEhVQi1QU0QyMREwDwYDVQQKDAhIVUItUFNEMjEMMAoGA1UEBwwDTUFEMQwwCgYDVQQIDANNQUQxCzAJBgNVBAYTAkVTMB4XDTIwMDYwNDEwNTMzOVoXDTIxMDYwNDEwNTMzOVowgYQxGDAWBgNVBAMMD3NhZmVjb25uZWN0LmNvbTERMA8GA1UECwwISFVCLVBTRDIxETAPBgNVBAoMCEhVQi1QU0QyMQwwCgYDVQQHDANNQUQxDDAKBgNVBAgMA01BRDELMAkGA1UEBhMCRVMxGTAXBgNVBGEMEFBTREVTLUJERS05Mjc0NTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCIv4mt95er8Fy0b2rhPFOjlPJdIDJCPr0Y9QJ4D/DS0JwYiAKMpSqSrsbo1kganZM9ZlUU8kuX5xZ5817agRt9FkZJ78qIhLaMcwuWGMNSW5H/kytAG/ktxkXZlWcvrv6qYKIqnBMvPiaerv9oFFlQ47k7/Cef8Y6emOjJlF2y5KKtFslQNY6ZXKzKhsLtyDgOgnuIuEf2FOWBcgjco76hbO/8XgyIVyZxwNA6SCPki3qTbbEtm5iThVEKPufsbO2ohCu8HbIvakJaGCpsAAU5UDeThMf85bDMdii0pxoapaSjENGUTRyPdkaWaByKPriZkCJABC97AbFsLDpASfndAgMBAAGjfzB9MHAGCCsGAQUFBwEDBGQwYgYGBACBmCcCMFgwEQYHBACBmCcBAgwGUFNQX1BJMBEGBwQAgZgnAQMMBlBTUF9BSTARBgcEAIGYJwEEDAZQU1BfSUMMGEJhbmNvJTIwZGUlMjBFc3BhJUMzJUIxYQwDQkRFMAkGA1UdEwQCMAAwDQYJKoZIhvcNAQELBQADggEBAIPY2OVwBXE2TVOEs09q7d7XbVepF0FNHvHnSSnmcK2AiYXSnfvKrs67grvUh6GXJbVCUz65QKZx2D/B79jaYLw7TsOZwjcB6SoOpdqMrI9QImCN5ow6FMzZNyT9DeefcsrFIGR/pdiuAkSFVn0J60EM/qPLn+w7t5r+hbBUgDcJbe2TtmqTUPaE9gMLmvyQPUWH3wR53RvVXzJ2OjJgYrV+aAfxPZ4tD5/2NVAXU7m0uX/7p0WUpf45FlvxgBlSmHexlTS/IzNsZz93tHJJqJjThH72q31GlsuaJ1iMgImrivisYsqIuQsSHT0vecI94m9lUcK0MlTYpigeJZ1GVKY=\",\n                    \"psu-ip-address\": \"127.0.0.1\",\n                    \"Content-Type\": \"application/json\"\n                },\n                \"body\": {\n                    \"debtorAccount\": {\n                        \"iban\": \"ES2621030001350000000001\"\n                    },\n                    \"creditorName\": \"MXXA XXXXETTO\",\n                    \"creditorAccount\": {\n                        \"iban\": \"ES5321030001310000000002\"\n                    },\n                    \"instructedAmount\": {\n                        \"amount\": \"0.10\",\n                        \"currency\": \"EUR\"\n                    },\n                    \"remittanceInformationUnstructured\": \"Yapily Test\"\n                },\n                \"bodyParameters\": {},\n                \"startTime\": \"2020-09-04T14:55:05.857Z\"\n            },\n            \"duration\": \"PT11.055S\",\n            \"headers\": {\n                \"Transfer-Encoding\": \"chunked\",\n                \"Access-Control-Allow-Origin\": \"*\",\n                \"X-Request-ID\": \"d2dd6a0b-1499-461b-a383-a185328f0d3d\",\n                \"Access-Control-Allow-Methods\": \"POST\",\n                \"X-Backside-Transport\": \"OK OK\",\n                \"Connection\": \"Keep-Alive\",\n                \"X-Global-Transaction-ID\": \"08908a615f525549d495c7e1\",\n                \"Date\": \"Fri, 04 Sep 2020 14:55:06 GMT\",\n                \"Access-Control-Expose-Headers\": \"APIm-Debug-Trans-Id, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-Global-Transaction-ID\",\n                \"Cache-Control\": \"no-cache=\\\"set-cookie, set-cookie2\\\"\",\n                \"Set-Cookie\": \"ROUTEIDB=.bb; path=/; HttpOnly; Secure\",\n                \"Expires\": \"Thu, 01 Dec 1994 16:00:00 GMT\",\n                \"ASPSP-SCA-Approach\": \"REDIRECT\",\n                \"Content-Language\": \"es-ES\",\n                \"Content-Type\": \"application/json\",\n                \"Location\": \"/v1/payments/sepa-credit-transfers/9ea5bc5c-eebe-11ea-82c0-f1f5cfd6c0af\",\n                \"X-Powered-By\": \"Servlet/3.1\"\n            },\n            \"resultCode\": 201,\n            \"result\": {\n                \"transactionStatus\": \"RCVD\",\n                \"_links\": {\n                    \"scaStatus\": {\n                        \"href\": \"/v1/payments/sepa-credit-transfers/9ea5bc5c-eebe-11ea-82c0-f1f5cfd6c0af/authorisations/2f4c7f30-018f-4cbe-a418-6ce11f29c866\"\n                    },\n                    \"scaRedirect\": {\n                        \"href\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\"\n                    },\n                    \"self\": {\n                        \"href\": \"/v1/payments/sepa-credit-transfers/9ea5bc5c-eebe-11ea-82c0-f1f5cfd6c0af\"\n                    },\n                    \"status\": {\n                        \"href\": \"/v1/payments/sepa-credit-transfers/9ea5bc5c-eebe-11ea-82c0-f1f5cfd6c0af/status\"\n                    }\n                },\n                \"paymentId\": \"9ea5bc5c-eebe-11ea-82c0-f1f5cfd6c0af\"\n            }\n        }\n    ]\n}"
+            },
+            {
+              "id": "0ddff2f2-244b-48b8-ac2e-3374b7be7b12",
+              "name": " Ok 200 Request (PAYMENT AUTH USING USER-UUID)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "description": "The consent token",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"e8de92dfb82f46948db502abdbe48e19\",\n        \"amount\": {\n            \"amount\": \"0.10\",\n            \"currency\": \"EUR\"\n        },\n        \"reference\": \"Yapily Test\",\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"payer\": {\n            \"name\": \"Payer Name\",\n            \"accountIdentifications\": [\n                 {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Payee Name\",\n            \"address\":{\n                \"addressLines\":[ \n               \"Torremolinos\"\n            ],\n                \"country\":\"ES\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"5ff05caf682ce166a2491fe02d8a0c9a\"\n    },\n    \"data\": {\n        \"id\": \"21576fbf-ac09-47cc-a079-a3159455e8ca\",\n        \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-09-04T14:51:25.308Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"INITIATE_PRE_AUTHORISATION\",\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            },
+            {
+              "id": "f9380a16-fd48-42e6-bd56-e2fe30bdc8f8",
+              "name": "Ok 200 Request (PAYMENT AUTH WITH CALLBACK)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "description": "The consent token",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"e8de92dfb82f46948db502abdbe48e19\",\n        \"amount\": {\n            \"amount\": \"0.10\",\n            \"currency\": \"EUR\"\n        },\n        \"reference\": \"Yapily Test\",\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"payer\": {\n            \"name\": \"Payer Name\",\n            \"accountIdentifications\": [\n                 {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Payee Name\",\n            \"address\":{\n                \"addressLines\":[ \n               \"Torremolinos\"\n            ],\n                \"country\":\"ES\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"5ff05caf682ce166a2491fe02d8a0c9a\"\n    },\n    \"data\": {\n        \"id\": \"21576fbf-ac09-47cc-a079-a3159455e8ca\",\n        \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-09-04T14:51:25.308Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"INITIATE_PRE_AUTHORISATION\",\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            },
+            {
+              "id": "4d3e5aae-e5ce-4677-b675-1c8ad7340047",
+              "name": "Ok 200 Request (PAYMENT AUTH WITH ONE-TIME-TOKEN)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "description": "The consent token",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"e8de92dfb82f46948db502abdbe48e19\",\n        \"amount\": {\n            \"amount\": \"0.10\",\n            \"currency\": \"EUR\"\n        },\n        \"reference\": \"Yapily Test\",\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"payer\": {\n            \"name\": \"Payer Name\",\n            \"accountIdentifications\": [\n                 {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Payee Name\",\n            \"address\":{\n                \"addressLines\":[ \n               \"Torremolinos\"\n            ],\n                \"country\":\"ES\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"ESXX XXXX XXXX XXXX XXXX\"\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"5ff05caf682ce166a2491fe02d8a0c9a\"\n    },\n    \"data\": {\n        \"id\": \"21576fbf-ac09-47cc-a079-a3159455e8ca\",\n        \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-09-04T14:51:25.308Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"INITIATE_PRE_AUTHORISATION\",\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            }
+          ]
         },
         {
           "name": "Create Payment",
@@ -8275,109 +8561,109 @@
   ],
   "variable": [
     {
-      "id": "cf86ada2-fc7e-42e3-8c73-14544547209e",
+      "id": "0b1feb8c-37e2-4cb4-b2c5-b46ae195b550",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "2030acf5-faeb-4c4e-8dbf-eb2e893ca921",
+      "id": "353643b0-326a-430d-aca3-985eadb1cf3a",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "344cfd7a-b5d1-42fe-9e4d-702eb19df576",
+      "id": "2f2db89b-82c2-447a-b1f7-fd819e01a45b",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "7aeeaefd-33d3-4aea-84b7-a3312fc08211",
+      "id": "05c92d0d-3ebc-42f4-91a0-c2bd9cc54cce",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "b8073ee2-9d5c-4027-9e4f-2c4c67a0d27e",
+      "id": "efba690c-fd83-4c0a-a906-e4ad7a2d6b71",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "64023f70-b224-4851-bf7e-d88f54833333",
+      "id": "bb329ac7-d97e-4fc8-ba14-1096d1bddfc9",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "7a85e385-e69f-42c4-b687-46eb72e1f73e",
+      "id": "5c2fe456-3bd8-45ac-93b6-cc50bfb8f252",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "688a4e26-bc63-4195-8641-d246efbb8347",
+      "id": "de9b4709-e33f-49b0-a4b0-31669da0a2ea",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "bad88821-4c1c-4647-82cf-8a93803ac355",
+      "id": "9f93c16e-419a-48a5-9f69-7cdc3c6fcfdf",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "cd12d6d1-f278-457d-bbef-f381efcf0471",
+      "id": "f59755b2-708e-4973-8575-9f35fa82b462",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "5fe358cc-893b-4a24-8292-f13256972a93",
+      "id": "9fe9cf22-45bb-45e8-b448-6380b9e0f674",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "7515e26c-f201-4d36-9f10-ff3c5eb588f2",
+      "id": "d6950761-d7d0-4b99-ab38-5f27211d468a",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "beb7ca8e-fff2-4dff-80cd-2c469a6c5151",
+      "id": "5d86a06e-cda1-4ce2-a671-42026c80b3e1",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "f5b47e67-7f04-49d2-9b0a-90c96239a970",
+      "id": "78c9eb47-20f0-4d13-aa9c-4de92364d58e",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "a46da459-6759-4802-ae1a-35616be6a81d",
+      "id": "a738d347-107e-4f09-822e-24f77b8316be",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "84fe90be-0253-4ad5-abde-19f2510e6e59",
+      "id": "b4ea7773-fb06-45fa-9b1f-f043442fc1d1",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "a173554a-4549-4a43-8ef6-69df435aba21",
+      "id": "72f1678d-6388-4fef-b2d8-b6789d66924c",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "c0168f0d-2d13-4c58-91c7-4f359cc93584",
+      "id": "b46c95f7-fcf7-4f39-872d-cb6768850b5e",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
