@@ -7073,7 +7073,7 @@
               }
             },
             "url": "https://api.yapily.com/pre-auth-requests",
-            "description": "Features: \n- `INITIATE_DOMESTIC_PERIODIC_PAYMENT`\n- `INITIATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `INITIATE_DOMESTIC_SINGLE_PAYMENT`\n- `INITIATE_DOMESTIC_INSTANT_PAYMENT`\n- `INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `INITIATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `INITIATE_INTERNATIONAL_SINGLE_PAYMENT`\n\nUsed to initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a payment.\n\nSee [POST Create Payment Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Payment+Authorisation+Request) in the Knowledge Base for more details. "
+            "description": "Feature: \n- `INITIATE_PRE_AUTHORISATION`\n\nUsed to redirect a user to an `Institution` to authorise a pre-authorisation request. Unlike [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b), an Institution with the `INITIATE_PRE_AUTHORIZATION` feature requires the user to first pre-authorise with the `Institution`. After the user is successfully redirected to the `Institution` and the request is authorised by the user, Yapily will generate a generic `Consent` that can not immediately be used to execute a payment. To execute a payment, the user needs authorise an additional request using [PUT Create Payment Authorisation Request](https://docs.yapily.com/#4a20b328-2499-431d-b3fd-a3924b2f0c95) which will update the Consent with the required payment features.\n\nSee [POST Create Payment Pre-authorisation Request](https://kb.yapily.com/display/YAD/POST+Create+Payment+Pre-authorisation+Request) in the Knowledge Base for more details."
           },
           "response": [
             {
@@ -7325,7 +7325,7 @@
               }
             },
             "url": "https://api.yapily.com/payment-auth-requests",
-            "description": "Features: \n- `INITIATE_DOMESTIC_PERIODIC_PAYMENT`\n- `INITIATE_DOMESTIC_SCHEDULED_PAYMENT`\n- `INITIATE_DOMESTIC_SINGLE_PAYMENT`\n- `INITIATE_DOMESTIC_INSTANT_PAYMENT`\n- `INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT`\n- `INITIATE_INTERNATIONAL_PERIODIC_PAYMENT`\n- `INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT`\n- `INITIATE_INTERNATIONAL_SINGLE_PAYMENT`\n\nUsed to initiate the authorisation process and direct users to the login screen of their financial institution in order to give their consent for a payment.\n\nSee [POST Create Payment Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Payment+Authorisation+Request) in the Knowledge Base for more details. "
+            "description": "Feature: \n- `INITIATE_ACCOUNT_REQUEST`\n\nUsed exclusively with any `Institution` that requires pre-authorisation using [POST Create Payment Pre-authorisation Request](https://docs.yapily.com/#76fca326-e605-462e-a7f7-ea4f4c9314ef). This endpoint is used to update the generic `Consent` created from the pre-authorisation request to a payment `Consent` with the relevant payment features supported by the `Institution` and to then initiate the authorisation process and direct users to the login screen of the `Institution` to give their consent to initiate the payment.\n\nSee [PUT Create Payment Authorisation Request](https://kb.yapily.com/display/YAD/PUT+Create+Payment+Authorisation+Request) in the Knowledge Base for more details."
           },
           "response": []
         },
@@ -8269,109 +8269,109 @@
   ],
   "variable": [
     {
-      "id": "7cba03b3-d053-4b3b-b346-925fc41ddc5c",
+      "id": "4b6986c1-de37-4e30-bb1e-304a30c4c54a",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "19b0a721-4bfc-44be-b573-1fa00b541ed1",
+      "id": "c807a598-162a-491f-945a-388c5efd76e0",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "9ce2e08a-9e28-4e20-9024-092ea4281e5d",
+      "id": "bbb14d8a-d88e-4e6b-ba2a-cead52d8ec48",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "400b8b4f-a347-4a4a-8eb8-68d7f028c2ca",
+      "id": "e917a18a-6a5a-452d-a814-10dbb627eca7",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "f153c696-5178-4f4c-8e00-df127af75e99",
+      "id": "16e4d881-9ac9-42bd-af00-4f8103224afb",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "e407eab1-8a99-4da6-b60c-24a57a21d362",
+      "id": "d6be6359-d48a-4083-aa2c-9d30ecd84226",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "fa552c3e-cd59-45d0-8a7c-ad567f51a329",
+      "id": "7a02a565-2944-40b1-9276-362a8c11cc36",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "d66e7099-ea70-46f1-b086-a17891ba9f6f",
+      "id": "c4618c94-91ac-4a3b-ba28-09f52b790b21",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "291d9aad-a303-4bf4-ad1b-fb370ff374ae",
+      "id": "c8cd6065-d673-4e22-b3b8-4c4dd46f48b0",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "a2714cb7-e349-4455-b3a6-dfbf399562e9",
+      "id": "bd618b09-a23e-4353-9886-45545b1e00ac",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "194d6cb4-9771-4c11-a3b4-fdfc6ce85960",
+      "id": "6122818b-3be5-436a-bbd4-96102557bf51",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "fe9ca78b-ed1f-491a-a6ff-5ea3aac810bb",
+      "id": "cde9dc10-0e7b-40dd-b70a-628e0843da50",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "43359bf7-41c7-4975-83b1-96bc7d5852f8",
+      "id": "4c7aa841-7168-4ad8-8c68-144e78a6ba40",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "8c3348e6-4643-479a-aab3-35875ff79239",
+      "id": "8d097b79-d151-4991-941c-1f9faffd7028",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "63090cb7-c79f-4a76-9d81-c643e6915dff",
+      "id": "28c20eb9-6ebb-4269-abed-782588361414",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "c2e0dcea-415f-4acd-b233-c20c6894ba8c",
+      "id": "59deddb3-9014-4aa9-a601-2adc3fe85a12",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "762f291a-17dd-46e5-8410-83abfec7c014",
+      "id": "969e4d0a-c5a9-4dbb-9e88-b786fe4d908f",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "c4529314-d44e-463d-b09b-fd6f0c16055b",
+      "id": "79b4dd75-9201-4038-9839-da30eca6a7ab",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
