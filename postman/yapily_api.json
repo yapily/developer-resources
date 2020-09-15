@@ -3899,7 +3899,7 @@
               }
             },
             "url": "https://api.yapily.com/pre-auth-requests",
-            "description": "Feature: `INITIATE_PRE_AUTHORISATIONv`\n\nUsed to redirect a user to an `Institution` to authorise a pre-authorisation request.\n\nSee [POST Create Account Pre-authorisation](https://kb.yapily.com/display/YAD/POST+Create+Account+Pre-authorisation+Request) in the Knowledge Base for more information."
+            "description": "Feature: `INITIATE_PRE_AUTHORISATIONv`\n\nUsed to redirect a user to an `Institution` to authorise a pre-authorisation request. Unlike [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), an `Institution` with the `INITIATE_PRE_AUTHORIZATION` feature requires the user to first pre-authorise with the `Institution`. After the user is successfully redirected to the `Institution` and the request is authorised by the user, Yapily will generate a generic `Consent` that can not immediately be used to access the user's financial data. To access the user's financial data, the user needs authorise an additional request using [PUT Create Account Authorisation Request](https://docs.yapily.com/#75a4d838-ee3e-43c7-9b28-e1c100f73f1b) which will update the `Consent` with the required financial data features.\n\nSee [POST Create Account Pre-authorisation](https://kb.yapily.com/display/YAD/POST+Create+Account+Pre-authorisation+Request) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -4472,7 +4472,7 @@
               }
             },
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nInitiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data.\n\nSee [POST Create Account Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Account+Authorisation+Request) in the Knowledge Base for more information."
+            "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nUsed exclusively with any `Institution` that requires pre-authorisation using [POST Create Account Pre-authorisation Request](https://docs.yapily.com/#80b7c51d-88b9-4008-949a-5abe380c73aa). This endpoint is used to update the generic `Consent` created from the pre-authorisation request to a financial data `Consent` with the relevant financial data features supported by the `Institution` and to then initiate the authorisation process and direct users to the login screen of the Institution to consent to their account information.\n\nSee [PUT Create Account Authorisation](https://kb.yapily.com/display/YAD/PUT+Create+Account+Authorisation+Request) in the Knowledge Base for more information."
           },
           "response": []
         },
@@ -8007,109 +8007,109 @@
   ],
   "variable": [
     {
-      "id": "1b63f3a0-9210-46ff-9841-4dedaf6eca3d",
+      "id": "69ea6a3e-8590-42dd-a5ef-c49af66ffbfc",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "df675529-4adf-4f6e-af65-1efde27a9c14",
+      "id": "1ad2a334-dc90-458c-9759-ce1f370c40c5",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "1ac6733d-146b-46d4-bb7a-1be15eb1f14b",
+      "id": "2500f671-72cd-4a9b-adb3-e972e83378e4",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "5024c7f4-c3a1-4da0-8140-fc5c50bc1953",
+      "id": "2f5ff49a-5300-4341-88bd-e7cbb7f25cb5",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "d8a34b43-357a-4234-8b7b-2f1e84e5667b",
+      "id": "2dffd02e-8c4d-4cea-9941-c1cc3a9794d3",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "3e05c899-5e4f-4182-aa93-5aed5790b14e",
+      "id": "b66a7f07-e5e1-47e4-bb43-5253b096fc08",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "8ef0e932-b7dd-440d-8841-eb58524ff9d9",
+      "id": "bf01b8b8-5d18-42da-b734-5b4ba09bbd28",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "6e9fcc28-3bd2-497b-97ca-7b7b2fcb7ce2",
+      "id": "9ea1ee09-ede7-4021-8859-d7e0970d5157",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "e5541d1d-c5eb-407a-ab43-c604b95a3951",
+      "id": "bce6283f-0acc-48b8-852b-52a051b6e11c",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "09ca3a5a-9379-49fe-a493-6bd55c7675db",
+      "id": "65593030-8c58-4ce2-8603-dee142710120",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "f32f47e2-3041-421b-8362-0def2425bbcd",
+      "id": "81a2ac28-b724-488e-a9b9-4ffe90003a32",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "3d8617a4-9827-459e-bf2c-f938df9de679",
+      "id": "88469fbd-13f1-4519-99c8-554c19673797",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "748602f1-3a1e-4531-85d7-3eaa55bab5ae",
+      "id": "cdf2f006-f460-41f3-8257-af2f7541e01b",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "002478bd-bd2f-430e-ad66-dfcdeb90ffab",
+      "id": "7a735f12-c419-41b6-adc2-2c39eeb3d594",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "d08fab3b-10de-4932-8472-35f241d14d67",
+      "id": "58babb5c-7c85-4ffc-8406-0e453d231acf",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "719ff679-dec9-4db6-b026-f18a7844b151",
+      "id": "f26d23a0-fb49-4d74-91fb-170877ef75f8",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "f14027d2-ef7b-4480-a1ec-e61dbb96b47e",
+      "id": "7b2b9470-b03c-44ee-8979-a6585e87c35c",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "8ab71306-7c4f-401b-8945-2b3becd8370c",
+      "id": "12d0bf4f-eb69-4df7-b9e7-fabc8bf18cd4",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
