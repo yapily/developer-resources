@@ -4149,7 +4149,7 @@
               }
             },
             "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nUsed exclusively with any `Institution` that requires pre-authorisation using [POST Create Account Pre-authorisation Request](https://docs.yapily.com/#80b7c51d-88b9-4008-949a-5abe380c73aa). This endpoint is used to update the generic `Consent` created from the pre-authorisation request to a financial data `Consent` with the relevant financial data features supported by the `Institution` and to then initiate the authorisation process and direct users to the login screen of the Institution to consent to their account information.\n\nSee [PUT Create Account Authorisation](https://kb.yapily.com/display/YAD/PUT+Create+Account+Authorisation+Request) in the Knowledge Base for more information."
+            "description": "Feature: \n- `INITIATE_DOMESTIC_SINGLE_PAYMENT `\n\nUsed exclusively with any `Institution` that requires pre-authorisation using [POST Create Account Pre-authorisation Request](https://docs.yapily.com/#80b7c51d-88b9-4008-949a-5abe380c73aa). This endpoint is used to update the generic `Consent` created from the pre-authorisation request to a financial data `Consent` with the relevant financial data features supported by the `Institution` and to then initiate the authorisation process and direct users to the login screen of the Institution to consent to their account information.\n\nSee [PUT Create Account Authorisation](https://kb.yapily.com/display/YAD/PUT+Create+Account+Authorisation+Request) in the Knowledge Base for more information."
           },
           "response": [
             {
@@ -8505,7 +8505,7 @@
         }
       ],
       "_postman_id": "c8da0a20-6cb9-4282-aba5-4c66113eb70b",
-      "description": "In order to create or query the status of a payment, you are required to obtain authorisation from the user with their consent. This is stored with Yapily within an abstraction called a [Consent](https://kb.yapily.com/display/YAD/Consent+Object). You can create a `Consent` by executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d). Once the user authorises a request to initiate a payment (see the flows below), a `consent-token` will be attached to the associated `Consent` and can be used in the request header to execute and query the status of the payment. \n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n- **TPP** - Third Party Provider. Your application.\n- **ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nThere are a number of ways for you to build your authorisation flows for your application. Here are some of the options that are available to you:\n\n## Decoupled Payment Authorisation Flow\n\nThe [decoupled flow](https://kb.yapily.com/display/YAD/Decoupled+Flow) is the default behaviour when no `callback` option is specified when executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d): \n- After the user authorises the account request, Yapily will update the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url) to initiate the payment using either [POST Create Payment Request](https://docs.yapily.com/#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c) or [POST Create Bulk Payment Request](https://docs.yapily.com/#ef4926a7-9916-4665-83af-3168c611614b)\n- As no `callback` is specified when creating the authorisation request, you will need to poll the result of [GET Consent](https://docs.yapily.com/#9307df42-da49-4cc0-8b73-dc82989620a4) until the `Consent` object is updated with the `consent-token`. \n- You will then be able to use the `consent-token` to initiate the payment\n- As the execution of the payments are asynchronous, depending on the bank, you may need to use [GET Payment Details](https://docs.yapily.com/#2e1a151e-59a7-4fa1-bd5b-5f6a0c4bf4cd) to check on the status of the payment until it is executed\n\n![Authorisation_Flows-Decoupled_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Decoupled_Payments.svg?r=4)\n\n## Coupled Payment Authorisation Flow\n\nBy specifying the `callback` option when executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d), you can use the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) to retrieve a `consent-token` which removes the need to poll the status of the `Consent`:\n- This allows you to have immediate access to the `Consent` after the user authorises the request. \n- This is achieved by redirecting the user to the `callback` after updating the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url). \n- The `consent-token`, `application-user-id`, `user-uuid` and `institution-id` will be available as query string parameters at the `callback` url and then you will be able to create the payment and query the status as in the decoupled flow\n\n![Authorisation_Flows-Coupled_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_Payments.svg?r=1)\n\n## Coupled Payment Authorisation Flow with OTT\n\nAs an addition, when using the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) you can make use of the `one-time-token` when executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d) to retrieve a `consent-token` without exposing it as a query string parameter at the `callback`:\n- The `one-time-token` is a short lived token that will be available at the callback after redirecting from Yapily's authorisation server once the user authorises the request.\n- The `one-time-token` can then be exchanged for a `consent-token` using [POST Exchange One Time Token (OTT)](https://docs.yapily.com/#82712468-cd42-48aa-84e6-fbe1ee770c77)\n- You can then create the payment and query the status of the payment using this `consent-token` as with the other flows\n\n![Authorisation_Flows-Coupled_OTT_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_OTT_Payments.svg?r=1)\n\n**Note**: if the application does not have the `INITIATE_PAYMENT` feature, the first 2 steps are not required. Any calls to [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d) endpoints will return a _HTTP 501 Not Implemented_ response.",
+      "description": "In order to create or query the status of a payment, you are required to obtain authorisation from the user with their consent. This is stored with Yapily within an abstraction called a [Consent](https://kb.yapily.com/display/YAD/Consent+Object). You can create a `Consent` by executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d). Once the user authorises a request to initiate a payment (see the flows below), a `consent-token` will be attached to the associated `Consent` and can be used in the request header to execute and query the status of the payment. \n\nThese acronyms are borrowed from [Open Banking](https://www.openbanking.org.uk/about-us/glossary/):\n\n- **TPP** - Third Party Provider. Your application.\n- **ASPSP** - Account Servicing Payment Service Provider. The financial institution.\n\nThere are a number of ways for you to build your authorisation flows for your application. Here are some of the options that are available to you:\n\n## Decoupled Payment Authorisation Flow\n\nThe [decoupled flow](https://kb.yapily.com/display/YAD/Decoupled+Flow) is the default behaviour when no `callback` option is specified when executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d): \n- After the user authorises the account request, Yapily will update the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url) to initiate the payment using either [POST Create Payment Request](https://docs.yapily.com/#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c) or [POST Create Bulk Payment Request](https://docs.yapily.com/#ef4926a7-9916-4665-83af-3168c611614b)\n- As no `callback` is specified when creating the authorisation request, you will need to poll the result of [GET Consent](https://docs.yapily.com/#9307df42-da49-4cc0-8b73-dc82989620a4) until the `Consent` object is updated with the `consent-token`. \n- You will then be able to use the `consent-token` to initiate the payment\n- As the execution of the payments are asynchronous, depending on the bank, you may need to use [GET Payment Details](https://docs.yapily.com/#2e1a151e-59a7-4fa1-bd5b-5f6a0c4bf4cd) to check on the status of the payment until it is executed\n\n![Authorisation_Flows-Decoupled_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Decoupled_Payments.svg?r=4)\n\n## Coupled Payment Authorisation Flow\n\nBy specifying the `callback` option when executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d), you can use the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) to retrieve a `consent-token` which removes the need to poll the status of the `Consent`:\n- This allows you to have immediate access to the `Consent` after the user authorises the request. \n- This is achieved by redirecting the user to the `callback` after updating the `Consent` object at the [redirect url](https://kb.yapily.com/display/YAD/Redirect+Url). \n- The `consent-token`, `application-user-id`, `user-uuid` and `institution-id` will be available as query string parameters at the `callback` url and then you will be able to create the payment and query the status as in the decoupled flow\n\n![Authorisation_Flows-Coupled_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_Payments.svg?r=1)\n\n## Coupled Payment Authorisation Flow with OTT\n\nAs an addition, when using the [coupled flow](https://kb.yapily.com/display/YAD/Coupled+Flow) you can make use of the `one-time-token` when executing either [POST Create Payment Authorisation Request](https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d) to retrieve a `consent-token` without exposing it as a query string parameter at the `callback`:\n- The `one-time-token` is a short lived token that will be available at the callback after redirecting from Yapily's authorisation server once the user authorises the request.\n- The `one-time-token` can then be exchanged for a `consent-token` using [POST Exchange One Time Token (OTT)](https://docs.yapily.com/#82712468-cd42-48aa-84e6-fbe1ee770c77)\n- You can then create the payment and query the status of the payment using this `consent-token` as with the other flows\n\n![Authorisation_Flows-Coupled_OTT_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_OTT_Payments.svg?r=1)\n\n**Note**: if the application does not have the `INITIATE_PAYMENT` feature, the first 2 steps are not required. Any calls to [Create Payment Authorisation Request](https://docs.yapily.com/?version=latest#8e67c40c-4b0e-4f72-947c-065f1c84f46b) or [POST Create Bulk Payment Authorisation Request](https://docs.yapily.com/#0741547c-79f9-4f11-97bc-f99180211c8d) endpoints will return a _HTTP 501 Not Implemented_ response.\n\n## Payment Pre-authorisation Flow\n\nThe pre-authorisation flow is required for any bank that has the\u00a0`INITIATE_PRE_AUTHORISATION`\u00a0feature:\n- Unlike all of the flows above, this requires the user to first pre-authorise with the\u00a0`Institution`\u00a0using\u00a0[POST Create Payment Pre-Authorisation Request](https://docs.yapily.com/#76fca326-e605-462e-a7f7-ea4f4c9314ef)\n- This request will create a generic\u00a0`Consent`\u00a0with no ability to access financial data in the\u00a0`AWAITING_PRE_AUTHORIZATION`\u00a0state\nOnce the user is redirected to the bank via the\u00a0`authorisation-url`\u00a0or the\u00a0`qr-code-url`\u00a0and authorises the pre-authorisation request, the\u00a0`Consent`\u00a0transitions to the\u00a0`PRE_AUTHORIZED`\u00a0state\n- At this point, the user has completed the required pre-authorisation but you will still need an additional authorisation from the user to authorise the payment using\u00a0[PUT Create Payment Authorisation Request](https://docs.yapily.com/#4a20b328-2499-431d-b3fd-a3924b2f0c95).\n- Once the user is redirected to the bank via the\u00a0`authorisation-url`\u00a0or the\u00a0`qr-code-url`\u00a0and authorises the authorisation request, the\u00a0`Consent`\u00a0transitions to the\u00a0`AUTHORIZED`\u00a0state\nThis will also add the relevant financial data features to the\u00a0`Consent`\u00a0and then you are able to execute the payment request as usual\n\n![Authorisation_Flows-Coupled_Pre_Payments](https://storage.googleapis.com/static.yapily.com/images/documentation/2020/Authorisation_Flows-Coupled_Pre_Payments.svg?r=1)\n\n**Note**: This diagram shows the\u00a0coupled flow\u00a0being used in both\u00a0steps 1-3\u00a0and\u00a0steps 3-5\u00a0to obtain the\u00a0consentToken. As with the flows above, the OTT can also be used or alternatively, the decoupled flow can be used but only the coupled flow is shown for simplicity.",
       "event": [
         {
           "listen": "prerequest",
@@ -8561,109 +8561,109 @@
   ],
   "variable": [
     {
-      "id": "5b2089fd-d76e-41b2-aa4e-ee4c400fabe7",
+      "id": "3fa85ec6-2a18-43ae-b6f8-718df615e1b3",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "d556c886-a4ec-44e8-85c3-74ad1eb6e2a3",
+      "id": "4cbb47ae-4163-44c0-a321-15e64eb1a4ae",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "d0abd240-f82d-445e-8888-8f9dc814779f",
+      "id": "40db12de-9651-476a-aa6c-9940d12fbfeb",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "46b22166-cc6d-4ed1-beb4-3fa848c94221",
+      "id": "868545a5-d970-4333-9424-61bdd8368ab4",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "030b0005-cdd5-4210-bb08-dc24eba19014",
+      "id": "ad1015a2-818b-4977-95d0-8f43816d0b5e",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "3d2a92b0-e132-44f2-b19f-fb2fdfecb90a",
+      "id": "1399ad02-c5bd-49ad-8116-c488423d1470",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "5f30083c-ac15-4daa-9ee0-8572e0f7e1ee",
+      "id": "569765b0-c5b4-4161-91cc-db2448a8520a",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "8be76c95-0289-4bb3-8378-33f3b7a6b460",
+      "id": "c74e8674-a563-4d2a-9e60-e84063b139ac",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "4dd3013b-6fa0-4bc8-a475-d0c006cebd69",
+      "id": "b0e51207-efbf-48b8-9fbb-b0dd61438ed8",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "6deca17b-b48a-48d1-a903-f6f6b5eea6a3",
+      "id": "d037e3ca-efba-4ab8-a86c-ff783dcf2cd6",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "a55e14c7-ddfe-4ad3-b7ba-f31c50412415",
+      "id": "bd4de8c1-62b3-43b0-9a51-8fef2f28f428",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "106ed377-ef54-4fee-8880-b23855ed1a8d",
+      "id": "ab0edb8a-e6dc-44da-9e21-aca20060e2bc",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "80c2c52f-2614-4560-8726-141e497c4964",
+      "id": "b1d6c5db-ed3b-45f9-a854-444fe68ea6a8",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "77bc09e9-a5d2-46de-9984-9d82cfbd91dd",
+      "id": "1efac337-ba87-4272-9374-86ed1e1417ea",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "bef6c547-3f72-45a5-aaac-82f62113d1ad",
+      "id": "8844506d-37b8-4080-a789-07ac427400b4",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "1918b9c6-d73e-4a7d-b359-4cca18ac04f2",
+      "id": "6fd9484e-ff2e-4b52-a2d5-555e3a4f5725",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "0c65cd89-7310-4acc-939a-d0a884e7c3a5",
+      "id": "bb0ab751-c50e-465d-8e4c-280fe4884312",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "060699f7-f050-4fe2-bbad-3f72b3034e7c",
+      "id": "58ee8dc7-29a4-4f75-bb3a-a85c838923dd",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
