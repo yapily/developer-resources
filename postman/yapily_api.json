@@ -3855,7 +3855,7 @@
           ]
         },
         {
-          "name": "Create Account Authorisation Request Copy",
+          "name": "Create Account Pre-authorisation Request",
           "_postman_id": "80b7c51d-88b9-4008-949a-5abe380c73aa",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -3893,10 +3893,12 @@
               "mode": "raw",
               "raw": "{\n\t\"userUuid\": \"{{user-uuid}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}",
               "options": {
-                "raw": {}
+                "raw": {
+                  "language": "json"
+                }
               }
             },
-            "url": "https://api.yapily.com/account-auth-requests",
+            "url": "https://api.yapily.com/pre-auth-requests",
             "description": "Feature: `INITIATE_ACCOUNT_REQUEST`\n\nInitiate the authorisation process and direct users to the login screen of their financial institution in order to give consent to access account data.\n\nSee [POST Create Account Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Account+Authorisation+Request) in the Knowledge Base for more information."
           },
           "response": [
@@ -7958,109 +7960,109 @@
   ],
   "variable": [
     {
-      "id": "ef6e327f-2f5a-447f-bd93-c9b8a8a64ad7",
+      "id": "005f4b35-8982-4293-9d54-d11bf9d4f469",
       "key": "application-uuid",
       "value": "{{application-uuid}}",
       "type": "string"
     },
     {
-      "id": "619c7e72-cc36-4e55-8c82-681da4abe7c1",
+      "id": "8190028e-8d3b-4294-866e-ead30ad053a4",
       "key": "application-secret",
       "value": "{{application-secret}}",
       "type": "string"
     },
     {
-      "id": "7926ab51-3ab7-4c38-a868-016b9b3f2ee0",
+      "id": "47928fcd-1f2c-432f-b657-7492d0f76178",
       "key": "institution-id",
       "value": "{{institution-id}}",
       "type": "string"
     },
     {
-      "id": "dd5704fc-ae3b-440a-a038-1e03bb11fc4f",
+      "id": "f043574b-57a8-48f4-b689-55ba3c6d9f07",
       "key": "appUserId",
       "value": "{{app-user-id}}",
       "type": "string"
     },
     {
-      "id": "198d2a4e-b5a1-46f5-b169-9cdf2f7341f5",
+      "id": "b19d1c46-4500-42ce-b22a-65936ff4ef19",
       "key": "user-uuid",
       "value": "{{user-uuid}}",
       "type": "string"
     },
     {
-      "id": "044d78fe-b646-44b6-b29a-9a6e42271c5c",
+      "id": "e026f048-c5ba-4ca0-9df0-c72afa6edb85",
       "key": "consent-token",
       "value": "{{consent-token}}",
       "type": "string"
     },
     {
-      "id": "937bba92-fee2-413f-8a46-00343ef9214a",
+      "id": "279eca00-f9ea-4f40-83f9-9d76a5350887",
       "key": "api-key",
       "value": "{{api-key}}",
       "type": "string"
     },
     {
-      "id": "8dd3f417-dcc2-4e32-b6d9-0110520ae3e4",
+      "id": "dbd69dba-049c-47e1-8ad6-1c5a3c2309b3",
       "key": "account-id",
       "value": "{{account-id}}",
       "type": "string"
     },
     {
-      "id": "99088d0f-a9e9-4788-bcbc-56889e11aa87",
+      "id": "73f803be-b012-4a64-8d51-73bcebf70059",
       "key": "callback-url",
       "value": "{{callback-url}}",
       "type": "string"
     },
     {
-      "id": "e004100c-0cf2-4c79-980a-2f5b60563475",
+      "id": "912704ba-067b-463c-a50a-b306eb284939",
       "key": "payment-id",
       "value": "{{payment-id}}",
       "type": "string"
     },
     {
-      "id": "668efbe1-1bbf-4691-8629-44378f1c488b",
+      "id": "b8cdbb5a-efc2-4ffd-a18b-1d6f565f10ec",
       "key": "consent-id",
       "value": "{{consent-id}}",
       "type": "string"
     },
     {
-      "id": "ee4c5353-200f-4b6f-a075-e446e2b82637",
+      "id": "32c3f323-7792-4ffd-bb32-b0f63d11e7b8",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}",
       "type": "string"
     },
     {
-      "id": "5214cee9-0da7-419b-b0bc-ad9c1a4d25d9",
+      "id": "b5d6aa07-ff63-48c5-996d-205ce4ffc945",
       "key": "currency",
       "value": "{{currency}}",
       "type": "string"
     },
     {
-      "id": "b37b031c-df78-47c3-a24a-4d87ec61ca72",
+      "id": "4329511c-9d0f-4894-90ae-06745e3925f4",
       "key": "transactions-from",
       "value": "{{transactions-from}}",
       "type": "string"
     },
     {
-      "id": "1b5f41fa-1ca0-4c89-a0d1-bd2638ab13eb",
+      "id": "2a67173f-370d-447c-a8d0-253b3b4ef104",
       "key": "transactions-to",
       "value": "{{transactions-to}}",
       "type": "string"
     },
     {
-      "id": "1cc94466-61d7-40e9-9a78-cf80da2be4e1",
+      "id": "2dc17aad-5a4f-400a-8792-e1a57b8459c7",
       "key": "expires-at",
       "value": "{{expires-at}}",
       "type": "string"
     },
     {
-      "id": "453ddf34-5a13-4cc6-baf6-bfafef1cf487",
+      "id": "000dd638-56b1-4f4d-ba5b-5d80f921c531",
       "key": "one-time-token",
       "value": "{{one-time-token}}",
       "type": "string"
     },
     {
-      "id": "f6f0ff17-33ba-43e4-adb5-0964d07ecbac",
+      "id": "416627b4-0d6c-4e36-81bc-f1b7e013a50e",
       "key": "statement-id",
       "value": "{{statement-id}}",
       "type": "string"
