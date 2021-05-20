@@ -5068,7 +5068,7 @@
           ]
         },
         {
-          "name": "Get Balances",
+          "name": "Get Account Balances",
           "id": "e41b1298-7158-4b2b-9b68-64cd28cb24f4",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -5157,7 +5157,7 @@
             },
             {
               "id": "a9685ded-97e0-4370-8235-d505e8637cd6",
-              "name": "200 OK Response (GET BALANCES)",
+              "name": "200 OK Response",
               "originalRequest": {
                 "method": "GET",
                 "header": [
@@ -5178,7 +5178,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \" Account Test\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"http://callback-url.com/\",\n     \"accountRequest\": {\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}",
+                  "raw": "{\n  \"meta\": {\n    \"tracingId\": \"cfeba8da-d9a8-46c3-b9f6-80a52149a775\"\n  },\n  \"data\": [\n    {\n      \"balances\": [\n        {\n          \"balanceAmount\": {\n            \"amount\": 10,\n            \"currency\": \"GBP\"\n          },\n          \"dateTime\": \"2020-09-21T16:35:55Z\",\n          \"type\": \"CLOSING_AVAILABLE\"\n        }\n      ],\n      \"mainBalanceAmount\": {\n        \"amount\": 10,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5318,7 +5318,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
+                "url": "https://api.yapily.com/accounts/{{account-id}}/beneficiaries"
               },
               "status": "OK",
               "code": 200,
@@ -5399,7 +5399,7 @@
               ],
               "cookie": [],
               "responseTime": null,
-              "body": ""
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"cfeba8da-d9a8-46c3-b9f6-80a52149a775\"\n    },\n    \"data\": [\n        {\n            \"id\": \"aadn1pyst5ka1o1x8gkklori09n60rtgcr5t\",\n            \"isTrusted\": true,\n            \"reference\": \"Rent\",\n            \"payee\": {\n                \"accountIdentifications\": [\n                    {\n                        \"identification\": \"ACCOUNT_NUMBER\",\n                        \"type\": \"12345678\"\n                    },\n                    {\n                        \"identification\": \"SORT_CODE\",\n                        \"type\": \"123456\"\n                    }\n                ],\n                \"name\": \"Bojack Horseman\"\n            }\n        }\n    ]\n}"
             },
             {
               "id": "df929a5f-949b-4e01-a89c-2f866397df3e",
@@ -8486,92 +8486,92 @@
   ],
   "variable": [
     {
-      "id": "c2c86ec9-7e5a-41f3-b9ea-4d7fc22f9e82",
+      "id": "ce0bc062-14d0-41ce-b049-3b6436d55c75",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "27c83427-3445-4bc1-980a-f959fa080dfa",
+      "id": "7ad2dcd7-75ae-44fb-be59-867786fdc7cd",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "b6b65844-e86d-4921-b0ee-80199e151b64",
+      "id": "dc324e45-12d4-47e0-9141-af8b4b29b197",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "6f2f0aae-32eb-451a-adee-8320d795846a",
+      "id": "ecc7e18d-3183-452a-84cd-e24794f0e93c",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "22bb7978-50c9-4757-8359-7373276118ea",
+      "id": "e2d332b5-0a91-44ad-8264-8354ec1952be",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "04c988df-23c5-4fd2-be47-3d1dfe622b80",
+      "id": "6a0e93f8-de76-45ef-b307-00f163e9ee26",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "b759e147-bef8-4c5e-8920-fc18c6fb4c0d",
+      "id": "d57c78f4-9f29-4e73-8cae-ec2d6b24506d",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "b9c4c00c-def6-43dd-9011-1748bbc5117c",
+      "id": "d5324e5d-d42d-4e3c-b02d-6d44507c2b80",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "89b20fdb-565f-40b3-90b6-ab361768c6d6",
+      "id": "074b5b0a-fa6b-4527-be1a-7d58ecd13562",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "1c65fcb5-11fc-4875-9057-34832a128ac1",
+      "id": "2673cc0a-3e1f-421b-adc9-a4c20f6b212d",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "0ec821aa-00c7-4867-8aaf-da373adfaa50",
+      "id": "85b5de00-b90e-4f52-84f2-047b040d8ee9",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "d14642ea-3ebe-43e7-922b-64a8dacb4576",
+      "id": "b927b12c-ee04-4e0f-b1c6-f95eb442e19b",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "acaaf78e-92d5-46bd-911c-6747da86bbf4",
+      "id": "a965df0b-884a-4406-91bc-6e20d0e01e42",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "2d1ee769-4fb6-42a6-ab0f-110818974a0c",
+      "id": "aeb55486-f021-4229-b522-07f343f81c2e",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "67d8a56b-80e5-44e4-933e-465af052ab93",
+      "id": "69ec4ead-e4e8-4d1c-ba46-63cde7b51b62",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "95300546-1413-4235-b0d8-50146aae012a",
+      "id": "7f4dfe1f-d8b1-4925-8610-afc99dc0ad1d",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "47528cdd-4a32-4f55-a86f-eebfb0114d27",
+      "id": "d3ac031c-d562-4b19-9415-ba8bacb095c8",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "7e9ae5ac-8fad-4e02-a6f7-cd3a9034b587",
+      "id": "ed0583f2-6ce4-4573-bac1-b7c23d822c25",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
