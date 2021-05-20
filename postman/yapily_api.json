@@ -5305,6 +5305,243 @@
           ]
         },
         {
+          "name": "Get Beneficiaries",
+          "id": "edb0f102-6514-44ad-a22d-a333a7229415",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts/{{account-id}}/beneficiaries",
+            "description": "Feature: `ACCOUNT_BALANCES`\n\nReturns the balance for the end user associated with the presented consent token.\n\nSee [GET Balances](https://kb.yapily.com/display/YAD/GET+Get+Balances) in the Knowledge Base for more information."
+          },
+          "response": [
+            {
+              "id": "17efbf04-fcee-4f96-b8b8-2293082e68da",
+              "name": "200 OK Response (GET BALANCES)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \" Account Test\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"http://callback-url.com/\",\n     \"accountRequest\": {\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "133",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 18 May 2018 14:21:02 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            },
+            {
+              "id": "5b52b4fa-72bd-4c09-9d23-d0c260ec479e",
+              "name": "200 Ok Response (GET BALANCES AND TRANSACTIONS)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \" Account Test\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"http://callback-url.com/\",\n    \"accountRequest\": {\n        \"accountIdentifiersForTransaction\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ],\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            },
+            {
+              "id": "df929a5f-949b-4e01-a89c-2f866397df3e",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Jan 2019 12:00:11 GMT"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "114"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 google"
+                },
+                {
+                  "key": "Alt-Svc",
+                  "value": "clear"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "Get Transactions",
           "event": [
             {
@@ -6753,243 +6990,6 @@
               "code": 401,
               "_postman_previewlanguage": "json",
               "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Get Balances Copy",
-          "id": "edb0f102-6514-44ad-a22d-a333a7229415",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}"
-              }
-            ],
-            "url": "https://api.yapily.com/accounts/{{account-id}}/balances",
-            "description": "Feature: `ACCOUNT_BALANCES`\n\nReturns the balance for the end user associated with the presented consent token.\n\nSee [GET Balances](https://kb.yapily.com/display/YAD/GET+Get+Balances) in the Knowledge Base for more information."
-          },
-          "response": [
-            {
-              "id": "17efbf04-fcee-4f96-b8b8-2293082e68da",
-              "name": "200 OK Response (GET BALANCES)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \" Account Test\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"http://callback-url.com/\",\n     \"accountRequest\": {\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "133",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 18 May 2018 14:21:02 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            },
-            {
-              "id": "5b52b4fa-72bd-4c09-9d23-d0c260ec479e",
-              "name": "200 Ok Response (GET BALANCES AND TRANSACTIONS)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \" Account Test\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"http://callback-url.com/\",\n    \"accountRequest\": {\n        \"accountIdentifiersForTransaction\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ],\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            },
-            {
-              "id": "df929a5f-949b-4e01-a89c-2f866397df3e",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/balances"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Date",
-                  "value": "Wed, 09 Jan 2019 12:00:11 GMT"
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "114"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 google"
-                },
-                {
-                  "key": "Alt-Svc",
-                  "value": "clear"
-                }
-              ],
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
@@ -8554,92 +8554,92 @@
   ],
   "variable": [
     {
-      "id": "f3727746-adf7-4e7a-a093-7e10a4f31ed3",
+      "id": "c838bb69-bb00-43d4-8ac6-90af70ca49dd",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "a3bbbfe9-fe01-48b7-ae1c-e32d55811640",
+      "id": "d45e5a74-4eb3-4e94-99ff-df9664ab2422",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "8aacd9d8-95dc-4215-8ca6-98c6de17127c",
+      "id": "0df04401-a34e-422f-a9f3-263ef6b4a30e",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "1eaa6b3f-6726-413e-8d12-c0f844f34b08",
+      "id": "4960a6b3-923a-425b-8089-f6df8f6b288c",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "100784a5-813a-43b6-8eef-924b49d924eb",
+      "id": "2c8bf927-2036-4f39-8e81-a2fada8e7874",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "35d1102b-870e-4d6a-af00-94c824a790ac",
+      "id": "c552036b-dc18-4dad-9b8c-23a984582614",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "384c37b6-9d3f-4e39-9705-e2f481a5a25b",
+      "id": "a535dddb-fc25-4e9e-a98d-69f2020c22f8",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "40f362a5-d92f-462e-bed0-4a4ecc16a1c1",
+      "id": "6f21632f-46ac-4ed4-9a66-09b7345f0be6",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "16ef8502-8113-4441-bef3-db510c7d8ac5",
+      "id": "1fd5b386-0c83-419b-9919-0f7cf2f31572",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "9d455cd4-989c-4476-8738-58e5254aacaf",
+      "id": "019cd224-441f-46b4-86ee-f8d0c23aea99",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "d6264c1f-8bf1-4183-8354-bd63f796ba98",
+      "id": "a851cac4-0bec-4c8a-93c0-5a3e56369835",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "b0619e20-20ee-49bc-8d7e-d08b8df00f34",
+      "id": "f22daee4-adfe-46a9-9292-8ea065ffbdf8",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "e4b6b195-4fcf-4e9e-a40d-b3c14cbfc989",
+      "id": "53dc5608-1aa4-4172-8d07-5c9745755223",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "198ed1d6-a927-410d-a1e6-bf68897d34e6",
+      "id": "2de7f569-bbee-4bb8-a0dd-2c78e4708f88",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "20413567-b17b-43c2-9f06-f62329917c04",
+      "id": "d7c2d8cd-5de2-4f16-b6ec-873f04866109",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "c97d66eb-f83f-46be-b05c-130d360c6701",
+      "id": "4aab603d-bceb-4a8d-b129-ce87dd8de03a",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "8af58b42-c98a-420e-97b7-328219c44b7b",
+      "id": "3cd8aae2-8368-484e-8024-926549bb4d31",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "69627a33-b72c-4a3b-83ab-7ad3773ac623",
+      "id": "f7a14091-56cc-4605-a8be-b0e563242f35",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
