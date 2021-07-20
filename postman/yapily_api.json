@@ -2690,6 +2690,341 @@
                   "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
                 }
               ]
+            },
+            {
+              "name": "Update Account Authorisation",
+              "id": "75a4d838-ee3e-43c7-9b28-e1c100f73f1b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "description": "The consent token",
+                    "type": "text"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. The IP address of the PSU",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"applicationUserId\": \"{{application-user-id}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}"
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "18da7c96-96e8-4505-b60e-7bb3340cabb4",
+                  "name": "Ok 200 Request (ACCOUNT AUTH USING APPLICATION-USER-ID)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Consent",
+                        "value": "{{consent-token}}",
+                        "description": "The Consent token",
+                        "type": "text"
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                        "key": "psu-id",
+                        "type": "text",
+                        "value": "{{psu-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                        "key": "psu-corporate-Id",
+                        "type": "text",
+                        "value": "{{psu-corporate-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Not currently used.",
+                        "key": "psu-ip-address",
+                        "type": "text",
+                        "value": "{{psu-ip-address}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"caixabank\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/account-auth-requests"
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": null,
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+                },
+                {
+                  "id": "4307526d-b626-4e81-9922-0d9aca2f535c",
+                  "name": " Ok 200 Request (ACCOUNT AUTH USING APPLICATION-USER-ID WITH RAW)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Consent",
+                        "value": "{{consent-token}}",
+                        "description": "The Consent token",
+                        "type": "text"
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                        "key": "psu-id",
+                        "type": "text",
+                        "value": "{{psu-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                        "key": "psu-corporate-Id",
+                        "type": "text",
+                        "value": "{{psu-corporate-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Not currently used.",
+                        "key": "psu-ip-address",
+                        "type": "text",
+                        "value": "{{psu-ip-address}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"caixabank\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/account-auth-requests"
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": null,
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    },\n    \"raw\": [\n        {\n            \"request\": {\n                \"method\": \"POST\",\n                \"url\": \"https://psd2.redsys.es/api-entrada-xs2a/services/caixabank/v1/consents\",\n                \"requestInstant\": \"2020-08-18T15:00:27.005Z\",\n                \"headers\": {\n                    \"Authorization\": \"Bearer ...2dd19\",\n                    \"tpp-nok-redirect-uri\": \"http://local-auth.yapily.com:8082/?state=f10a24a7f2124a44af4719efb820c539\",\n                    \"tpp-redirect-preferred\": \"true\",\n                    \"X-Request-ID\": \"4cc8379a-5a88-4020-9b42-37d654795ad0\",\n                    \"Digest\": \"SHA-256=zl/xvGvIlp5Y7al0Ew7DDpVkNwYm8z1NBYRXmphzwog=\",\n                    \"tpp-redirect-uri\": \"http://local-auth.yapily.com:8082/?state=f10a24a7f2124a44af4719efb820c539\",\n                    \"X-IBM-Client-ID\": \"aadc0b62-eb0b-4366-96bf-bec864f05e7f\",\n                    \"Signature\": \"keyId=\\\"SN=4d65a12722dcdde01c572da9de97a59f,CA=CN=MULTICERTTrustServicesCertificationAuthority002,OU=CertificationAuthority,O=MULTICERT-ServiçosdeCertificaçãoElectrónicaS.A.,C=PT\\\",algorithm=\\\"SHA-256\\\",headers=\\\"digest x-request-id\\\",signature=\\\"YKD8ai8KoWB2GpycAl0k2zuUXn/nhvux7lu2GltALZx4G43ayeo1Ywd4e6Cgh4JXD0FDms6PjJZLF6k0GqLMs02Sb6xlCQd20uE5E470aXnB8Uquzrq6QWlXFIqgGAL9AOUNUu+dkr+BK6WMNiGzQQWFdLhT3fGHFEghYdsuJ4Lyz+2Hd13IsiIFM+ClTL/541jIdb3+9/hqCs1/q8c7BSer8VMa3OT/8FqXr1iwIZyXBxrsvsMoHH+Wg0cuklhoL4GE0/1yGBkCcOVbVa/1a+iGgHQCf2MukpaskdTkOccRTEX9JInWoEQ8eibKOrN3v6b5AUPUq/HALPNylWPD1A==\\\"\",\n                    \"User-Agent\": \"default\",\n                    \"TPP-Signature-Certificate\": \"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\",\n                    \"Content-Type\": \"application/json\"\n                },\n                \"body\": {\n                    \"access\": {\n                        \"allPsd2\": \"allAccounts\"\n                    },\n                    \"combinedServiceIndicator\": false,\n                    \"validUntil\": \"2020-11-16\",\n                    \"recurringIndicator\": true,\n                    \"frequencyPerDay\": 4\n                },\n                \"bodyParameters\": {},\n                \"startTime\": \"2020-08-18T15:00:27.005Z\"\n            },\n            \"duration\": \"PT2.588S\",\n            \"headers\": {\n                \"Keep-Alive\": \"timeout=10, max=100\",\n                \"X-Request-ID\": \"4cc8379a-5a88-4020-9b42-37d654795ad0\",\n                \"Connection\": \"Keep-Alive\",\n                \"ASPSP-SCA-Approach\": \"REDIRECT\",\n                \"Content-Length\": \"526\",\n                \"Content-Language\": \"en-US\",\n                \"Date\": \"Tue, 18 Aug 2020 15:00:27 GMT\",\n                \"Content-Type\": \"application/json\",\n                \"Location\": \"/v1/consents/8d68a9ef-e163-11ea-9572-b35113020f49\",\n                \"X-Powered-By\": \"Servlet/3.1\"\n            },\n            \"resultCode\": 201,\n            \"result\": {\n                \"consentId\": \"8d68a9ef-e163-11ea-9572-b35113020f49\",\n                \"_links\": {\n                    \"scaRedirect\": {\n                        \"href\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\"\n                    },\n                    \"self\": {\n                        \"href\": \"/v1/consents/8d68a9ef-e163-11ea-9572-b35113020f49\"\n                    },\n                    \"status\": {\n                        \"href\": \"/v1/consents/8d68a9ef-e163-11ea-9572-b35113020f49/status\"\n                    }\n                },\n                \"consentStatus\": \"received\"\n            }\n        }\n    ]\n}"
+                },
+                {
+                  "id": "16325d23-94e2-47e9-8729-4ca242692722",
+                  "name": "Ok 200 Request (ACCOUNT AUTH USING USER-UUID)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Consent",
+                        "value": "{{consent-token}}",
+                        "description": "The Consent token",
+                        "type": "text"
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                        "key": "psu-id",
+                        "type": "text",
+                        "value": "{{psu-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                        "key": "psu-corporate-Id",
+                        "type": "text",
+                        "value": "{{psu-corporate-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Not currently used.",
+                        "key": "psu-ip-address",
+                        "type": "text",
+                        "value": "{{psu-ip-address}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n    \"institutionId\": \"caixabank\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/account-auth-requests"
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": null,
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+                },
+                {
+                  "id": "66dc62e2-e8c0-424f-aa12-cdc8312d3f0c",
+                  "name": " Ok 200 Request (ACCOUNT AUTH WITH CALLBACK)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Consent",
+                        "value": "{{consent-token}}",
+                        "description": "The Consent token",
+                        "type": "text"
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                        "key": "psu-id",
+                        "type": "text",
+                        "value": "{{psu-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                        "key": "psu-corporate-Id",
+                        "type": "text",
+                        "value": "{{psu-corporate-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Not currently used.",
+                        "key": "psu-ip-address",
+                        "type": "text",
+                        "value": "{{psu-ip-address}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"caixabank\",\n    \"callback\": \"{{callback-url}}\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/account-auth-requests"
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": null,
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+                },
+                {
+                  "id": "e45487f6-3314-46b4-9879-aa893c4c9730",
+                  "name": "Ok 200 Request (ACCOUNT AUTH WITH ONE-TIME-TOKEN)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Consent",
+                        "value": "{{consent-token}}",
+                        "description": "The Consent token",
+                        "type": "text"
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                        "key": "psu-id",
+                        "type": "text",
+                        "value": "{{psu-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                        "key": "psu-corporate-Id",
+                        "type": "text",
+                        "value": "{{psu-corporate-id}}",
+                        "disabled": true
+                      },
+                      {
+                        "description": "Not currently used.",
+                        "key": "psu-ip-address",
+                        "type": "text",
+                        "value": "{{psu-ip-address}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n    \"institutionId\": \"caixabank\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/account-auth-requests"
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": null,
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+                }
+              ]
             }
           ],
           "id": "b10c84ed-136c-4912-abd6-9ea70e371495"
@@ -4077,341 +4412,6 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n    },\n    \"data\": {\n        \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n        \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"postbank-sandbox\",\n        \"state\": \"551440fc13794010855ad81c8463c926\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n        \"featureScope\": [\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"scaMethods\": [\n            {\n                \"id\": \"258211#OPTICAL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, optisch\"\n            },\n            {\n                \"id\": \"258211#MANUEL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, manuell\"\n            },\n            {\n                \"id\": \"591655\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"RolandmTAN\"\n            },\n            {\n                \"id\": \"591656\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"RSRolandIP2\"\n            }\n        ]\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Update Account Authorisation",
-          "id": "75a4d838-ee3e-43c7-9b28-e1c100f73f1b",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}",
-                "description": "The consent token",
-                "type": "text"
-              },
-              {
-                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                "key": "psu-id",
-                "type": "text",
-                "value": "{{psu-id}}",
-                "disabled": true
-              },
-              {
-                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                "key": "psu-corporate-Id",
-                "type": "text",
-                "value": "{{psu-corporate-id}}",
-                "disabled": true
-              },
-              {
-                "description": "Conditional. The IP address of the PSU",
-                "key": "psu-ip-address",
-                "type": "text",
-                "value": "{{psu-ip-address}}",
-                "disabled": true
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"applicationUserId\": \"{{application-user-id}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n\t\"callback\": \"{{callback-url}}\"\n}"
-            },
-            "url": "https://api.yapily.com/account-auth-requests"
-          },
-          "response": [
-            {
-              "id": "18da7c96-96e8-4505-b60e-7bb3340cabb4",
-              "name": "Ok 200 Request (ACCOUNT AUTH USING APPLICATION-USER-ID)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "description": "The Consent token",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"caixabank\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            },
-            {
-              "id": "4307526d-b626-4e81-9922-0d9aca2f535c",
-              "name": " Ok 200 Request (ACCOUNT AUTH USING APPLICATION-USER-ID WITH RAW)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "description": "The Consent token",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"caixabank\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    },\n    \"raw\": [\n        {\n            \"request\": {\n                \"method\": \"POST\",\n                \"url\": \"https://psd2.redsys.es/api-entrada-xs2a/services/caixabank/v1/consents\",\n                \"requestInstant\": \"2020-08-18T15:00:27.005Z\",\n                \"headers\": {\n                    \"Authorization\": \"Bearer ...2dd19\",\n                    \"tpp-nok-redirect-uri\": \"http://local-auth.yapily.com:8082/?state=f10a24a7f2124a44af4719efb820c539\",\n                    \"tpp-redirect-preferred\": \"true\",\n                    \"X-Request-ID\": \"4cc8379a-5a88-4020-9b42-37d654795ad0\",\n                    \"Digest\": \"SHA-256=zl/xvGvIlp5Y7al0Ew7DDpVkNwYm8z1NBYRXmphzwog=\",\n                    \"tpp-redirect-uri\": \"http://local-auth.yapily.com:8082/?state=f10a24a7f2124a44af4719efb820c539\",\n                    \"X-IBM-Client-ID\": \"aadc0b62-eb0b-4366-96bf-bec864f05e7f\",\n                    \"Signature\": \"keyId=\\\"SN=4d65a12722dcdde01c572da9de97a59f,CA=CN=MULTICERTTrustServicesCertificationAuthority002,OU=CertificationAuthority,O=MULTICERT-ServiçosdeCertificaçãoElectrónicaS.A.,C=PT\\\",algorithm=\\\"SHA-256\\\",headers=\\\"digest x-request-id\\\",signature=\\\"YKD8ai8KoWB2GpycAl0k2zuUXn/nhvux7lu2GltALZx4G43ayeo1Ywd4e6Cgh4JXD0FDms6PjJZLF6k0GqLMs02Sb6xlCQd20uE5E470aXnB8Uquzrq6QWlXFIqgGAL9AOUNUu+dkr+BK6WMNiGzQQWFdLhT3fGHFEghYdsuJ4Lyz+2Hd13IsiIFM+ClTL/541jIdb3+9/hqCs1/q8c7BSer8VMa3OT/8FqXr1iwIZyXBxrsvsMoHH+Wg0cuklhoL4GE0/1yGBkCcOVbVa/1a+iGgHQCf2MukpaskdTkOccRTEX9JInWoEQ8eibKOrN3v6b5AUPUq/HALPNylWPD1A==\\\"\",\n                    \"User-Agent\": \"default\",\n                    \"TPP-Signature-Certificate\": \"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\",\n                    \"Content-Type\": \"application/json\"\n                },\n                \"body\": {\n                    \"access\": {\n                        \"allPsd2\": \"allAccounts\"\n                    },\n                    \"combinedServiceIndicator\": false,\n                    \"validUntil\": \"2020-11-16\",\n                    \"recurringIndicator\": true,\n                    \"frequencyPerDay\": 4\n                },\n                \"bodyParameters\": {},\n                \"startTime\": \"2020-08-18T15:00:27.005Z\"\n            },\n            \"duration\": \"PT2.588S\",\n            \"headers\": {\n                \"Keep-Alive\": \"timeout=10, max=100\",\n                \"X-Request-ID\": \"4cc8379a-5a88-4020-9b42-37d654795ad0\",\n                \"Connection\": \"Keep-Alive\",\n                \"ASPSP-SCA-Approach\": \"REDIRECT\",\n                \"Content-Length\": \"526\",\n                \"Content-Language\": \"en-US\",\n                \"Date\": \"Tue, 18 Aug 2020 15:00:27 GMT\",\n                \"Content-Type\": \"application/json\",\n                \"Location\": \"/v1/consents/8d68a9ef-e163-11ea-9572-b35113020f49\",\n                \"X-Powered-By\": \"Servlet/3.1\"\n            },\n            \"resultCode\": 201,\n            \"result\": {\n                \"consentId\": \"8d68a9ef-e163-11ea-9572-b35113020f49\",\n                \"_links\": {\n                    \"scaRedirect\": {\n                        \"href\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\"\n                    },\n                    \"self\": {\n                        \"href\": \"/v1/consents/8d68a9ef-e163-11ea-9572-b35113020f49\"\n                    },\n                    \"status\": {\n                        \"href\": \"/v1/consents/8d68a9ef-e163-11ea-9572-b35113020f49/status\"\n                    }\n                },\n                \"consentStatus\": \"received\"\n            }\n        }\n    ]\n}"
-            },
-            {
-              "id": "16325d23-94e2-47e9-8729-4ca242692722",
-              "name": "Ok 200 Request (ACCOUNT AUTH USING USER-UUID)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "description": "The Consent token",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n    \"institutionId\": \"caixabank\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            },
-            {
-              "id": "66dc62e2-e8c0-424f-aa12-cdc8312d3f0c",
-              "name": " Ok 200 Request (ACCOUNT AUTH WITH CALLBACK)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "description": "The Consent token",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"caixabank\",\n    \"callback\": \"{{callback-url}}\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            },
-            {
-              "id": "e45487f6-3314-46b4-9879-aa893c4c9730",
-              "name": "Ok 200 Request (ACCOUNT AUTH WITH ONE-TIME-TOKEN)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "description": "The Consent token",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n    \"institutionId\": \"caixabank\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01mzdgxycv0tnylxr2y5fkizg90\"\n    },\n    \"data\": {\n        \"id\": \"5f03f68d-bfc4-43e2-b1b0-898b61db2424\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"caixabank\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T14:48:33.981Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNT\",\n            \"ACCOUNTS\",\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://hubpsd2.redsys.es/api-oauth-xs2a/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKySDGzSLRMTdNNNTQz1jU0TE3UtTQ1N9JNMjY1NDQ2MDJIM7FU0oHrCaksSAXqcswsds7PK07NK1GqBQAAAP__.mhE4UkHxwYSrEoVcZfZ_cO9dV1qvG30xG2ablDQInrY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
             }
           ]
         },
@@ -8379,92 +8379,92 @@
   ],
   "variable": [
     {
-      "id": "c59949bd-2539-48ed-a5c2-f7c6ea4266a7",
+      "id": "4f8cacd9-34fe-458a-aa35-7a4d21fd4eb9",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "6dee8538-ed78-4b4d-872d-136e4809c2aa",
+      "id": "9ac73fe6-62e2-456c-99d9-5843b6117d52",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "baa4f451-aa63-4035-94c5-9691755938d7",
+      "id": "1ceeae44-65ed-4705-b339-cf1e3d19a963",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "db0e803c-699f-4d90-a5c7-f0bc9f0f113c",
+      "id": "01acab24-4e18-40c8-8e8f-d7644b90d42a",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "12978c02-c49e-4a79-ac65-ab234a65bc92",
+      "id": "03d82a28-67bf-4f51-a572-36a843669131",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "150c0d6c-b68c-4e7a-a2e6-141a2e6f999d",
+      "id": "2d2b78ff-4bec-4911-9551-eb6b5e43d846",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "bd985fab-9a44-4de8-b4e5-9a03cab73e22",
+      "id": "b278e3ee-41cd-4dc8-bbf1-a35f88cf7fa7",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "023c0fca-f096-4403-9ed9-8ffb79b3d6e7",
+      "id": "0289a646-2305-4b4b-99a3-88b1bc803de2",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "ca6d12e5-3501-40a1-80b5-17b7893ee3c0",
+      "id": "ed502804-e30d-446c-be00-1608aaef22e6",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "ed2918f7-722c-4d1b-97c5-76c99f25eaaa",
+      "id": "034a764a-e333-4244-aa3d-345790313e19",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "58b80ad0-d62f-4a40-acde-7cef95686c2d",
+      "id": "754df841-74a4-4d6f-a42b-9010ddf4d56d",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "e07f5197-f923-49f8-a9f9-19cdc5078d90",
+      "id": "32279197-3c39-4544-8f68-4f810a9496ed",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "0955b3a4-2949-4b01-a7f3-bd452ec70906",
+      "id": "f0476cac-baca-4084-944c-cdf37aabaa65",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "347f5b9b-3d0d-41c0-986d-394d175ab16e",
+      "id": "a83036a1-2965-45ce-b986-7a225bd44b54",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "dd820d3b-b3c1-4c59-a380-3fe97e7bf625",
+      "id": "cbc7be86-94bd-4d85-b3f3-06e6a1d27938",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "7a99dfa8-9a82-4938-bd49-47b490ffcab6",
+      "id": "b4025db1-e01b-4d32-91ee-0ff9432dea0b",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "2cc1ead7-bd8d-4dd6-9bf1-7534c605811b",
+      "id": "399a9f50-df33-48ef-84c2-3dafc33e60c8",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "552ab57a-4772-43e2-9b88-7afc2c057410",
+      "id": "07fee0f0-c631-4809-ab20-2c811a90a019",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
