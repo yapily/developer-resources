@@ -5893,6 +5893,80 @@
           ]
         },
         {
+          "name": "Get Account Scheduled Payments",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "7eadb71e-d715-4c3f-927d-626c9e3a1303",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments",
+            "description": "Feature: `ACCOUNT_SCHEDULED_PAYMENT`\n\nGet the list of scheduled payments for an account.\n\nSee [GET Account Scheduled Payments](https://kb.yapily.com/display/YAD/GET+Get+Account+Scheduled+Payments) in the Knowledge Base for more information."
+          },
+          "response": [
+            {
+              "id": "83ebf639-2376-4692-bf2d-643d0071705d",
+              "name": "200 OK (SCHEDULED PAYMENT)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"98f87cdc-0620-4d1a-99b0-77724668d64f\",\n        \"count\": 2,\n        \"pagination\": {\n            \"totalCount\": 2,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"110000000000000000000001\",\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"MA10000119820101\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"GB29MA\"\n                    }\n                ]\n            },\n            \"amountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"scheduledPaymentType\": \"ARRIVAL\",\n            \"scheduledPaymentDateTime\": \"2020-01-26T05:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"110000000000000000000002\",\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"MA10000119820101\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"GB29MA\"\n                    }\n                ]\n            },\n            \"reference\": \"Salary\",\n            \"amountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"scheduledPaymentType\": \"EXECUTION\",\n            \"scheduledPaymentDateTime\": \"2020-03-26T05:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/scheduled-payments?limit=1000\"\n    }\n}"
+            },
+            {
+              "id": "f64df9d3-0ddf-4c1f-80ad-8aa2cdc9d4ab",
+              "name": "401 UNAUTHORIZED",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "Get Account Statements",
           "event": [
             {
@@ -6511,80 +6585,6 @@
                   "value": "clear"
                 }
               ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Get Account Scheduled Payments",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "id": "7eadb71e-d715-4c3f-927d-626c9e3a1303",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}"
-              }
-            ],
-            "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments",
-            "description": "Feature: `ACCOUNT_SCHEDULED_PAYMENT`\n\nGet the list of scheduled payments for an account.\n\nSee [GET Account Scheduled Payments](https://kb.yapily.com/display/YAD/GET+Get+Account+Scheduled+Payments) in the Knowledge Base for more information."
-          },
-          "response": [
-            {
-              "id": "83ebf639-2376-4692-bf2d-643d0071705d",
-              "name": "200 OK (SCHEDULED PAYMENT)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"98f87cdc-0620-4d1a-99b0-77724668d64f\",\n        \"count\": 2,\n        \"pagination\": {\n            \"totalCount\": 2,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"110000000000000000000001\",\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"MA10000119820101\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"GB29MA\"\n                    }\n                ]\n            },\n            \"amountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"scheduledPaymentType\": \"ARRIVAL\",\n            \"scheduledPaymentDateTime\": \"2020-01-26T05:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"110000000000000000000002\",\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"MA10000119820101\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"GB29MA\"\n                    }\n                ]\n            },\n            \"reference\": \"Salary\",\n            \"amountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"scheduledPaymentType\": \"EXECUTION\",\n            \"scheduledPaymentDateTime\": \"2020-03-26T05:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/scheduled-payments?limit=1000\"\n    }\n}"
-            },
-            {
-              "id": "f64df9d3-0ddf-4c1f-80ad-8aa2cdc9d4ab",
-              "name": "401 UNAUTHORIZED",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [],
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
@@ -7886,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "19ba601f-e850-49f8-809f-10b06891b35f",
+      "id": "c17aed0a-7795-4ec4-9947-c8ca5316b043",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "d739e17f-df97-412e-b59c-9c023457e14e",
+      "id": "1866d069-8fcc-4b2b-946e-b13fec5a3977",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "e88d964c-6978-46e2-89b3-513dbe401804",
+      "id": "d4d785d2-437c-429c-aad8-3f15aff20a3c",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "76484d54-0678-4af5-ad1c-c6e43a399817",
+      "id": "3b20cce8-4151-4757-9382-63f2607a101b",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "536e4660-03be-4d1f-bd41-aa8b4e497afa",
+      "id": "41715778-74f7-4893-b0e9-ca2f7812f730",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "b97e5d14-03d0-4b22-9cbe-bd86c44d1d21",
+      "id": "6d57ddc1-d91c-4357-ac3d-3f7adac6dab0",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "c10e161c-8548-4a62-b60c-b78abd963150",
+      "id": "a1678911-2877-47bc-a252-f26cedd4e387",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "89becafb-e483-4e21-9a1f-e27d6521d47b",
+      "id": "1888f08c-5c34-4929-80ed-ea3ba3fa50aa",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "20ef9c2c-05f9-49db-9db3-5479f75d4bc3",
+      "id": "7a309ba4-4bcb-4332-bf3a-45ab0616e22c",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "961f9df0-fe25-4db3-956f-47a0c98f4327",
+      "id": "a485dcd8-67ab-499d-971b-f9542815d502",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "81184bf2-f649-4470-8ce4-71cdd54fab99",
+      "id": "61f48f01-7e8b-4fe0-90bc-b8e128683283",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "40c0ad05-9f63-45e6-8c3c-531eeb997e48",
+      "id": "2d277fb4-1647-427b-97cf-14ba2b1f6aa9",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "ff9e0869-ff4b-4a29-a880-219b26c74631",
+      "id": "01349ba0-9ff5-4a50-97c4-4144d57f6ef0",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "fa3cc76c-ad0c-41ac-9172-b4ece8cb8bce",
+      "id": "8a214e4a-0794-4753-98a6-5f174c9eca66",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "d865871d-f532-4b2b-8f99-f72b803ba9cc",
+      "id": "e59a3d94-3f14-44b0-8a9a-3ebceb1ad2b8",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "7f0a64cc-0f83-4d5b-969f-3af9dd5f6486",
+      "id": "699daae9-e01b-4dc5-9d2b-ffcb74a27e2a",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "9f8e2433-437f-40d6-80c4-142d81f0ce1c",
+      "id": "dea3cdc7-3330-4be0-bb90-6d42a517121e",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "e6efc156-53ae-4379-88e9-73d42b9a4a65",
+      "id": "517ce7a4-1cc8-438d-80f3-c24ab3891171",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
