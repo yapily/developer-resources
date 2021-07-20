@@ -5745,6 +5745,80 @@
           ]
         },
         {
+          "name": "Get Account Direct Debits",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "a5affc0a-c9cf-4203-b126-4a1bdcb7700a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits",
+            "description": "Feature: `ACCOUNT_DIRECT_DEBIT`\n\nGet the list of direct debits for an account. \n\nSee [GET Account Direct Debits](https://kb.yapily.com/display/YAD/GET+Get+Account+Direct+Debits) in the Knowledge Base for more information."
+          },
+          "response": [
+            {
+              "id": "4ecc9de7-ec5d-4789-84c5-4cf5eccc7eae",
+              "name": "200 OK (DIRECT DEBIT)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"7719f383-10d7-4dd7-bae2-a70f6adf7941\",\n        \"count\": 28,\n        \"pagination\": {\n            \"totalCount\": 28,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"900000000000000000000010\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"BT GROUP PLC\"\n            },\n            \"reference\": \"GB07414308\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 23.79,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-11T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000011\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"TV LICENCE MBP\"\n            },\n            \"reference\": \"3320580761\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 12.37,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-08T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000012\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"BRITISH GAS SERV\"\n            },\n            \"reference\": \"910011425072\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 25.51,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-05T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000013\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AFFINITY WATER\"\n            },\n            \"reference\": \"73433121\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 43.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000014\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"E.ON\"\n            },\n            \"reference\": \"15390509110\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 194.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000015\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"EE & T-MOBILE\"\n            },\n            \"reference\": \"Q20798298\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 76.10,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000016\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"LIFEBOROUGH DISTRICT COUNCIL\"\n            },\n            \"reference\": \"61457183\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 163.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000017\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"SW PLC STAKEHOLDE\"\n            },\n            \"reference\": \"832519333\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 100.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000018\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"B/CARD PLAT VISA\"\n            },\n            \"reference\": \"4929103027716000\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 459.76,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-28T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000019\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"VODAFONE LTD\"\n            },\n            \"reference\": \"687542646-00001\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 17.54,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-28T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000020\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"NW WORLD MASTERCAR\"\n            },\n            \"reference\": \"5522139704101810\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 582.08,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-21T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000021\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"SAINSBURYS BANK\"\n            },\n            \"reference\": \"7248812485188\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 269.83,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-21T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000022\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AMERICAN EXPRESS\"\n            },\n            \"reference\": \"37101310109\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 2583.46,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-20T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000023\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"VIRGIN MEDIA PYMTS\"\n            },\n            \"reference\": \"727380302001\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 82.48,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-20T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000024\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AVIVA LIFE\"\n            },\n            \"reference\": \"A319834ER\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 40.32,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000025\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AVIVA LIFE\"\n            },\n            \"reference\": \"A319879ED\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 17.84,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000026\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AVIVA LIFE\"\n            },\n            \"reference\": \"A325453EZ\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 63.20,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000027\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"LLOYDS BANK MTG\"\n            },\n            \"reference\": \"5000007799272500\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 200.65,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000028\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"HONDA FINANCE EURO\"\n            },\n            \"reference\": \"364417\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 8266.01,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-13T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000029\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"RMG CRA\"\n            },\n            \"reference\": \"401203101401\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 119.07,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-06T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000030\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"NW WORLD MASTERCAR\"\n            },\n            \"reference\": \"5522139602499925\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 891.62,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-10-22T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000031\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"DVLA-LS64XYZ\"\n            },\n            \"reference\": \"9189963\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 190.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-10-02T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000032\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"IKANO BANK AB PUB\"\n            },\n            \"reference\": \"300397712\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 143.13,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-09-05T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000033\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"GOCARDLESS LTD\"\n            },\n            \"reference\": \"AWESOMEENGIN-8HQGG\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 30.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-05-01T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000034\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"EXPLORE LEARNING\"\n            },\n            \"reference\": \"LZ241853\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 145.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-02-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000035\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"HOMELET BARBON INS\"\n            },\n            \"reference\": \"DDHL0140621\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 208.56,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-01-30T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000036\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"1LIFE MANAGEMENT\"\n            },\n            \"reference\": \"LCON260045818\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 30.40,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2016-11-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000037\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"EDF ENERGY\"\n            },\n            \"reference\": \"671018097704\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 145.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2016-10-04T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/direct-debits?limit=1000\"\n    }\n}"
+            },
+            {
+              "id": "d2e92b22-5dc5-4bde-9eb4-8daebee4e70e",
+              "name": "401 UNAUTHORIZED",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "Get Account Statements",
           "event": [
             {
@@ -6363,80 +6437,6 @@
                   "value": "clear"
                 }
               ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Get Account Direct Debits",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "id": "a5affc0a-c9cf-4203-b126-4a1bdcb7700a",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}"
-              }
-            ],
-            "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits",
-            "description": "Feature: `ACCOUNT_DIRECT_DEBIT`\n\nGet the list of direct debits for an account. \n\nSee [GET Account Direct Debits](https://kb.yapily.com/display/YAD/GET+Get+Account+Direct+Debits) in the Knowledge Base for more information."
-          },
-          "response": [
-            {
-              "id": "4ecc9de7-ec5d-4789-84c5-4cf5eccc7eae",
-              "name": "200 OK (DIRECT DEBIT)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"7719f383-10d7-4dd7-bae2-a70f6adf7941\",\n        \"count\": 28,\n        \"pagination\": {\n            \"totalCount\": 28,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"900000000000000000000010\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"BT GROUP PLC\"\n            },\n            \"reference\": \"GB07414308\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 23.79,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-11T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000011\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"TV LICENCE MBP\"\n            },\n            \"reference\": \"3320580761\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 12.37,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-08T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000012\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"BRITISH GAS SERV\"\n            },\n            \"reference\": \"910011425072\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 25.51,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-05T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000013\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AFFINITY WATER\"\n            },\n            \"reference\": \"73433121\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 43.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000014\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"E.ON\"\n            },\n            \"reference\": \"15390509110\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 194.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000015\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"EE & T-MOBILE\"\n            },\n            \"reference\": \"Q20798298\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 76.10,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000016\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"LIFEBOROUGH DISTRICT COUNCIL\"\n            },\n            \"reference\": \"61457183\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 163.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000017\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"SW PLC STAKEHOLDE\"\n            },\n            \"reference\": \"832519333\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 100.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-12-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000018\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"B/CARD PLAT VISA\"\n            },\n            \"reference\": \"4929103027716000\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 459.76,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-28T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000019\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"VODAFONE LTD\"\n            },\n            \"reference\": \"687542646-00001\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 17.54,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-28T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000020\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"NW WORLD MASTERCAR\"\n            },\n            \"reference\": \"5522139704101810\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 582.08,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-21T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000021\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"SAINSBURYS BANK\"\n            },\n            \"reference\": \"7248812485188\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 269.83,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-21T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000022\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AMERICAN EXPRESS\"\n            },\n            \"reference\": \"37101310109\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 2583.46,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-20T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000023\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"VIRGIN MEDIA PYMTS\"\n            },\n            \"reference\": \"727380302001\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 82.48,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-20T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000024\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AVIVA LIFE\"\n            },\n            \"reference\": \"A319834ER\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 40.32,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000025\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AVIVA LIFE\"\n            },\n            \"reference\": \"A319879ED\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 17.84,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000026\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"AVIVA LIFE\"\n            },\n            \"reference\": \"A325453EZ\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 63.20,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000027\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"LLOYDS BANK MTG\"\n            },\n            \"reference\": \"5000007799272500\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 200.65,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-15T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000028\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"HONDA FINANCE EURO\"\n            },\n            \"reference\": \"364417\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 8266.01,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-13T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000029\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"RMG CRA\"\n            },\n            \"reference\": \"401203101401\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 119.07,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-11-06T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000030\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"NW WORLD MASTERCAR\"\n            },\n            \"reference\": \"5522139602499925\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 891.62,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-10-22T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000031\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"DVLA-LS64XYZ\"\n            },\n            \"reference\": \"9189963\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 190.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-10-02T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000032\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"IKANO BANK AB PUB\"\n            },\n            \"reference\": \"300397712\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 143.13,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-09-05T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000033\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"GOCARDLESS LTD\"\n            },\n            \"reference\": \"AWESOMEENGIN-8HQGG\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 30.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-05-01T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000034\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"EXPLORE LEARNING\"\n            },\n            \"reference\": \"LZ241853\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 145.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-02-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000035\",\n            \"statusDetails\": {\n                \"status\": \"ACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"HOMELET BARBON INS\"\n            },\n            \"reference\": \"DDHL0140621\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 208.56,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2017-01-30T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000036\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"1LIFE MANAGEMENT\"\n            },\n            \"reference\": \"LCON260045818\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 30.40,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2016-11-01T00:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"900000000000000000000037\",\n            \"statusDetails\": {\n                \"status\": \"INACTIVE\"\n            },\n            \"payeeDetails\": {\n                \"name\": \"EDF ENERGY\"\n            },\n            \"reference\": \"671018097704\",\n            \"previousPaymentAmountDetails\": {\n                \"amount\": 145.00,\n                \"currency\": \"GBP\"\n            },\n            \"previousPaymentDateTime\": \"2016-10-04T23:00:00Z\",\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/direct-debits?limit=1000\"\n    }\n}"
-            },
-            {
-              "id": "d2e92b22-5dc5-4bde-9eb4-8daebee4e70e",
-              "name": "401 UNAUTHORIZED",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/direct-debits"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [],
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
@@ -7886,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "70c687a3-8d17-469e-b964-076550e8bb67",
+      "id": "1fb95975-3255-4465-a262-27e7bd94d3ea",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "1e1e7e24-8482-47df-bc65-6c5ee0a96eb4",
+      "id": "8b69e791-f4b8-4a0e-a21a-6258397464f7",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "089b62b2-5a28-46c8-a6f6-26d41591d4b9",
+      "id": "21d36f0b-3b4b-44f5-a71c-745c9adba870",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "11139df2-b139-4d45-96e6-34915c439faa",
+      "id": "dce1e425-223e-402f-a435-124f2323f052",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "4006843b-78f9-403a-8bff-11935fe9a4ce",
+      "id": "0cf7e50d-9882-448b-b027-b4e4c6f2789e",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "7ecbc673-8be9-4cc7-89ce-71b83cefafbf",
+      "id": "3b005e6a-3ebf-4f2b-aab8-ec6af5c09d17",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "3d73e049-9910-4a06-bb4e-0e11e1d8de1b",
+      "id": "55e985af-b04b-4ba5-8f55-35ea76a2d372",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "ecb9a5bf-9eed-4f71-ba22-843c8ec48313",
+      "id": "22d6bbc2-f133-494d-b75c-934a2fc34d87",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "92d4aa50-a958-46b4-ad0c-b442b6c5e453",
+      "id": "0aacdc49-995e-4acc-b319-d35a4eb7e199",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "7c4f402b-aad6-4983-b4a3-fb87b0633e24",
+      "id": "b3bbe53d-7514-4488-ab90-f2bb463545ef",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "3c029473-fe2f-4c1d-9af2-df37ae988fe5",
+      "id": "b2f519dd-1462-4e3e-bd56-66dc53371e86",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "926e5a7b-6be4-4a35-b43a-5b5d169d8ae8",
+      "id": "8aa9d616-e27f-4a5a-9c70-2b6704a67f50",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "7c70b812-991d-4dac-b9d0-17c5fafb2d1e",
+      "id": "64a8cf3e-2232-43c1-a254-c2b6058c73bb",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "18d5aa6c-7baf-4bf1-8175-24e1e6cc922f",
+      "id": "8b9600a0-25ad-45e8-b707-474f51cb53d9",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "864fd163-33c7-44a5-9c40-586f381d115e",
+      "id": "3b2d0880-168e-4d4a-bb8b-3e41080a1e9e",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "28814e9f-29f6-4ad5-aa10-862d5fee8f37",
+      "id": "ba41934f-e2af-47ec-bf79-df7d4d08bf01",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "e2f947d7-ec6f-42a2-b5b3-a878b2c2cc07",
+      "id": "8225cdf0-370a-4587-8515-06c54ee13d98",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "cf1ba5a2-d630-4547-88ec-03ab64e554bf",
+      "id": "46a40418-5292-4c16-9986-185b4967cdf2",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
