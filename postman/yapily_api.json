@@ -3311,6 +3311,564 @@
           "name": "Embedded",
           "item": [
             {
+              "name": "Update Embedded Account Authorisation",
+              "id": "ddb0b755-c3de-4a08-b32b-8d51bbf389eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. The IP address of the PSU",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
+                },
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "bf599ca3-5dfd-4db2-a373-8913d6ddb266",
+                  "name": "201 Created (SCA Code)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"scaCode\": \"6154057725\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-account-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"0ad7c46c4e4445bab3a0d4ccae25556b\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"authorizedAt\": \"2021-06-09T11:51:14.140Z\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\"\n    }\n}"
+                },
+                {
+                  "id": "89d1774b-936a-4272-aa1b-d229a7822c60",
+                  "name": "201 Created (Selected SCA Method)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"selectedScaMethod\": \"942\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-account-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"eaa703f3869b46b18732fa0de60f6073\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H6M39.998S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"selectedScaMethod\": {\n            \"id\": \"942\",\n            \"type\": \"SMS_OTP\",\n            \"description\": \"mobile TAN\"\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Create Embedded Payment Authorisation",
+              "id": "d7c6669e-a643-4ac8-90a5-89c1303bdb88",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. The IP address of the PSU",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"PAYMENT_TYPE\",\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"country\": \"2_LETTER_COUNTRY_CODE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        }\n    }\n}"
+                },
+                "url": "https://api.yapily.com/embedded-payment-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "bc648618-6d02-4013-ba83-295674bdb836",
+                  "name": "201 Created (single SCA method)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-payment-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"meta\": {\n    \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n  },\n  \"data\": {\n    \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n    \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"state\": \"551440fc13794010855ad81c8463c926\",\n    \"status\": \"AWAITING_SCA_CODE\",\n    \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n    \"featureScope\": [\n      \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n      \"EXISTING_PAYMENTS_DETAILS\",\n      \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n    ]\n  }\n}"
+                },
+                {
+                  "id": "ce2e05f1-1c88-44ec-bb8b-2597582089a7",
+                  "name": "201 Created (multiple SCA methods)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-payment-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n    },\n    \"data\": {\n        \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n        \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"postbank-sandbox\",\n        \"state\": \"551440fc13794010855ad81c8463c926\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n        \"featureScope\": [\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"scaMethods\": [\n            {\n                \"id\": \"258211#OPTICAL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, optisch\"\n            },\n            {\n                \"id\": \"258211#MANUEL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, manuell\"\n            },\n            {\n                \"id\": \"591655\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"RolandmTAN\"\n            },\n            {\n                \"id\": \"591656\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"RSRolandIP2\"\n            }\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
               "name": "Create Embedded Account Authorisation",
               "id": "c5a33250-3af7-42b1-8ead-0592dc3b8119",
               "request": {
@@ -3588,6 +4146,150 @@
             }
           ],
           "id": "5e32ea9a-ff9e-4dca-904c-a25d8f80e454"
+        },
+        {
+          "name": "Bulk",
+          "item": [
+            {
+              "name": "Create Bulk Payment Authorisation",
+              "id": "0741547c-79f9-4f11-97bc-f99180211c8d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "psu-id",
+                    "value": "{{psu-id}}",
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "psu-corporate-id",
+                    "value": "{{psu-corporate-id}}",
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "psu-ip-address",
+                    "value": "{{psu-ip-address}}",
+                    "description": "Conditional. The IP address of the PSU",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"type\": \"PAYMENT_TYPE\",\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"country\": \"2_LETTER_COUNTRY_CODE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+                },
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "e778b74b-e96b-4457-a994-7e2c7c1a0f34",
+                  "name": "400 Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"value\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/bulk-payment-auth-requests"
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
+                },
+                {
+                  "id": "e3666584-658f-4d74-8757-32499abbc002",
+                  "name": "201 Created (BULK PAYMENT AUTH REQUEST - BARCLAYS)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment1-id-23930482\",\n                \"reference\": \"payment1\",\n                \"amount\": {\n                    \"amount\": \"2.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"nicholas smith\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment2-id-23034517\",\n                \"reference\": \"payment2\",\n                \"amount\": {\n                    \"amount\": \"5.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"michael davis\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/bulk-payment-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01ignvwrzs1xbe14qhz2feqjwd71\"\n    },\n    \"data\": {\n        \"id\": \"4a5d1b95-cf15-4775-a93d-fd02968a4a61\",\n        \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-04T14:31:04.872Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 7.00\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-...\"\n    }\n}"
+                },
+                {
+                  "id": "ce936f86-9178-411d-afd4-8ba928e6898d",
+                  "name": "201 Created (BULK PAYMENT AUTH REQUEST - LLOYDS",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"user@company.com\",\n    \"institutionId\": \"lloydsbusiness\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p1\",\n                \"reference\": \"Bulk Payment 1\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payer\": {\n                    \"name\": \"Business Account Name 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p2\",\n                \"reference\": \"Bulk Payment 2\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 2\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p3\",\n                \"reference\": \"Bulk Payment 3\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 3\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/bulk-payment-auth-requests"
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": null,
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
+                }
+              ]
+            }
+          ],
+          "id": "df8a2b85-8e5f-4187-82e1-9224159dd2f6"
         },
         {
           "name": "Create Account Authorisation",
@@ -4279,702 +4981,6 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"7eb569fec635d3288527bfdfbb3e2f8d\"\n    },\n    \"data\": {\n        \"id\": \"569f55de-4cf3-48f3-81a3-258e0c21b331\",\n        \"userUuid\": \"58b74505-6b2c-430d-9d69-6c6ee055a337\",\n        \"applicationUserId\": \"user12345\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-06T09:04:28.391Z\",\n        \"featureScope\": [\n            \"CREATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-bKyGhe0mdwv9WZPSWtPty4GDMJsq6QdwE13tE29L&response_type=code+id_token&state=2fec7c4465284363a7e13873b90fdd4a&nonce=2fec7c4465284363a7e13873b90fdd4a&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL29hdXRoLnRpYWEuYmFyY2xheXMuY29tIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiJiZG4tYkt5R2hlMG1kd3Y5V1pQU1d0UHR5NEdETUpzcTZRZHdFMTN0RTI5TCIsImNsaWVudF9pZCI6ImJkbi1iS3lHaGUwbWR3djlXWlBTV3RQdHk0R0RNSnNxNlFkd0UxM3RFMjlMIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUgaWRfdG9rZW4iLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2F1dGgueWFwaWx5LmNvbS8iLCJzdGF0ZSI6IjJmZWM3YzQ0NjUyODQzNjNhN2UxMzg3M2I5MGZkZDRhIiwiY2xhaW1zIjp7ImlkX3Rva2VuIjp7ImFjciI6eyJ2YWx1ZSI6InVybjpvcGVuYmFua2luZzpwc2QyOnNjYSIsImVzc2VudGlhbCI6dHJ1ZX0sIm9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkJBUkNMQVlTLVAtMTAwMDAwMDA1NjI4MDUiLCJlc3NlbnRpYWwiOnRydWV9fSwidXNlcmluZm8iOnsib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiQkFSQ0xBWVMtUC0xMDAwMDAwMDU2MjgwNSIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiIyZmVjN2M0NDY1Mjg0MzYzYTdlMTM4NzNiOTBmZGQ0YSIsImp0aSI6IjVlNTM2ODVhLTA5MTMtNDhmNS1iMzM4LTY0YTYzM2NiODE3NCIsImlhdCI6MTU5NjcwNDk5MywiZXhwIjoxNTk2NzA2NzkzfQ.Mi_1Q9lrACmToFS3PDXNvzRyumwtvWR4gb34upUxwdPuCrzMHZFiFvZshSHJwtPFcnG_y_3TZa1KSpWVtZHHovwEyHz-RZWwxl7smxA0z-kPUiLgDnRpljurI5s_w3fmv5KNl_smgjoRs25n9wHXkIMLOHXYSREtot7ZSBN-GP5NXphHhGv_qbgOpD93E7ZWnyKmi1lFzRZ_xj-xZyriffQOtA1ZkIutG4lI5lvIKN7sW54vhsYkPxf6DUpyyASlKLxFu6SxEapoDHkuefdMa-ZVPIRDSEle7wmkm5N5KCON8SVhdQQm6azVHOeMfPZOj21rCqHWn1ZsxMMXTiwsxw\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/dc17b670-2bef-4842-b24f-a439dcd4b468/1596704668?size=0\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Create Bulk Payment Authorisation",
-          "id": "0741547c-79f9-4f11-97bc-f99180211c8d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "psu-id",
-                "value": "{{psu-id}}",
-                "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
-                "type": "text",
-                "disabled": true
-              },
-              {
-                "key": "psu-corporate-id",
-                "value": "{{psu-corporate-id}}",
-                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                "type": "text",
-                "disabled": true
-              },
-              {
-                "key": "psu-ip-address",
-                "value": "{{psu-ip-address}}",
-                "description": "Conditional. The IP address of the PSU",
-                "type": "text",
-                "disabled": true
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"type\": \"PAYMENT_TYPE\",\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"country\": \"2_LETTER_COUNTRY_CODE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
-            },
-            "url": "https://api.yapily.com/bulk-payment-auth-requests"
-          },
-          "response": [
-            {
-              "id": "e778b74b-e96b-4457-a994-7e2c7c1a0f34",
-              "name": "400 Bad Request",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"value\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payment-auth-requests"
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
-            },
-            {
-              "id": "e3666584-658f-4d74-8757-32499abbc002",
-              "name": "201 Created (BULK PAYMENT AUTH REQUEST - BARCLAYS)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment1-id-23930482\",\n                \"reference\": \"payment1\",\n                \"amount\": {\n                    \"amount\": \"2.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"nicholas smith\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment2-id-23034517\",\n                \"reference\": \"payment2\",\n                \"amount\": {\n                    \"amount\": \"5.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"michael davis\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payment-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01ignvwrzs1xbe14qhz2feqjwd71\"\n    },\n    \"data\": {\n        \"id\": \"4a5d1b95-cf15-4775-a93d-fd02968a4a61\",\n        \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-04T14:31:04.872Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 7.00\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-...\"\n    }\n}"
-            },
-            {
-              "id": "ce936f86-9178-411d-afd4-8ba928e6898d",
-              "name": "201 Created (BULK PAYMENT AUTH REQUEST - LLOYDS",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"user@company.com\",\n    \"institutionId\": \"lloydsbusiness\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p1\",\n                \"reference\": \"Bulk Payment 1\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payer\": {\n                    \"name\": \"Business Account Name 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p2\",\n                \"reference\": \"Bulk Payment 2\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 2\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p3\",\n                \"reference\": \"Bulk Payment 3\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 3\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payment-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Create Embedded Payment Authorisation",
-          "id": "d7c6669e-a643-4ac8-90a5-89c1303bdb88",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                "key": "psu-id",
-                "type": "text",
-                "value": "{{psu-id}}",
-                "disabled": true
-              },
-              {
-                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                "key": "psu-corporate-Id",
-                "type": "text",
-                "value": "{{psu-corporate-id}}",
-                "disabled": true
-              },
-              {
-                "description": "Conditional. The IP address of the PSU",
-                "key": "psu-ip-address",
-                "type": "text",
-                "value": "{{psu-ip-address}}",
-                "disabled": true
-              },
-              {
-                "key": "",
-                "value": "",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"PAYMENT_TYPE\",\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"country\": \"2_LETTER_COUNTRY_CODE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        }\n    }\n}"
-            },
-            "url": "https://api.yapily.com/embedded-payment-auth-requests"
-          },
-          "response": [
-            {
-              "id": "bc648618-6d02-4013-ba83-295674bdb836",
-              "name": "201 Created (single SCA method)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/embedded-payment-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "2121",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                  "name": "Yapily-Tracing-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n  \"meta\": {\n    \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n  },\n  \"data\": {\n    \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n    \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"state\": \"551440fc13794010855ad81c8463c926\",\n    \"status\": \"AWAITING_SCA_CODE\",\n    \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n    \"featureScope\": [\n      \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n      \"EXISTING_PAYMENTS_DETAILS\",\n      \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n    ]\n  }\n}"
-            },
-            {
-              "id": "ce2e05f1-1c88-44ec-bb8b-2597582089a7",
-              "name": "201 Created (multiple SCA methods)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/embedded-payment-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "2121",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                  "name": "Yapily-Tracing-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n    },\n    \"data\": {\n        \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n        \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"postbank-sandbox\",\n        \"state\": \"551440fc13794010855ad81c8463c926\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n        \"featureScope\": [\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"scaMethods\": [\n            {\n                \"id\": \"258211#OPTICAL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, optisch\"\n            },\n            {\n                \"id\": \"258211#MANUEL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, manuell\"\n            },\n            {\n                \"id\": \"591655\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"RolandmTAN\"\n            },\n            {\n                \"id\": \"591656\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"RSRolandIP2\"\n            }\n        ]\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Update Embedded Account Authorisation",
-          "id": "ddb0b755-c3de-4a08-b32b-8d51bbf389eb",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                "key": "psu-id",
-                "type": "text",
-                "value": "{{psu-id}}",
-                "disabled": true
-              },
-              {
-                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                "key": "psu-corporate-Id",
-                "type": "text",
-                "value": "{{psu-corporate-id}}",
-                "disabled": true
-              },
-              {
-                "description": "Conditional. The IP address of the PSU",
-                "key": "psu-ip-address",
-                "type": "text",
-                "value": "{{psu-ip-address}}",
-                "disabled": true
-              },
-              {
-                "key": "",
-                "value": "",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
-            },
-            "url": "https://api.yapily.com/embedded-account-auth-requests"
-          },
-          "response": [
-            {
-              "id": "bf599ca3-5dfd-4db2-a373-8913d6ddb266",
-              "name": "201 Created (SCA Code)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"scaCode\": \"6154057725\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/embedded-account-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "2121",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                  "name": "Yapily-Tracing-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"0ad7c46c4e4445bab3a0d4ccae25556b\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"authorizedAt\": \"2021-06-09T11:51:14.140Z\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\"\n    }\n}"
-            },
-            {
-              "id": "89d1774b-936a-4272-aa1b-d229a7822c60",
-              "name": "201 Created (Selected SCA Method)",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"selectedScaMethod\": \"942\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/embedded-account-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "2121",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                  "name": "Yapily-Tracing-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"eaa703f3869b46b18732fa0de60f6073\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H6M39.998S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"selectedScaMethod\": {\n            \"id\": \"942\",\n            \"type\": \"SMS_OTP\",\n            \"description\": \"mobile TAN\"\n        }\n    }\n}"
             }
           ]
         },
@@ -8385,92 +8391,92 @@
   ],
   "variable": [
     {
-      "id": "efd3e634-dfbc-420b-8931-63c2a5adf7e9",
+      "id": "b0c308af-319a-4c84-89c4-710395e9b74b",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "7f3f0e4a-d701-4634-8e15-e10599fb9f83",
+      "id": "3fa302cc-583b-40ea-aa69-8267aade0bfc",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "330f79f2-1bf2-4445-9365-9e87816b3e14",
+      "id": "1b754ed5-ed91-40ff-8844-8dea91cfbace",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "ff51b7fa-e416-4d17-9c29-f31725aaaca7",
+      "id": "0e3716ed-3fec-498e-b610-01b9667b3473",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "f457f13c-bd0b-4479-90e5-77e64604e6cf",
+      "id": "12dd6010-f35e-488e-9c6c-4f44ecf3c094",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "184e0860-bd08-4689-8b79-9b819b8a5a1d",
+      "id": "beceead9-dc11-42d5-af2d-1acc09c26948",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "a28f5175-041b-4c36-b1a6-9e9a40714956",
+      "id": "5cc77cce-f730-491f-abbe-3692300e969f",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "ea02c1f8-2c02-4eba-8b7e-8cfd3f224a62",
+      "id": "e0e53b87-fe07-4d2c-b5c3-9bc872dec3ac",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "7d907184-e66b-4d18-89d7-37d430a495ed",
+      "id": "a09c29e1-6328-41fb-ab5d-608a8258b0a1",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "753305ba-96d9-430c-861b-d1457fb3acfb",
+      "id": "613bd498-e620-4dc9-a7a6-bf0f6f62fe4d",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "402c60d3-3bb9-4cf7-931a-0fe51b3a95c3",
+      "id": "284b0847-32a2-407f-b541-2a2396b22a6a",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "5d2e0e41-d55f-41bd-b50b-daed6e859a14",
+      "id": "9ad7966e-daac-4b5d-9f41-0d9c025eab1c",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "a1e18072-4bfc-4851-a32b-d1fa9f608e10",
+      "id": "e75fa3b3-fe76-4a4e-83bf-b9ef8664331e",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "cda2c8a8-3c10-4c7b-a7f6-d2f8d41c5f4c",
+      "id": "cb371956-f70c-48cb-a913-a3dd8819ea9a",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "830312f8-ae72-45fe-b24b-31067bddfa3f",
+      "id": "07f9ec13-c7bf-4062-97b7-0ed2e52b7474",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "f438dd17-ea5d-4ecd-95ae-935f05af5318",
+      "id": "0894c304-3fec-416f-bf9c-f78f7326615f",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "0b773ace-3fdf-4d57-975a-d5e494b1263c",
+      "id": "04c039ae-1acc-4a48-8726-b448952f8f18",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "8e4023da-3a9a-474a-8b3a-f581f57f80f2",
+      "id": "961ca3f3-5697-4dd9-9253-8a1d9d452f45",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
