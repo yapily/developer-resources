@@ -3160,6 +3160,231 @@
           ]
         },
         {
+          "name": "Create Pre-authorisation",
+          "id": "80b7c51d-88b9-4008-949a-5abe380c73aa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"applicationUserId\": \"{{application-user-id}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n    \"scope\": \"{{AIS/PIS}}\",\n\t\"callback\": \"{{callback-url}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "https://api.yapily.com/pre-auth-requests",
+            "description": "Feature: `INITIATE_PRE_AUTHORISATIONv`\n\nUsed to redirect a user to an `Institution` to authorise a pre-authorisation request. Unlike [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), an `Institution` with the `INITIATE_PRE_AUTHORIZATION` feature requires the user to first pre-authorise with the `Institution`. After the user is successfully redirected to the `Institution` and the request is authorised by the user, Yapily will generate a generic `Consent` that can not immediately be used to access the user's financial data. To access the user's financial data, the user needs authorise an additional request using [PUT Create Account Authorisation Request](https://docs.yapily.com/#75a4d838-ee3e-43c7-9b28-e1c100f73f1b) which will update the `Consent` with the required financial data features.\n\nSee [POST Create Account Pre-authorisation](https://kb.yapily.com/display/YAD/POST+Create+Account+Pre-authorisation+Request) in the Knowledge Base for more information."
+          },
+          "response": [
+            {
+              "id": "612fe992-3a74-4d3f-b3f7-cf67f101c332",
+              "name": "Created 201 Request (ACCOUNT PRE AUTH USING APPLICATION-USER-ID)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/pre-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            },
+            {
+              "id": "703fb5a7-560e-48d2-a989-3b09373faf13",
+              "name": "Created 201 Request (ACCOUNT PRE AUTH USING USER-USER-ID)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/pre-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            },
+            {
+              "id": "691e0aad-bf79-4e5d-8c94-b7af3fa929b1",
+              "name": " Created 201 Request (ACCOUNT PRE AUTH WITH CALLBACK)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\",\n    \"callback\": \"{{callback-url}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/pre-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            },
+            {
+              "id": "d4348908-1ab3-468c-acf2-e0bed249201a",
+              "name": "Created 201 Request (ACCOUNT PRE AUTH WITH ONE-TIME-TOKEN)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Not currently used.",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/pre-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "Update Payment Authorisation",
           "id": "4a20b328-2499-431d-b3fd-a3924b2f0c95",
           "protocolProfileBehavior": {
@@ -3435,231 +3660,6 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"5ff05caf682ce166a2491fe02d8a0c9a\"\n    },\n    \"data\": {\n        \"id\": \"21576fbf-ac09-47cc-a079-a3159455e8ca\",\n        \"userUuid\": \"8b9248da-dfe0-4c9f-ba3f-13457089078e\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-09-04T14:51:25.308Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"INITIATE_PRE_AUTHORISATION\",\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"authorisationUrl\": \"https://hub-i.redsys.es:16443/api-oauth-xs2a-sb/services/rest/sca/eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiIsInR5cCI6IkpXVCJ9.eNqqVipKLc4vLUpO9UxRslKyTE00TUo2TdZNTU1K1TU0TE3UtTBKNtBNM0wzTU5LMUs2SExT0oHrCaksSAXqCsgsDs7MS89JVaoFAAAA__8.6MEKaRT6UY8doTLZabXnEfXIwWeLYd_3HSUmSRqwEfY\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Create Pre-authorisation",
-          "id": "80b7c51d-88b9-4008-949a-5abe380c73aa",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"applicationUserId\": \"{{application-user-id}}\",\n\t\"institutionId\": \"{{institution-id}}\",\n    \"scope\": \"{{AIS/PIS}}\",\n\t\"callback\": \"{{callback-url}}\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": "https://api.yapily.com/pre-auth-requests",
-            "description": "Feature: `INITIATE_PRE_AUTHORISATIONv`\n\nUsed to redirect a user to an `Institution` to authorise a pre-authorisation request. Unlike [POST Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287), an `Institution` with the `INITIATE_PRE_AUTHORIZATION` feature requires the user to first pre-authorise with the `Institution`. After the user is successfully redirected to the `Institution` and the request is authorised by the user, Yapily will generate a generic `Consent` that can not immediately be used to access the user's financial data. To access the user's financial data, the user needs authorise an additional request using [PUT Create Account Authorisation Request](https://docs.yapily.com/#75a4d838-ee3e-43c7-9b28-e1c100f73f1b) which will update the `Consent` with the required financial data features.\n\nSee [POST Create Account Pre-authorisation](https://kb.yapily.com/display/YAD/POST+Create+Account+Pre-authorisation+Request) in the Knowledge Base for more information."
-          },
-          "response": [
-            {
-              "id": "612fe992-3a74-4d3f-b3f7-cf67f101c332",
-              "name": "Created 201 Request (ACCOUNT PRE AUTH USING APPLICATION-USER-ID)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/pre-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            },
-            {
-              "id": "703fb5a7-560e-48d2-a989-3b09373faf13",
-              "name": "Created 201 Request (ACCOUNT PRE AUTH USING USER-USER-ID)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/pre-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            },
-            {
-              "id": "691e0aad-bf79-4e5d-8c94-b7af3fa929b1",
-              "name": " Created 201 Request (ACCOUNT PRE AUTH WITH CALLBACK)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\",\n    \"callback\": \"{{callback-url}}\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/pre-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
-            },
-            {
-              "id": "d4348908-1ab3-468c-acf2-e0bed249201a",
-              "name": "Created 201 Request (ACCOUNT PRE AUTH WITH ONE-TIME-TOKEN)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Not currently used.",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"kb-user@yapily.com\",\n    \"institutionId\": \"unicajabanco-sandbox\",\n    \"scope\": \"AIS\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/pre-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01og2568hbat3i18v61ueu6a44s16\"\n    },\n    \"data\": {\n        \"id\": \"54443d83-4b61-4365-abae-0805f6b3cd37\",\n        \"userUuid\": \"10ce5abe-e2ac-451b-9c1d-85ebe4465cc0\",\n        \"applicationUserId\": \"kb-user@yapily.com\",\n        \"institutionId\": \"unicajabanco-sandbox\",\n        \"status\": \"AWAITING_PRE_AUTHORIZATION\",\n        \"createdAt\": \"2020-08-18T16:24:22.316Z\",\n        \"featureScope\": [\n            \"INITIATE_PRE_AUTHORISATION\"\n        ],\n        \"authorisationUrl\": \"https://apis-i.redsys.es:20443/psd2/xs2a/api-oauth-xs2a/services/rest/unicajabanco/authorize?client_id=PSDES-BDE-927459&response_type=code&state=0485a5e6263442f4ac8591ea63ced49d&code_challenge=p9NWLpyT0kvGrDkXeQA6Msb949lqacoI9zrUN6nBang&code_challenge_method=S256&scope=AIS+PIS&redirect_uri=http%3A%2F%2Flocal-auth.yapily.com%3A8082%2F\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/cf06fd2e-7d50-4097-8392-ec9ed9ae3971/1599231316?size=0\"\n    }\n}"
             }
           ]
         },
@@ -7607,92 +7607,92 @@
   ],
   "variable": [
     {
-      "id": "f56078af-cd52-47f3-9633-55f7eaaa8b2f",
+      "id": "614d119e-355b-45da-a949-2bbbf0db2e53",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "9581677c-2272-418c-95ad-c79f4386f058",
+      "id": "7b583240-4ccb-44b5-90ff-ad603a8cf6d9",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "842bbc55-f90a-4e9d-92c5-7bd025fb861c",
+      "id": "6fb29282-0346-446c-8a8c-6a6203c72c68",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "1fb28966-e506-414d-84c5-19e72d6b5f73",
+      "id": "b468bb76-0f4e-479f-9181-a08e4f9c19da",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "6e8d095d-ec4c-47d2-a30f-676f72405dd5",
+      "id": "c0c40e0c-f5c2-4176-9055-7359adefc1e5",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "1e1dadc7-d79c-4a90-a4f8-c11a41446046",
+      "id": "8aa65c58-7c1a-4b7e-941e-4ffb4adb1f4f",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "2e81f737-cb40-4250-84d0-59c169b9d13d",
+      "id": "3dd809f9-3028-489a-aebf-426b506db623",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "694b2daf-2fec-44a7-a103-54c9b3b65ffb",
+      "id": "d2041da9-0090-4a8e-9944-3a7d407b1f94",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "526f44eb-a4d4-4f21-b69c-14f944194d3b",
+      "id": "682a4c31-fcc0-4f2d-a5b8-b18214b25439",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "1db3135e-bfe0-418f-ae1d-0ede385d61f1",
+      "id": "51e02ce8-763d-45b3-b673-63d48f4d5ccf",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "15f33d9e-4e43-48ae-9ac6-f5ea583a395a",
+      "id": "87902e4a-9f7e-4669-ba56-72eaa8725b8c",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "5f58211b-75a3-4cec-a6dd-285ee3f0c360",
+      "id": "a88f9927-53c0-49a4-949b-5f16cf18f6cb",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "9edf0c52-38a5-42bc-8ccb-fc23bd0c8dee",
+      "id": "0f4de82c-d3e0-4137-87ca-bdec54bb6d3f",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "427d204c-bb3e-43ea-b8fc-fc36ba105c85",
+      "id": "89a750b1-e622-4c2b-a8b4-5f09f6eabaaf",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "be5ba8d1-b933-40eb-af46-3ad5c98b910d",
+      "id": "0637387c-c7e8-4bc0-9275-66bd2c50b839",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "17fddad8-a0ea-422c-9b9e-02ec60525a07",
+      "id": "465c9efb-736f-4313-8dfe-5eedce195ca4",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "d18e7043-56d7-44f4-a086-d882f38552f3",
+      "id": "c168e860-efcd-4684-bb04-d3e345d9e423",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "902eb6ac-2ba7-43da-b5e3-3eac105e2e61",
+      "id": "19f02844-1e33-4f59-b603-e3ee624e5eb3",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
