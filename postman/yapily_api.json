@@ -3160,6 +3160,145 @@
           ]
         },
         {
+          "name": "Create Bulk Payment Authorisation",
+          "id": "0741547c-79f9-4f11-97bc-f99180211c8d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "psu-id",
+                "value": "{{psu-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "psu-corporate-id",
+                "value": "{{psu-corporate-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "psu-ip-address",
+                "value": "{{psu-ip-address}}",
+                "description": "Conditional. The IP address of the PSU",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"type\": \"PAYMENT_TYPE\",\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"country\": \"2_LETTER_COUNTRY_CODE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+            },
+            "url": "https://api.yapily.com/bulk-payment-auth-requests",
+            "description": "Feature: `INITIATE_BULK_PAYMENT`\n\nUsed to initiate the payment authorisation process for a **business account** and direct users to the login screen of their financial institution in order to give their consent for a bulk payment. \n\nSee [POST Create Bulk Payment Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Bulk+Payment+Authorisation+Request) in the Knowledge Base for more information. "
+          },
+          "response": [
+            {
+              "id": "e778b74b-e96b-4457-a994-7e2c7c1a0f34",
+              "name": "400 Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"value\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
+            },
+            {
+              "id": "e3666584-658f-4d74-8757-32499abbc002",
+              "name": "201 Created (BULK PAYMENT AUTH REQUEST - BARCLAYS)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment1-id-23930482\",\n                \"reference\": \"payment1\",\n                \"amount\": {\n                    \"amount\": \"2.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"nicholas smith\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment2-id-23034517\",\n                \"reference\": \"payment2\",\n                \"amount\": {\n                    \"amount\": \"5.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"michael davis\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01ignvwrzs1xbe14qhz2feqjwd71\"\n    },\n    \"data\": {\n        \"id\": \"4a5d1b95-cf15-4775-a93d-fd02968a4a61\",\n        \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-04T14:31:04.872Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 7.00\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-...\"\n    }\n}"
+            },
+            {
+              "id": "ce936f86-9178-411d-afd4-8ba928e6898d",
+              "name": "201 Created (BULK PAYMENT AUTH REQUEST - LLOYDS",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"user@company.com\",\n    \"institutionId\": \"lloydsbusiness\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p1\",\n                \"reference\": \"Bulk Payment 1\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payer\": {\n                    \"name\": \"Business Account Name 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p2\",\n                \"reference\": \"Bulk Payment 2\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 2\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p3\",\n                \"reference\": \"Bulk Payment 3\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 3\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/bulk-payment-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "Create Embedded Account Authorisation",
           "id": "c5a33250-3af7-42b1-8ead-0592dc3b8119",
           "request": {
@@ -3433,145 +3572,6 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Create Bulk Payment Authorisation",
-          "id": "0741547c-79f9-4f11-97bc-f99180211c8d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "psu-id",
-                "value": "{{psu-id}}",
-                "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
-                "type": "text",
-                "disabled": true
-              },
-              {
-                "key": "psu-corporate-id",
-                "value": "{{psu-corporate-id}}",
-                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                "type": "text",
-                "disabled": true
-              },
-              {
-                "key": "psu-ip-address",
-                "value": "{{psu-ip-address}}",
-                "description": "Conditional. The IP address of the PSU",
-                "type": "text",
-                "disabled": true
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"type\": \"PAYMENT_TYPE\",\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"country\": \"2_LETTER_COUNTRY_CODE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
-            },
-            "url": "https://api.yapily.com/bulk-payment-auth-requests",
-            "description": "Feature: `INITIATE_BULK_PAYMENT`\n\nUsed to initiate the payment authorisation process for a **business account** and direct users to the login screen of their financial institution in order to give their consent for a bulk payment. \n\nSee [POST Create Bulk Payment Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Bulk+Payment+Authorisation+Request) in the Knowledge Base for more information. "
-          },
-          "response": [
-            {
-              "id": "e778b74b-e96b-4457-a994-7e2c7c1a0f34",
-              "name": "400 Bad Request",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payerAccountIdentifications\": [\n            {\n                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n            }\n        ],\n        \"amount\": {\n            \"value\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"type\": \"PAYMENT_TYPE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"addressLines\": [\n                    \"ADDRESS_LINES\"\n                ],\n                \"streetName\": \"STREET_NAME\",\n                \"buildingNumber\": \"BUILDING_NUMBER\",\n                \"postCode\": \"POST_CODE\",\n                \"townName\": \"TOWN_NAME\",\n                \"county\": [\n                    \"COUNTY_NAME\"\n                ],\n                \"country\": \"2_LETTER_COUNTRY_CODE\",\n                \"department\": \"DEPARTMENT_NAME\",\n                \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                \"addressType\": \"TYPE_OF_ADDRESS\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ],\n            \"customerId\": \"CUSTOMER_ID\",\n            \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n        }\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payment-auth-requests"
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 400,\n        \"tracingId\": \"6c373035-c0ec-4e7a-930c-067390807c07\",\n        \"status\": \"BAD_REQUEST\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The payment request is missing the required field [paymentDateTime] for the selected payment type [DOMESTIC_SCHEDULED_PAYMENT]. This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
-            },
-            {
-              "id": "e3666584-658f-4d74-8757-32499abbc002",
-              "name": "201 Created (BULK PAYMENT AUTH REQUEST - BARCLAYS)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment1-id-23930482\",\n                \"reference\": \"payment1\",\n                \"amount\": {\n                    \"amount\": \"2.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"nicholas smith\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment2-id-23034517\",\n                \"reference\": \"payment2\",\n                \"amount\": {\n                    \"amount\": \"5.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"michael davis\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payment-auth-requests"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01ignvwrzs1xbe14qhz2feqjwd71\"\n    },\n    \"data\": {\n        \"id\": \"4a5d1b95-cf15-4775-a93d-fd02968a4a61\",\n        \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-04T14:31:04.872Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 7.00\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-...\"\n    }\n}"
-            },
-            {
-              "id": "ce936f86-9178-411d-afd4-8ba928e6898d",
-              "name": "201 Created (BULK PAYMENT AUTH REQUEST - LLOYDS",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"user@company.com\",\n    \"institutionId\": \"lloydsbusiness\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p1\",\n                \"reference\": \"Bulk Payment 1\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payer\": {\n                    \"name\": \"Business Account Name 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p2\",\n                \"reference\": \"Bulk Payment 2\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 2\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p3\",\n                \"reference\": \"Bulk Payment 3\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 3\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/bulk-payment-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
             }
           ]
         },
@@ -7886,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "46f35347-f822-40de-b4ef-14335c26b3e7",
+      "id": "0522505e-6e03-4278-a98a-e483a2e39369",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "8a82af53-d13d-4c42-9dad-dc4fc3503ce2",
+      "id": "7a52446f-d60f-4b8a-93db-4639cbd793ec",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "032a5253-1823-4c42-a1fe-63f8abf407d9",
+      "id": "8a99261d-64cd-48ef-96f9-94f97622a4b0",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "5a741509-a0a0-4098-9b64-844c23dc8410",
+      "id": "04e5cdd1-c65b-423d-98f3-c7ece7839b39",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "d22c2f7b-d28d-49fc-b31e-e8850ce22035",
+      "id": "2ab02b97-5eb3-4760-81fb-c6d75730d0ef",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "21cb6162-b095-460f-8804-c6bced1803fb",
+      "id": "556fef9d-44c2-4fcc-b2cb-62221cc33f45",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "852f7b26-ed28-4caa-adc6-e4d4d74e0aab",
+      "id": "0a5efbb2-449f-45f0-be49-8827eddb9d50",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "09091db7-e35f-4cf3-83dc-8b00dbc272a8",
+      "id": "56ddb060-a4a2-4e67-b7c3-c787941b453f",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "37130b99-f3b6-4ed7-ac30-ef13a637b8c7",
+      "id": "19f87e87-6fff-426c-871b-7295addd1d32",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "029078ff-d37e-4968-a9f1-d9d0260da9db",
+      "id": "cbae8285-c9d8-4b23-98dd-69f749bb264f",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "ec475790-6c47-4a0b-9253-7bc875b2eaa9",
+      "id": "728b5cc4-9a07-43e4-b745-02d12188f842",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "6f133780-a9e8-454e-95d1-09d91fcf9796",
+      "id": "37a94998-35ff-48ba-ba69-6e3a7ba6f379",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "c109bbc9-f52a-4095-b8f7-df3a2963d975",
+      "id": "496eeb87-5363-4ca3-bfeb-8ccf2e2bf168",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "763888b2-1d29-409d-9703-63afc7752740",
+      "id": "dfeaae9c-7412-4d55-9181-9f131e1f0aa4",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "218be5eb-e6a9-4156-b49f-49751f56f657",
+      "id": "59dc2d15-4a8a-4a21-b9dd-b3e42b6fada4",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "20836694-e664-457a-b1f2-798a37fb7ba0",
+      "id": "cbe1a716-0f71-4c38-bf3e-a5d7d2423e02",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "71e047c1-9534-4d4b-a17b-5e0716b89f47",
+      "id": "d8150d09-9728-4946-acb2-bde910be689d",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "59551211-83d1-478f-9673-e5e11d0355f9",
+      "id": "08bd7a1a-8ae6-4581-bf8e-e4ae409394ee",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
