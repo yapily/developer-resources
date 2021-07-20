@@ -423,83 +423,6 @@
           ]
         },
         {
-          "name": "Delete User",
-          "id": "4dae6886-fe40-44b5-8beb-6643165ee3df",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "value": "application/json",
-                "key": "Content-Type"
-              }
-            ],
-            "url": "https://api.yapily.com/users/{{user-uuid}}",
-            "description": "Delete an application user.\n\n**Note**: This request will also delete all the consent resources of the application user both from Yapily and the `Institution`.\n"
-          },
-          "response": [
-            {
-              "id": "a7345038-5779-4ebf-93cd-9f11041dc0d7",
-              "name": "200 OK",
-              "originalRequest": {
-                "method": "DELETE",
-                "header": [
-                  {
-                    "value": "application/json",
-                    "key": "Content-Type"
-                  }
-                ],
-                "url": {
-                  "raw": "https://api.yapily.com/users/a3bf6801-fd7e-4f13-8daf-34ec4be07ec8?raw=true",
-                  "protocol": "https",
-                  "host": [
-                    "api",
-                    "yapily",
-                    "com"
-                  ],
-                  "path": [
-                    "users",
-                    "a3bf6801-fd7e-4f13-8daf-34ec4be07ec8"
-                  ],
-                  "query": [
-                    {
-                      "key": "raw",
-                      "value": "true"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"cfeba8da-d9a8-46c3-b9f6-80a52149a775\"\n    },\n    \"data\": {\n        \"id\": \"a3bf6801-fd7e-4f13-8daf-34ec4be07ec8\",\n        \"deleteStatus\": \"SUCCESS\",\n        \"creationDate\": \"2019-05-10T14:47:16.309Z\",\n        \"userConsents\": [\n            {\n                \"id\": \"c50844cb-1498-44aa-90d1-62eae8cdb3f6\",\n                \"deleteStatus\": \"SUCCESS\",\n                \"institutionId\": \"xxxx-sandbox\",\n                \"institutionConsentId\": \"aac-d0de4bb3-4e6d-468e-ba9a-dbc757c8c0bb\",\n                \"creationDate\": \"2019-05-10T17:36:49.269+0000\"\n            }\n        ]\n    },\n    "
-            },
-            {
-              "id": "662c4a37-32e3-493c-88f4-5d6036c6ccb9",
-              "name": "404 Not Found",
-              "originalRequest": {
-                "method": "DELETE",
-                "header": [
-                  {
-                    "value": "application/json",
-                    "key": "Content-Type"
-                  }
-                ],
-                "url": "https://api.yapily.com/users/{{user-uuid}}"
-              },
-              "status": "Not Found",
-              "code": 404,
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 404,\n        \"tracingId\": \"1d46e7bf-e16a-46dd-94bb-f18be384be5f\",\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
-            }
-          ]
-        },
-        {
           "name": "Get Users",
           "id": "d98a8253-9252-c129-9b4f-6073dc1ae01e",
           "request": {
@@ -712,6 +635,83 @@
               "cookie": [],
               "responseTime": "86",
               "body": "[\n    {\n        \"uuid\": \"3b908179-6faa-42e1-8129-8fd0ff1fc68f\",\n        \"applicationUuid\": \"3020bf54-e254-40ba-ba7b-fc959774486a\",\n        \"applicationUserId\": \"bojack@9tees.com\",\n        \"institutionConsents\": [\n            {\n                \"institutionId\": \"monzo\"\n            },\n            {\n                \"institutionId\": \"revolut-sandbox\"\n            },\n            {\n                \"institutionId\": \"aibgb-sandbox\"\n            },\n            {\n                \"institutionId\": \"bbva-sandbox\"\n            },\n            {\n                \"institutionId\": \"nordea-sandbox\"\n            }\n        ]\n    },\n    {\n        \"uuid\": \"be7dd6fa-1236-41b6-a7a1-5d7863ab9553\",\n        \"applicationUuid\": \"3020bf54-e254-40ba-ba7b-fc959774486a\",\n        \"referenceId\": \"hollyhock@9tees.com\",\n        \"institutionConsents\": []\n    },\n    {\n        \"uuid\": \"deb9aac1-b0bc-4f40-9c0b-6a675cf6646f\",\n        \"applicationUuid\": \"3020bf54-e254-40ba-ba7b-fc959774486a\",\n        \"referenceId\": \"beatrice@9tees.com\",\n        \"institutionConsents\": []\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Delete User",
+          "id": "4dae6886-fe40-44b5-8beb-6643165ee3df",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "value": "application/json",
+                "key": "Content-Type"
+              }
+            ],
+            "url": "https://api.yapily.com/users/{{user-uuid}}",
+            "description": "Delete an application user.\n\n**Note**: This request will also delete all the consent resources of the application user both from Yapily and the `Institution`.\n"
+          },
+          "response": [
+            {
+              "id": "a7345038-5779-4ebf-93cd-9f11041dc0d7",
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "value": "application/json",
+                    "key": "Content-Type"
+                  }
+                ],
+                "url": {
+                  "raw": "https://api.yapily.com/users/a3bf6801-fd7e-4f13-8daf-34ec4be07ec8?raw=true",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "yapily",
+                    "com"
+                  ],
+                  "path": [
+                    "users",
+                    "a3bf6801-fd7e-4f13-8daf-34ec4be07ec8"
+                  ],
+                  "query": [
+                    {
+                      "key": "raw",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"cfeba8da-d9a8-46c3-b9f6-80a52149a775\"\n    },\n    \"data\": {\n        \"id\": \"a3bf6801-fd7e-4f13-8daf-34ec4be07ec8\",\n        \"deleteStatus\": \"SUCCESS\",\n        \"creationDate\": \"2019-05-10T14:47:16.309Z\",\n        \"userConsents\": [\n            {\n                \"id\": \"c50844cb-1498-44aa-90d1-62eae8cdb3f6\",\n                \"deleteStatus\": \"SUCCESS\",\n                \"institutionId\": \"xxxx-sandbox\",\n                \"institutionConsentId\": \"aac-d0de4bb3-4e6d-468e-ba9a-dbc757c8c0bb\",\n                \"creationDate\": \"2019-05-10T17:36:49.269+0000\"\n            }\n        ]\n    },\n    "
+            },
+            {
+              "id": "662c4a37-32e3-493c-88f4-5d6036c6ccb9",
+              "name": "404 Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "value": "application/json",
+                    "key": "Content-Type"
+                  }
+                ],
+                "url": "https://api.yapily.com/users/{{user-uuid}}"
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 404,\n        \"tracingId\": \"1d46e7bf-e16a-46dd-94bb-f18be384be5f\",\n        \"status\": \"NOT_FOUND\",\n        \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) if you require further assistance.\"\n    },\n    \"monitoring\": []\n}"
             }
           ]
         }
@@ -8963,92 +8963,92 @@
   ],
   "variable": [
     {
-      "id": "e8a411ca-0438-4e72-9e1a-ae800622163e",
+      "id": "487ba9a6-a080-4519-a304-7419aebd8dfc",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "c421ea0a-0b95-47a8-8312-8213dfed17bb",
+      "id": "50843f8c-3d34-4849-b8a0-e218826702fc",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "11b99eea-a233-4766-853e-a4cfe2d4daeb",
+      "id": "b18d3be2-5aa0-42a6-8b7e-d15e98e1fb4d",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "5e074d9e-8308-4d0c-bae0-2d0edbc03890",
+      "id": "66af014a-e85a-482a-af49-713a0fd50929",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "81d36971-8bdf-434c-9403-3ca4e5f83b77",
+      "id": "aea4f4ce-3667-4a7a-9f19-57b8409607db",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "51ba886c-0b8b-48b1-8fb9-9e0c05946c8d",
+      "id": "acb50452-2b66-4fda-9cea-0a8b600e303d",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "f49bedc6-c800-41f8-bc33-2003ded78024",
+      "id": "82bad4ca-7893-47dc-bd47-107dba1c1971",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "e07a9b7e-84cc-4c82-b151-07ca4e6784f2",
+      "id": "afb3506a-6d3e-465e-8e94-c50f8afb2d58",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "0aab51cb-7ee4-45e8-a334-2702540a6151",
+      "id": "aace400c-19c5-41ac-8f71-ec97f1afc09d",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "0b787595-a700-4556-ab7c-38aa5ed29c4a",
+      "id": "574a2f4a-1e52-4992-96f3-659d700528e9",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "58a46f0e-0791-4b56-a9aa-331a893196a7",
+      "id": "cf7d63bb-9b5e-4669-8841-7402c350277d",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "652e99a0-2e63-4bd9-b5bd-d9270bf8e967",
+      "id": "09f22e5e-609b-43d7-859f-6d16b0b4632f",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "7b4d72bd-ca89-47b8-ac5c-5588ea2ae9bd",
+      "id": "c37746e0-8de9-408c-bf08-e2dfa1df6278",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "0800756b-105a-47e3-b4d2-53edcbc03a03",
+      "id": "27f32c20-d510-4d5d-9956-a29a53631bfb",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "6f62537f-8b30-41bb-9cd6-7b574dadf23d",
+      "id": "26c575e6-ed9f-4810-b8bc-3db90093ccf4",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "0e54cb5e-c069-4b69-9d83-c16d151cd747",
+      "id": "b1ba4ad9-9a1c-40ab-b183-cfbc59df23a4",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "50732341-18a9-4ef7-82ac-11640e2e3c95",
+      "id": "1bd5a88d-2437-46fa-838e-5fb83d1eb9df",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "8a024c37-16e2-4288-a1a3-e96d47089030",
+      "id": "398d6471-811d-4186-bda0-bfe7ad1fe7ec",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
