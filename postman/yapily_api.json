@@ -4046,7 +4046,7 @@
           "response": [
             {
               "id": "4da3c819-b643-4ae2-ab4d-ba4dbf442574",
-              "name": "201 Created (single SCA method)",
+              "name": "201 Created (with SCA code)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -4326,7 +4326,7 @@
           "response": [
             {
               "id": "bf599ca3-5dfd-4db2-a373-8913d6ddb266",
-              "name": "201 Created (single SCA method)",
+              "name": "201 Created (SCA Code)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -4343,7 +4343,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"scaCode\": \"6154057725\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4437,11 +4437,11 @@
               ],
               "cookie": [],
               "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"1565f7e13a0b4bf6b312cf8cc5747c7c\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H10M41.167S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            }\n        ],\n        \"selectedScaMethod\": {\n            \"id\": \"944\",\n            \"type\": \"PUSH_OTP\",\n            \"description\": \"SecureSIGN\"\n        }\n    }\n}"
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"0ad7c46c4e4445bab3a0d4ccae25556b\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"authorizedAt\": \"2021-06-09T11:51:14.140Z\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\"\n    }\n}"
             },
             {
               "id": "89d1774b-936a-4272-aa1b-d229a7822c60",
-              "name": "201 Created (multiple SCA methods)",
+              "name": "201 Created (Selected SCA Method)",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -4458,7 +4458,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"selectedScaMethod\": \"942\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4552,7 +4552,7 @@
               ],
               "cookie": [],
               "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"eaa703f3869b46b18732fa0de60f6073\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H6M39.998S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"selectedScaMethod\": {\n            \"id\": \"942\",\n            \"type\": \"SMS_OTP\",\n            \"description\": \"mobile TAN\"\n        }\n    }\n}"
             }
           ]
         },
@@ -7742,8 +7742,7 @@
                 "value": "application/json"
               }
             ],
-            "url": "https://api.yapily.com/payments/{{payment-id}}/details",
-            "description": "Feature: `EXISTING PAYMENT DETAILS`\n\nReturn the list of payments."
+            "url": "https://api.yapily.com/payments/{{payment-id}}/details"
           },
           "response": [
             {
@@ -7887,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "d47e2fd5-364a-4114-a6a6-7756184f61e2",
+      "id": "db5824b9-f34c-4cb6-8e54-33e49cb35612",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "40543b03-c8db-4396-afee-f658862d86fc",
+      "id": "b8e19899-aaa4-4bb3-91d5-d5ca67102ab4",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "7058c2d0-882a-4bde-9c8e-9c053e7ce7f1",
+      "id": "c961d2af-c3da-4d61-b8b4-1749e2a90a45",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "8e6056e2-2a25-4a1a-8fa6-b1e7ce363ad8",
+      "id": "c48576cb-0e42-40bc-a1d5-b42447ee93c7",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "666c9a08-acf1-4656-9f92-501b41b30007",
+      "id": "b1924313-40ce-42ed-92fe-d572cf4c99bc",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "a0ab0e70-605d-4391-b65a-bea2f9cb1b60",
+      "id": "39148679-2133-492b-a5d9-ddfeb00c306a",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "ee30d915-3fb4-47dc-8605-7d44ddf434c8",
+      "id": "eeef00a9-8601-48ea-b994-c0eff124688a",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "fadc7802-3362-4f36-aacd-1f22e5786120",
+      "id": "8e9c0d06-6132-425d-9a18-a4dcbfc69c35",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "eb1c8334-abd7-4041-be00-28b8871b5d5b",
+      "id": "944b4f50-cfd9-44f4-b382-15b55afdf3f5",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "da9ed9da-7299-449e-aabb-1c84f6570414",
+      "id": "b5061b0d-8135-4c6a-aedf-27912ce508f7",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "bbdff7b5-3640-4f55-a5ef-1d813b88d6ac",
+      "id": "f480a5f7-64b2-4583-91f2-3c7738c6f4fa",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "ebeb230c-d249-4a77-8df3-af0ef33950ab",
+      "id": "8327aebc-28a2-4d7d-9def-488117dd4e2b",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "300ad7bd-0e18-4728-b1fe-a21b037d1f38",
+      "id": "a3da95a8-7924-49e5-89c6-fc5cd87218d8",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "8af8b1fd-adc9-4c25-99a4-2655a158213b",
+      "id": "5bbd51a5-ccc6-4e95-940c-90ed73c3ce11",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "ce5343b5-89ed-4239-9f6e-7182382c7841",
+      "id": "64792966-99cb-434a-b2e5-1c7a3fe6b95c",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "14a9c244-d61f-479b-acd3-83f94c10a80e",
+      "id": "375232c6-7db1-4214-be36-22134d478114",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "8d6fb214-80e1-453e-a589-8abe4dce9b48",
+      "id": "7ae7e30f-3c87-4f71-aa41-c694fa0e06c4",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "879e5834-11ad-46af-b8c0-3f77c0106fd2",
+      "id": "35a73b3a-8cb0-47f4-b784-09ec3cd547ab",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
