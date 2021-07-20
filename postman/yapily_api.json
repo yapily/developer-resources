@@ -3365,7 +3365,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/account-auth-requests"
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
               },
               "status": "Created",
               "code": 201,
@@ -3480,7 +3480,283 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/account-auth-requests"
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2121",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                },
+                {
+                  "key": "Yapily-Tracing-Id",
+                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                  "name": "Yapily-Tracing-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Embedded Payment Authorisation",
+          "id": "d7c6669e-a643-4ac8-90a5-89c1303bdb88",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                "key": "psu-id",
+                "type": "text",
+                "value": "{{psu-id}}",
+                "disabled": true
+              },
+              {
+                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                "key": "psu-corporate-Id",
+                "type": "text",
+                "value": "{{psu-corporate-id}}",
+                "disabled": true
+              },
+              {
+                "description": "Conditional. The IP address of the PSU",
+                "key": "psu-ip-address",
+                "type": "text",
+                "value": "{{psu-ip-address}}",
+                "disabled": true
+              },
+              {
+                "key": "",
+                "value": "",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
+            },
+            "url": "https://api.yapily.com/embedded-account-auth-requests"
+          },
+          "response": [
+            {
+              "id": "bc648618-6d02-4013-ba83-295674bdb836",
+              "name": "201 Created (with SCA code)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2121",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                },
+                {
+                  "key": "Yapily-Tracing-Id",
+                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                  "name": "Yapily-Tracing-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"1565f7e13a0b4bf6b312cf8cc5747c7c\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H10M41.167S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            }\n        ],\n        \"selectedScaMethod\": {\n            \"id\": \"944\",\n            \"type\": \"PUSH_OTP\",\n            \"description\": \"SecureSIGN\"\n        }\n    }\n}"
+            },
+            {
+              "id": "ce2e05f1-1c88-44ec-bb8b-2597582089a7",
+              "name": "201 Created (multiple SCA methods)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
               },
               "status": "Created",
               "code": 201,
@@ -4459,7 +4735,7 @@
               "id": "bf599ca3-5dfd-4db2-a373-8913d6ddb266",
               "name": "201 Created (SCA Code)",
               "originalRequest": {
-                "method": "POST",
+                "method": "PUT",
                 "header": [
                   {
                     "key": "Authorization",
@@ -4481,7 +4757,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/account-auth-requests"
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
               },
               "status": "Created",
               "code": 201,
@@ -4574,7 +4850,7 @@
               "id": "89d1774b-936a-4272-aa1b-d229a7822c60",
               "name": "201 Created (Selected SCA Method)",
               "originalRequest": {
-                "method": "POST",
+                "method": "PUT",
                 "header": [
                   {
                     "key": "Authorization",
@@ -4596,7 +4872,7 @@
                     }
                   }
                 },
-                "url": "https://api.yapily.com/account-auth-requests"
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
               },
               "status": "Created",
               "code": 201,
@@ -7226,7 +7502,7 @@
                     "value": "{{consent-token}}"
                   }
                 ],
-                "url": "https://api.yapily.com/identity"
+                "url": "https://api.yapily.com/categories/{{country}}"
               },
               "status": "OK",
               "code": 200,
@@ -7307,7 +7583,7 @@
               ],
               "cookie": [],
               "responseTime": "460",
-              "body": "{\n\t\"meta\": {\n        \"tracingId\": \"1990ea78-e319-4d60-bc11-568151b36aa4\"\n    },\n\t\"data\": {\n\t    \"id\": \"abc123\",\n\t    \"firstName\": \"Bojack\",\n\t    \"lastName\": \"Horseman\",\n\t    \"gender\": \"MALE\",\n\t    \"birthdate\": \"1970-01-01\",\n\t    \"email\": \"bojack@horsingaround.com\",\n\t    \"phone\": \"02071234567\",\n\t    \"addresses\": [\n\t        {\n\t            \"addressLines\": [],\n\t            \"city\": \"London\",\n\t            \"postalCode\": \"A12 3BC\",\n\t            \"country\": \"United Kingdom\"\n\t        }\n\t    ]\n\t}\n}"
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a5b0fc4b8b8a4b7085f4412b2b64e969\",\n        \"count\": 21\n    },\n    \"data\": [\n        {\n            \"id\": \"06d10bcd-dbcc-4a61-b5a1-c119adc16adf\",\n            \"label\": \"INCOME\",\n            \"country\": \"GB\",\n            \"subcategories\": []\n        },\n        {\n            \"id\": \"1051a1ff-5552-4b53-ba43-eeeac96d710f\",\n            \"label\": \"INCOME_OTHER\",\n            \"country\": \"GB\",\n            \"subcategories\": []\n        },\n        {\n            \"id\": \"2f527678-a698-4c00-9880-3063b39f71df\",\n            \"label\": \"INCOME_REFUNDS\",\n            \"country\": \"GB\",\n            \"subcategories\": []\n        },\n        {\n            \"id\": \"3954ed5c-1663-4356-869e-241f305c8b4b\",\n            \"label\": \"BILLS\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"03e037d4-c950-4540-a298-36cce7eb9ce9\",\n                    \"label\": \"INTERNET / TV\"\n                },\n                {\n                    \"id\": \"05ed46b2-dfa4-4cde-8900-692a899e1290\",\n                    \"label\": \"MOBILE PHONE\"\n                },\n                {\n                    \"id\": \"06df5c74-3783-48d4-9825-f508a237d60f\",\n                    \"label\": \"SUBSCRIPTION\"\n                },\n                {\n                    \"id\": \"11e189ab-3794-478b-8a30-1c1c7aae7af1\",\n                    \"label\": \"TV LICENCE\"\n                },\n                {\n                    \"id\": \"1238e562-2a7b-4ef1-8e41-037491cefd53\",\n                    \"label\": \"UTILITY BILL\"\n                },\n                {\n                    \"id\": \"129c7a08-2125-4b0f-87bb-253fca906eb7\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"5de14494-fec8-44c2-af9c-91656d2e8d1b\",\n            \"label\": \"CHARITY AND GIFTS\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"1655bc45-de79-4fd2-9b45-8bd9271a2520\",\n                    \"label\": \"DONATIONS\"\n                },\n                {\n                    \"id\": \"1b9e1a46-5229-4488-a68c-19d7cb450c79\",\n                    \"label\": \"GIFTS\"\n                },\n                {\n                    \"id\": \"1d09a62b-1f9c-418d-9f37-9ee5003d5abc\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"6edef913-2c1e-4935-9f23-4a71fe92124c\",\n            \"label\": \"EATING OUT\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"1e13a0f5-6892-4436-ba71-f11cd1a0b8fe\",\n                    \"label\": \"COFFEE\"\n                },\n                {\n                    \"id\": \"1eb03b3e-e9ab-4d54-ae9a-e63778390794\",\n                    \"label\": \"DRINKS\"\n                },\n                {\n                    \"id\": \"253e0e15-f260-44ee-a1cf-ac42afbc8a48\",\n                    \"label\": \"FAST FOOD\"\n                },\n                {\n                    \"id\": \"25a39d3e-d2c5-47e5-9874-57d9d4edfaaa\",\n                    \"label\": \"RESTAURANT\"\n                },\n                {\n                    \"id\": \"26594166-4e32-4a9b-8cbf-ea7ab86c19e6\",\n                    \"label\": \"TAKEAWAY / DELIVERY\"\n                },\n                {\n                    \"id\": \"36949186-bb90-427a-840b-8d9c9ff5ca35\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"705dddcc-03f8-4a27-ac8b-a2256f950239\",\n            \"label\": \"ENTERTAINMENT\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"380694b8-efc4-4443-9c49-df81229f3d69\",\n                    \"label\": \"ART / MUSEUM\"\n                },\n                {\n                    \"id\": \"380c0b10-1afd-4f4f-8fd5-7cac3392fb9a\",\n                    \"label\": \"CINEMA\"\n                },\n                {\n                    \"id\": \"397b698d-4f46-4356-a283-2af934bf51a3\",\n                    \"label\": \"LIVE MUSIC\"\n                },\n                {\n                    \"id\": \"39aed540-1702-4e50-9109-5808e5636146\",\n                    \"label\": \"LIVE SPORT\"\n                },\n                {\n                    \"id\": \"44a99d0c-2718-4c95-8c2c-13c9802e2d20\",\n                    \"label\": \"THEATRE\"\n                },\n                {\n                    \"id\": \"4a419ef8-f953-4866-881e-0ad61adf110c\",\n                    \"label\": \"NIGHTCLUB\"\n                },\n                {\n                    \"id\": \"4c483465-980d-4274-81d5-32e2d61e8aed\",\n                    \"label\": \"ONLINE GAMBLING\"\n                },\n                {\n                    \"id\": \"50bbec77-b23d-4ce2-bedb-a0e1ca2e34f4\",\n                    \"label\": \"LOTTERY\"\n                },\n                {\n                    \"id\": \"5a3d65f9-a8ae-4eb8-bae0-973c7c4de372\",\n                    \"label\": \"BETTING SHOP\"\n                },\n                {\n                    \"id\": \"5b8493cb-09f6-457a-a642-9a309ee1d424\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"75cdc4b8-dc29-409f-8f9b-a99341ea2e39\",\n            \"label\": \"INVESTMENT AND SAVINGS\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"5c8c11a1-ad38-4101-898e-9ceb1ee90d48\",\n                    \"label\": \"CREDIT CARD PAYMENT\"\n                },\n                {\n                    \"id\": \"5f93b21e-7e63-4652-91a9-610026252b29\",\n                    \"label\": \"INVESTMENTS\"\n                },\n                {\n                    \"id\": \"5fb0ba5d-71eb-42db-bd51-63637ef356df\",\n                    \"label\": \"SAVINGS\"\n                },\n                {\n                    \"id\": \"5fe79b4e-8ab3-4cb4-b51e-bc5eb3263a0c\",\n                    \"label\": \"PENSION\"\n                },\n                {\n                    \"id\": \"61eaee8c-eea4-4d9f-93f1-74f22f38b6ea\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"7bc5d291-8af1-4ad0-bf29-302f4e1c6995\",\n            \"label\": \"GENERAL\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"656abd3b-8a71-455f-ab28-6f4e3262da2c\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"84c9be40-4114-43ce-9e06-5f93c2719693\",\n            \"label\": \"GROCERIES\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"69f5d7b7-f1e6-498a-9318-23ba5916c7ef\",\n                    \"label\": \"SUPERMARKET\"\n                },\n                {\n                    \"id\": \"6d4395bb-466c-419a-80b5-7428cec4f88f\",\n                    \"label\": \"ONLINE GROCERIES\"\n                },\n                {\n                    \"id\": \"74a0185b-632d-4edd-832f-d32582b15e8d\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"8abdddb5-92c4-42e1-b380-12537f84b40e\",\n            \"label\": \"PERSONAL CARE\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"7702e7ec-32b9-4ce6-879e-20ac84e52293\",\n                    \"label\": \"BEAUTY PRODUCTS\"\n                },\n                {\n                    \"id\": \"7affed3f-f9d0-4946-b2c0-70c79b0334ac\",\n                    \"label\": \"DOCTOR\"\n                },\n                {\n                    \"id\": \"7f84092a-c67d-4cb3-99af-c7a4be5109db\",\n                    \"label\": \"GYM / EXERCISE\"\n                },\n                {\n                    \"id\": \"7fcaceb6-9c4e-4395-b216-5ae41b3991d2\",\n                    \"label\": \"HAIRDRESSER\"\n                },\n                {\n                    \"id\": \"83f7fb77-8b56-4f47-b531-6d06e245597d\",\n                    \"label\": \"PHARMACY\"\n                },\n                {\n                    \"id\": \"8546fdde-8b73-4a58-9aa0-4781e4ca6340\",\n                    \"label\": \"SPA / BEAUTY TREATMENT\"\n                },\n                {\n                    \"id\": \"85936cb0-aa0c-4c93-b0bc-cbf1672bd675\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"8b37bbd3-76e9-4937-a7fc-e9cf7d8232a3\",\n            \"label\": \"HOME\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"899cbae5-c556-4e2d-8cdd-9fef7fd4d820\",\n                    \"label\": \"RENT\"\n                },\n                {\n                    \"id\": \"8af1b65f-62f2-4b56-a348-97e7390d2f62\",\n                    \"label\": \"MORTGAGE\"\n                },\n                {\n                    \"id\": \"8cf40b23-e7a4-4ae3-88f0-4ab3b35a679b\",\n                    \"label\": \"SERVICE CHARGE\"\n                },\n                {\n                    \"id\": \"8dfb3077-3e29-4a3b-b41c-964bf368071b\",\n                    \"label\": \"GARDEN\"\n                },\n                {\n                    \"id\": \"922cd0ca-bd5f-44ab-aa40-6536f9d2abe5\",\n                    \"label\": \"COUNCIL TAX\"\n                },\n                {\n                    \"id\": \"9d3ca620-4ae3-4296-8864-c0962b2f4539\",\n                    \"label\": \"HOME IMPROVEMENT\"\n                },\n                {\n                    \"id\": \"a1bfe200-c1d7-4c0c-9d60-d0b83cd71f74\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"92aef8f2-18f8-464f-8915-e44dc5b97731\",\n            \"label\": \"INSURANCE\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"a72f6cbf-d894-4bfa-ac87-39f85012a7f8\",\n                    \"label\": \"HOME INSURANCE\"\n                },\n                {\n                    \"id\": \"a7bc0f36-ee80-496c-a1c1-ac49c51c6d07\",\n                    \"label\": \"MOTOR INSURANCE\"\n                },\n                {\n                    \"id\": \"a8a505af-7e73-4d6f-a146-51d2eb5d4db8\",\n                    \"label\": \"TRAVEL INSURANCE\"\n                },\n                {\n                    \"id\": \"a9e1b431-6d75-41ac-9a23-44fb25e64b1a\",\n                    \"label\": \"HEALTH INSURANCE\"\n                },\n                {\n                    \"id\": \"aa420049-2d7a-4f11-94d5-c76e45329a47\",\n                    \"label\": \"LIFE INSURANCE\"\n                },\n                {\n                    \"id\": \"ab441944-859a-44db-93fc-0800266dd4f6\",\n                    \"label\": \"PET INSURANCE\"\n                },\n                {\n                    \"id\": \"ab95ea13-8d0c-497d-8d8b-e06cde0eaf97\",\n                    \"label\": \"PHONE / GADGET INSURANCE\"\n                },\n                {\n                    \"id\": \"aba53905-b630-4cf3-b1f8-698d124197a6\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"b0b56616-8cf6-4653-8512-d5eefe8400fe\",\n            \"label\": \"OTHER\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"ad5e46b2-f9ad-4ef2-96d7-a2817073beec\",\n                    \"label\": \"EDUCATION\"\n                },\n                {\n                    \"id\": \"b18ec1a3-171c-405a-bd4f-c9fddcd6c594\",\n                    \"label\": \"ATM WITHDRAWAL\"\n                },\n                {\n                    \"id\": \"b1d4abd8-1c2f-412a-9916-4167cc7d58d8\",\n                    \"label\": \"CREDIT CARD PAYMENT\"\n                },\n                {\n                    \"id\": \"b4cd0587-1d2f-4378-a31c-8ddc0ce0dc03\",\n                    \"label\": \"TRANSFER\"\n                },\n                {\n                    \"id\": \"b667ea18-8679-4608-91b6-cbd4488d3802\",\n                    \"label\": \"CARD TOPUP\"\n                },\n                {\n                    \"id\": \"b6c611d7-d8cc-4d16-8e42-16cfa6dfd56e\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"b1f468dd-8f0c-4bbb-a720-f6c117187b15\",\n            \"label\": \"SHOPPING\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"b7181636-097c-4362-9f71-9da1559685f2\",\n                    \"label\": \"BOOKS\"\n                },\n                {\n                    \"id\": \"becc8b91-f594-490b-aecf-50e12fb6ca84\",\n                    \"label\": \"CLOTHING\"\n                },\n                {\n                    \"id\": \"bf41624e-5790-43d9-966d-25878cd79881\",\n                    \"label\": \"ELECTRONICS\"\n                },\n                {\n                    \"id\": \"c8bab464-ade8-4ec2-9d83-d42a2aa7d088\",\n                    \"label\": \"GAMES\"\n                },\n                {\n                    \"id\": \"c99e826c-302c-4abf-85b5-557d65184f63\",\n                    \"label\": \"HOBBIES\"\n                },\n                {\n                    \"id\": \"cb09c4e8-00d2-41d7-a581-f73d0e3b0cb2\",\n                    \"label\": \"MUSIC\"\n                },\n                {\n                    \"id\": \"cbe0734a-c10b-4901-bf7c-be4df9b1ed42\",\n                    \"label\": \"PETS\"\n                },\n                {\n                    \"id\": \"d13b7872-0418-426c-9054-315a41ddcd21\",\n                    \"label\": \"SOFTWARE\"\n                },\n                {\n                    \"id\": \"d17705fc-1a34-42a2-bc77-0511635f0d21\",\n                    \"label\": \"SPORTING ITEMS\"\n                },\n                {\n                    \"id\": \"d2668855-296d-450f-b309-3f28c4f3fa5f\",\n                    \"label\": \"HOUSE ITEMS\"\n                },\n                {\n                    \"id\": \"d4cf6c32-d94f-4488-9e74-46734cb34cc2\",\n                    \"label\": \"FILM / DVD\"\n                },\n                {\n                    \"id\": \"d837fb3f-f614-410b-b9d9-3e89e92e683a\",\n                    \"label\": \"STATIONARY\"\n                },\n                {\n                    \"id\": \"d8d74d91-7810-4995-8337-72c39dff05a2\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"b831661f-c8af-4eec-91d8-b09b53616394\",\n            \"label\": \"TRANSPORT\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"d9da6e16-7a9f-41ee-b727-a7d39f0e4c2c\",\n                    \"label\": \"PUBLIC TRANSPORT\"\n                },\n                {\n                    \"id\": \"d9e7f133-d0d7-471a-be28-da3f61d453c2\",\n                    \"label\": \"PETROL / FUEL\"\n                },\n                {\n                    \"id\": \"dbb9104d-e0e4-4e25-838a-083dc751c665\",\n                    \"label\": \"PARKING\"\n                },\n                {\n                    \"id\": \"dcab2001-efc7-42be-a381-c7169ff806e6\",\n                    \"label\": \"TAXI\"\n                },\n                {\n                    \"id\": \"dee109d5-0347-404e-81f2-cc736949e62d\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"baf7ee41-0a29-49f7-b5fd-af602935c2fe\",\n            \"label\": \"TRAVEL AND HOLIDAY\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"e1cc65b3-30ba-47fc-90aa-c7a1fb93ebdf\",\n                    \"label\": \"AIR TRAVEL\"\n                },\n                {\n                    \"id\": \"e44e3d55-a843-4660-940b-b2756198992e\",\n                    \"label\": \"CAR RENTAL\"\n                },\n                {\n                    \"id\": \"e76ee6e8-1cef-4986-b229-ef96af9f473d\",\n                    \"label\": \"HOTELS\"\n                },\n                {\n                    \"id\": \"ed57cd0b-2abc-4af9-b478-75bbee149a5a\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"bc4de368-67f2-4bd6-ae09-ebfa1164e259\",\n            \"label\": \"FEES AND CHARGES\",\n            \"country\": \"GB\",\n            \"subcategories\": [\n                {\n                    \"id\": \"ed8d73e4-79ea-42a0-aab3-0c2d40594ba8\",\n                    \"label\": \"LATE FEE\"\n                },\n                {\n                    \"id\": \"ee16362b-f67c-4f1a-8e6a-f2ed6f325df3\",\n                    \"label\": \"ATM FEE\"\n                },\n                {\n                    \"id\": \"ef9652f1-67cf-40eb-8ef5-ecb96419c60c\",\n                    \"label\": \"SERVICE FEE\"\n                },\n                {\n                    \"id\": \"f0d996d4-be7e-48f3-bb3b-48d10c287b75\",\n                    \"label\": \"OVERDRAFT CHARGE\"\n                },\n                {\n                    \"id\": \"f16c80bb-4e77-43de-bb8e-3391d8c8d2f0\",\n                    \"label\": \"FOREIGN CURRENCY CHARGE\"\n                },\n                {\n                    \"id\": \"f2a19ee6-d181-4454-98e4-1f8c5d83be82\",\n                    \"label\": \"OTHER\"\n                }\n            ]\n        },\n        {\n            \"id\": \"c17a6985-a47c-463c-bbd0-934a156224e3\",\n            \"label\": \"FINANCES\",\n            \"country\": \"GB\",\n            \"subcategories\": []\n        },\n        {\n            \"id\": \"cdc636d5-2dc7-444a-a53c-edd81f449cdc\",\n            \"label\": \"TRANSFERS\",\n            \"country\": \"GB\",\n            \"subcategories\": []\n        },\n        {\n            \"id\": \"2a497caa-eea6-4e99-b460-57a26fffd0d7\",\n            \"label\": \"UNKNOWN\",\n            \"country\": \"GB\",\n            \"subcategories\": []\n        }\n    ]\n}"
             },
             {
               "id": "180c301c-edad-44b1-92ea-dee133e138c5",
@@ -8094,92 +8370,92 @@
   ],
   "variable": [
     {
-      "id": "da5044ce-12b0-40dd-9711-523b99bb1679",
+      "id": "6708d76c-91c1-4453-a293-da1dc215b83e",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "7fa5c094-0ba9-4a1f-846c-2b3d30f014df",
+      "id": "eadf606e-8188-4777-bf6f-952a97ae7f5f",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "42825ab8-9906-441e-959b-ac5eea37b3df",
+      "id": "f518954e-b968-4a23-8dfb-705b4faa97dc",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "e7425626-122a-4220-8215-eb479772a118",
+      "id": "4401c783-352a-4f75-bfb7-c70e2ecad0c8",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "628b9368-4421-4f41-a91e-3a4e43999596",
+      "id": "d080d6f6-79c1-4140-8bbd-7cbb19711907",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "c638d547-ac4c-4d4a-bc28-0b4a60cf595d",
+      "id": "3f9cdbb6-2d00-499f-974d-cb12fc8f9f30",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "cc1c54d1-c996-495a-8b3a-e15d9e80b9cb",
+      "id": "442b1ef7-a6ed-4bc8-a97c-065837c968af",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "660d481e-919b-4c2d-a948-60c9a551c4ab",
+      "id": "3af148d8-48cc-47a5-b863-4e45514b7522",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "0fdfede9-0275-4593-ba77-123b2bde0d2d",
+      "id": "224a41f0-b9af-4c59-91f8-f6dd9b850623",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "149431df-c86c-4a9b-98e9-b8da388ca77d",
+      "id": "99a9755c-8553-461f-9b53-e743beeab0bd",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "0669339b-13ad-4715-8be1-47377f1f68aa",
+      "id": "bcab42a9-120d-4f46-a897-7ae88b5682fa",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "68018b17-7c37-4441-8b67-b32e3921512e",
+      "id": "f0b607b4-5433-42e2-afec-fcfa11b22ca3",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "b454368f-c078-4a5f-ba17-8c6012e1b1c9",
+      "id": "c054f71c-ffb1-4dcf-bff0-733d9af88759",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "5fb1b650-a8ba-431c-8029-ad505b6f7088",
+      "id": "1cd191e0-e221-4712-a9ce-1c3dd237a7e8",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "b375fb00-6ee4-438e-aa0a-7212cb3d3519",
+      "id": "a0351d22-b8f4-4b06-8a68-66d0b2452709",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "aee1c99f-665e-4c24-b396-231f119e8da2",
+      "id": "0a804200-3b8d-481b-b99f-e3a7d6f090f5",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "5e4a9a65-6d4a-4c90-9a59-2788773e9bb2",
+      "id": "0e7c3973-3c3e-4fae-b4f2-bdde1ad0b1d8",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "484c5dbb-e16f-4bb1-95ce-64869ed94e13",
+      "id": "d9f69562-a632-48ca-bb50-f605f0c23d34",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
