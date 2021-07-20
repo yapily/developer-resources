@@ -5819,6 +5819,80 @@
           ]
         },
         {
+          "name": "Get Account Periodic Payments",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "98e43700-e9c7-4598-b337-42e86b099216",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}"
+              }
+            ],
+            "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments",
+            "description": "Feature: `ACCOUNT_PERIODIC_PAYMENTS`\n\nReturns a list of periodic payments (standing orders in the UK) for a specific account.\n\nSee [GET Account Periodic Payments](https://kb.yapily.com/display/YAD/GET+Get+Account+Periodic+Payments) in the Knowledge Base for more information."
+          },
+          "response": [
+            {
+              "id": "2e92d31d-a4f4-43b7-8dc6-1f28b5d35d3e",
+              "name": "200 OK (PERIODIC PAYMENTS)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e7b01315-cbc5-4d0b-91e8-4f77cb1a3253\",\n        \"count\": 2,\n        \"pagination\": {\n            \"totalCount\": 2,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"100000000000000000000010\",\n            \"statusDetails\": {\n                \"status\": \"UNKNOWN\"\n            },\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"20012001\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"181818\"\n                    }\n                ]\n            },\n            \"reference\": \"Glock Hire\",\n            \"firstPaymentAmountDetails\": {\n                \"amount\": 199.95,\n                \"currency\": \"GBP\"\n            },\n            \"firstPaymentDateTime\": \"2012-01-10T00:00:00Z\",\n            \"nextPaymentAmountDetails\": {\n                \"amount\": 199.95,\n                \"currency\": \"GBP\"\n            },\n            \"nextPaymentDateTime\": \"2018-01-10T00:00:00Z\",\n            \"finalPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"finalPaymentDateTime\": \"2020-01-10T00:00:00Z\",\n            \"frequencyDetails\": {\n                \"frequency\": \"MONTHLY\",\n                \"intervalWeek\": 1,\n                \"executionDay\": 1\n            },\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"100000000000000000000011\",\n            \"statusDetails\": {\n                \"status\": \"UNKNOWN\"\n            },\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"19871897\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"202020\"\n                    }\n                ]\n            },\n            \"reference\": \"Allowance\",\n            \"firstPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"firstPaymentDateTime\": \"2015-09-30T23:00:00Z\",\n            \"nextPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"nextPaymentDateTime\": \"2018-01-01T00:00:00Z\",\n            \"frequencyDetails\": {\n                \"frequency\": \"DAILY\"\n            },\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/periodic-payment-orders?limit=1000\"\n    }\n}"
+            },
+            {
+              "id": "961b297a-435c-4457-93bd-933bdd5fceab",
+              "name": "401 UNAUTHORIZED",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}"
+                  }
+                ],
+                "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
+            }
+          ]
+        },
+        {
           "name": "Get Account Statements",
           "event": [
             {
@@ -6506,80 +6580,6 @@
                   }
                 ],
                 "url": "https://api.yapily.com/accounts/{{account-id}}/scheduled-payments"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Get Account Periodic Payments",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e3334cd3-044c-4d6d-87d0-449f46c50376",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "id": "98e43700-e9c7-4598-b337-42e86b099216",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}"
-              }
-            ],
-            "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments",
-            "description": "Feature: `ACCOUNT_PERIODIC_PAYMENTS`\n\nReturns a list of periodic payments (standing orders in the UK) for a specific account.\n\nSee [GET Account Periodic Payments](https://kb.yapily.com/display/YAD/GET+Get+Account+Periodic+Payments) in the Knowledge Base for more information."
-          },
-          "response": [
-            {
-              "id": "2e92d31d-a4f4-43b7-8dc6-1f28b5d35d3e",
-              "name": "200 OK (PERIODIC PAYMENTS)",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e7b01315-cbc5-4d0b-91e8-4f77cb1a3253\",\n        \"count\": 2,\n        \"pagination\": {\n            \"totalCount\": 2,\n            \"self\": {\n                \"limit\": 1000\n            }\n        }\n    },\n    \"data\": [\n        {\n            \"id\": \"100000000000000000000010\",\n            \"statusDetails\": {\n                \"status\": \"UNKNOWN\"\n            },\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"20012001\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"181818\"\n                    }\n                ]\n            },\n            \"reference\": \"Glock Hire\",\n            \"firstPaymentAmountDetails\": {\n                \"amount\": 199.95,\n                \"currency\": \"GBP\"\n            },\n            \"firstPaymentDateTime\": \"2012-01-10T00:00:00Z\",\n            \"nextPaymentAmountDetails\": {\n                \"amount\": 199.95,\n                \"currency\": \"GBP\"\n            },\n            \"nextPaymentDateTime\": \"2018-01-10T00:00:00Z\",\n            \"finalPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"finalPaymentDateTime\": \"2020-01-10T00:00:00Z\",\n            \"frequencyDetails\": {\n                \"frequency\": \"MONTHLY\",\n                \"intervalWeek\": 1,\n                \"executionDay\": 1\n            },\n            \"accountId\": \"500000000000000000000001\"\n        },\n        {\n            \"id\": \"100000000000000000000011\",\n            \"statusDetails\": {\n                \"status\": \"UNKNOWN\"\n            },\n            \"payeeDetails\": {\n                \"accountIdentifications\": [\n                    {\n                        \"type\": \"ACCOUNT_NUMBER\",\n                        \"identification\": \"19871897\"\n                    },\n                    {\n                        \"type\": \"SORT_CODE\",\n                        \"identification\": \"202020\"\n                    }\n                ]\n            },\n            \"reference\": \"Allowance\",\n            \"firstPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"firstPaymentDateTime\": \"2015-09-30T23:00:00Z\",\n            \"nextPaymentAmountDetails\": {\n                \"amount\": 10.00,\n                \"currency\": \"GBP\"\n            },\n            \"nextPaymentDateTime\": \"2018-01-01T00:00:00Z\",\n            \"frequencyDetails\": {\n                \"frequency\": \"DAILY\"\n            },\n            \"accountId\": \"500000000000000000000001\"\n        }\n    ],\n    \"links\": {\n        \"self\": \"http://local-api.yapily.com:8081/accounts/500000000000000000000001/periodic-payment-orders?limit=1000\"\n    }\n}"
-            },
-            {
-              "id": "961b297a-435c-4457-93bd-933bdd5fceab",
-              "name": "401 UNAUTHORIZED",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}"
-                  }
-                ],
-                "url": "https://api.yapily.com/accounts/{{account-id}}/periodic-payments"
               },
               "status": "Unauthorized",
               "code": 401,
@@ -7886,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "1fb95975-3255-4465-a262-27e7bd94d3ea",
+      "id": "19ba601f-e850-49f8-809f-10b06891b35f",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "8b69e791-f4b8-4a0e-a21a-6258397464f7",
+      "id": "d739e17f-df97-412e-b59c-9c023457e14e",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "21d36f0b-3b4b-44f5-a71c-745c9adba870",
+      "id": "e88d964c-6978-46e2-89b3-513dbe401804",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "dce1e425-223e-402f-a435-124f2323f052",
+      "id": "76484d54-0678-4af5-ad1c-c6e43a399817",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "0cf7e50d-9882-448b-b027-b4e4c6f2789e",
+      "id": "536e4660-03be-4d1f-bd41-aa8b4e497afa",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "3b005e6a-3ebf-4f2b-aab8-ec6af5c09d17",
+      "id": "b97e5d14-03d0-4b22-9cbe-bd86c44d1d21",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "55e985af-b04b-4ba5-8f55-35ea76a2d372",
+      "id": "c10e161c-8548-4a62-b60c-b78abd963150",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "22d6bbc2-f133-494d-b75c-934a2fc34d87",
+      "id": "89becafb-e483-4e21-9a1f-e27d6521d47b",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "0aacdc49-995e-4acc-b319-d35a4eb7e199",
+      "id": "20ef9c2c-05f9-49db-9db3-5479f75d4bc3",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "b3bbe53d-7514-4488-ab90-f2bb463545ef",
+      "id": "961f9df0-fe25-4db3-956f-47a0c98f4327",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "b2f519dd-1462-4e3e-bd56-66dc53371e86",
+      "id": "81184bf2-f649-4470-8ce4-71cdd54fab99",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "8aa9d616-e27f-4a5a-9c70-2b6704a67f50",
+      "id": "40c0ad05-9f63-45e6-8c3c-531eeb997e48",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "64a8cf3e-2232-43c1-a254-c2b6058c73bb",
+      "id": "ff9e0869-ff4b-4a29-a880-219b26c74631",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "8b9600a0-25ad-45e8-b707-474f51cb53d9",
+      "id": "fa3cc76c-ad0c-41ac-9172-b4ece8cb8bce",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "3b2d0880-168e-4d4a-bb8b-3e41080a1e9e",
+      "id": "d865871d-f532-4b2b-8f99-f72b803ba9cc",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "ba41934f-e2af-47ec-bf79-df7d4d08bf01",
+      "id": "7f0a64cc-0f83-4d5b-969f-3af9dd5f6486",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "8225cdf0-370a-4587-8515-06c54ee13d98",
+      "id": "9f8e2433-437f-40d6-80c4-142d81f0ce1c",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "46a40418-5292-4c16-9986-185b4967cdf2",
+      "id": "e6efc156-53ae-4379-88e9-73d42b9a4a65",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
