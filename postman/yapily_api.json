@@ -2733,272 +2733,7 @@
           ]
         },
         {
-          "name": "[Forwarding] Send Access Token",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "13ee4e77-bef6-4f66-a2d5-2a6164ba1560",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "id": "9d5b5aac-dd06-6c13-6a87-6fb529829bfa",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"accessToken\": \"ACCESS_TOKEN\",\n\t\"refreshToken\": \"REFRESH_TOKEN\",\n\t\"scope\": \"SCOPE\",\n\t\"institutionId\": \"{{institution-id}}\"\n}"
-            },
-            "url": "https://api.yapily.com/users/{{user-uuid}}/consents",
-            "description": "For standard user authorised requests, ignore this endpoint and execute a [Create Account Authorisation Request](https://docs.yapily.com/#2d2c9547-47b2-4e0e-a6e0-73451bc4a287) to obtain a Yapily *consent token*.\n\nThis endpoint is particularly for creating a Yapily **consent token** by sending **OAuth2 access token** or **API key** data.\n\nThe most common use cases for creating consent tokens with this data:\n- The financial institution provides API keys to access user data. This applies to any institution with the _credentialsType_ of `API_KEY`\n- You already have the access token for a user and want to allow Yapily to manage your integration and [token refreshing](https://tools.ietf.org/html/rfc6749#section-1.5)\n\nNote the distinction between access tokens, API keys and the Yapily consent token. An [OAuth2 access token](https://tools.ietf.org/html/rfc6749) is a short-lived, refreshable object created by a third party to authorise access to the end user's resources. Similarly, an API key is created by a third party and is valid until either the institution or end user revokes access. The consent token returned by Yapily is a generic, longer-lived token specifically for use with this API that abstracts multiple methods of representing consent and handles the mechanisms for using and refreshing tokens.\n\n| Field | Description | Type |\n| - | - | - |\n| institutionId | The [`institution-id`](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010) for the institution that provided the token | String |\n| accessToken | Either the OAuth2 access token _or_ the API key string, depending on the institution's authorisation flow. Note: this field also has the alias **apiKey** for this reason. | String |\n| refreshToken | _Optional._ The OAuth2 refresh token string. Note: If provided, Yapily will immediately attempt a token refresh, invalidating the existing access token. | String |\n| scope | _Optional._ The OAuth2 scope | String |"
-          },
-          "response": [
-            {
-              "id": "054ea2cd-26ff-4446-99cd-b4a517c5c65f",
-              "name": "200 OK Response - Add a user consent",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"accessToken\": \"ACCESS_TOKEN\",\n\t\"refreshToken\": \"REFRESH_TOKEN\",\n\t\"institutionId\": \"{{institution-id}}\"\n}"
-                },
-                "url": "https://api.yapily.com/users/{{user-uuid}}/consents"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Date",
-                  "value": "Wed, 09 Jan 2019 11:32:30 GMT"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "8b99dd63-fe26-4a1f-b955-9a2e8a8cb5a8"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "680"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 google"
-                },
-                {
-                  "key": "Alt-Svc",
-                  "value": "clear"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"id\": \"f1df19b1-0da1-4db0-b03a-dcb6953e338f\",\n    \"userUuid\": \"628e1f22-5c98-40c2-8eda-c1b4f016309a\",\n    \"institutionId\": \"starling-sandbox\",\n    \"status\": \"AUTHORIZED\",\n    \"createdAt\": \"2019-01-09T11:32:30.571Z\",\n    \"expiresAt\": \"2019-01-10T11:28:30.571Z\",\n    \"timeToExpireInMillis\": 239969,\n    \"featureScope\": [\n        \"ACCOUNT_TRANSACTIONS_WITH_MERCHANT\",\n        \"IDENTITY\",\n        \"ACCOUNT\",\n        \"ACCOUNT_TRANSACTIONS\",\n        \"ACCOUNTS\"\n    ],\n    \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6InN0YXJsaW5nLXNhbmRib3giLCJDT05TRU5UIjoiZjFkZjE5YjEtMGRhMS00ZGIwLWIwM2EtZGNiNjk1M2UzMzhmIiwiVVNFUiI6IjYyOGUxZjIyLTVjOTgtNDBjMi04ZWRhLWMxYjRmMDE2MzA5YSJ9.Sp-VBqHs0wQosVyg74Nc7LETegiBtpMs7qP9M2ZuVvY3wEszNvn8NQI2iAvFvhGkxASRLcWWovPNl4-joGDFeQ\"\n}"
-            },
-            {
-              "id": "a9ed658a-2ff3-420b-93cf-a71c167d6867",
-              "name": "200 OK Response - Add a user API key",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"apiKey\": \"API_KEY\",\n\t\"institutionId\": \"{{institution-id}}\"\n}"
-                },
-                "url": "https://api.yapily.com/users/{{user-uuid}}/consents"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Date",
-                  "value": "Wed, 09 Jan 2019 11:38:44 GMT"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "98069b5e-7f30-41dd-b182-8fd833aa7f13"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "657"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 google"
-                },
-                {
-                  "key": "Alt-Svc",
-                  "value": "clear"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"id\": \"af1890f0-58eb-4131-ae2e-203ecabf035b\",\n    \"userUuid\": \"628e1f22-5c98-40c2-8eda-c1b4f016309a\",\n    \"institutionId\": \"revolut-sandbox\",\n    \"status\": \"AUTHORIZED\",\n    \"createdAt\": \"2019-01-09T11:38:44.643Z\",\n    \"expiresAt\": \"2019-01-09T11:38:44.643Z\",\n    \"timeToExpireInMillis\": -27,\n    \"featureScope\": [\n        \"CREATE_SINGLE_PAYMENT_SORTCODE\",\n        \"ACCOUNT\",\n        \"EXISTING_PAYMENTS_DETAILS\"\n    ],\n    \"consentToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6InJldm9sdXQtc2FuZGJveCIsIkNPTlNFTlQiOiJhZjE4OTBmMC01OGViLTQxMzEtYWUyZS0yMDNlY2FiZjAzNWIiLCJVU0VSIjoiNjI4ZTFmMjItNWM5OC00MGMyLThlZGEtYzFiNGYwMTYzMDlhIn0.EvHW3BWW7u0-Jrg4hjejpktu-9dsngQpVqarWtCmyX_rg5Jf2dv6GdHg0MC66XsBa-VIAh85Z51I23J2iIDDaA\"\n}"
-            },
-            {
-              "id": "a0e93368-c121-4a78-b484-1c6c8e0d4984",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n\t\"accessToken\": \"API_KEY\",\n\t\"institutionId\": \"{{institution-id}}\"\n}"
-                },
-                "url": "https://api.yapily.com/users/{{user-uuid}}/consents"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Date",
-                  "value": "Wed, 09 Jan 2019 11:40:30 GMT"
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\""
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "114"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 google"
-                },
-                {
-                  "key": "Alt-Svc",
-                  "value": "clear"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 401,\n        \"status\": \"UNAUTHORIZED\",\n        \"message\": \"Full authentication is required to access this resource\"\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "[Forwarding] Send OAuth2 Code",
+          "name": "Exchange OAuth2 Code",
           "id": "3ae89c8c-d48e-4635-b4f2-eb697bbed5cc",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
@@ -8695,92 +8430,92 @@
   ],
   "variable": [
     {
-      "id": "6e80fff8-e128-44a4-bdc9-9527a0a62dfb",
+      "id": "4108e65c-d855-49d3-9288-1ad268bade99",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "e6fbb379-00a7-4fa4-bfeb-405531e16cb1",
+      "id": "6d10d2f0-57a1-423e-89cf-8f7f9d48b04a",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "5c0b96b1-f517-43e5-95ed-750de7c8ec1c",
+      "id": "1b037c9a-e810-4271-9d6d-928bd8878544",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "383a2c1a-5e4a-445c-95ff-c24d3265ac3e",
+      "id": "4ce0f2c4-a049-425b-8bb7-396987fd6da9",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "d983b947-4877-404c-b402-92204ad7ff1b",
+      "id": "c74e8617-3838-4513-b023-d0757d424f2e",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "e05ec1f5-b831-475c-bd0c-a339fa07ef9b",
+      "id": "4a332082-d4f9-4351-9a32-c4a43e029767",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "e002f225-0a61-4f25-a1a2-ced6f286b4de",
+      "id": "f90fd1ed-74ea-442b-a2d3-608dd8e8ac4e",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "12b8c288-4555-487f-9e34-dc1c02e19692",
+      "id": "5bbd0803-3c1e-4e5d-9eff-94cbb91b0560",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "59078fe3-8170-4e96-9772-96b1b78c2111",
+      "id": "284f18b3-71e1-4338-ab7b-b831f6857708",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "88b79212-c06d-4dec-a8ed-e51f0cd806df",
+      "id": "1287431a-1533-44ad-8519-3556fa1e69db",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "56084574-7e5f-404e-a528-ee97a401bce5",
+      "id": "b81fef5b-234b-4352-9af6-1e0e794376c3",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "bdd29133-6ab0-49af-99c8-a74ae8737571",
+      "id": "cfabf280-1482-4f91-a697-ae7f83968b81",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "7e6c78b5-9e57-4f5b-a485-fe9cc0423bb4",
+      "id": "cd9d3308-781e-47ea-8961-ae9759888efa",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "72e8cf80-cdde-4d30-9909-f999160d87c5",
+      "id": "4324fbb4-add2-47cd-ba69-56cd8c3baed6",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "8525e161-02be-4640-99de-49fedca20b5e",
+      "id": "e0b6b8d6-a719-4e83-96e0-f215b8112807",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "f89645c0-5c20-4b67-9084-82fe6315d123",
+      "id": "21e00697-0225-4c81-bdc2-5a3534b22de1",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "9fd14786-fd56-47ec-9566-a3eb5f1c58a9",
+      "id": "eec0e61e-c54d-4e8c-a269-b3ad839544e7",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "14f261e6-3a1c-4bb1-a640-7910a620ad9c",
+      "id": "a8c7a2af-dd80-4047-b1a2-76eeffea13a5",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
