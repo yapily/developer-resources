@@ -1778,253 +1778,6 @@
       "name": "Consents",
       "item": [
         {
-          "name": "Delete User Consent",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "05caa663-d90f-44dc-b61d-692246879dde",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "id": "81e525f5-485c-804d-ffef-32afbfea6e65",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "https://api.yapily.com/consents/{{consent-id}}?forceDelete=false",
-              "protocol": "https",
-              "host": [
-                "api",
-                "yapily",
-                "com"
-              ],
-              "path": [
-                "consents",
-                "{{consent-id}}"
-              ],
-              "query": [
-                {
-                  "key": "forceDelete",
-                  "value": "false",
-                  "description": "_Optional_. Force deletion of the consent irrespective of whether the response from the institution is successful or not.\t Default: false."
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "ecf6e596-1caa-4f68-7a98-c5d2aacdf09f",
-              "name": "401 Unauthorized",
-              "originalRequest": {
-                "method": "DELETE",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "https://api.yapily.com/consents/{{consent-id}}"
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "114",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 18 May 2018 14:12:11 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "WWW-Authenticate",
-                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\"",
-                  "name": "WWW-Authenticate",
-                  "description": "Indicates the authentication scheme that should be used to access the requested entity."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": "35",
-              "body": "{\"error\":{\"code\":401,\"status\":\"UNAUTHORIZED\",\"message\":\"Full authentication is required to access this resource\"}}"
-            },
-            {
-              "id": "9aa655cb-2348-48ff-65e7-a74190c77b7c",
-              "name": "200 OK Response",
-              "originalRequest": {
-                "method": "DELETE",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "https://api.yapily.com/consents/{{consent-id}}"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 18 May 2018 14:11:49 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "Transfer-Encoding",
-                  "value": "chunked",
-                  "name": "Transfer-Encoding",
-                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": "42",
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"58e1c78c-271e-48b7-8b69-73496487b1d3\"\n    },\n    \"data\": {\n        \"id\": \"a71fd46f-4144-478e-9a72-dd0d7a1158ab\",\n        \"deleteStatus\": \"SUCCESS\",\n        \"institutionId\": \"xxxxx-sandbox\",\n        \"institutionConsentId\": \"aac-1cce1cfc-1ab2-4ed6-8062-a0fd6c5c2122\",\n        \"creationDate\": \"2019-05-10T16:45:43.566+0000\"\n    }\n}"
-            }
-          ]
-        },
-        {
           "name": "Get Consents",
           "event": [
             {
@@ -2836,6 +2589,253 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n  \"error\": {\n    \"code\": 424,\n    \"tracingId\": \"c7b33f41-04ba-41b3-a5c2-0963cceeee5e\",\n    \"status\": \"FAILED DEPENDENCY\",\n    \"message\": \"This request has been logged. Please get in touch with Yapily via email (developers@yapily.com) or Slack (https://yapily.slack.com) to report more details or if you require further assistance.\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete User Consent",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "05caa663-d90f-44dc-b61d-692246879dde",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "81e525f5-485c-804d-ffef-32afbfea6e65",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://api.yapily.com/consents/{{consent-id}}?forceDelete=false",
+              "protocol": "https",
+              "host": [
+                "api",
+                "yapily",
+                "com"
+              ],
+              "path": [
+                "consents",
+                "{{consent-id}}"
+              ],
+              "query": [
+                {
+                  "key": "forceDelete",
+                  "value": "false",
+                  "description": "_Optional_. Force deletion of the consent irrespective of whether the response from the institution is successful or not.\t Default: false."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ecf6e596-1caa-4f68-7a98-c5d2aacdf09f",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": "https://api.yapily.com/consents/{{consent-id}}"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "114",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 18 May 2018 14:12:11 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Basic realm=\"YAPILY_API_SECURITY_REALM\"",
+                  "name": "WWW-Authenticate",
+                  "description": "Indicates the authentication scheme that should be used to access the requested entity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "35",
+              "body": "{\"error\":{\"code\":401,\"status\":\"UNAUTHORIZED\",\"message\":\"Full authentication is required to access this resource\"}}"
+            },
+            {
+              "id": "9aa655cb-2348-48ff-65e7-a74190c77b7c",
+              "name": "200 OK Response",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": "https://api.yapily.com/consents/{{consent-id}}"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 18 May 2018 14:11:49 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "42",
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"58e1c78c-271e-48b7-8b69-73496487b1d3\"\n    },\n    \"data\": {\n        \"id\": \"a71fd46f-4144-478e-9a72-dd0d7a1158ab\",\n        \"deleteStatus\": \"SUCCESS\",\n        \"institutionId\": \"xxxxx-sandbox\",\n        \"institutionConsentId\": \"aac-1cce1cfc-1ab2-4ed6-8062-a0fd6c5c2122\",\n        \"creationDate\": \"2019-05-10T16:45:43.566+0000\"\n    }\n}"
             }
           ]
         }
@@ -8430,92 +8430,92 @@
   ],
   "variable": [
     {
-      "id": "4108e65c-d855-49d3-9288-1ad268bade99",
+      "id": "aac1d588-60f5-407d-9ec9-9bbe2f034934",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "6d10d2f0-57a1-423e-89cf-8f7f9d48b04a",
+      "id": "0ee8eb29-9bea-4c39-a419-fa522ff14d72",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "1b037c9a-e810-4271-9d6d-928bd8878544",
+      "id": "26a8dde6-7d97-4642-a1e7-81548b723408",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "4ce0f2c4-a049-425b-8bb7-396987fd6da9",
+      "id": "2d79d8de-6514-4914-9679-f28e7b312bf0",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "c74e8617-3838-4513-b023-d0757d424f2e",
+      "id": "a04e0389-496f-4913-9d11-cf351836fab2",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "4a332082-d4f9-4351-9a32-c4a43e029767",
+      "id": "7ce45906-f1a8-4747-87db-15ca685d2225",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "f90fd1ed-74ea-442b-a2d3-608dd8e8ac4e",
+      "id": "173cdfcf-6a8f-4f86-a413-65e0a7f3f22b",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "5bbd0803-3c1e-4e5d-9eff-94cbb91b0560",
+      "id": "edf056b5-d884-453a-a1a2-4c3f7e70f662",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "284f18b3-71e1-4338-ab7b-b831f6857708",
+      "id": "6ad7b732-e8a5-403c-a95f-8f2d1f7460fb",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "1287431a-1533-44ad-8519-3556fa1e69db",
+      "id": "a3fa4a3a-5dbf-4099-8870-9de3fcc067fb",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "b81fef5b-234b-4352-9af6-1e0e794376c3",
+      "id": "d731e4b3-63ce-46f2-951f-7d2f76c4115f",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "cfabf280-1482-4f91-a697-ae7f83968b81",
+      "id": "82c04ae6-461b-4849-a4d3-96fc63bb25ff",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "cd9d3308-781e-47ea-8961-ae9759888efa",
+      "id": "0e2df0f4-cc9f-48b0-9fb9-1dd3c4139332",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "4324fbb4-add2-47cd-ba69-56cd8c3baed6",
+      "id": "f0d7a164-4995-466a-b3c1-dc57ad960000",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "e0b6b8d6-a719-4e83-96e0-f215b8112807",
+      "id": "46b3f0d1-af4d-4980-b2ac-19576da4488d",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "21e00697-0225-4c81-bdc2-5a3534b22de1",
+      "id": "2055464e-2fef-4c40-af43-fd54db155dc6",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "eec0e61e-c54d-4e8c-a269-b3ad839544e7",
+      "id": "74e5dba2-f220-49f1-9da2-a104b7a74f08",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "a8c7a2af-dd80-4047-b1a2-76eeffea13a5",
+      "id": "5eda34cf-bd35-4429-ad4d-5b30dcb841f9",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
