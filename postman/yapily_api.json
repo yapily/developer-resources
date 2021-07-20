@@ -2609,6 +2609,846 @@
           "id": "df8a2b85-8e5f-4187-82e1-9224159dd2f6"
         },
         {
+          "name": "Embedded",
+          "item": [
+            {
+              "name": "Create Embedded Account Authorisation",
+              "id": "c5a33250-3af7-42b1-8ead-0592dc3b8119",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. The IP address of the PSU",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
+                },
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "4da3c819-b643-4ae2-ab4d-ba4dbf442574",
+                  "name": "201 Created (single SCA method)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-account-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"1565f7e13a0b4bf6b312cf8cc5747c7c\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H10M41.167S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            }\n        ],\n        \"selectedScaMethod\": {\n            \"id\": \"944\",\n            \"type\": \"PUSH_OTP\",\n            \"description\": \"SecureSIGN\"\n        }\n    }\n}"
+                },
+                {
+                  "id": "22e620f3-d347-47b0-9940-ee9d34cc1d9d",
+                  "name": "201 Created (multiple SCA methods)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-account-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Create Embedded Payment Authorisation",
+              "id": "d7c6669e-a643-4ac8-90a5-89c1303bdb88",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. The IP address of the PSU",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"PAYMENT_TYPE\",\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"country\": \"2_LETTER_COUNTRY_CODE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        }\n    }\n}"
+                },
+                "url": "https://api.yapily.com/embedded-payment-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "bc648618-6d02-4013-ba83-295674bdb836",
+                  "name": "201 Created (single SCA method)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-payment-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"meta\": {\n    \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n  },\n  \"data\": {\n    \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n    \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"state\": \"551440fc13794010855ad81c8463c926\",\n    \"status\": \"AWAITING_SCA_CODE\",\n    \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n    \"featureScope\": [\n      \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n      \"EXISTING_PAYMENTS_DETAILS\",\n      \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n    ]\n  }\n}"
+                },
+                {
+                  "id": "ce2e05f1-1c88-44ec-bb8b-2597582089a7",
+                  "name": "201 Created (multiple SCA methods)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-payment-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n    },\n    \"data\": {\n        \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n        \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"postbank-sandbox\",\n        \"state\": \"551440fc13794010855ad81c8463c926\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n        \"featureScope\": [\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"scaMethods\": [\n            {\n                \"id\": \"258211#OPTICAL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, optisch\"\n            },\n            {\n                \"id\": \"258211#MANUEL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, manuell\"\n            },\n            {\n                \"id\": \"591655\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"RolandmTAN\"\n            },\n            {\n                \"id\": \"591656\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"RSRolandIP2\"\n            }\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update Embedded Account Authorisation",
+              "id": "ddb0b755-c3de-4a08-b32b-8d51bbf389eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "key": "psu-id",
+                    "type": "text",
+                    "value": "{{psu-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "key": "psu-corporate-Id",
+                    "type": "text",
+                    "value": "{{psu-corporate-id}}",
+                    "disabled": true
+                  },
+                  {
+                    "description": "Conditional. The IP address of the PSU",
+                    "key": "psu-ip-address",
+                    "type": "text",
+                    "value": "{{psu-ip-address}}",
+                    "disabled": true
+                  },
+                  {
+                    "key": "",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
+                },
+                "url": "https://api.yapily.com/embedded-account-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "bf599ca3-5dfd-4db2-a373-8913d6ddb266",
+                  "name": "201 Created (SCA Code)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"scaCode\": \"6154057725\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-account-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"0ad7c46c4e4445bab3a0d4ccae25556b\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"authorizedAt\": \"2021-06-09T11:51:14.140Z\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\"\n    }\n}"
+                },
+                {
+                  "id": "89d1774b-936a-4272-aa1b-d229a7822c60",
+                  "name": "201 Created (Selected SCA Method)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Basic APP_CREDENTIALS"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"selectedScaMethod\": \"942\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-account-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate",
+                      "name": "Cache-Control",
+                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive",
+                      "name": "Connection",
+                      "description": "Options that are desired for the connection"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "2121",
+                      "name": "Content-Length",
+                      "description": "The length of the response body in octets (8-bit bytes)"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;charset=utf-8",
+                      "name": "Content-Type",
+                      "description": "The mime type of this content"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                      "name": "Date",
+                      "description": "The date and time that the message was sent"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0",
+                      "name": "Expires",
+                      "description": "Gives the date/time after which the response is considered stale"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache",
+                      "name": "Pragma",
+                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                    },
+                    {
+                      "key": "Server",
+                      "value": "nginx/1.13.9",
+                      "name": "Server",
+                      "description": "A name for the server"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=15724800; includeSubDomains;",
+                      "name": "Strict-Transport-Security",
+                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff",
+                      "name": "X-Content-Type-Options",
+                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY",
+                      "name": "X-Frame-Options",
+                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block",
+                      "name": "X-XSS-Protection",
+                      "description": "Cross-site scripting (XSS) filter"
+                    },
+                    {
+                      "key": "Yapily-Tracing-Id",
+                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                      "name": "Yapily-Tracing-Id",
+                      "description": "Custom header"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"eaa703f3869b46b18732fa0de60f6073\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H6M39.998S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"selectedScaMethod\": {\n            \"id\": \"942\",\n            \"type\": \"SMS_OTP\",\n            \"description\": \"mobile TAN\"\n        }\n    }\n}"
+                }
+              ]
+            }
+          ],
+          "id": "5e32ea9a-ff9e-4dca-904c-a25d8f80e454"
+        },
+        {
           "name": "Pre-Auth",
           "item": [
             {
@@ -3450,846 +4290,6 @@
             }
           ],
           "id": "b10c84ed-136c-4912-abd6-9ea70e371495"
-        },
-        {
-          "name": "Embedded",
-          "item": [
-            {
-              "name": "Create Embedded Account Authorisation",
-              "id": "c5a33250-3af7-42b1-8ead-0592dc3b8119",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. The IP address of the PSU",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  },
-                  {
-                    "key": "",
-                    "value": "",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
-                },
-                "url": "https://api.yapily.com/embedded-account-auth-requests"
-              },
-              "response": [
-                {
-                  "id": "4da3c819-b643-4ae2-ab4d-ba4dbf442574",
-                  "name": "201 Created (single SCA method)",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "Basic APP_CREDENTIALS"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/embedded-account-auth-requests"
-                  },
-                  "status": "Created",
-                  "code": 201,
-                  "_postman_previewlanguage": "json",
-                  "header": [
-                    {
-                      "key": "Cache-Control",
-                      "value": "no-cache, no-store, max-age=0, must-revalidate",
-                      "name": "Cache-Control",
-                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                    },
-                    {
-                      "key": "Connection",
-                      "value": "keep-alive",
-                      "name": "Connection",
-                      "description": "Options that are desired for the connection"
-                    },
-                    {
-                      "key": "Content-Length",
-                      "value": "2121",
-                      "name": "Content-Length",
-                      "description": "The length of the response body in octets (8-bit bytes)"
-                    },
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json;charset=utf-8",
-                      "name": "Content-Type",
-                      "description": "The mime type of this content"
-                    },
-                    {
-                      "key": "Date",
-                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                      "name": "Date",
-                      "description": "The date and time that the message was sent"
-                    },
-                    {
-                      "key": "Expires",
-                      "value": "0",
-                      "name": "Expires",
-                      "description": "Gives the date/time after which the response is considered stale"
-                    },
-                    {
-                      "key": "Pragma",
-                      "value": "no-cache",
-                      "name": "Pragma",
-                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                    },
-                    {
-                      "key": "Server",
-                      "value": "nginx/1.13.9",
-                      "name": "Server",
-                      "description": "A name for the server"
-                    },
-                    {
-                      "key": "Strict-Transport-Security",
-                      "value": "max-age=15724800; includeSubDomains;",
-                      "name": "Strict-Transport-Security",
-                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                    },
-                    {
-                      "key": "X-Content-Type-Options",
-                      "value": "nosniff",
-                      "name": "X-Content-Type-Options",
-                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                    },
-                    {
-                      "key": "X-Frame-Options",
-                      "value": "DENY",
-                      "name": "X-Frame-Options",
-                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                    },
-                    {
-                      "key": "X-XSS-Protection",
-                      "value": "1; mode=block",
-                      "name": "X-XSS-Protection",
-                      "description": "Cross-site scripting (XSS) filter"
-                    },
-                    {
-                      "key": "Yapily-Tracing-Id",
-                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                      "name": "Yapily-Tracing-Id",
-                      "description": "Custom header"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"1565f7e13a0b4bf6b312cf8cc5747c7c\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H10M41.167S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            }\n        ],\n        \"selectedScaMethod\": {\n            \"id\": \"944\",\n            \"type\": \"PUSH_OTP\",\n            \"description\": \"SecureSIGN\"\n        }\n    }\n}"
-                },
-                {
-                  "id": "22e620f3-d347-47b0-9940-ee9d34cc1d9d",
-                  "name": "201 Created (multiple SCA methods)",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "Basic APP_CREDENTIALS"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/embedded-account-auth-requests"
-                  },
-                  "status": "Created",
-                  "code": 201,
-                  "_postman_previewlanguage": "json",
-                  "header": [
-                    {
-                      "key": "Cache-Control",
-                      "value": "no-cache, no-store, max-age=0, must-revalidate",
-                      "name": "Cache-Control",
-                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                    },
-                    {
-                      "key": "Connection",
-                      "value": "keep-alive",
-                      "name": "Connection",
-                      "description": "Options that are desired for the connection"
-                    },
-                    {
-                      "key": "Content-Length",
-                      "value": "2121",
-                      "name": "Content-Length",
-                      "description": "The length of the response body in octets (8-bit bytes)"
-                    },
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json;charset=utf-8",
-                      "name": "Content-Type",
-                      "description": "The mime type of this content"
-                    },
-                    {
-                      "key": "Date",
-                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                      "name": "Date",
-                      "description": "The date and time that the message was sent"
-                    },
-                    {
-                      "key": "Expires",
-                      "value": "0",
-                      "name": "Expires",
-                      "description": "Gives the date/time after which the response is considered stale"
-                    },
-                    {
-                      "key": "Pragma",
-                      "value": "no-cache",
-                      "name": "Pragma",
-                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                    },
-                    {
-                      "key": "Server",
-                      "value": "nginx/1.13.9",
-                      "name": "Server",
-                      "description": "A name for the server"
-                    },
-                    {
-                      "key": "Strict-Transport-Security",
-                      "value": "max-age=15724800; includeSubDomains;",
-                      "name": "Strict-Transport-Security",
-                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                    },
-                    {
-                      "key": "X-Content-Type-Options",
-                      "value": "nosniff",
-                      "name": "X-Content-Type-Options",
-                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                    },
-                    {
-                      "key": "X-Frame-Options",
-                      "value": "DENY",
-                      "name": "X-Frame-Options",
-                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                    },
-                    {
-                      "key": "X-XSS-Protection",
-                      "value": "1; mode=block",
-                      "name": "X-XSS-Protection",
-                      "description": "Cross-site scripting (XSS) filter"
-                    },
-                    {
-                      "key": "Yapily-Tracing-Id",
-                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                      "name": "Yapily-Tracing-Id",
-                      "description": "Custom header"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
-                }
-              ]
-            },
-            {
-              "name": "Create Embedded Payment Authorisation",
-              "id": "d7c6669e-a643-4ac8-90a5-89c1303bdb88",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. The IP address of the PSU",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  },
-                  {
-                    "key": "",
-                    "value": "",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"PAYMENT_TYPE\",\n        \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n        \"payer\": {\n            \"name\": \"PAYER_NAME\",\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        },\n        \"amount\": {\n            \"amount\": \"0.00\",\n            \"currency\": \"3_LETTER_CURRENCY_CODE\"\n        },\n        \"reference\": \"REFERENCE\",\n        \"payee\": {\n            \"name\": \"PAYEE_NAME\",\n            \"address\": {\n                \"country\": \"2_LETTER_COUNTRY_CODE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"TYPE_OF_IDENTIFICATION\",\n                    \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                }\n            ]\n        }\n    }\n}"
-                },
-                "url": "https://api.yapily.com/embedded-payment-auth-requests"
-              },
-              "response": [
-                {
-                  "id": "bc648618-6d02-4013-ba83-295674bdb836",
-                  "name": "201 Created (single SCA method)",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "Basic APP_CREDENTIALS"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/embedded-payment-auth-requests"
-                  },
-                  "status": "Created",
-                  "code": 201,
-                  "_postman_previewlanguage": "json",
-                  "header": [
-                    {
-                      "key": "Cache-Control",
-                      "value": "no-cache, no-store, max-age=0, must-revalidate",
-                      "name": "Cache-Control",
-                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                    },
-                    {
-                      "key": "Connection",
-                      "value": "keep-alive",
-                      "name": "Connection",
-                      "description": "Options that are desired for the connection"
-                    },
-                    {
-                      "key": "Content-Length",
-                      "value": "2121",
-                      "name": "Content-Length",
-                      "description": "The length of the response body in octets (8-bit bytes)"
-                    },
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json;charset=utf-8",
-                      "name": "Content-Type",
-                      "description": "The mime type of this content"
-                    },
-                    {
-                      "key": "Date",
-                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                      "name": "Date",
-                      "description": "The date and time that the message was sent"
-                    },
-                    {
-                      "key": "Expires",
-                      "value": "0",
-                      "name": "Expires",
-                      "description": "Gives the date/time after which the response is considered stale"
-                    },
-                    {
-                      "key": "Pragma",
-                      "value": "no-cache",
-                      "name": "Pragma",
-                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                    },
-                    {
-                      "key": "Server",
-                      "value": "nginx/1.13.9",
-                      "name": "Server",
-                      "description": "A name for the server"
-                    },
-                    {
-                      "key": "Strict-Transport-Security",
-                      "value": "max-age=15724800; includeSubDomains;",
-                      "name": "Strict-Transport-Security",
-                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                    },
-                    {
-                      "key": "X-Content-Type-Options",
-                      "value": "nosniff",
-                      "name": "X-Content-Type-Options",
-                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                    },
-                    {
-                      "key": "X-Frame-Options",
-                      "value": "DENY",
-                      "name": "X-Frame-Options",
-                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                    },
-                    {
-                      "key": "X-XSS-Protection",
-                      "value": "1; mode=block",
-                      "name": "X-XSS-Protection",
-                      "description": "Cross-site scripting (XSS) filter"
-                    },
-                    {
-                      "key": "Yapily-Tracing-Id",
-                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                      "name": "Yapily-Tracing-Id",
-                      "description": "Custom header"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n  \"meta\": {\n    \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n  },\n  \"data\": {\n    \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n    \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"state\": \"551440fc13794010855ad81c8463c926\",\n    \"status\": \"AWAITING_SCA_CODE\",\n    \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n    \"featureScope\": [\n      \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n      \"EXISTING_PAYMENTS_DETAILS\",\n      \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n    ]\n  }\n}"
-                },
-                {
-                  "id": "ce2e05f1-1c88-44ec-bb8b-2597582089a7",
-                  "name": "201 Created (multiple SCA methods)",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "Basic APP_CREDENTIALS"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"postbank-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    },\n    \"paymentRequest\": {\n        \"type\": \"DOMESTIC_PAYMENT\",\n        \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n        \"reference\": \"REFERENCE\",\n        \"amount\": {\n            \"amount\": \"1.00\",\n            \"currency\": \"EUR\"\n        },\n        \"payer\": {\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE12345678901234567890\"\n                }\n            ]\n        },\n        \"payee\": {\n            \"name\": \"Jane Doe\",\n            \"address\": {\n                \"country\": \"DE\"\n            },\n            \"accountIdentifications\": [\n                {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"DE09876543210987654321\"\n                }\n            ]\n        }\n    }\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/embedded-payment-auth-requests"
-                  },
-                  "status": "Created",
-                  "code": 201,
-                  "_postman_previewlanguage": "json",
-                  "header": [
-                    {
-                      "key": "Cache-Control",
-                      "value": "no-cache, no-store, max-age=0, must-revalidate",
-                      "name": "Cache-Control",
-                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                    },
-                    {
-                      "key": "Connection",
-                      "value": "keep-alive",
-                      "name": "Connection",
-                      "description": "Options that are desired for the connection"
-                    },
-                    {
-                      "key": "Content-Length",
-                      "value": "2121",
-                      "name": "Content-Length",
-                      "description": "The length of the response body in octets (8-bit bytes)"
-                    },
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json;charset=utf-8",
-                      "name": "Content-Type",
-                      "description": "The mime type of this content"
-                    },
-                    {
-                      "key": "Date",
-                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                      "name": "Date",
-                      "description": "The date and time that the message was sent"
-                    },
-                    {
-                      "key": "Expires",
-                      "value": "0",
-                      "name": "Expires",
-                      "description": "Gives the date/time after which the response is considered stale"
-                    },
-                    {
-                      "key": "Pragma",
-                      "value": "no-cache",
-                      "name": "Pragma",
-                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                    },
-                    {
-                      "key": "Server",
-                      "value": "nginx/1.13.9",
-                      "name": "Server",
-                      "description": "A name for the server"
-                    },
-                    {
-                      "key": "Strict-Transport-Security",
-                      "value": "max-age=15724800; includeSubDomains;",
-                      "name": "Strict-Transport-Security",
-                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                    },
-                    {
-                      "key": "X-Content-Type-Options",
-                      "value": "nosniff",
-                      "name": "X-Content-Type-Options",
-                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                    },
-                    {
-                      "key": "X-Frame-Options",
-                      "value": "DENY",
-                      "name": "X-Frame-Options",
-                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                    },
-                    {
-                      "key": "X-XSS-Protection",
-                      "value": "1; mode=block",
-                      "name": "X-XSS-Protection",
-                      "description": "Cross-site scripting (XSS) filter"
-                    },
-                    {
-                      "key": "Yapily-Tracing-Id",
-                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                      "name": "Yapily-Tracing-Id",
-                      "description": "Custom header"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"bcebc29b55434cc8b2aae80cb782edff\"\n    },\n    \"data\": {\n        \"id\": \"7c3f0355-f59b-4cc6-b13f-e1b5349b5caf\",\n        \"userUuid\": \"95f71ebc-c8ae-4e25-aded-86e9bbd62966\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"postbank-sandbox\",\n        \"state\": \"551440fc13794010855ad81c8463c926\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-01-26T23:31:45.443Z\",\n        \"featureScope\": [\n            \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"scaMethods\": [\n            {\n                \"id\": \"258211#OPTICAL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, optisch\"\n            },\n            {\n                \"id\": \"258211#MANUEL\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"Testkarte Hr. Haubach_1, manuell\"\n            },\n            {\n                \"id\": \"591655\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"RolandmTAN\"\n            },\n            {\n                \"id\": \"591656\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"RSRolandIP2\"\n            }\n        ]\n    }\n}"
-                }
-              ]
-            },
-            {
-              "name": "Update Embedded Account Authorisation",
-              "id": "ddb0b755-c3de-4a08-b32b-8d51bbf389eb",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. The IP address of the PSU",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  },
-                  {
-                    "key": "",
-                    "value": "",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"userCredentials\": {\n        \"id\": \"{{id}}\",\n        \"password\": \"{{password}}\"\n    }\n}"
-                },
-                "url": "https://api.yapily.com/embedded-account-auth-requests"
-              },
-              "response": [
-                {
-                  "id": "bf599ca3-5dfd-4db2-a373-8913d6ddb266",
-                  "name": "201 Created (SCA Code)",
-                  "originalRequest": {
-                    "method": "PUT",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "Basic APP_CREDENTIALS"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"scaCode\": \"6154057725\"\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/embedded-account-auth-requests"
-                  },
-                  "status": "Created",
-                  "code": 201,
-                  "_postman_previewlanguage": "json",
-                  "header": [
-                    {
-                      "key": "Cache-Control",
-                      "value": "no-cache, no-store, max-age=0, must-revalidate",
-                      "name": "Cache-Control",
-                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                    },
-                    {
-                      "key": "Connection",
-                      "value": "keep-alive",
-                      "name": "Connection",
-                      "description": "Options that are desired for the connection"
-                    },
-                    {
-                      "key": "Content-Length",
-                      "value": "2121",
-                      "name": "Content-Length",
-                      "description": "The length of the response body in octets (8-bit bytes)"
-                    },
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json;charset=utf-8",
-                      "name": "Content-Type",
-                      "description": "The mime type of this content"
-                    },
-                    {
-                      "key": "Date",
-                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                      "name": "Date",
-                      "description": "The date and time that the message was sent"
-                    },
-                    {
-                      "key": "Expires",
-                      "value": "0",
-                      "name": "Expires",
-                      "description": "Gives the date/time after which the response is considered stale"
-                    },
-                    {
-                      "key": "Pragma",
-                      "value": "no-cache",
-                      "name": "Pragma",
-                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                    },
-                    {
-                      "key": "Server",
-                      "value": "nginx/1.13.9",
-                      "name": "Server",
-                      "description": "A name for the server"
-                    },
-                    {
-                      "key": "Strict-Transport-Security",
-                      "value": "max-age=15724800; includeSubDomains;",
-                      "name": "Strict-Transport-Security",
-                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                    },
-                    {
-                      "key": "X-Content-Type-Options",
-                      "value": "nosniff",
-                      "name": "X-Content-Type-Options",
-                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                    },
-                    {
-                      "key": "X-Frame-Options",
-                      "value": "DENY",
-                      "name": "X-Frame-Options",
-                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                    },
-                    {
-                      "key": "X-XSS-Protection",
-                      "value": "1; mode=block",
-                      "name": "X-XSS-Protection",
-                      "description": "Cross-site scripting (XSS) filter"
-                    },
-                    {
-                      "key": "Yapily-Tracing-Id",
-                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                      "name": "Yapily-Tracing-Id",
-                      "description": "Custom header"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"0ad7c46c4e4445bab3a0d4ccae25556b\"\n    },\n    \"data\": {\n        \"id\": \"66c8c0f2-1678-4404-a68f-2236a1afcdad\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AUTHORIZED\",\n        \"createdAt\": \"2021-06-09T11:49:18.815Z\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"3fb4024282d0432cb710094c4c723ae5\",\n        \"authorizedAt\": \"2021-06-09T11:51:14.140Z\",\n        \"institutionConsentId\": \"1448194319060120228PSDLT-BL-LB002045CO9545RW\"\n    }\n}"
-                },
-                {
-                  "id": "89d1774b-936a-4272-aa1b-d229a7822c60",
-                  "name": "201 Created (Selected SCA Method)",
-                  "originalRequest": {
-                    "method": "PUT",
-                    "header": [
-                      {
-                        "key": "Authorization",
-                        "value": "Basic APP_CREDENTIALS"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"selectedScaMethod\": \"942\"\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/embedded-account-auth-requests"
-                  },
-                  "status": "Created",
-                  "code": 201,
-                  "_postman_previewlanguage": "json",
-                  "header": [
-                    {
-                      "key": "Cache-Control",
-                      "value": "no-cache, no-store, max-age=0, must-revalidate",
-                      "name": "Cache-Control",
-                      "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                    },
-                    {
-                      "key": "Connection",
-                      "value": "keep-alive",
-                      "name": "Connection",
-                      "description": "Options that are desired for the connection"
-                    },
-                    {
-                      "key": "Content-Length",
-                      "value": "2121",
-                      "name": "Content-Length",
-                      "description": "The length of the response body in octets (8-bit bytes)"
-                    },
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json;charset=utf-8",
-                      "name": "Content-Type",
-                      "description": "The mime type of this content"
-                    },
-                    {
-                      "key": "Date",
-                      "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                      "name": "Date",
-                      "description": "The date and time that the message was sent"
-                    },
-                    {
-                      "key": "Expires",
-                      "value": "0",
-                      "name": "Expires",
-                      "description": "Gives the date/time after which the response is considered stale"
-                    },
-                    {
-                      "key": "Pragma",
-                      "value": "no-cache",
-                      "name": "Pragma",
-                      "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                    },
-                    {
-                      "key": "Server",
-                      "value": "nginx/1.13.9",
-                      "name": "Server",
-                      "description": "A name for the server"
-                    },
-                    {
-                      "key": "Strict-Transport-Security",
-                      "value": "max-age=15724800; includeSubDomains;",
-                      "name": "Strict-Transport-Security",
-                      "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                    },
-                    {
-                      "key": "X-Content-Type-Options",
-                      "value": "nosniff",
-                      "name": "X-Content-Type-Options",
-                      "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                    },
-                    {
-                      "key": "X-Frame-Options",
-                      "value": "DENY",
-                      "name": "X-Frame-Options",
-                      "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                    },
-                    {
-                      "key": "X-XSS-Protection",
-                      "value": "1; mode=block",
-                      "name": "X-XSS-Protection",
-                      "description": "Cross-site scripting (XSS) filter"
-                    },
-                    {
-                      "key": "Yapily-Tracing-Id",
-                      "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                      "name": "Yapily-Tracing-Id",
-                      "description": "Custom header"
-                    }
-                  ],
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"eaa703f3869b46b18732fa0de60f6073\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H6M39.998S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"selectedScaMethod\": {\n            \"id\": \"942\",\n            \"type\": \"SMS_OTP\",\n            \"description\": \"mobile TAN\"\n        }\n    }\n}"
-                }
-              ]
-            }
-          ],
-          "id": "5e32ea9a-ff9e-4dca-904c-a25d8f80e454"
         },
         {
           "name": "Create Account Authorisation",
@@ -8391,92 +8391,92 @@
   ],
   "variable": [
     {
-      "id": "5b04b8fb-1525-42f0-ad53-7a6df2c14864",
+      "id": "ce8ae4e9-7b25-4664-8135-dd00ac35b268",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "d21d7701-a8cb-424e-91fd-64ff071dae5a",
+      "id": "bc017daa-ac08-4f57-9080-8709c717f294",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "39529526-b0c8-480e-8a40-c4b7c3f0a46e",
+      "id": "a46251cb-ca73-43f1-b4c9-b313dfaac4b4",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "7783b758-48b0-4bf8-96fc-6b84745fda31",
+      "id": "4c5eaf57-bf92-4685-8dee-e4b134561aea",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "f9e0b338-bfea-4702-810e-d7ebd60280e8",
+      "id": "ad2fa550-e9cb-4eb1-b614-b9f905a54d8d",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "a3498f77-27a2-4334-888a-640a0888b3f4",
+      "id": "1f78cad3-1696-4551-9e16-472b9d9dd15b",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "2797a43c-9c4d-4da2-9b83-479cb2fb3570",
+      "id": "619aab29-93a7-4d75-a2cd-97eed288fea5",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "1223a538-af52-4f96-9283-efeea1fc4bf0",
+      "id": "d240cdce-d912-4c2b-bb1e-e62522e3d950",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "28d6b497-bbae-4ddd-9994-0933b17646ba",
+      "id": "8fc8f498-c793-4081-8d72-ba460ae42525",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "925738eb-b0be-4d60-bb2a-25fabf031f75",
+      "id": "ed958529-293f-4775-8b0a-572466163dcf",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "68dbf79b-26ca-4c7c-a6ed-aab071e68b29",
+      "id": "9324f809-8678-476a-8a63-edaaa3c7c1ce",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "ba9bae6e-cbf0-4ca1-a3f4-1b7d8759d512",
+      "id": "9b1a44b9-535b-48e7-a118-8a91e01b4f84",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "7a0e483f-33b5-46ea-b63e-c13d5dac2e8d",
+      "id": "0aa6de01-173b-4952-bf8c-8eb053c30ea9",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "51071885-2cae-45d6-8728-a575c5057a3f",
+      "id": "f4ce8c76-d454-4627-94b9-91d5d454505e",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "06d8c4fe-1da3-434a-989a-d029377f3a84",
+      "id": "691aa93e-2de3-414e-b792-6261710716d4",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "217f3798-5f0a-4c48-bc32-01bc3d7f9304",
+      "id": "007420e7-5d45-48ce-b7a2-221fbac13ea7",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "cfd174a0-6c57-4a9f-ae9a-6a094f4546e3",
+      "id": "56328d5f-f60b-4952-8558-746fef08bff3",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "f7a9ebce-fd5b-4af0-a6b7-1ee5125f5db9",
+      "id": "16060d5d-c533-4238-afec-67b25d015330",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
