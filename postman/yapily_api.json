@@ -7620,7 +7620,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": \"{{one-time-token}}\",\n    \"paymentRequest\": \n    {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"type\": \"PAYMENT_TYPE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"addressLines\": [\n                            \"ADDRESS_LINES\"\n                        ],\n                        \"streetName\": \"STREET_NAME\",\n                        \"buildingNumber\": \"BUILDING_NUMBER\",\n                        \"postCode\": \"POST_CODE\",\n                        \"townName\": \"TOWN_NAME\",\n                        \"county\": [\n                            \"COUNTY_NAME\"\n                        ],\n                        \"country\": \"2_LETTER_COUNTRY_CODE\",\n                        \"department\": \"DEPARTMENT_NAME\",\n                        \"subDepartment\": \"SUB_DEPARTMENT_NAME\",\n                        \"addressType\": \"TYPE_OF_ADDRESS\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ],\n                    \"customerId\": \"CUSTOMER_ID\",\n                    \"merchantCategoryCode\": \"MERCHANT_CATEGORY_CODE\"\n                }\n            }\n        ]\n    }\n}"
+              "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                {\n                    \"type\": \"PAYMENT_TYPE\",\n                    \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                    \"payer\": {\n                        \"name\": \"PAYER_NAME\",\n                        \"accountIdentifications\": [\n                            {\n                                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                            }\n                        ]\n                    },\n                    \"amount\": {\n                        \"amount\": \"0.00\",\n                        \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                    },\n                    \"reference\": \"REFERENCE\",\n                    \"payee\": {\n                        \"name\": \"PAYEE_NAME\",\n                        \"address\": {\n                            \"country\": \"2_LETTER_COUNTRY_CODE\"\n                        },\n                        \"accountIdentifications\": [\n                            {\n                                \"type\": \"TYPE_OF_IDENTIFICATION\",\n                                \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    }"
             },
             "url": "https://api.yapily.com/bulk-payment-auth-requests",
             "description": "Feature: `INITIATE_BULK_PAYMENT`\n\nUsed to initiate the payment authorisation process for a **business account** and direct users to the login screen of their financial institution in order to give their consent for a bulk payment. \n\nSee [POST Create Bulk Payment Authorisation](https://kb.yapily.com/display/YAD/POST+Create+Bulk+Payment+Authorisation+Request) in the Knowledge Base for more information. "
@@ -7886,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "20e90bab-fa1d-48b6-8bae-fafa9a390318",
+      "id": "c4d43e2f-3e2c-499b-a4d2-6daa0f38285c",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "6fba31c9-f720-4fde-a9a6-2ab21b817ac2",
+      "id": "dc6adcb0-6608-48bb-a497-a45559597bf7",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "bb5a46f9-582a-41d2-b733-1775677e62a6",
+      "id": "616d6281-2f9e-40b3-9ab2-729c1eea3064",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "b3bbfc67-e8e4-48dc-a26e-a98588756b8e",
+      "id": "c4e1826a-cc4d-402a-a184-b88c4fc54191",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "b02e3ce3-039f-4e35-a04d-3e1caa5b81d2",
+      "id": "b96041c0-43dc-4a16-820b-ff3cc90cb5db",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "2ba12d64-4448-4375-9019-6ffa602d192e",
+      "id": "47059a5c-83d3-4497-8928-31f57c1fa04c",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "dfeb3b65-7248-4208-90fd-0adb56998ba9",
+      "id": "b2c7f47d-6d49-40ac-9858-c947b20351f8",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "3e2459cf-5267-4479-a837-264d657210b6",
+      "id": "c57de5b7-4c31-42cd-a888-48000e23576c",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "f7ae1b34-653a-4ac6-b9eb-2ee854c2e203",
+      "id": "3a05a3bf-d26d-4660-ba41-fb62ece879cd",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "fb183a15-e21f-43ff-b79a-f26bf4cbf0d2",
+      "id": "2d3b29de-8ab0-429c-bf8b-90d7f7365775",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "fdd85e5f-a734-42e0-871c-82eee32703c7",
+      "id": "c5d4b5cf-ff5c-47a2-ae77-14d4a7c2cb1e",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "39a29f35-9683-4786-80ba-0fe818922d12",
+      "id": "dc220cdc-ac15-4379-8038-3d221adafe97",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "ce33fd60-1692-45a5-93ec-3d422233073d",
+      "id": "7c1fb85d-eafe-4530-876c-0f4082942ad7",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "2ee7c8a4-87d2-4ab1-90b1-79e7769d262c",
+      "id": "4963b5f9-d515-40ec-a1c4-f21f685424c8",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "91e2d2d7-5860-4774-82d3-299a1cb0c889",
+      "id": "8832bd2d-9d2c-4d22-87ef-d4f782202b3f",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "f0de7e26-c1b7-4e61-982a-0a438f8f661d",
+      "id": "b7d512ee-f5ba-45c8-86dc-8c9cffe00f87",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "9371bf4f-b5ab-448c-ab25-f23562484503",
+      "id": "d4c57cab-adca-41e6-90a5-748455c72a24",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "5f1d45a9-4ade-448d-8a96-f5e6f15d9273",
+      "id": "4f7db908-07fa-447d-b9de-4495bceb0397",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
