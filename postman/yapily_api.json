@@ -4160,57 +4160,6 @@
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
             },
             {
-              "id": "ca28c848-97a1-4234-a288-8ccf89ed0794",
-              "name": "201 Created (CBI Globe Gateway Account Details)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "key": "psu-id",
-                    "type": "text",
-                    "value": "{{psu-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "key": "psu-corporate-Id",
-                    "type": "text",
-                    "value": "{{psu-corporate-id}}",
-                    "disabled": true
-                  },
-                  {
-                    "description": "Conditional. Defaults to 127.0.0.1 if not specified",
-                    "key": "psu-ip-address",
-                    "type": "text",
-                    "value": "{{psu-ip-address}}",
-                    "disabled": true
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"applicationUserId\": \"user-123456\",\n    \"institutionId\": \"institution\",\n    \"callback\": \"https://tpp.application/callback\",\n     \"accountRequest\": {\n        \"accountIdentifiersForBalance\": [\n            {\n                \"accountId\": \"12345678\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT48XXXXXXXXXXXXX98\"\n                }\n            },\n            {\n                \"accountId\": \"12345679\",\n                \"accountIdentification\": {\n                    \"type\": \"IBAN\",\n                    \"identification\": \"IT98JXXXXXXXXXXXXXX57\"\n                }\n            }\n        ]\n    }\n}\n",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"e570f627-ee15-4d89-a8db-0988da876329\"\n    },\n    \"data\": {\n        \"id\": \"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\n        \"applicationUserId\": \"user-123456s\",\n        \"userUuid\": \"37138ee8-ab9a-496c-be98-07ae353fb876\",\n        \"institutionId\": \"institution\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2018-10-17T14:42:53Z\",\n        \"expiresAt\": \"2018-10-17T14:46:53Z\",\n        \"timeToExpireInMillis\": 239164,\n        \"featureScope\": [\n            \"ACCOUNT_WITHOUT_BALANCE\"\n        ],\n        \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"\n    }\n}"
-            },
-            {
               "id": "2b857e36-ddfb-46bc-a575-f2b872025728",
               "name": "201 Created (CBI Globe Gateway Account Balances)",
               "originalRequest": {
@@ -7696,92 +7645,92 @@
   ],
   "variable": [
     {
-      "id": "a66a909e-cbc0-4477-99a6-fb2e52eb34b6",
+      "id": "6492d142-44da-41fe-b48d-309d1b254d0e",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "1ad8c51f-9097-406b-a730-1060652e53ff",
+      "id": "a1d1361a-acc4-4a3b-915d-6268124641af",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "f56463e3-b1d2-4496-a149-a40bbf0ada56",
+      "id": "02804d59-9313-48fa-ba7e-a6ec90cc4537",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "f5d38d60-759a-4c02-9ee2-a743308af308",
+      "id": "2b2af2b9-cffe-4e98-9a87-20257a99509b",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "3f4fdc3b-ca23-4a7b-bdd9-a304c764e938",
+      "id": "aa12e318-a899-445b-b5ec-0ab417a1fbfa",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "8f29e1ba-e427-4922-ad6c-b78fed84de78",
+      "id": "24bd9297-3596-4cf2-aafe-3671a9dfa537",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "54fc10c2-8819-41e7-bf2a-3f3dd39c63fa",
+      "id": "15e87ef7-152b-4266-be1e-a8892604d7de",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "fd0d94c0-3a6d-4c6d-9417-7859fa778b5f",
+      "id": "f37f1914-db24-4b52-91e8-b81a2e1d813d",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "e03646b9-76ee-425e-a976-990bdc9c0d63",
+      "id": "020090d0-a876-430f-8766-339716148dd9",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "f0192e2c-c69a-48be-88e2-14bc52d94170",
+      "id": "ed939504-3c4b-42bc-a38e-7ccf71af6098",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "1c1395b0-5094-450b-a898-605dbbc57ea9",
+      "id": "14a86693-f73b-4b4c-ad55-214ad20aae70",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "2e3d2584-86e2-4070-8bdb-95c1c2174709",
+      "id": "0962cdcd-905d-45a6-97ab-e6b41f79f809",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "c4290dd8-97f4-4a76-9a01-8cbce35b0d10",
+      "id": "e505ac9e-5771-403b-bf65-bf6c9f1b1d36",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "9b849f61-0450-4a29-81c3-a002364a6543",
+      "id": "e4aee2af-f9c3-46c8-b2e6-50313abbe5c1",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "c139eccb-bec0-4a8b-b23d-9b300d7f6576",
+      "id": "7014c100-5d54-48ba-aef4-3c5c9e7f1d00",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "da65fe0b-8b97-4909-9905-e20338194056",
+      "id": "4cd3bc9c-b41f-4d8d-9fc0-44f84f6a29b9",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "767200ce-e1a2-4c03-8f32-c55746a96892",
+      "id": "147cc470-1625-47f1-88b4-c414ca7523ed",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "334e78e0-76d7-40ec-a224-5525f8459f0a",
+      "id": "c9fcfbd2-ba8f-468e-bf56-f7e54b05d610",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
