@@ -2936,206 +2936,6 @@
           ]
         },
         {
-          "name": "Re-authorise Account Consent",
-          "id": "b2cf2140-2385-4703-80ea-fd2c69c9e049",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Consent",
-                "value": "{{consent-token}}",
-                "type": "text"
-              },
-              {
-                "key": "psu-id",
-                "value": "{{psu-id}}",
-                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                "type": "text",
-                "disabled": true
-              },
-              {
-                "key": "psu-corporate-Id",
-                "value": "{{psu-corporate-id}}",
-                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                "type": "text",
-                "disabled": true
-              },
-              {
-                "key": "psu-ip-address",
-                "value": "{{psu-ip-address}}",
-                "description": "Conditional. The IP address of the PSU",
-                "type": "text",
-                "disabled": true
-              }
-            ],
-            "url": "https://api.yapily.com/account-auth-requests",
-            "description": "Used to prompt the account holder for continued access to their financial data. \n\nSee [PATCH Re-authorise Consent](https://kb.yapily.com/display/YAD/PATCH+Re-authorise+Consent) in the Knowledge Base for more information."
-          },
-          "response": [
-            {
-              "id": "e9d323d1-1f3d-4b53-9759-97db2015bcc9",
-              "name": "200 Refreshed",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "type": "text"
-                  }
-                ],
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "2121",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                },
-                {
-                  "key": "Yapily-Tracing-Id",
-                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
-                  "name": "Yapily-Tracing-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\"meta\":{\"tracingId\":\"e570f627-ee15-4d89-a8db-0988da876329\"},\"data\":{\"id\":\"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\"userUuid\":\"37138ee8-ab9a-496c-be98-07ae353fb876\",\"institutionId\":\"forgerock-sandbox\",\"status\":\"AWAITING_AUTHORIZATION\",\"createdAt\":\"2018-10-17T14:42:53Z\",\"expiresAt\":\"2018-10-17T14:46:53Z\",\"timeToExpireInMillis\":239164,\"featureScope\":[\"ACCOUNT\",\"ACCOUNT_TRANSACTIONS\",\"ACCOUNTS\"],\"authorisationUrl\":\"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"}}"
-            },
-            {
-              "id": "14099895-11e4-41bd-a007-4ec4a6c1487e",
-              "name": "406 Not Acceptable",
-              "originalRequest": {
-                "method": "PATCH",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Consent",
-                    "value": "{{consent-token}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "psu-id",
-                    "value": "{{psu-id}}",
-                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "psu-corporate-Id",
-                    "value": "{{psu-corporate-id}}",
-                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
-                    "type": "text",
-                    "disabled": true
-                  },
-                  {
-                    "key": "psu-ip-address",
-                    "value": "{{psu-ip-address}}",
-                    "description": "Not currently used.",
-                    "type": "text",
-                    "disabled": true
-                  }
-                ],
-                "url": "https://api.yapily.com/account-auth-requests"
-              },
-              "_postman_previewlanguage": "json",
-              "header": null,
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"error\": {\n        \"code\": 406,\n        \"tracingId\": \"86133d475aa3cf700d81e0c3be62408a\",\n        \"status\": \"NOT_ACCEPTABLE\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The Payment Consent [a517ba4a-5b7a-43be-90fe-c08b6310686a] does not support Re-authorization. We can help you on https://support.yapily.com/\"\n    },\n    \"monitoring\": []\n}"
-            }
-          ]
-        },
-        {
           "name": "Create Payment Authorisation",
           "id": "8e67c40c-4b0e-4f72-947c-065f1c84f46b",
           "protocolProfileBehavior": {
@@ -4892,6 +4692,206 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Re-authorise Account Consent",
+          "id": "b2cf2140-2385-4703-80ea-fd2c69c9e049",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Consent",
+                "value": "{{consent-token}}",
+                "type": "text"
+              },
+              {
+                "key": "psu-id",
+                "value": "{{psu-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "psu-corporate-Id",
+                "value": "{{psu-corporate-id}}",
+                "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "psu-ip-address",
+                "value": "{{psu-ip-address}}",
+                "description": "Conditional. The IP address of the PSU",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": "https://api.yapily.com/account-auth-requests",
+            "description": "Used to prompt the account holder for continued access to their financial data. \n\nSee [PATCH Re-authorise Consent](https://kb.yapily.com/display/YAD/PATCH+Re-authorise+Consent) in the Knowledge Base for more information."
+          },
+          "response": [
+            {
+              "id": "e9d323d1-1f3d-4b53-9759-97db2015bcc9",
+              "name": "200 Refreshed",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2121",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                },
+                {
+                  "key": "Yapily-Tracing-Id",
+                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                  "name": "Yapily-Tracing-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"meta\":{\"tracingId\":\"e570f627-ee15-4d89-a8db-0988da876329\"},\"data\":{\"id\":\"8dfb23cc-e554-454b-b7be-6e8fc9523102\",\"userUuid\":\"37138ee8-ab9a-496c-be98-07ae353fb876\",\"institutionId\":\"forgerock-sandbox\",\"status\":\"AWAITING_AUTHORIZATION\",\"createdAt\":\"2018-10-17T14:42:53Z\",\"expiresAt\":\"2018-10-17T14:46:53Z\",\"timeToExpireInMillis\":239164,\"featureScope\":[\"ACCOUNT\",\"ACCOUNT_TRANSACTIONS\",\"ACCOUNTS\"],\"authorisationUrl\":\"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=0f3cdf72e2fa4412b4840414807a6b75&nonce=0f3cdf72e2fa4412b4840414807a6b75&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2Fredirect&request=eyJraWQiOiItVEs5WXR4Njd5STRnVDZnR3huQTlSVFI1d28iLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL21hdGxzLmFzLmFzcHNwLm9iLmZvcmdlcm9jay5maW5hbmNpYWwvb2F1dGgyL29wZW5iYW5raW5nIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJjbGllbnRfaWQiOiI5YzU0MjUxZi0zYTQ1LTQ0NDEtOTY2NS0wMmVmNmJlNTg4YjMiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tL3JlZGlyZWN0Iiwic3RhdGUiOiIwZjNjZGY3MmUyZmE0NDEyYjQ4NDA0MTQ4MDdhNmI3NSIsImNsYWltcyI6eyJpZF90b2tlbiI6eyJhY3IiOnsidmFsdWVzIjpbInVybjpvcGVuYmFua2luZzpwc2QyOnNjYSJdLCJlc3NlbnRpYWwiOnRydWV9LCJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJBNzUzMDIwNTAtZTAxZi00MzYzLWIzODAtNmU5YmMyYjU4Yjk2IiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IkE3NTMwMjA1MC1lMDFmLTQzNjMtYjM4MC02ZTliYzJiNThiOTYiLCJlc3NlbnRpYWwiOnRydWV9fX0sIm5vbmNlIjoiMGYzY2RmNzJlMmZhNDQxMmI0ODQwNDE0ODA3YTZiNzUiLCJqdGkiOiIwOGI3NTcxZC04YTM2LTQ1YTEtYTdlMS0zYmE3MTZhM2UyM2IiLCJpYXQiOjE1Mzk3ODczNzMsImV4cCI6MTUzOTc4OTE3M30.RoyeyFmxI2ynQ3TeDjtXUz0AOoGmZ4O7xp2n4FMJIxp1xGvprH5PlkbddJiSnIbSKXj1dYt_fq1otuqjoNCUkwhjUMJwfTBtk9J6czj2qsOE9yMiW2_cXyaAQecD5S-NmIcyZey2cXwtbw8dEfgsud4UT4am3qatEefC7ImMyqlS0ekmkHmqsa9KZgQGW3Tqufg5VI9sqn4G6hkXjNmDPah5foIs9A-eNknqWc9FgPNlaiMJ2bH_941etRKRIOqEmNYtnK2QyDw5IZM4b4k3N7t1egjj14qp6aRBhFUIESDJJNDFbXD1dtVL0YopQue7JvDFtMGKJCalSvN1xZW_4w\"}}"
+            },
+            {
+              "id": "14099895-11e4-41bd-a007-4ec4a6c1487e",
+              "name": "406 Not Acceptable",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Consent",
+                    "value": "{{consent-token}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "psu-id",
+                    "value": "{{psu-id}}",
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account\n",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "psu-corporate-Id",
+                    "value": "{{psu-corporate-id}}",
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "psu-ip-address",
+                    "value": "{{psu-ip-address}}",
+                    "description": "Not currently used.",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"error\": {\n        \"code\": 406,\n        \"tracingId\": \"86133d475aa3cf700d81e0c3be62408a\",\n        \"status\": \"NOT_ACCEPTABLE\",\n        \"source\": \"YAPILY\",\n        \"message\": \"The Payment Consent [a517ba4a-5b7a-43be-90fe-c08b6310686a] does not support Re-authorization. We can help you on https://support.yapily.com/\"\n    },\n    \"monitoring\": []\n}"
             }
           ]
         }
@@ -7886,92 +7886,92 @@
   ],
   "variable": [
     {
-      "id": "b2151e61-8a5e-46ed-83ae-7216ca3c9d8e",
+      "id": "09960f94-6bc6-4b20-a6a0-924e7ed2d920",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "c017ef2f-71cd-46ff-8f51-bb5802c409b8",
+      "id": "7424a11a-feab-4730-8048-35c452aa47bb",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "6ca2ca4d-79bb-4d0c-b67e-7c243e574afb",
+      "id": "c9d25a33-583c-4114-a52c-7178cda40c38",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "ef523f20-6894-4838-ab99-2e6f33dfc5be",
+      "id": "a0b7ef42-aff5-4be5-b52b-b601bbe1004e",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "1ab90f21-54d4-4ab3-828d-bcc009b46a9a",
+      "id": "88871c5f-c114-4ac0-813f-a3b45ccf732f",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "316af4b6-40ae-46ce-b704-b55df88b37aa",
+      "id": "ccaf8fed-9118-44bb-8cee-98b0d6de9d2e",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "f76b492f-057c-44ee-8d0c-462d7e1a8e95",
+      "id": "f626ceb8-5f17-420f-9e69-8b40c0de12ed",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "d30ebd63-9c04-4cfa-b8a9-4f3e1db04bc3",
+      "id": "d77c88c6-5957-4a35-b23b-ba5f33d20363",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "c65da480-9b27-43dc-b399-d86a8e9b5cc6",
+      "id": "604ddeaa-2f74-407e-8dce-5b4f5cba1a95",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "164c1e89-d0b9-4cb3-8e8c-22193f1975d8",
+      "id": "9e85cade-6614-483c-9ff8-5681e5465992",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "82e3c610-6b02-4e17-9545-0db7185411a9",
+      "id": "d3035df1-e973-44ec-af98-b1fa39cdca05",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "73d95bcf-612b-487e-ac2e-aabba49f1cbf",
+      "id": "53f0cb60-dfd1-4440-8212-14f8f4e10eb5",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "8216ad77-4100-4a7b-89eb-9b5c6aa417fb",
+      "id": "42809ac9-775e-471b-8208-6129c5b4207e",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "5b82a8d6-f776-4910-acb8-7361efbad50f",
+      "id": "66118302-a30e-4358-9a68-e78e5c063e95",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "393c8ce6-83f4-4dfe-b52e-4fb143b3484e",
+      "id": "49d27650-bbef-4619-8669-407454ec9f52",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "02ed9b90-35fc-467d-87cf-3ca875740ee3",
+      "id": "9184d032-3158-425f-87a7-df45538f0125",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "07cbd119-8d80-405f-89df-585e9fac7901",
+      "id": "96d53123-5d00-46a5-9f89-f33ab41b5169",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "373ee97d-cb8f-4295-899f-feb49e4469c9",
+      "id": "fcddab06-005d-48e8-b489-59ae7cb8b7c6",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
