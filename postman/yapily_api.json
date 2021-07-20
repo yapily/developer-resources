@@ -722,6 +722,128 @@
       "name": "Institutions",
       "item": [
         {
+          "name": "Get Features",
+          "id": "ab9d0ee9-0777-48e8-8d58-75e31bf8805e",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": "https://api.yapily.com/features",
+            "description": "This endpoint provides descriptions for each of the institutions' features made available by Yapily. Those available for each institution can be seen in the `features` field of the [institution payload](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010)."
+          },
+          "response": [
+            {
+              "id": "345fe7db-c122-4649-a191-7df6bdf9e632",
+              "name": "Ok 200 Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  }
+                ],
+                "url": "https://api.yapily.com/features"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 08 Aug 2018 10:58:25 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding",
+                  "name": "Vary",
+                  "description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"8519a69a6fed7d643ab09340a0934f01\",\n        \"count\": 39\n    },\n    \"data\": [\n        {\n            \"feature\": \"ACCOUNT\",\n            \"endpoint\": \"https://api.yapily.com/account/{account-id}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#757fde49-a294-bbff-d5f9-2c21c5f57be0\"\n        },\n        {\n            \"feature\": \"ACCOUNTS\",\n            \"endpoint\": \"https://api.yapily.com/accounts\",\n            \"documentationUrl\": \"https://docs.yapily.com/#23faf44e-1093-c676-63ea-369e41ea902d\"\n        },\n        {\n            \"feature\": \"ACCOUNTS_WITHOUT_BALANCE\",\n            \"endpoint\": \"https://api.yapily.com/account-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"ACCOUNT_DIRECT_DEBITS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/direct-debits\",\n            \"documentationUrl\": \"https://docs.yapily.com/#a5affc0a-c9cf-4203-b126-4a1bdcb7700a\"\n        },\n        {\n            \"feature\": \"ACCOUNT_PERIODIC_PAYMENTS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/periodic-payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#98e43700-e9c7-4598-b337-42e86b099216\"\n        },\n        {\n            \"feature\": \"ACCOUNT_REQUEST_DETAILS\",\n            \"endpoint\": \"https://api.yapily.com/account-request/{authRequestId}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"ACCOUNT_SCHEDULED_PAYMENTS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/scheduled-payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7eadb71e-d715-4c3f-927d-626c9e3a1303\"\n        },\n        {\n            \"feature\": \"ACCOUNT_STATEMENT\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/statements/{statementId}\",\n            \"documentationUrl\": \"https://docs.yapily.com/?version=latest#29101d1e-2c52-4d36-900a-18435dca75e0\"\n        },\n        {\n            \"feature\": \"ACCOUNT_STATEMENTS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/statements\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7358d865-3cf3-17da-cf0f-84a1af3b545f\"\n        },\n        {\n            \"feature\": \"ACCOUNT_STATEMENT_FILE\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/statements/{statementId}/file\",\n            \"documentationUrl\": \"https://docs.yapily.com/#3987b1e1-6b9c-4770-96de-fa85e2025d48\"\n        },\n        {\n            \"feature\": \"ACCOUNT_TRANSACTIONS\",\n            \"endpoint\": \"https://api.yapily.com/account/{account-id}/transactions\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7358d865-3cf3-17da-cf0f-84a1af3b545f\"\n        },\n        {\n            \"feature\": \"ACCOUNT_TRANSACTIONS_WITH_MERCHANT\",\n            \"endpoint\": \"https://api.yapily.com/accounts/{accountId}/transactions\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7358d865-3cf3-17da-cf0f-84a1af3b545f\"\n        },\n        {\n            \"feature\": \"ACCOUNT_WITHOUT_BALANCE\",\n            \"endpoint\": \"https://api.yapily.com/account/{account-id}\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_BULK_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/bulk-payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c\"\n        },\n        {\n            \"feature\": \"CREATE_INTERNATIONAL_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_INTERNATIONAL_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_INTERNATIONAL_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_SINGLE_PAYMENT_SORTCODE\",\n            \"endpoint\": \"https://api.yapily.com/payment-sortcode\",\n            \"documentationUrl\": \"https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6\"\n        },\n        {\n            \"feature\": \"EXISTING_PAYMENTS_DETAILS\",\n            \"endpoint\": \"https://api.yapily.com/payments/{payment-id}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#2e1a151e-59a7-4fa1-bd5b-5f6a0c4bf4cd\"\n        },\n        {\n            \"feature\": \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"endpoint\": \"https://api.yapily.com/payment-initiations/{paymentId}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"IDENTITY\",\n            \"endpoint\": \"https://api.yapily.com/identity\",\n            \"documentationUrl\": \"https://docs.yapily.com/#8c62ef0f-0cfa-98e6-6b0b-cb2441eb2d51\"\n        },\n        {\n            \"feature\": \"INITIATE_ACCOUNT_REQUEST\",\n            \"endpoint\": \"https://api.yapily.com/account-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"INITIATE_BULK_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/bulk-payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com#8e67c40c-4b0e-4f72-947c-065f1c84f46b\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b\"\n        },\n        {\n            \"feature\": \"INITIATE_INTERNATIONAL_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_INTERNATIONAL_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n            \"endpoint\": \"https://api.yapily.com/payment-sortcode-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"OPEN_DATA_ATMS\",\n            \"endpoint\": \"https://api.yapily.com/institutions/{institution-id}/atms\",\n            \"documentationUrl\": \"https://docs.yapily.com/#f5d271e1-8375-4a4a-a446-6ab9fd823f79\"\n        },\n        {\n            \"feature\": \"OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS\",\n            \"endpoint\": \"https://api.yapily.com/institutions/{institution-id}/personal-current-accounts\",\n            \"documentationUrl\": \"https://docs.yapily.com/#6af35149-9db9-4eb4-862f-93187c64cbcd\"\n        },\n        {\n            \"feature\": \"PERIODIC_PAYMENT_FREQUENCY_EXTENDED\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"TRANSFER\",\n            \"endpoint\": \"https://api.yapily.com/accounts/{accountId}/transfer\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
           "name": "Get All Institutions",
           "id": "ae9baa6b-6a74-aa96-6f6e-a15ce8c86af8",
           "request": {
@@ -1248,128 +1370,6 @@
               "cookie": [],
               "responseTime": "50",
               "body": "{\n    \"id\": \"monzo\",\n    \"name\": \"Monzo Bank\",\n    \"fullName\": \"Monzo Bank\",\n    \"countries\": [\n        {\n            \"displayName\": \"United Kingdom\",\n            \"countryCode2\": \"GB\"\n        }\n    ],\n    \"environmentType\": \"LIVE\",\n    \"credentialsType\": \"OAUTH2\",\n    \"media\": [\n        {\n            \"source\": \"https://images.yapily.com/image/5e81571a-d83e-43ff-be2e-d1fe3b2ef5a0?size=0\",\n            \"type\": \"icon\"\n        },\n        {\n            \"source\": \"https://images.yapily.com/image/8f3bee86-8cef-41dc-8754-88ade2c37822?size=0\",\n            \"type\": \"logo\"\n        }\n    ],\n    \"features\": [\n        \"ACCOUNT\",\n        \"ACCOUNTS\",\n        \"ACCOUNT_TRANSACTIONS\"\n    ],\n    \"monitoring\": {\n        \"ACCOUNT\": {\n            \"status\": \"Up\",\n            \"lastTested\": \"2019-04-08T14:21:57.963Z\",\n            \"span\": \"P10DT15H8M23.691S\"\n        },\n        \"ACCOUNTS\": {\n            \"status\": \"Up\",\n            \"lastTested\": \"2019-04-08T14:21:56.160Z\",\n            \"span\": \"P10DT15H8M31.215S\"\n        },\n        \"ACCOUNT_TRANSACTIONS\": {\n            \"status\": \"Up\",\n            \"lastTested\": \"2019-04-08T14:22:00.375Z\",\n            \"span\": \"P10DT15H8M16.905S\"\n        }\n    }\n}"
-            }
-          ]
-        },
-        {
-          "name": "Get Features",
-          "id": "ab9d0ee9-0777-48e8-8d58-75e31bf8805e",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": []
-            },
-            "url": "https://api.yapily.com/features",
-            "description": "This endpoint provides descriptions for each of the institutions' features made available by Yapily. Those available for each institution can be seen in the `features` field of the [institution payload](https://docs.yapily.com/#47be2dac-6881-a840-441c-b1f4ba89e010)."
-          },
-          "response": [
-            {
-              "id": "345fe7db-c122-4649-a191-7df6bdf9e632",
-              "name": "Ok 200 Response",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Authorization",
-                    "value": "Basic APP_CREDENTIALS"
-                  }
-                ],
-                "url": "https://api.yapily.com/features"
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Cache-Control",
-                  "value": "no-cache, no-store, max-age=0, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Encoding",
-                  "value": "gzip",
-                  "name": "Content-Encoding",
-                  "description": "The type of encoding used on the data."
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 08 Aug 2018 10:58:25 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expires",
-                  "value": "0",
-                  "name": "Expires",
-                  "description": "Gives the date/time after which the response is considered stale"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "no-cache",
-                  "name": "Pragma",
-                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                },
-                {
-                  "key": "Server",
-                  "value": "nginx/1.13.9",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains;",
-                  "name": "Strict-Transport-Security",
-                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-                },
-                {
-                  "key": "Transfer-Encoding",
-                  "value": "chunked",
-                  "name": "Transfer-Encoding",
-                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-                },
-                {
-                  "key": "Vary",
-                  "value": "Accept-Encoding",
-                  "name": "Vary",
-                  "description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff",
-                  "name": "X-Content-Type-Options",
-                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY",
-                  "name": "X-Frame-Options",
-                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block",
-                  "name": "X-XSS-Protection",
-                  "description": "Cross-site scripting (XSS) filter"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"meta\": {\n        \"tracingId\": \"8519a69a6fed7d643ab09340a0934f01\",\n        \"count\": 39\n    },\n    \"data\": [\n        {\n            \"feature\": \"ACCOUNT\",\n            \"endpoint\": \"https://api.yapily.com/account/{account-id}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#757fde49-a294-bbff-d5f9-2c21c5f57be0\"\n        },\n        {\n            \"feature\": \"ACCOUNTS\",\n            \"endpoint\": \"https://api.yapily.com/accounts\",\n            \"documentationUrl\": \"https://docs.yapily.com/#23faf44e-1093-c676-63ea-369e41ea902d\"\n        },\n        {\n            \"feature\": \"ACCOUNTS_WITHOUT_BALANCE\",\n            \"endpoint\": \"https://api.yapily.com/account-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"ACCOUNT_DIRECT_DEBITS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/direct-debits\",\n            \"documentationUrl\": \"https://docs.yapily.com/#a5affc0a-c9cf-4203-b126-4a1bdcb7700a\"\n        },\n        {\n            \"feature\": \"ACCOUNT_PERIODIC_PAYMENTS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/periodic-payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#98e43700-e9c7-4598-b337-42e86b099216\"\n        },\n        {\n            \"feature\": \"ACCOUNT_REQUEST_DETAILS\",\n            \"endpoint\": \"https://api.yapily.com/account-request/{authRequestId}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"ACCOUNT_SCHEDULED_PAYMENTS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/scheduled-payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7eadb71e-d715-4c3f-927d-626c9e3a1303\"\n        },\n        {\n            \"feature\": \"ACCOUNT_STATEMENT\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/statements/{statementId}\",\n            \"documentationUrl\": \"https://docs.yapily.com/?version=latest#29101d1e-2c52-4d36-900a-18435dca75e0\"\n        },\n        {\n            \"feature\": \"ACCOUNT_STATEMENTS\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/statements\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7358d865-3cf3-17da-cf0f-84a1af3b545f\"\n        },\n        {\n            \"feature\": \"ACCOUNT_STATEMENT_FILE\",\n            \"endpoint\": \"https://api.yapily.com/account/{accountId}/statements/{statementId}/file\",\n            \"documentationUrl\": \"https://docs.yapily.com/#3987b1e1-6b9c-4770-96de-fa85e2025d48\"\n        },\n        {\n            \"feature\": \"ACCOUNT_TRANSACTIONS\",\n            \"endpoint\": \"https://api.yapily.com/account/{account-id}/transactions\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7358d865-3cf3-17da-cf0f-84a1af3b545f\"\n        },\n        {\n            \"feature\": \"ACCOUNT_TRANSACTIONS_WITH_MERCHANT\",\n            \"endpoint\": \"https://api.yapily.com/accounts/{accountId}/transactions\",\n            \"documentationUrl\": \"https://docs.yapily.com/#7358d865-3cf3-17da-cf0f-84a1af3b545f\"\n        },\n        {\n            \"feature\": \"ACCOUNT_WITHOUT_BALANCE\",\n            \"endpoint\": \"https://api.yapily.com/account/{account-id}\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_BULK_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/bulk-payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6\"\n        },\n        {\n            \"feature\": \"CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com/#1fd6bf92-7333-4b46-be2c-1a92a3c72b1c\"\n        },\n        {\n            \"feature\": \"CREATE_INTERNATIONAL_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_INTERNATIONAL_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_INTERNATIONAL_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"CREATE_SINGLE_PAYMENT_SORTCODE\",\n            \"endpoint\": \"https://api.yapily.com/payment-sortcode\",\n            \"documentationUrl\": \"https://docs.yapily.com/#4521aa4d-75c2-4c22-9629-acb96c14e4e6\"\n        },\n        {\n            \"feature\": \"EXISTING_PAYMENTS_DETAILS\",\n            \"endpoint\": \"https://api.yapily.com/payments/{payment-id}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#2e1a151e-59a7-4fa1-bd5b-5f6a0c4bf4cd\"\n        },\n        {\n            \"feature\": \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"endpoint\": \"https://api.yapily.com/payment-initiations/{paymentId}\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"IDENTITY\",\n            \"endpoint\": \"https://api.yapily.com/identity\",\n            \"documentationUrl\": \"https://docs.yapily.com/#8c62ef0f-0cfa-98e6-6b0b-cb2441eb2d51\"\n        },\n        {\n            \"feature\": \"INITIATE_ACCOUNT_REQUEST\",\n            \"endpoint\": \"https://api.yapily.com/account-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"INITIATE_BULK_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/bulk-payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com#8e67c40c-4b0e-4f72-947c-065f1c84f46b\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#8e67c40c-4b0e-4f72-947c-065f1c84f46b\"\n        },\n        {\n            \"feature\": \"INITIATE_INTERNATIONAL_PERIODIC_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_INTERNATIONAL_SINGLE_PAYMENT\",\n            \"endpoint\": \"https://api.yapily.com/payment-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n            \"endpoint\": \"https://api.yapily.com/payment-sortcode-auth-requests\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        },\n        {\n            \"feature\": \"OPEN_DATA_ATMS\",\n            \"endpoint\": \"https://api.yapily.com/institutions/{institution-id}/atms\",\n            \"documentationUrl\": \"https://docs.yapily.com/#f5d271e1-8375-4a4a-a446-6ab9fd823f79\"\n        },\n        {\n            \"feature\": \"OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS\",\n            \"endpoint\": \"https://api.yapily.com/institutions/{institution-id}/personal-current-accounts\",\n            \"documentationUrl\": \"https://docs.yapily.com/#6af35149-9db9-4eb4-862f-93187c64cbcd\"\n        },\n        {\n            \"feature\": \"PERIODIC_PAYMENT_FREQUENCY_EXTENDED\",\n            \"endpoint\": \"https://api.yapily.com/payments\",\n            \"documentationUrl\": \"https://docs.yapily.com\"\n        },\n        {\n            \"feature\": \"TRANSFER\",\n            \"endpoint\": \"https://api.yapily.com/accounts/{accountId}/transfer\",\n            \"documentationUrl\": \"https://docs.yapily.com/#c8da0a20-6cb9-4282-aba5-4c66113eb70b\"\n        }\n    ]\n}"
             }
           ]
         }
@@ -8033,92 +8033,92 @@
   ],
   "variable": [
     {
-      "id": "da113f00-617a-4b2f-9f6f-3791c2d53caa",
+      "id": "828af7ca-ae03-483c-b827-649e6a9323ce",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "351dc33d-a13f-491d-ab52-93dcce43f174",
+      "id": "7b090ede-903b-4367-bdc2-bc361c4c1269",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "df77b440-f09d-47c5-a17e-4aee24ccd14c",
+      "id": "9aff4c8c-9272-47dd-9271-b9da1684f6f7",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "bab82cf6-a3fb-43d9-b235-6b6f318f7a4f",
+      "id": "ddc984f9-5816-4bb2-8805-466c75466c08",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "8c78ebc0-8a1b-4fb5-a9f5-10af1fe44899",
+      "id": "237d2e12-cefa-40e5-a634-9ce533473f86",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "92e323e0-7c40-4323-986e-7576105d4d2d",
+      "id": "aacdf068-b18c-4db9-bcf5-8128dc81a6f6",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "e70314d2-3d2a-4ad8-9eaf-924d78e45077",
+      "id": "7a3dfaf6-8964-4989-af09-53c9fbb51020",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "c0bc6b6c-cd53-4786-9593-027edefce3f9",
+      "id": "4312705b-212e-4410-977c-6a5a6c6e9fe7",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "320fce16-7afd-49ef-b8c2-be8f06e86725",
+      "id": "3aa0cd3a-b49e-4547-80fd-7c363b385a72",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "7c22298d-3859-4c83-9795-8d2afc03de54",
+      "id": "c33e39c8-8a44-4e12-b02e-5b8d1d83645d",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "9b220dec-ac96-4a07-aa51-5e38a00168ac",
+      "id": "7bc7d653-2b0f-4939-87cd-c758216ba5c1",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "6c713ab9-dc90-42e9-aa57-cde83a02c75c",
+      "id": "e5395267-eb68-4516-a5a2-eb1da4cbc901",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "980042d9-7793-4004-a180-efccc357eb8a",
+      "id": "8b38455e-f14d-4773-b7ec-89e6131e05b5",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "7ddb98b1-bc7b-4450-98eb-d72fe0c811da",
+      "id": "2b0159a0-5aab-43db-932b-ad085edf3bf4",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "99e2bb61-d256-4597-9549-c9417d583108",
+      "id": "8ef3b3b3-3499-4768-941b-5acf62b354c9",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "4025b9c2-e62d-4820-90a6-2d22ea5fc7f3",
+      "id": "c1b84939-1a8a-4a12-b197-1328a4320b10",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "b9611a79-7f06-4d59-aafb-cbb6932a31f3",
+      "id": "c28ed563-12e4-43d3-896e-9a9fa44cfe94",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "84443c11-e8d1-419c-bbc4-7c8a1561f22d",
+      "id": "6410deef-7e7f-4bb6-9c80-a789b59a4896",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
