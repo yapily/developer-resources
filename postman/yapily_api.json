@@ -4158,6 +4158,121 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
+            },
+            {
+              "id": "4da3c819-b643-4ae2-ab4d-ba4dbf442574",
+              "name": "201 Created (multiple SCA methods) Copy",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic APP_CREDENTIALS"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"6154057725\",\n        \"password\": \"PISPWD12\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "https://api.yapily.com/account-auth-requests"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2121",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 17 Oct 2018 14:42:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0",
+                  "name": "Expires",
+                  "description": "Gives the date/time after which the response is considered stale"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "name": "Pragma",
+                  "description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                },
+                {
+                  "key": "Server",
+                  "value": "nginx/1.13.9",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains;",
+                  "name": "Strict-Transport-Security",
+                  "description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                },
+                {
+                  "key": "Yapily-Tracing-Id",
+                  "value": "e570f627-ee15-4d89-a8db-0988da876329",
+                  "name": "Yapily-Tracing-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"meta\": {\n        \"tracingId\": \"a9d8d8c5e6a84b00b8510d90c28cbbc6\"\n    },\n    \"data\": {\n        \"id\": \"149da283-2958-4128-9d72-e3a02e8bb83d\",\n        \"userUuid\": \"6b082877-b137-4743-bba3-07b6a8148b42\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_METHOD\",\n        \"createdAt\": \"2021-06-09T11:47:24.513Z\",\n        \"expiresAt\": \"2021-09-07T00:00:00Z\",\n        \"timeToExpire\": \"P89DT12H12M35.472S\",\n        \"featureScope\": [\n            \"ACCOUNT_TRANSACTIONS\",\n            \"ACCOUNTS\",\n            \"ACCOUNT\",\n            \"ACCOUNT_BALANCES\"\n        ],\n        \"state\": \"c99f35c118194737b83487a0e6a48ed9\",\n        \"institutionConsentId\": \"4514274319060120226PSDLT-BL-LB002045CO9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"962\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus HHD 1.4\"\n            },\n            {\n                \"id\": \"952\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic\"\n            },\n            {\n                \"id\": \"972\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN optic/USB HHD 1.4\"\n            },\n            {\n                \"id\": \"982\",\n                \"type\": \"PHOTO_OTP\",\n                \"description\": \"Smart-TAN photo\"\n            },\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            },\n            {\n                \"id\": \"944\",\n                \"type\": \"PUSH_OTP\",\n                \"description\": \"SecureSIGN\"\n            },\n            {\n                \"id\": \"942\",\n                \"type\": \"SMS_OTP\",\n                \"description\": \"mobile TAN\"\n            }\n        ]\n    }\n}"
             }
           ]
         },
@@ -7492,92 +7607,92 @@
   ],
   "variable": [
     {
-      "id": "687efbd0-0f16-4216-aa7b-eb0f2e42a728",
+      "id": "59a6766d-d6f6-4a54-9657-3f91f9a0a5f1",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "331e5280-c3b2-40e8-a32e-8a3d8c7e041b",
+      "id": "f6a0d777-9f56-4823-8754-cb05f2f9899a",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "86c4198c-92fd-4442-982b-599cc93be68d",
+      "id": "388da10e-57af-42b0-9e35-99723abde394",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "bf91d112-0691-4e33-970f-1068f76c46dd",
+      "id": "72426483-e23b-4af5-af34-2fb3974c8a88",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "9e6a54bd-944b-4f7f-be3e-69f1169a6f89",
+      "id": "9e814a89-4515-4b05-9a28-146b8bdd5466",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "661d012e-3a6c-4372-8bcf-b5e47c4f72fc",
+      "id": "6986a0c6-bfa0-4c1d-87fc-60a5e80a3d24",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "ce27baa7-69e4-45da-98c8-a7bdbf3c7097",
+      "id": "0864f0fd-b1f1-4363-9d4a-1b6c1bcfdf02",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "c2215cbd-782a-44d7-9269-cca1cc09c92b",
+      "id": "ba0e0152-e632-4639-9274-a07d82cb5893",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "1120b14c-fe58-49cf-97ab-01d495d86b51",
+      "id": "0841b97b-7bae-4e6e-833b-84b90183a047",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "e6637605-aee4-48fb-bce1-acf2ed172a62",
+      "id": "c6c4f14e-36fb-480d-a8c1-c52a7dc041e7",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "7f68b310-df7c-47a6-b2c8-e61605248500",
+      "id": "6e629ec9-62b0-4299-becd-e01cc7972ede",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "1d23ea80-1040-4eea-8898-ee28ecb694ec",
+      "id": "991362c1-99d6-4051-bb55-e015e07ac374",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "1ebf5b16-30ed-4b5e-ac8c-58fc31dae02e",
+      "id": "4a583efb-5e24-40f8-8bb6-f19e03d70c60",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "101380be-43bb-4852-bdfa-840881ef9caa",
+      "id": "04407cd3-90f4-483f-91b4-94bbcd898613",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "79bcc42c-d5cb-4815-9eb5-3d463e6daf1d",
+      "id": "0c0a3e8e-87b5-4075-ab7a-ef7f80283cbf",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "501a9107-6fe3-43d6-8d48-f9b52ff7c33f",
+      "id": "b65ab95b-681a-4941-8c77-76c579a65004",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "b53cc06b-e41d-461b-b3b7-585f7c911000",
+      "id": "eb2bb1a5-8429-4836-9be7-8735b4ab5887",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "7057ee65-6335-4018-861d-ec4229b0d874",
+      "id": "73fda413-2b93-4a5a-a3a9-529933648d2c",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
