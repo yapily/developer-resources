@@ -2656,7 +2656,7 @@
                 "disableBodyPruning": true
               },
               "request": {
-                "method": "POST",
+                "method": "PUT",
                 "header": [
                   {
                     "key": "Content-Type",
@@ -2688,7 +2688,7 @@
                   "mode": "raw",
                   "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"type\": \"PAYMENT_TYPE\",\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"country\": \"2_LETTER_COUNTRY_CODE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
                 },
-                "url": "https://api.yapily.com/embedded-bulk-payment-auth-requests"
+                "url": "https://api.yapily.com/embedded-bulk-payment-auth-requests/{{consent-id}}"
               },
               "response": [
                 {
@@ -8799,92 +8799,92 @@
   ],
   "variable": [
     {
-      "id": "97f8548e-da1a-40b1-8885-c87776815ff2",
+      "id": "d97b71c1-7277-431b-955e-7868d3b9c6e7",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "075f26de-508f-4dd1-9f3c-1106837a77c0",
+      "id": "29bf30b1-e2c4-467d-b78b-387da93e76cf",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "df81a192-d74d-4146-b298-a1f868a3c8a5",
+      "id": "39b2cb21-7f3b-4c46-80ce-cca42f721284",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "54cec521-7c34-4dba-a0ff-c8ec0937ca15",
+      "id": "85e3f91c-c0e5-4525-8d13-1b2c7f903be9",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "710545e2-4a81-4f1b-b34c-2eb1940f2a74",
+      "id": "88dff2ee-7cdd-4acc-8cf7-8b4bdf910333",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "b11d5c82-0f8f-4827-bc68-b12d66e2a8ba",
+      "id": "55379070-3800-4943-80a7-7ab019febae9",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "14fd2b26-bbc3-44f2-b532-c564a17c9d1c",
+      "id": "4f4152b2-889d-42ee-a1d3-55bf966d9e62",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "d7094e8c-40e1-43b5-97f4-bf76284fc664",
+      "id": "fa9bd425-6c9f-4901-b803-e88010476d0e",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "c22f9e1a-216b-4fdb-a83b-05532b171fe3",
+      "id": "793e2cd1-de79-4ee9-ac9a-bed121c05e75",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "46656539-939a-470c-9d7a-222bd9012bb1",
+      "id": "a6881f29-afa5-4b72-b9dc-4657a4ede75a",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "7f163b2c-9d6a-48a1-a5e3-1e8fee17c804",
+      "id": "53db8fed-60b0-4330-9db6-5856d044547e",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "601daa88-1918-48a0-9ee6-1dcf18ed6943",
+      "id": "ff680bfd-b17f-499e-8de7-a6bab6536011",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "e9aa4ee4-cfbc-4ff5-af2e-32ac7137bd2b",
+      "id": "6b05e6c5-c1ed-49e0-a2a3-576a8a124016",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "5e6ac825-fd72-4953-ae0e-85c104731fc5",
+      "id": "224250dc-45cc-4fbe-a5e9-68ca90dd236a",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "cca45c11-7cb7-4a7b-98f9-d7f724fdc12f",
+      "id": "2dbab1f6-f2e3-4ad5-91bc-edaab577f9a1",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "049fcf96-159e-4171-b602-67cd757f9aa6",
+      "id": "c3c46b22-5259-41d4-9913-d7cd945eeeed",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "2bf34fda-ffbc-4977-80e4-ff4080060dc8",
+      "id": "ada5d1a0-3a2c-4a85-a9e0-e8f5081895cb",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "e399802c-3d43-4c58-b2ac-d5acc2cadabd",
+      "id": "d89e263c-a60d-42f5-92f0-85286003e7d2",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
