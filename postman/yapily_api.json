@@ -2681,7 +2681,7 @@
                 },
                 {
                   "id": "81ffe183-388f-47fd-80bb-5e8daa8fcb45",
-                  "name": "201 Created (BULK PAYMENT AUTH REQUEST - BARCLAYS)",
+                  "name": "201 Created (EMBEDDED BULK PAYMENT AUTH REQUEST - FIDUCIA)",
                   "originalRequest": {
                     "method": "POST",
                     "header": [
@@ -2710,36 +2710,6 @@
                   "cookie": [],
                   "responseTime": null,
                   "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01ignvwrzs1xbe14qhz2feqjwd71\"\n    },\n    \"data\": {\n        \"id\": \"4a5d1b95-cf15-4775-a93d-fd02968a4a61\",\n        \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-04T14:31:04.872Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 7.00\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-...\"\n    }\n}"
-                },
-                {
-                  "id": "e3072777-6a7c-44bb-904a-07d9757accbb",
-                  "name": "201 Created (BULK PAYMENT AUTH REQUEST - LLOYDS",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"applicationUserId\": \"user@company.com\",\n    \"institutionId\": \"lloydsbusiness\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": true,\n    \"paymentRequest\": {\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p1\",\n                \"reference\": \"Bulk Payment 1\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payer\": {\n                    \"name\": \"Business Account Name 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 1\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p2\",\n                \"reference\": \"Bulk Payment 2\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 2\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"p3\",\n                \"reference\": \"Bulk Payment 3\",\n                \"amount\": {\n                    \"amount\": \"0.1\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"Recipient account 3\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"XXXXXXXX\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"XXXXXX\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": "https://api.yapily.com/bulk-payment-auth-requests"
-                  },
-                  "_postman_previewlanguage": "json",
-                  "header": null,
-                  "cookie": [],
-                  "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"05f711438e66817fabaa28553427665b\"\n    },\n    \"data\": {\n        \"id\": \"c45f4823-cd8c-494f-80c2-4d409069225f\",\n        \"userUuid\": \"63e7f21d-7d04-4720-8e2a-60de3386fc87\",\n        \"applicationUserId\": \"user@company.com\",\n        \"institutionId\": \"lloydsbusiness\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-27T08:47:05.310Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 0.3\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://authorise-api.lloydsbank.co.uk/prod01/lbg/lyds/business/oidc-api/v1.1/authorize?client_id=1d46d128-bd57-4b15-872a-501bbeeb6054&response_type=code+id_token&state=77b349880f434292a10498156c1e0b61&nonce=77b349880f434292a10498156c1e0b61&scope=openid+payments&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJPNWp3ZXpxTlNzeVlacHotZHpfVUhEbkJINHciLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL3NlY3VyZS1hcGkubGxveWRzYmFuay5jb20vIiwic2NvcGUiOiJvcGVuaWQgcGF5bWVudHMiLCJpc3MiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJjbGllbnRfaWQiOiIxZDQ2ZDEyOC1iZDU3LTRiMTUtODcyYS01MDFiYmVlYjYwNTQiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiNzdiMzQ5ODgwZjQzNDI5MmExMDQ5ODE1NmMxZTBiNjEiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiOWM2ZjBlMWYtNzE0MS00ZTY2LWI2MTQtYWJiMTczYTc1M2UzIiwiZXNzZW50aWFsIjp0cnVlfX0sInVzZXJpbmZvIjp7Im9wZW5iYW5raW5nX2ludGVudF9pZCI6eyJ2YWx1ZSI6IjljNmYwZTFmLTcxNDEtNGU2Ni1iNjE0LWFiYjE3M2E3NTNlMyIsImVzc2VudGlhbCI6dHJ1ZX19fSwibm9uY2UiOiI3N2IzNDk4ODBmNDM0MjkyYTEwNDk4MTU2YzFlMGI2MSIsImp0aSI6Ijg3OTkxYWQ5LWVkMjctNDcwZS1iYmI5LTAxNDZiOWRkN2JhMyIsImlhdCI6MTU5MDU2OTIyNSwiZXhwIjoxNTkwNTcxMDI1fQ.CYr60td08kcG5HMvn_2qQ6hz-V0_0ggGrAzzvifkdpJ8fC_P_RPl-6VsgIf1ohvs58PvIxxu77NWTYvLdntxKJ1Upgdtd6pRYE_RmuwA62NVEJhon_YT3mUbA1A_-XNq7sUT-Ew0UlzSb6VCEVgtTSgSbzxjkVbAwQI4D9435vDfeaJv8Mj8MHl0C6JzAMommQcJxtrjS28yI-zOokUQgFQx_XPZGYAFUf1ux_1w5Aw4g0AAFNvq6ICNNIKT4SQceKKm43RJFgjc2yKZ9OwM5_7NBD5rpTddQ0s3DZeWIj9S005JO0BDJWMdWIItr1m4MUmBw7gstUUe4sinZJl5KA\",\n        \"qrCodeUrl\": \"https://images.yapily.com/image/10318d26-f2bc-4098-bbb6-5d3b7f5756c8/1590569225?size=0\"\n    }\n}"
                 }
               ]
             }
@@ -8817,92 +8787,92 @@
   ],
   "variable": [
     {
-      "id": "2750f4c3-e597-4c79-a4b2-9db521f4f36d",
+      "id": "d53828ed-b455-4a09-bb36-6d1e93406b9b",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "e143c627-49be-4fe1-974c-4ef523fd7d1e",
+      "id": "c3ec66d5-97e9-4341-8b13-ebf3b50aac72",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "ffb8ae71-9aed-4b58-9601-a352a6a53198",
+      "id": "8aa17c04-18b6-4861-82c9-d1bcf0988a46",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "af720c9c-3e39-421a-99b0-050065b5e119",
+      "id": "dfcfae66-142a-44ac-b069-112c6ce61a06",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "f8149f98-b3b7-4210-994a-733450f43156",
+      "id": "036cb084-56ab-47e9-8769-00945308607e",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "7488c91c-78a3-47c3-a0ea-b2bc48b48e65",
+      "id": "fae130f7-4089-489e-aad7-872577e59b36",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "3828465a-28dc-47d8-a2bc-bc2c80add68c",
+      "id": "66c784f7-8c2c-4631-a378-bd2e68a0535f",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "fc1e8b60-8c66-438e-88d3-ba552fab3788",
+      "id": "bcbee63e-cddb-4b2e-8581-1907183bb584",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "3a1d988a-47f3-4119-a9ce-338408580329",
+      "id": "73eae58a-00fb-4746-ac64-87e89d4af65c",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "f0e5b21d-ec96-4286-a7d1-4c0116df128a",
+      "id": "bafccbff-a0d8-4c6b-9ce9-f7f838cf0a22",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "1a871f3e-9b41-4480-b088-d0ef15bae362",
+      "id": "2e623db2-2572-4185-a0fe-6288ac5ea459",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "27bca836-7f80-4754-9345-403f136ecc11",
+      "id": "a1977fce-fb6b-49a5-88a2-8ae68bb4eccc",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "fdb7e609-73f1-465d-9aa4-8d1976ae0b96",
+      "id": "549ba1b7-37f4-4345-9a97-ef1ee5036293",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "6accd288-def6-4f9e-897b-5f074c0dc1e8",
+      "id": "27272787-2da0-457f-8641-a4f1dd4b7901",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "65c1d968-d3fb-4fda-85ea-6de642f78eba",
+      "id": "791432bf-3f15-4545-af3b-b713f6d57a7e",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "c8e13e99-ce15-4c11-ab99-3a55bead4a9f",
+      "id": "d5de66cc-029f-410b-ab51-fe26427d0a29",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "483de6a3-47f5-4af8-9a7a-ef53f907d12d",
+      "id": "921aad5a-ebe6-4ef5-bd11-7e6f70a86e12",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "95097682-f35c-4e58-8986-be21b08fcc8c",
+      "id": "1d68e738-d031-4ba0-ab6e-bd721f58c35b",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
