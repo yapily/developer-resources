@@ -2630,14 +2630,14 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n    \"institutionId\": \"barclays\",\n    \"callback\": \"{{callback-url}}\",\n    \"oneTimeToken\": false,\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2020-10-17T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment1-id-23930482\",\n                \"reference\": \"payment1\",\n                \"amount\": {\n                    \"amount\": \"2.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"nicholas smith\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            },\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"payment2-id-23034517\",\n                \"reference\": \"payment2\",\n                \"amount\": {\n                    \"amount\": \"5.00\",\n                    \"currency\": \"GBP\"\n                },\n                \"payee\": {\n                    \"name\": \"michael davis\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"ACCOUNT_NUMBER\",\n                            \"identification\": \"12345678\"\n                        },\n                        {\n                            \"type\": \"SORT_CODE\",\n                            \"identification\": \"123456\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"VRK1234567890PLUS\",\n        \"password\": \"password\"\n    },\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2021-10-29T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n                \"reference\": \"REFERENCE\",\n                \"amount\": {\n                    \"amount\": \"1.00\",\n                    \"currency\": \"EUR\"\n                },\n                \"payer\": {\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE39499999600000005111\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Jane Doe\",\n                    \"address\": {\n                        \"country\": \"DE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE12345678901234567890\"\n                        }\n                    ]\n                }\n            },\n             {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n                \"reference\": \"REFERENCE\",\n                \"amount\": {\n                    \"amount\": \"1.00\",\n                    \"currency\": \"EUR\"\n                },\n                \"payer\": {\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE39499999600000005111\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"John Doe\",\n                    \"address\": {\n                        \"country\": \"DE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE12345678900000000000\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
                       "options": {
                         "raw": {
                           "language": "json"
                         }
                       }
                     },
-                    "url": "https://api.yapily.com/bulk-payment-auth-requests"
+                    "url": "https://api.yapily.com/embedded-bulk-payment-auth-requests"
                   },
                   "status": "Created",
                   "code": 201,
@@ -2645,7 +2645,83 @@
                   "header": [],
                   "cookie": [],
                   "responseTime": null,
-                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"node01ignvwrzs1xbe14qhz2feqjwd71\"\n    },\n    \"data\": {\n        \"id\": \"4a5d1b95-cf15-4775-a93d-fd02968a4a61\",\n        \"userUuid\": \"b1aaf0a7-668f-4fa8-a276-cc9fdde7fa05\",\n        \"institutionId\": \"barclays\",\n        \"status\": \"AWAITING_AUTHORIZATION\",\n        \"createdAt\": \"2020-05-04T14:31:04.872Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENTS_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\"\n        ],\n        \"charges\": [\n            {\n                \"chargeAmount\": {\n                    \"amount\": 7.00\n                },\n                \"chargeType\": \"BULK_PAYMENT\"\n            }\n        ],\n        \"authorisationUrl\": \"https://oauth.tiaa.barclays.com/BarclaysPersonal/as/authorization.oauth2?client_id=bdn-...\"\n    }\n}"
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"4ab90c8cc13a4b74ba855a48100d6084\"\n    },\n    \"data\": {\n        \"id\": \"6117b6dd-5a43-4f26-8e36-b91b9bf3c434\",\n        \"userUuid\": \"3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-08-02T14:58:45.446Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"state\": \"85853421299c44e0829debefffd8622e\",\n        \"institutionConsentId\": \"0515485612080120206PSDLT-BL-LB002045PA9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            }\n        ],\n        \"selectedScaMethod\": {\n            \"id\": \"932\",\n            \"type\": \"CHIP_OTP\",\n            \"description\": \"SmartTAN plus\"\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update Embedded Bulk Payment Authorisation",
+              "id": "384f5f90-6088-41e3-870b-82f80cf28f0c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "psu-id",
+                    "value": "{{psu-id}}",
+                    "description": "Conditional. Represents the user's login ID for the Institution to a personal account",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "psu-corporate-id",
+                    "value": "{{psu-corporate-id}}",
+                    "description": "Conditional. Represents the user's login ID for the Institution to a business account",
+                    "type": "text",
+                    "disabled": true
+                  },
+                  {
+                    "key": "psu-ip-address",
+                    "value": "{{psu-ip-address}}",
+                    "description": "Conditional. The IP address of the PSU",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"applicationUserId\": \"{{application-user-id}}\",\n    \"institutionId\": \"{{institution-id}}\",\n    \"callback\": \"{{callback-url}}\",\n    \"paymentRequest\": {\n        \"executionDateTime\": \"DATE_OF_EXECUTION\",\n        \"payments\": [\n            {\n                \"type\": \"PAYMENT_TYPE\",\n                \"paymentIdempotencyId\": \"UNIQUE_PAYMENT_IDENTIFIER\",\n                \"payer\": {\n                    \"name\": \"PAYER_NAME\",\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                },\n                \"amount\": {\n                    \"amount\": \"0.00\",\n                    \"currency\": \"3_LETTER_CURRENCY_CODE\"\n                },\n                \"reference\": \"REFERENCE\",\n                \"payee\": {\n                    \"name\": \"PAYEE_NAME\",\n                    \"address\": {\n                        \"country\": \"2_LETTER_COUNTRY_CODE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"TYPE_OF_IDENTIFICATION\",\n                            \"identification\": \"VALUE_OF_IDENTIFICATION\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+                },
+                "url": "https://api.yapily.com/embedded-bulk-payment-auth-requests"
+              },
+              "response": [
+                {
+                  "id": "00b2662d-8133-48e5-864b-a9666b6ee0f1",
+                  "name": "201 Created (EMBEDDED BULK PAYMENT AUTH REQUEST - FIDUCIA)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"applicationUserId\": \"john.doe@company.com\",\n    \"institutionId\": \"fiducia-sandbox\",\n    \"userCredentials\": {\n        \"id\": \"VRK1234567890PLUS\",\n        \"password\": \"password\"\n    },\n    \"paymentRequest\": {\n        \"executionDateTime\": \"2021-10-29T00:00:00Z\",\n        \"payments\": [\n            {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n                \"reference\": \"REFERENCE\",\n                \"amount\": {\n                    \"amount\": \"1.00\",\n                    \"currency\": \"EUR\"\n                },\n                \"payer\": {\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE39499999600000005111\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"Jane Doe\",\n                    \"address\": {\n                        \"country\": \"DE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE12345678901234567890\"\n                        }\n                    ]\n                }\n            },\n             {\n                \"type\": \"DOMESTIC_PAYMENT\",\n                \"paymentIdempotencyId\": \"e4f913909a3d11eabb370242ac130002\",\n                \"reference\": \"REFERENCE\",\n                \"amount\": {\n                    \"amount\": \"1.00\",\n                    \"currency\": \"EUR\"\n                },\n                \"payer\": {\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE39499999600000005111\"\n                        }\n                    ]\n                },\n                \"payee\": {\n                    \"name\": \"John Doe\",\n                    \"address\": {\n                        \"country\": \"DE\"\n                    },\n                    \"accountIdentifications\": [\n                        {\n                            \"type\": \"IBAN\",\n                            \"identification\": \"DE12345678900000000000\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": "https://api.yapily.com/embedded-bulk-payment-auth-requests"
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n    \"meta\": {\n        \"tracingId\": \"4ab90c8cc13a4b74ba855a48100d6084\"\n    },\n    \"data\": {\n        \"id\": \"6117b6dd-5a43-4f26-8e36-b91b9bf3c434\",\n        \"userUuid\": \"3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d\",\n        \"applicationUserId\": \"john.doe@company.com\",\n        \"institutionId\": \"fiducia-sandbox\",\n        \"status\": \"AWAITING_SCA_CODE\",\n        \"createdAt\": \"2021-08-02T14:58:45.446Z\",\n        \"featureScope\": [\n            \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n            \"CREATE_BULK_PAYMENT\",\n            \"EXISTING_PAYMENTS_DETAILS\"\n        ],\n        \"state\": \"85853421299c44e0829debefffd8622e\",\n        \"institutionConsentId\": \"0515485612080120206PSDLT-BL-LB002045PA9545RW\",\n        \"scaMethods\": [\n            {\n                \"id\": \"932\",\n                \"type\": \"CHIP_OTP\",\n                \"description\": \"SmartTAN plus\"\n            }\n        ],\n        \"selectedScaMethod\": {\n            \"id\": \"932\",\n            \"type\": \"CHIP_OTP\",\n            \"description\": \"SmartTAN plus\"\n        }\n    }\n}"
                 }
               ]
             }
@@ -8723,92 +8799,92 @@
   ],
   "variable": [
     {
-      "id": "48866602-58f1-458f-aed8-7a194cb5752d",
+      "id": "97f8548e-da1a-40b1-8885-c87776815ff2",
       "key": "application-uuid",
       "value": "{{application-uuid}}"
     },
     {
-      "id": "07f21eb0-efa2-457d-8dd7-63c09d8d6718",
+      "id": "075f26de-508f-4dd1-9f3c-1106837a77c0",
       "key": "application-secret",
       "value": "{{application-secret}}"
     },
     {
-      "id": "b4b1587b-c732-4772-8dfc-5012407750bf",
+      "id": "df81a192-d74d-4146-b298-a1f868a3c8a5",
       "key": "institution-id",
       "value": "{{institution-id}}"
     },
     {
-      "id": "a6713d1f-9892-4790-80ab-2caca93988f2",
+      "id": "54cec521-7c34-4dba-a0ff-c8ec0937ca15",
       "key": "appUserId",
       "value": "{{app-user-id}}"
     },
     {
-      "id": "ae0aa09e-0403-41f9-9fb2-3b45a38bace8",
+      "id": "710545e2-4a81-4f1b-b34c-2eb1940f2a74",
       "key": "user-uuid",
       "value": "{{user-uuid}}"
     },
     {
-      "id": "1e5480b2-f610-40b7-b0b2-437363b2ae2e",
+      "id": "b11d5c82-0f8f-4827-bc68-b12d66e2a8ba",
       "key": "consent-token",
       "value": "{{consent-token}}"
     },
     {
-      "id": "dd95c6dd-c1f9-486d-b954-c1823e8942e6",
+      "id": "14fd2b26-bbc3-44f2-b532-c564a17c9d1c",
       "key": "api-key",
       "value": "{{api-key}}"
     },
     {
-      "id": "71cb25ea-6146-4ee6-bc9e-dfd5d20e1993",
+      "id": "d7094e8c-40e1-43b5-97f4-bf76284fc664",
       "key": "account-id",
       "value": "{{account-id}}"
     },
     {
-      "id": "0d0b2179-37ef-46f3-b073-ef7f9e2a5e12",
+      "id": "c22f9e1a-216b-4fdb-a83b-05532b171fe3",
       "key": "callback-url",
       "value": "{{callback-url}}"
     },
     {
-      "id": "3398ecfa-bec7-47cf-8b1f-73c5479fa1bb",
+      "id": "46656539-939a-470c-9d7a-222bd9012bb1",
       "key": "payment-id",
       "value": "{{payment-id}}"
     },
     {
-      "id": "1109c3d9-0e4a-422b-a384-e9ae1b0d1772",
+      "id": "7f163b2c-9d6a-48a1-a5e3-1e8fee17c804",
       "key": "consent-id",
       "value": "{{consent-id}}"
     },
     {
-      "id": "028fc70d-6073-46e9-b82e-c3a62d5a290a",
+      "id": "601daa88-1918-48a0-9ee6-1dcf18ed6943",
       "key": "destination-account-id",
       "value": "{{destination-account-id}}"
     },
     {
-      "id": "933d783e-4384-43f1-b700-7b84bc4401de",
+      "id": "e9aa4ee4-cfbc-4ff5-af2e-32ac7137bd2b",
       "key": "currency",
       "value": "{{currency}}"
     },
     {
-      "id": "c7929df8-03e1-42d4-8672-0c614d24a8bc",
+      "id": "5e6ac825-fd72-4953-ae0e-85c104731fc5",
       "key": "transactions-from",
       "value": "{{transactions-from}}"
     },
     {
-      "id": "f0e50348-d12e-4059-9116-f36f88476169",
+      "id": "cca45c11-7cb7-4a7b-98f9-d7f724fdc12f",
       "key": "transactions-to",
       "value": "{{transactions-to}}"
     },
     {
-      "id": "089ebd91-d946-49a3-a899-13fddcefe8a8",
+      "id": "049fcf96-159e-4171-b602-67cd757f9aa6",
       "key": "expires-at",
       "value": "{{expires-at}}"
     },
     {
-      "id": "d2909b71-cac7-410b-abca-1dbf43c26327",
+      "id": "2bf34fda-ffbc-4977-80e4-ff4080060dc8",
       "key": "one-time-token",
       "value": "{{one-time-token}}"
     },
     {
-      "id": "1d7dd9d1-bfbf-44b1-86a4-1c22ea9fd332",
+      "id": "e399802c-3d43-4c58-b2ac-d5acc2cadabd",
       "key": "statement-id",
       "value": "{{statement-id}}"
     }
